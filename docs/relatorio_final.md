@@ -1,11 +1,15 @@
 # TITULO DO PROJETO
 
 
-**Nome completo do Aluno 1, email do aluno 1**
+**Ana Corina Damas Batista | acorina59@gmail.com**
 
-**Nome completo do Aluno 2, email do aluno 2**
+**Giovanna Ferreira dos Santos de Almeida | gfsalmeida@sga.pucminas.br**
 
-**Nome completo do Aluno 3, email do aluno 3**
+**Guilherme Lage da Costa | guilhermeldcosta@gmail.com**
+
+**Lucas Cabral Soares | **
+
+**Vítor Lagares Stahlberg | vitorls2001@gmail.com**
 
 ---
 
