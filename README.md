@@ -4,10 +4,11 @@ Escreva um ou dois  parágrafo resumindo o objetivo do seu projeto.
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+* Ana Corina Damas Batista
+* Giovanna Ferreira dos Santos de Almeida
+* Guilherme Lage da Costa
+* Lucas Cabral Soares
+* Vítor Lagares Stahlberg
 
 ## Professor
 
