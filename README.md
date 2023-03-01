@@ -12,7 +12,9 @@ Escreva um ou dois  parágrafo resumindo o objetivo do seu projeto.
 
 ## Professor
 
-* Nome completo do professor
+* Hugo Bastos de Paula
+
+* Eveline Alonso Veloso
 
 ## Instruções de utilização
 
