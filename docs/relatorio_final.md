@@ -15,7 +15,6 @@ Professores:
 
 **Eveline Alonso Veloso**
 
-**Thiago Augusto Nicolini Silva**
 
 
 ---
