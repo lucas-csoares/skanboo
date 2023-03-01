@@ -7,7 +7,7 @@
 
 **Guilherme Lage da Costa | guilhermeldcosta@gmail.com**
 
-**Lucas Cabral Soares | **
+**Lucas Cabral Soares | 1425177@sga.pucminas.br**
 
 **Vítor Lagares Stahlberg | vitorls2001@gmail.com**
 
