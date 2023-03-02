@@ -1,4 +1,4 @@
-# TITULO DO PROJETO
+# sKanboo
 
 **Ana Corina Damas Batista | acorina59@gmail.com**
 
@@ -26,8 +26,7 @@ _Instituto de Informática e Ciências Exatas – Pontifícia Universidade de Mi
 
 ---
 
-_**Resumo**. Escrever aqui o resumo. O resumo deve contextualizar rapidamente o trabalho, descrever seu objetivo e, ao final, 
-mostrar algum resultado relevante do trabalho (até 10 linhas)._
+_**Resumo**. Escrever aqui o resumo. O resumo deve contextualizar rapidamente o trabalho, descrever seu objetivo e, ao final, mostrar algum resultado relevante do trabalho (até 10 linhas)._
 
 ---
 
@@ -37,9 +36,13 @@ A introdução deve apresentar de dois ou quatro parágrafos de contextualizaç�
 
 ### 1.1 Contextualização
 
-Na **contextualização**, o aluno deve dizer do que se trata o trabalho, em que área ou contexto se insere. 
-A **contextualização** deve ser desenvolvida de algo mais genérico para algo mais específico. 
-A citação de pesquisas quantitativas é bem aceita aqui (corretamente referenciadas).
+O crescimento dos hábitos de consumo da população se mostrou mais expressivo a partir da transição gerada pela Revolução Industrial, que ocorreu em meados do século XVIII, segundo as Rotas Culturais do Conselho Europeu (_European Route of Industrial Heritage_)[1]. Como resultado de um maior investimento nos setores industriais, a quantidade de mercadorias ofertadas à população cresceu vertiginosamente, estimulando cada vez mais a aquisição de novos produtos.
+
+O problema gerado por essa visão de consumo, assim como qualquer excesso, é o desperdício. Para fins de exemplo, um índice comumente utilizado é o número de furadeiras para uso doméstico. Em grande parte das residências, é muito comum que seus moradores tenham uma furadeira guardada. No entanto, o que muitos não sabem, é que durante toda a sua vida útil, essa furadeira é usada, em média, por apenas 40 minutos, segundo a Instituição Akatu[2]. Ou seja, um produto que na maior parte de sua vida útil, ficará em desuso.
+
+Considerando o cenário descrito, o **sKanboo** foi desenvolvido para permitir que objetos em nossas casas que possam estar em desuso sejam utilizados por outras pessoas. Para isso, propomos um modelo de troca entre usuários, de modo que ambos possam adquirir o objeto que desejam sem a necessidade de comprar um novo produto.
+
+O modelo de troca de mercadorias, apesar de antigo, tem ganhado cada vez mais força devido à crescente preocupação com a sustentabilidade. O que, inclusive, está em acordo com as premissas da economia circular, que prevê o uso e reuso de uma dado item[3]. Por fim, é importante mencionar que, devido à instabilidade financeira causada pela pandemia da COVID-19, muitas pessoas buscaram formas mais baratas de suprir suas necessidades.
 
 ### 1.2 Problema
 
@@ -174,17 +177,11 @@ Verifique no link abaixo como devem ser as referências no padrão ABNT:
 http://www.pucminas.br/imagedb/documento/DOC\_DSC\_NOME\_ARQUI20160217102425.pdf
 
 
-**[1.1]** - _ELMASRI, Ramez; NAVATHE, Sham. **Sistemas de banco de dados**. 7. ed. São Paulo: Pearson, c2019. E-book. ISBN 9788543025001._
+**[1]** - _European route of industrial heritage - cultural routes - publi.coe.int. ([s.d.]). Cultural Routes. Recuperado 2 de março de 2023, de https://www.coe.int/en/web/cultural-routes/european-route-of-industrial-heritage_
 
-**[1.2]** - _COPPIN, Ben. **Inteligência artificial**. Rio de Janeiro, RJ: LTC, c2010. E-book. ISBN 978-85-216-2936-8._
+**[2]** - _Akatu, E. (2012, outubro 11). Como o consumo colaborativo pode revolucionar uma cidade. Instituto Akatu; Akatu. https://akatu.org.br/como-o-consumo-colaborativo-pode-revolucionar-uma-cidade/_
 
-**[1.3]** - _CORMEN, Thomas H. et al. **Algoritmos: teoria e prática**. Rio de Janeiro, RJ: Elsevier, Campus, c2012. xvi, 926 p. ISBN 9788535236996._
-
-**[1.4]** - _SUTHERLAND, Jeffrey Victor. **Scrum: a arte de fazer o dobro do trabalho na metade do tempo**. 2. ed. rev. São Paulo, SP: Leya, 2016. 236, [4] p. ISBN 9788544104514._
-
-**[1.5]** - _RUSSELL, Stuart J.; NORVIG, Peter. **Inteligência artificial**. Rio de Janeiro: Elsevier, c2013. xxi, 988 p. ISBN 9788535237016._
-
-
+**[3]** - _Economia Circular - O que é a Economia Circular? ([s.d.]). Nomia.pt. Recuperado 2 de março de 2023, de https://eco.nomia.pt/pt/economia-circular/estrategias_
 
 # APÊNDICES
 
