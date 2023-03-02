@@ -1,6 +1,5 @@
 # TITULO DO PROJETO
 
-
 **Ana Corina Damas Batista | acorina59@gmail.com**
 
 **Giovanna Ferreira dos Santos de Almeida | gfsalmeida@sga.pucminas.br**
@@ -11,7 +10,6 @@
 
 **Vítor Lagares Stahlberg | vitorls2001@gmail.com**
 
-
 ---
 
 Professores:
@@ -19,8 +17,6 @@ Professores:
 **Hugo Bastos de Paula**
 
 **Eveline Alonso Veloso**
-
-
 
 ---
 
@@ -35,35 +31,34 @@ mostrar algum resultado relevante do trabalho (até 10 linhas)._
 
 ---
 
-
 ## 1. Introdução
 
 A introdução deve apresentar de dois ou quatro parágrafos de contextualização do trabalho. 
 
-    1.1 Contextualização
+### 1.1 Contextualização
 
 Na **contextualização**, o aluno deve dizer do que se trata o trabalho, em que área ou contexto se insere. 
 A **contextualização** deve ser desenvolvida de algo mais genérico para algo mais específico. 
 A citação de pesquisas quantitativas é bem aceita aqui (corretamente referenciadas).
 
-    1.2 Problema
+### 1.2 Problema
 
 Em seguida o aluno deve caminhar a contextualização para descrever o **problema** que o artigo trata. 
 O **problema** pode ser algo vivido em uma empresa específica. Neste caso, o aluno deve rapidamente apresentar 
 o cenário de problema da empresa. A empresa só deve ser citada explicitamente se o aluno tiver autorização 
 para tal.
 
-    1.3 Objetivo geral
+### 1.3 Objetivo geral
 
 O aluno deve escrever um pequeno parágrafo ou frase com o **objetivo geral** do trabalho. 
 O objetivo deve ser bem direto, específico e definido com verbos de ação (elaborar, propor, ava-liar, comparar etc.).
 
-        1.3.1 Objetivos específicos
+#### 1.3.1 Objetivos específicos
 
 Apresente também alguns (pelo menos 2) **objetivos específicos** dependendo de onde você vai querer 
 concentrar a sua prática investigativa, ou como você vai aprofundar no seu trabalho.
 
-    1.4 Justificativas
+### 1.4 Justificativas
 
 Mostre também as **justificativas** para o 
 desenvolvimento do seu trabalho e, caso deseje, desta-que alguma contribuição do trabalho.
@@ -75,17 +70,17 @@ Apresente aqui os diferentes perfis dos participantes do processo. Participantes
 
 ## 3. Modelagem do processo de negócio
 
-## 3.1. Análise da situação atual
+### 3.1. Análise da situação atual
 
 Apresente uma descrição textual de como os sistemas atuais resolvem o problema que se propoe a resolver.  Caso sua proposta seja inovadora e não existam processos claramente definidos, **apresente como as tarefas que o seu sistema pretende implementar são executadas atualmente**, mesmo que não se utilize tecnologia computacional.
 
-## 3.2. Descrição Geral da proposta
+### 3.2. Descrição Geral da proposta
 
 Apresente aqui uma descrição da sua proposta abordando seus limites e suas ligações com as estratégias e objetivos do negócio. Apresente aqui as oportunidades de melhorias.
 
-## 3.3. Modelagem dos Processos
+### 3.3. Modelagem dos Processos
 
-### 3.3.1 Processo 1 – NOME DO PROCESSO
+#### 3.3.1 Processo 1 – NOME DO PROCESSO
 
 Apresente aqui o nome e as oportunidades de melhorias para o processo 1. Em seguida, apresente o modelo do processo 1, descrito no padrão BPMN.
 
