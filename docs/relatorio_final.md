@@ -34,8 +34,11 @@ _**Resumo**. Escrever aqui o resumo. O resumo deve contextualizar rapidamente o 
 
 Escambo é uma forma de transação em que um negócio é fechado sem envolver dinheiro[4], ou seja, se constitui simplesmente na troca de mercadorias entre duas partes. Foi algo que norteou o comércio na antiguidade e que antecede a monetização da economia no planeta[5]. Então, por que utilizar escambo atualmente?
 
-Com o crescimento do consumismo[6], acumular objetos se tornou um hábito. Esse acúmulo pode levar a desorganização do espaço doméstico e à dificuldade de encontrar itens de mais necessidade. Além disso, pode ser prejudicial sob a ótica ambiental, pois muitos deles acabam por ser descartados de forma inadequada.
+Com o crescimento do consumismo[6], acumular objetos se tornou um hábito. Esse acúmulo pode levar a desorganização do espaço doméstico e à dificuldade de encontrar itens de mais necessidade. Do ponto de vista ambiental, pode ser prejudicial, pois muitos deles acabam por ser descartados de forma inadequada. Além disso, o consumismo pode levar ao endividamento, já que muitas pessoas compram mais do que podem pagar e acumulam dívidas que afetam o equilíbrio financeiro.
 
+Ao fazer escambo a pessoa evita gastar dinheiro por trocar bens que já possui por outros de que necessita, ganha mais flexibilidade por poder negociar diretamente com a outra pessoa, uma vez que não se tem preço fixo como em lojas e também é uma forma mais sustentável de consumir.
+
+Dessa forma, é necessário uma plataforma através da qual seja possível realizar trocas entre pessoas, permitindo acesso a uma ampla rede de usuários de forma a expandir o alcance de troca para além das limitações geográficas e com isso, gerar uma maior variedade de itens a serem trocados. Somado a isso, oferecer uma maior segurança para proteger os usuários contra fraudadores e golpistas. 
 
 
 
