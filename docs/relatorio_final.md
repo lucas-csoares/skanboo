@@ -44,10 +44,13 @@ O modelo de troca de mercadorias (escambo), apesar de antigo, tem ganhado cada v
 
 ### 1.2 Problema
 
-Em seguida o aluno deve caminhar a contextualização para descrever o **problema** que o artigo trata. 
-O **problema** pode ser algo vivido em uma empresa específica. Neste caso, o aluno deve rapidamente apresentar 
-o cenário de problema da empresa. A empresa só deve ser citada explicitamente se o aluno tiver autorização 
-para tal.
+O consumo constante de novos bens, hábito comum de grande parte da população, gera diversos problemas por si só, dentre eles:
+
+- acúmulo de itens em desusu nas casas;
+- gastos desnecessário;
+- desperdício.
+
+Pela ótica ambiental, a produção em massa consome recursos naturais, emite gases poluentes e gera resíduos que podem contaminar o solo e a água. Para minimizar esse impacto, é preciso reduzir o consumo, reutilizar e reciclar produtos, princípios da economia circular. Partindo desse pressuposto, seria possível criar uma plataforma na qual as pessoas conseguissem adquirir novos bens, apenas se desfazendo daqueles que já tem e não usam, economizando dinheiro e, por consequência, de maneira sustentável? Esse é o problema que será analisado e desenvolvido no projeto apresentado a seguir.
 
 ### 1.3 Objetivo geral
 
