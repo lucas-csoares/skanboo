@@ -50,15 +50,13 @@ Partindo desse pressuposto, seria possível criar uma plataforma na qual as pess
 
 ### 1.3 Objetivo geral
 
-Permitir que pessoas realizem trocas de objetos uns com os outros sem usar dinheiro, por meio de um site. 
+O objetivo geral deste projeto é desenvolver uma aplicação web que permita que seus usuários realizem trocas de objetos uns com os outros, de maneira simples e sem gastar com isso.
 
 #### 1.3.1 Objetivos específicos
 
-- Facilitar a troca de objetos entre pessoas. 
-
-- Oferecer alternativas ao dinheiro. 
-
-- Permitir que pessoas troquem algo que não usam mais por algo que poderão usar. 
+- Facilitar a troca de objetos entre pessoas;
+- Fornecer alternativas para obter produtos que não envolvam dinheiro;
+- Permitir que os usuários da aplicação negociem diretamente uns com os outros.
 
 ### 1.4 Justificativas
 
