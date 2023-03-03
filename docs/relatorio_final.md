@@ -44,13 +44,9 @@ O modelo de troca de mercadorias (escambo), apesar de antigo, tem ganhado cada v
 
 ### 1.2 Problema
 
-O consumo constante de novos bens, hábito comum de grande parte da população, gera diversos problemas por si só, dentre eles:
+Conforme introduzido no tópico anterior, o consumo constante de novos bens, hábito comum de grande parte da população, gera diversos problemas por si só, por exemplo o acúmulo de itens em desuso nas casas, gastos desnecessários e desperdício. Pela ótica ambiental, a produção em massa consome recursos naturais, emite gases poluentes e gera resíduos que podem contaminar o solo e a água. Para minimizar esse impacto, é preciso reduzir o consumo, reutilizar e reciclar produtos, princípios da economia circular.
 
-- acúmulo de itens em desusu nas casas;
-- gastos desnecessário;
-- desperdício.
-
-Pela ótica ambiental, a produção em massa consome recursos naturais, emite gases poluentes e gera resíduos que podem contaminar o solo e a água. Para minimizar esse impacto, é preciso reduzir o consumo, reutilizar e reciclar produtos, princípios da economia circular. Partindo desse pressuposto, seria possível criar uma plataforma na qual as pessoas conseguissem adquirir novos bens, apenas se desfazendo daqueles que já tem e não usam, economizando dinheiro e, por consequência, de maneira sustentável? Esse é o problema que será analisado e desenvolvido no projeto apresentado a seguir.
+Partindo desse pressuposto, seria possível criar uma plataforma na qual as pessoas conseguissem adquirir novos bens, apenas se desfazendo daqueles que já tem e não usam, economizando dinheiro e, por consequência, de maneira sustentável? Esse é o problema que será analisado e desenvolvido no projeto apresentado a seguir.
 
 ### 1.3 Objetivo geral
 
