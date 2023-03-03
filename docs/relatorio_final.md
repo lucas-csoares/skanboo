@@ -50,13 +50,15 @@ Partindo desse pressuposto, seria possível criar uma plataforma na qual as pess
 
 ### 1.3 Objetivo geral
 
-O aluno deve escrever um pequeno parágrafo ou frase com o **objetivo geral** do trabalho. 
-O objetivo deve ser bem direto, específico e definido com verbos de ação (elaborar, propor, ava-liar, comparar etc.).
+Permitir que pessoas realizem trocas de objetos uns com os outros sem usar dinheiro, por meio de um site. 
 
 #### 1.3.1 Objetivos específicos
 
-Apresente também alguns (pelo menos 2) **objetivos específicos** dependendo de onde você vai querer 
-concentrar a sua prática investigativa, ou como você vai aprofundar no seu trabalho.
+- Facilitar a troca de objetos entre pessoas. 
+
+- Oferecer alternativas ao dinheiro. 
+
+- Permitir que pessoas troquem algo que não usam mais por algo que poderão usar. 
 
 ### 1.4 Justificativas
 
