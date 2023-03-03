@@ -32,25 +32,15 @@ _**Resumo**. Escrever aqui o resumo. O resumo deve contextualizar rapidamente o 
 
 ## 1. Introdução
 
-Escambo é uma forma de transação em que um negócio é fechado sem envolver dinheiro[4], ou seja, se constitui simplesmente na troca de mercadorias entre duas partes. Foi algo que norteou o comércio na antiguidade e que antecede a monetização da economia no planeta[5]. Então, por que utilizar escambo atualmente?
-
-Com o crescimento do consumismo[6], acumular objetos se tornou um hábito. Esse acúmulo pode levar a desorganização do espaço doméstico e à dificuldade de encontrar itens de mais necessidade. Do ponto de vista ambiental, pode ser prejudicial, pois muitos deles acabam por ser descartados de forma inadequada. Além disso, o consumismo pode levar ao endividamento, já que muitas pessoas compram mais do que podem pagar e acumulam dívidas que afetam o equilíbrio financeiro.
-
-Ao fazer escambo a pessoa evita gastar dinheiro por trocar bens que já possui por outros de que necessita, ganha mais flexibilidade por poder negociar diretamente com a outra pessoa, uma vez que não se tem preço fixo como em lojas e também é uma forma mais sustentável de consumir.
-
-Dessa forma, é necessário uma plataforma através da qual seja possível realizar trocas entre pessoas, permitindo acesso a uma ampla rede de usuários de forma a expandir o alcance de troca para além das limitações geográficas e com isso, gerar uma maior variedade de itens a serem trocados. Somado a isso, oferecer uma maior segurança para proteger os usuários contra fraudadores e golpistas. 
-
-
-
 ### 1.1 Contextualização
 
-O crescimento dos hábitos de consumo da população se mostrou mais expressivo a partir da transição gerada pela Revolução Industrial, que ocorreu em meados do século XVIII, segundo as Rotas Culturais do Conselho Europeu (_European Route of Industrial Heritage_)[1]. Como resultado de um maior investimento nos setores industriais, a quantidade de mercadorias ofertadas à população cresceu vertiginosamente, estimulando cada vez mais a aquisição de novos produtos.
+O crescimento dos hábitos de consumo da população se mostrou mais expressivo a partir da transição gerada pela Revolução Industrial, que ocorreu em meados do século XVIII, segundo as Rotas Culturais do Conselho Europeu (_European Route of Industrial Heritage_)[1]. Como resultado de um maior investimento nos setores industriais, a quantidade de mercadorias ofertadas à população cresceu vertiginosamente, estimulando cada vez mais a aquisição de novos produtos. A partir dai, acumular objetos se tornou um hábito, o que pode levar a desorganização do espaço doméstico e à dificuldade de encontrar itens de maior necessidade.
 
-O problema gerado por essa visão de consumo, assim como qualquer excesso, é o desperdício. Para fins de exemplo, um índice comumente utilizado é o número de furadeiras para uso doméstico. Em grande parte das residências, é muito comum que seus moradores tenham uma furadeira guardada. No entanto, o que muitos não sabem, é que durante toda a sua vida útil, essa furadeira é usada, em média, por apenas 40 minutos, segundo a Instituição Akatu[2]. Ou seja, um produto que na maior parte de sua vida útil, ficará em desuso.
+O problema gerado por essa visão de consumo, assim como qualquer excesso, é o desperdício. Para fins de exemplo, um índice comumente utilizado é o número de furadeiras para uso doméstico. Em grande parte das residências, é muito comum que seus moradores tenham uma furadeira guardada. No entanto, o que muitos não sabem, é que durante toda a sua vida útil, essa furadeira é usada, em média, por apenas 40 minutos, segundo a Instituição Akatu[2]. Ou seja, um produto que na maior parte de sua vida útil, ficará em desuso. Considerando o cenário descrito, o **sKanboo** foi desenvolvido para permitir que objetos em nossas casas que possam estar em desuso sejam utilizados por outras pessoas. Para isso, propomos um modelo de escambo[3] entre usuários, de modo que ambos possam adquirir o objeto que desejam sem a necessidade de comprar um novo produto.
 
-Considerando o cenário descrito, o **sKanboo** foi desenvolvido para permitir que objetos em nossas casas que possam estar em desuso sejam utilizados por outras pessoas. Para isso, propomos um modelo de troca entre usuários, de modo que ambos possam adquirir o objeto que desejam sem a necessidade de comprar um novo produto.
+Então, por que utilizar escambo atualmente?
 
-O modelo de troca de mercadorias, apesar de antigo, tem ganhado cada vez mais força devido à crescente preocupação com a sustentabilidade. O que, inclusive, está em acordo com as premissas da economia circular, que prevê o uso e reuso de uma dado item[3]. Por fim, é importante mencionar que, devido à instabilidade financeira causada pela pandemia da COVID-19, muitas pessoas buscaram formas mais baratas de suprir suas necessidades.
+O modelo de troca de mercadorias (escambo), apesar de antigo, tem ganhado cada vez mais força devido à crescente preocupação com a sustentabilidade. O que, inclusive, está em acordo com as premissas da economia circular, que prevê o uso e reuso de uma dado item[4]. Além disso, é importante mencionar que, devido à instabilidade financeira causada pela pandemia da COVID-19, muitas pessoas buscaram formas mais baratas de suprir suas necessidades. Ou seja, ao fazer escambo a pessoa evita gastar dinheiro por trocar bens que já possui por outros de que necessita, ganha mais flexibilidade por poder negociar diretamente com a outra pessoa, uma vez que não se tem preço fixo como em lojas, e também é uma forma mais sustentável de consumir.
 
 ### 1.2 Problema
 
@@ -186,13 +176,10 @@ http://www.pucminas.br/imagedb/documento/DOC\_DSC\_NOME\_ARQUI20160217102425.pdf
 
 **[2]** - _Akatu, E. (2012, outubro 11). Como o consumo colaborativo pode revolucionar uma cidade. Instituto Akatu; Akatu. https://akatu.org.br/como-o-consumo-colaborativo-pode-revolucionar-uma-cidade/_
 
-**[3]** - _Economia Circular - O que é a Economia Circular? ([s.d.]). Nomia.pt. Recuperado 2 de março de 2023, de https://eco.nomia.pt/pt/economia-circular/estrategias_
+**[3]** - _SILVA, Daniel Neves. "Escambo"; Brasil Escola. Recuperado 2 de março de 2023, de https://brasilescola.uol.com.br/historiag/escambo.htm_
 
-**[4]** - _SILVA, Daniel Neves. "Escambo"; Brasil Escola. Recuperado 2 de março de 2023, de https://brasilescola.uol.com.br/historiag/escambo.htm._
+**[4]** - _Economia Circular - O que é a Economia Circular? ([s.d.]). Nomia.pt. Recuperado 2 de março de 2023, de https://eco.nomia.pt/pt/economia-circular/estrategias_
 
-**[5]** - _SILVA, Daniel Neves. Escambo; Mundo Educação. Recuperado 2 de março de 2023, de https://mundoeducacao.uol.com.br/historiageral/escambo.htm_
-
-**[6]** - _Akatu, E. (2010, janeiro 12). Relatório “Estado do Mundo – 2010” aponta que, sem mudança, nada pode proteger de riscos ambientais. Instituto Akatu; Akatu. https://akatu.org.br/akatu-lanca-hoje-relatorio-estado-do-mundo-2010/_
 
 # APÊNDICES
 
