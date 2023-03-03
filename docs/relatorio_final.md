@@ -32,7 +32,12 @@ _**Resumo**. Escrever aqui o resumo. O resumo deve contextualizar rapidamente o 
 
 ## 1. Introdução
 
-A introdução deve apresentar de dois ou quatro parágrafos de contextualização do trabalho. 
+Escambo é uma forma de transação em que um negócio é fechado sem envolver dinheiro[4], ou seja, se constitui simplesmente na troca de mercadorias entre duas partes. Foi algo que norteou o comércio na antiguidade e que antecede a monetização da economia no planeta[5]. Então, por que utilizar escambo atualmente?
+
+Com o crescimento do consumismo[6], acumular objetos se tornou um hábito. Esse acúmulo pode levar a desorganização do espaço doméstico e à dificuldade de encontrar itens de mais necessidade. Além disso, pode ser prejudicial sob a ótica ambiental, pois muitos deles acabam por ser descartados de forma inadequada.
+
+
+
 
 ### 1.1 Contextualização
 
@@ -179,6 +184,12 @@ http://www.pucminas.br/imagedb/documento/DOC\_DSC\_NOME\_ARQUI20160217102425.pdf
 **[2]** - _Akatu, E. (2012, outubro 11). Como o consumo colaborativo pode revolucionar uma cidade. Instituto Akatu; Akatu. https://akatu.org.br/como-o-consumo-colaborativo-pode-revolucionar-uma-cidade/_
 
 **[3]** - _Economia Circular - O que é a Economia Circular? ([s.d.]). Nomia.pt. Recuperado 2 de março de 2023, de https://eco.nomia.pt/pt/economia-circular/estrategias_
+
+**[4]** - _SILVA, Daniel Neves. "Escambo"; Brasil Escola. Recuperado 2 de março de 2023, de https://brasilescola.uol.com.br/historiag/escambo.htm._
+
+**[5]** - _SILVA, Daniel Neves. Escambo; Mundo Educação. Recuperado 2 de março de 2023, de https://mundoeducacao.uol.com.br/historiageral/escambo.htm_
+
+**[6]** - _Akatu, E. (2010, janeiro 12). Relatório “Estado do Mundo – 2010” aponta que, sem mudança, nada pode proteger de riscos ambientais. Instituto Akatu; Akatu. https://akatu.org.br/akatu-lanca-hoje-relatorio-estado-do-mundo-2010/_
 
 # APÊNDICES
 
