@@ -76,7 +76,9 @@ Os sistemas atuais abordam a troca de bens somente através do uso de dinheiro, 
 
 ### 3.2. Descrição Geral da proposta
 
-Apresente aqui uma descrição da sua proposta abordando seus limites e suas ligações com as estratégias e objetivos do negócio. Apresente aqui as oportunidades de melhorias.
+A proposta deste projeto é trazer maneiras alternativas de se realizar trocas para o mundo online, conforme abordado no tópico anterior. Pretende-se criar um sistema de escambo, no qual usuários podem ofertar itens que não são mais utilizados e receberem propostas de troca nas seguintes maneiras: trocando por um outro objeto, que será ofertado por outros usuários da plataforma, ou sendo pago através de uma moeda virtual que ainda será determinada.
+
+Contudo, podemos perceber algumas limitações com relação a adesão de usuários, considerando que seria a implementação de um novo modelo que não inclui a opção de trocas utilizando dinheiro. Porém também com relação à tecnologias, principalmente na implementação da moeda virtual e na forma com que esta interação (moeda-sistema) iria ocorrer.
 
 ### 3.3. Modelagem dos Processos
 
