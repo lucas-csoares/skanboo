@@ -64,7 +64,7 @@ O escambo foi a principal forma comercial na Antiguidade que precedeu a monetari
 
 No cenário atual, ao intencionar o estímulo por uma mudança na lógica de consumo, a ocorrência de troca  de mercadoria por outra mercadoria em comum acordo ainda ocorre em diferentes situações uma vez que o escambo não exige investimento monetário durante a negociação.
 
-Portanto, o projeto sKanboo tem como enfoque facilitar e fomentar a troca consciente de bens materiais acumulados de comum interesse entre os usuários ao mesmo tempo que promove uma reflexão sobre a ótica financeira e do consumo.
+Portanto, o projeto **sKanboo** tem como enfoque facilitar e fomentar a troca consciente de bens materiais acumulados de comum interesse entre os usuários ao mesmo tempo que promove uma reflexão sobre a ótica financeira e do consumo.
 
 
 
