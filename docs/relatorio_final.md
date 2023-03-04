@@ -70,7 +70,17 @@ Portanto, o projeto **sKanboo** tem como enfoque facilitar e fomentar a troca co
 
 ## 2. Participantes do processo
 
-Apresente aqui os diferentes perfis dos participantes do processo. Participantes dos processos representam diferentes papeis que os usuários podem exercer no processo. Por exemplo, um sistema de comanda de bar pode ter como participantes o cliente, o garçom, o cozinheiro e o caixa. Diversas são as informações que podem ser relevantes para a definição dos perfis dos usuários, tais como idade, gênero, aspectos culturais, nível de educação, entre outros. A pesquisa de mercado pode ser uma ferramenta poderosa para se identificar e caracterizar os perfis de usuários. É relevantes descrever os objetivos destes participantes no sistema, ou seja, qual valor o sistema está entregando para este participante. Não se deve descrever aqui os stakeholders que não terão contato direto com o sistema.
+###Comprador
+
+1. Compra um produto via troca ou moeda virtual (interna);
+2. Compra a moeda virtual via moeda real.
+
+###Vendedor
+
+Vende um produto para adquirir outro produto ou moeda virtual.
+
+**Obs**: No processo de troca, ambas as partes assumem o papel de vendedor e comprador ao mesmo tempo.
+
 
 ## 3. Modelagem do processo de negócio
 
