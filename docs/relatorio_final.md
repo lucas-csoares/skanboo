@@ -72,7 +72,7 @@ Apresente aqui os diferentes perfis dos participantes do processo. Participantes
 
 ### 3.1. Análise da situação atual
 
-Apresente uma descrição textual de como os sistemas atuais resolvem o problema que se propoe a resolver.  Caso sua proposta seja inovadora e não existam processos claramente definidos, **apresente como as tarefas que o seu sistema pretende implementar são executadas atualmente**, mesmo que não se utilize tecnologia computacional.
+Os sistemas atuais abordam a troca de bens somente através do uso de dinheiro, ou seja, se um determinado usuário não tiver dinheiro mas tiver algum objeto que poderia ser do interesse de quem expôs o bem em que ele está interessado, esse tipo de troca não poderá ocorrer, pelo menos não pelo aplicativo. A proposta do **skanboo** é inovadora pois, conforme citado no tópico **1.2*, oferece maneiras alternativas de se realizar a troca de objetos sem o uso de dinheiro, sendo através da troca mútua de objetos ou utilizando uma moeda virtual, que permite que você a troque por um determinado item mediante o valor deste.
 
 ### 3.2. Descrição Geral da proposta
 
