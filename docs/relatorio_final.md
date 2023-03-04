@@ -77,7 +77,7 @@ Portanto, o projeto **sKanboo** tem como enfoque facilitar e fomentar a troca co
 
 ###Vendedor
 
-Vende um produto para adquirir outro produto ou moeda virtual.
+Vende um produto afim de adquirir outro produto ou moeda virtual.
 
 **Obs**: No processo de troca, ambas as partes assumem o papel de vendedor e comprador ao mesmo tempo.
 
