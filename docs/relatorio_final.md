@@ -60,8 +60,12 @@ O objetivo geral deste projeto é desenvolver uma aplicação web que permita qu
 
 ### 1.4 Justificativas
 
-Mostre também as **justificativas** para o 
-desenvolvimento do seu trabalho e, caso deseje, desta-que alguma contribuição do trabalho.
+O escambo foi a principal forma comercial na Antiguidade que precedeu a monetarização econômica vigente no mundo contemporâneo. Hoje, o consumo desenfreado — gerador de acúmulo material — juntamente com  as dificuldades financeiras configuram um dos principais motivos para que o escambo exista atualmente no mundo. 
+
+No cenário atual, ao intencionar o estímulo por uma mudança na lógica de consumo, a ocorrência de troca  de mercadoria por outra mercadoria em comum acordo ainda ocorre em diferentes situações uma vez que o escambo não exige investimento monetário durante a negociação.
+
+Portanto, o projeto sKanboo tem como enfoque facilitar e fomentar a troca consciente de bens materiais acumulados de comum interesse entre os usuários ao mesmo tempo que promove uma reflexão sobre a ótica financeira e do consumo.
+
 
 
 ## 2. Participantes do processo
