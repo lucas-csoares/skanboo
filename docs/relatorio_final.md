@@ -56,41 +56,48 @@ O objetivo geral deste projeto é desenvolver uma aplicação web que permita qu
 
 - Facilitar a troca de objetos entre pessoas;
 - Fornecer alternativas para obter produtos que não envolvam dinheiro;
-- Permitir que os usuários da aplicação negociem diretamente uns com os outros.
+- Permitir que os usuários da aplicação negociem diretamente uns com os outros;
+- Permitir que os usuários adquiram produtos por meio de uma moeda própria do site.
 
 ### 1.4 Justificativas
 
-O escambo foi a principal forma comercial na Antiguidade que precedeu a monetarização econômica vigente no mundo contemporâneo. Hoje, o consumo desenfreado — gerador de acúmulo material — juntamente com  as dificuldades financeiras configuram um dos principais motivos para que o escambo exista atualmente no mundo. 
+O escambo, uma prática antiga de troca de mercadorias sem uso de dinheiro, tem se tornado uma alternativa atraente nos dias atuais. Com o consumo desenfreado, as pessoas acumulam muitos objetos em casa, muitos dos quais desnecessários. Ao fazer trocas, é possível se livrar de coisas que não precisamos mais e, ao mesmo tempo, adquirir itens úteis para nosso dia a dia sem gastar dinheiro. Além disso, a prática do escambo ajuda a reduzir o impacto ambiental, uma vez que evita o desperdício e o descarte desnecessário de objetos.
 
-No cenário atual, ao intencionar o estímulo por uma mudança na lógica de consumo, a ocorrência de troca  de mercadoria por outra mercadoria em comum acordo ainda ocorre em diferentes situações uma vez que o escambo não exige investimento monetário durante a negociação.
-
-Portanto, o projeto **sKanboo** tem como enfoque facilitar e fomentar a troca consciente de bens materiais acumulados de comum interesse entre os usuários ao mesmo tempo que promove uma reflexão sobre a ótica financeira e do consumo.
-
-
+Portanto, o objetivo principal do **sKanboo** é facilitar e incentivar a troca consciente de bens materiais acumulados entre os usuários. Além disso, promove uma reflexão sobre a ótica financeira e do consumo.
 
 ## 2. Participantes do processo
 
-###Comprador
+Foram mapeados 2 participantes em nossos processos, sendo eles o "comprador" e o "vendedor".
 
-1. Compra um produto via troca ou moeda virtual (interna);
-2. Compra a moeda virtual via moeda real.
+Sobre esses participantes, cabe mencionar que eles não são, de fato, compradores e vendedores, uma vez que não há relação de compra por dinheiro na aplicação. O título de comprador e vendedor diz com relação ao usuário que oferta um produto e ao outro que busca adquiri-lo.
 
-###Vendedor
+Além disso, em um processo de troca, um mesmo usuário pode assumir o papel de "vendedor" ou "comprador", uma vez que ele pode, ao mesmo tempo que oferece um produto, estar procurando por outro, simultaneamente.
 
-Vende um produto afim de adquirir outro produto ou moeda virtual.
+As descrições das atividades de cada uma das partes são as seguintes:
 
-**Obs**: No processo de troca, ambas as partes assumem o papel de vendedor e comprador ao mesmo tempo.
+**1. Comprador** 
 
+    1.1. Pode adquirir a moeda própria do site;
+    1.2. Trocar um objeto por outro, com um usuário;
+    1.2. Adquirir um objeto de outro usuário, por meio da moeda própria do site.
+
+**2. Vendedor**
+
+    2.1 Divulga um produto no site;
+    2.2 Troca o produto divulgado por outro;
+    2.3 Troca o produto divulgado por moeda própria do site.
 
 ## 3. Modelagem do processo de negócio
 
 ### 3.1. Análise da situação atual
 
-Os sistemas atuais abordam a troca de bens somente através do uso de dinheiro, ou seja, se um determinado usuário não tiver dinheiro mas tiver algum objeto que poderia ser do interesse de quem expôs o bem em que ele está interessado, esse tipo de troca não poderá ocorrer, pelo menos não pelo aplicativo. A proposta do **skanboo** é inovadora pois, conforme citado no tópico *1.2*, oferece maneiras alternativas de se realizar a troca de objetos sem o uso de dinheiro, sendo através da troca mútua de objetos ou utilizando uma moeda virtual, que permite que você a troque por um determinado item mediante o valor deste.
+Os sistemas atuais abordam a troca de bens somente através do uso de dinheiro. Nos modelos atuais, caso uma pessoa esteja interessada em um determinado objeto divulgado em um site de vendas, mas não tenha o dinheiro necessário, a negociação não poderá ocorrer.
+
+A proposta do **sKanboo** é inovadora pois, conforme citado no tópico [1.2](#12-problema), oferece maneiras alternativas de se realizar a troca de objetos sem o uso de dinheiro, sendo através da troca mútua de objetos ou utilizando uma moeda virtual.
 
 ### 3.2. Descrição Geral da proposta
 
-A proposta deste projeto é trazer maneiras alternativas de se realizar trocas para o mundo online, conforme abordado no tópico anterior. Pretende-se criar um sistema de escambo, no qual usuários podem ofertar itens que não são mais utilizados e receberem propostas de troca nas seguintes maneiras: trocando por um outro objeto, que será ofertado por outros usuários da plataforma, ou sendo pago através de uma moeda virtual que ainda será determinada.
+A proposta deste projeto é trazer maneiras alternativas de se realizar trocas para o mundo online, conforme abordado no tópico anterior. Para isso, Para isso, pretende-se criar um sistema de escambo, no qual usuários podem ofertar itens que não são mais utilizados e receberem propostas de troca nas seguintes maneiras: trocando por um outro objeto, que será ofertado por outros usuários da plataforma, ou sendo pago através de uma moeda virtual que ainda será determinada.
 
 Contudo, podemos perceber algumas limitações com relação a adesão de usuários, considerando que seria a implementação de um novo modelo que não inclui a opção de trocas utilizando dinheiro. Porém também com relação à tecnologias, principalmente na implementação da moeda virtual e na forma com que esta interação (moeda-sistema) iria ocorrer.
 
