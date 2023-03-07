@@ -36,17 +36,15 @@ _**Resumo**. Escrever aqui o resumo. O resumo deve contextualizar rapidamente o 
 
 O crescimento dos hábitos de consumo da população se mostrou mais expressivo a partir da transição gerada pela Revolução Industrial, que ocorreu em meados do século XVIII, segundo as Rotas Culturais do Conselho Europeu (_European Route of Industrial Heritage_)[1]. Como resultado de um maior investimento nos setores industriais, a quantidade de mercadorias ofertadas à população cresceu vertiginosamente, estimulando cada vez mais a aquisição de novos produtos. A partir dai, acumular objetos se tornou um hábito, o que pode levar a desorganização do espaço doméstico e à dificuldade de encontrar itens de maior necessidade.
 
-O problema gerado por essa visão de consumo, assim como qualquer excesso, é o desperdício. Para fins de exemplo, um índice comumente utilizado é o número de furadeiras para uso doméstico. Em grande parte das residências, é muito comum que seus moradores tenham uma furadeira guardada. No entanto, o que muitos não sabem, é que durante toda a sua vida útil, essa furadeira é usada, em média, por apenas 40 minutos, segundo a Instituição Akatu[2]. Ou seja, um produto que na maior parte de sua vida útil, ficará em desuso. Considerando o cenário descrito, o **sKanboo** foi desenvolvido para permitir que objetos em nossas casas que possam estar em desuso sejam utilizados por outras pessoas. Para isso, propomos um modelo de escambo[3] entre usuários, de modo que ambos possam adquirir o objeto que desejam sem a necessidade de comprar um novo produto.
-
 Então, por que utilizar escambo atualmente?
 
-O modelo de troca de mercadorias (escambo), apesar de antigo, tem ganhado cada vez mais força devido à crescente preocupação com a sustentabilidade. O que, inclusive, está em acordo com as premissas da economia circular, que prevê o uso e reuso de uma dado item[4]. Além disso, é importante mencionar que, devido à instabilidade financeira causada pela pandemia da COVID-19, muitas pessoas buscaram formas mais baratas de suprir suas necessidades. Ou seja, ao fazer escambo a pessoa evita gastar dinheiro por trocar bens que já possui por outros de que necessita, ganha mais flexibilidade por poder negociar diretamente com a outra pessoa, uma vez que não se tem preço fixo como em lojas, e também é uma forma mais sustentável de consumir.
+O modelo de troca de mercadorias (escambo), apesar de antigo, tem ganhado cada vez mais força devido à crescente preocupação com a sustentabilidade. O que, inclusive, está em acordo com as premissas da economia circular, que prevê o uso e reuso de uma dado item[2]. Além disso, é importante mencionar que, devido à instabilidade financeira causada pela pandemia da COVID-19, muitas pessoas buscaram formas mais baratas de suprir suas necessidades. Ou seja, ao fazer escambo a pessoa evita gastar dinheiro por trocar bens que já possui por outros de que necessita, ganha mais flexibilidade por poder negociar diretamente com a outra pessoa, uma vez que não se tem preço fixo como em lojas, e também é uma forma mais sustentável de consumir.
 
 ### 1.2 Problema
 
-Conforme introduzido no tópico anterior, o consumo constante de novos bens, hábito comum de grande parte da população, gera diversos problemas por si só, por exemplo o acúmulo de itens em desuso nas casas, gastos desnecessários e desperdício. Pela ótica ambiental, a produção em massa consome recursos naturais, emite gases poluentes e gera resíduos que podem contaminar o solo e a água. Para minimizar esse impacto, é preciso reduzir o consumo, reutilizar e reciclar produtos, princípios da economia circular.
+O problema gerado pela visão de consumo atual, assim como qualquer excesso, é o desperdício. Para fins de exemplo, um índice comumente utilizado diz com relação ao número de furadeiras para uso doméstico. Em grande parte das residências, é muito comum que seus moradores tenham uma furadeira guardada. No entanto, o que muitos não sabem, é que durante toda a sua vida útil, essa furadeira é usada, em média, por apenas 40 minutos, segundo a Instituição Akatu[3]. Ou seja, um produto que na maior parte de sua vida útil, ficará em desuso. Do ponto de vista ambiental, a produção em massa consome recursos naturais, emite gases poluentes e gera resíduos que podem contaminar o solo e a água. Para minimizar esse impacto, é preciso reduzir o consumo, reutilizar e reciclar produtos, princípios da economia circular.
 
-Partindo desse pressuposto, seria possível criar uma plataforma na qual as pessoas conseguissem adquirir novos bens, apenas se desfazendo daqueles que já tem e não usam, economizando dinheiro e, por consequência, de maneira sustentável? Esse é o problema que será analisado e desenvolvido no projeto apresentado a seguir.
+Partindo desse pressuposto, seria possível criar uma plataforma na qual as pessoas conseguissem adquirir novos bens, apenas se desfazendo daqueles que já possuem e não usam, economizando dinheiro e, por consequência, consumindo de maneira mais sustentável? Esse é o problema que será analisado e desenvolvido no projeto apresentado a seguir.
 
 ### 1.3 Objetivo geral
 
@@ -196,11 +194,10 @@ http://www.pucminas.br/imagedb/documento/DOC\_DSC\_NOME\_ARQUI20160217102425.pdf
 
 **[1]** - _European route of industrial heritage - cultural routes - publi.coe.int. ([s.d.]). Cultural Routes. Recuperado 2 de março de 2023, de https://www.coe.int/en/web/cultural-routes/european-route-of-industrial-heritage_
 
-**[2]** - _Akatu, E. (2012, outubro 11). Como o consumo colaborativo pode revolucionar uma cidade. Instituto Akatu; Akatu. https://akatu.org.br/como-o-consumo-colaborativo-pode-revolucionar-uma-cidade/_
+**[2]** - _Economia Circular - O que é a Economia Circular? ([s.d.]). Nomia.pt. Recuperado 2 de março de 2023, de https://eco.nomia.pt/pt/economia-circular/estrategias_
 
-**[3]** - _SILVA, Daniel Neves. "Escambo"; Brasil Escola. Recuperado 2 de março de 2023, de https://brasilescola.uol.com.br/historiag/escambo.htm_
+**[3]** - _Akatu, E. (2012, outubro 11). Como o consumo colaborativo pode revolucionar uma cidade. Instituto Akatu; Akatu. https://akatu.org.br/como-o-consumo-colaborativo-pode-revolucionar-uma-cidade/_
 
-**[4]** - _Economia Circular - O que é a Economia Circular? ([s.d.]). Nomia.pt. Recuperado 2 de março de 2023, de https://eco.nomia.pt/pt/economia-circular/estrategias_
 
 
 # APÊNDICES
