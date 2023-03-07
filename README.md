@@ -6,7 +6,7 @@ Escreva um ou dois  parágrafo resumindo o objetivo do seu projeto.
 
 * Ana Corina Damas Batista
 * Giovanna Ferreira dos Santos de Almeida
-* Guilherme Lage da Costa
+* [Guilherme Lage da Costa](https://github.com/guilhermelcosta)
 * Lucas Cabral Soares
 * Vítor Lagares Stahlberg
 
