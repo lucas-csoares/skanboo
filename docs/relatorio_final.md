@@ -36,8 +36,6 @@ _**Resumo**. Escrever aqui o resumo. O resumo deve contextualizar rapidamente o 
 
 O crescimento dos hábitos de consumo da população se mostrou mais expressivo a partir da transição gerada pela Revolução Industrial, que ocorreu em meados do século XVIII, segundo as Rotas Culturais do Conselho Europeu (_European Route of Industrial Heritage_)[1]. Como resultado de um maior investimento nos setores industriais, a quantidade de mercadorias ofertadas à população cresceu vertiginosamente, estimulando cada vez mais a aquisição de novos produtos. A partir dai, acumular objetos se tornou um hábito, o que pode levar a desorganização do espaço doméstico e à dificuldade de encontrar itens de maior necessidade.
 
-Por que utilizar escambo atualmente?
-
 O modelo de troca de mercadorias (escambo), apesar de antigo, tem ganhado cada vez mais força devido à crescente preocupação com a sustentabilidade. O que, inclusive, está em acordo com as premissas da economia circular, que prevê o uso e reuso de uma dado item[2]. Além disso, é importante mencionar que, devido à instabilidade financeira causada pela pandemia da COVID-19, muitas pessoas buscaram formas mais baratas de suprir suas necessidades. Ou seja, ao fazer escambo a pessoa evita gastar dinheiro por trocar bens que já possui por outros de que necessita, ganha mais flexibilidade por poder negociar diretamente com a outra pessoa, uma vez que não se tem preço fixo como em lojas, e também é uma forma mais sustentável de consumir.
 
 ### 1.2 Problema
