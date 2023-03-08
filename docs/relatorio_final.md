@@ -46,7 +46,7 @@ Partindo desse pressuposto, seria possível criar uma plataforma na qual as pess
 
 ### 1.3 Objetivo geral
 
-O objetivo geral do projeto **sKanboo** é criar uma aplicação web que permita  a troca de objetos entre os usuários através da automação do processo de troca mediante uma moeda intermediária.
+O objetivo geral do projeto **sKanboo** é criar uma aplicação web que permita  a troca de objetos entre os usuários.
 
 #### 1.3.1 Objetivos específicos
 
