@@ -50,10 +50,9 @@ O objetivo geral do projeto **sKanboo** é desenvolver uma aplicação web que p
 
 #### 1.3.1 Objetivos específicos
 
-- Facilitar a troca de objetos entre pessoas;
+- Facilitar a troca de objetos entre os usuários;
 - Fornecer alternativas para obter produtos que não envolvam dinheiro;
-- Permitir que os usuários da aplicação negociem diretamente uns com os outros;
-- Permitir que os usuários adquiram produtos por meio de uma moeda própria do site.
+- Permitir que os usuários da aplicação negociem diretamente uns com os outros.
 
 ### 1.4 Justificativas
 
