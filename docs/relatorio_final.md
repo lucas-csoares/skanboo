@@ -56,9 +56,7 @@ O objetivo geral do projeto **sKanboo** é desenvolver uma aplicação web que p
 
 ### 1.4 Justificativas
 
-O escambo, uma prática antiga de troca de mercadorias sem uso de dinheiro, tem se tornado uma alternativa atraente nos dias atuais. Com o consumo desenfreado, as pessoas acumulam muitos objetos em casa, muitos dos quais desnecessários. Ao fazer trocas, é possível se livrar de coisas que não precisamos mais e, ao mesmo tempo, adquirir itens úteis para nosso dia a dia sem gastar dinheiro. Além disso, a prática do escambo ajuda a reduzir o impacto ambiental, uma vez que evita o desperdício e o descarte desnecessário de objetos.
-
-Portanto, o objetivo principal do **sKanboo** é facilitar e incentivar a troca consciente de bens materiais acumulados entre os usuários. Além disso, promove uma reflexão sobre a ótica financeira e do consumo.
+As principais razões que justificam a adesão ao **sKanboo** são: a aplicação irá facilitar a troca de objetos entre usuários, fornecendo uma plataforma que intermediará todo o processo de troca, trazendo segurança para ambos o ofertador e o buscador; para além, são fornecidas alternativas para obter produtos que não envolvem dinheiro, sendo uma ótima opção para o usuário que tem um produto que deseja oferecer por outro de seu interesse mas não dispõe de uma quantia monetária; por fim, o site permite que os usuários negociem diretamente uns com os outros, dando abertura para que o ofertador e o buscador cheguem em um conseso sobre a melhor forma de realizar a troca. 
 
 ## 2. Participantes do processo
 
