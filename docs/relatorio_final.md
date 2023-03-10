@@ -58,12 +58,7 @@ Para desenvolver a aplicação descrita acima, mapeamos os seguintes objetivos e
 
 ### 1.4 Justificativas
 
-As principais razões que justificam a adesão ao **sKanboo** são:
-
-- Facilitar a troca de objetos entre as pessoas;
-- Fornecer uma plataforma que intermediará todo o processo de troca, trazendo segurança para o [ofertador](#2-participantes-do-processo) e [buscador](#2-participantes-do-processo);
-- É uma alternativa para se obter produtos, que não envolve dinheiro, ideal para aqueles que estão interessados em um produto mas não possuem o valor monetário no momento;
-- Permitir a negociação direta entre os usuários, dando abertura para que o ofertador e o buscador cheguem em um consenso sobre a melhor forma de realizar a troca.
+O **sKanboo** tem como meta facilitar a troca de objetos entre as pessoas e fornecer uma plataforma que intermediará todo o processo, trazendo segurança para o [ofertador](#2-participantes-do-processo) e [buscador](#2-participantes-do-processo). É uma alternativa para se obter produtos, que não envolve dinheiro, ideal para aqueles que estão interessados em um produto mas não possuem o valor monetário no momento. Além disso, a aplicação permitirá a negociação direta entre os usuários, dando abertura para que o ofertador e o buscador cheguem em um consenso sobre a melhor forma de realizar a troca.
 
 ## 2. Participantes do processo
 
