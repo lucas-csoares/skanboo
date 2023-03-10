@@ -63,25 +63,21 @@ Portanto, o objetivo principal do **sKanboo** é facilitar e incentivar a troca 
 
 ## 2. Participantes do processo
 
-Foram mapeados 2 participantes em nossos processos, sendo eles o "comprador" e o "vendedor".
+Foram mapeados 2 participantes em nossos processos, sendo eles: o ofertador, que publica seu produto para receber ofertas, e o buscador, que oferecer algo em troca de algum produto publicado no site.
 
-Sobre esses participantes, cabe mencionar que eles não são, de fato, compradores e vendedores, uma vez que não há relação de compra por dinheiro na aplicação. O título de comprador e vendedor diz com relação ao usuário que oferta um produto e ao outro que busca adquiri-lo.
-
-Além disso, em um processo de troca, um mesmo usuário pode assumir o papel de "vendedor" ou "comprador", uma vez que ele pode, ao mesmo tempo que oferece um produto, estar procurando por outro, simultaneamente.
+Dentro do site, o mesmo usuário poderá ter esses dois papeis ao mesmo tempo, uma vez que ele pode disponibilizar seu objeto para ofertas enquanto busca por ofertas de outros usuários.
 
 As descrições das atividades de cada uma das partes são as seguintes:
 
-**1. Comprador** 
+**1. Ofertador** 
 
-    1.1. Pode adquirir a moeda própria do site;
-    1.2. Trocar um objeto por outro, com um usuário;
-    1.2. Adquirir um objeto de outro usuário, por meio da moeda própria do site.
+    1.1. Divulga seu produto no site;
+    1.2. Pode informar se possui alguma preferência de objeto para receber.
 
-**2. Vendedor**
+**2. Buscador**
 
-    2.1 Divulga um produto no site;
-    2.2 Troca o produto divulgado por outro;
-    2.3 Troca o produto divulgado por moeda própria do site.
+    2.1 Oferece um objeto por outro publicado no site;
+    2.2 Pode negociar objetos para trocar pelo do anúncio.
 
 ## 3. Modelagem do processo de negócio
 
