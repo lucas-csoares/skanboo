@@ -34,47 +34,55 @@ _**Resumo**. Escrever aqui o resumo. O resumo deve contextualizar rapidamente o 
 
 ### 1.1 Contextualização
 
-O crescimento dos hábitos de consumo da população se mostrou mais expressivo a partir da transição gerada pela Revolução Industrial, que ocorreu em meados do século XVIII, segundo as Rotas Culturais do Conselho Europeu (_European Route of Industrial Heritage_)[1]. Como resultado de um maior investimento nos setores industriais, a quantidade de mercadorias ofertadas à população cresceu vertiginosamente, estimulando cada vez mais a aquisição de novos produtos. A partir dai, acumular objetos se tornou um hábito, o que pode levar a desorganização do espaço doméstico e à dificuldade de encontrar itens de maior necessidade.
+O crescimento dos hábitos de consumo da população se mostrou mais expressivo a partir da transição gerada pela Revolução Industrial, que ocorreu em meados do século XVIII, segundo as Rotas Culturais do Conselho Europeu (_European Route of Industrial Heritage_)[1]. Como resultado de um maior investimento nos setores industriais, a quantidade de mercadorias ofertadas à população cresceu vertiginosamente, estimulando cada vez mais a aquisição de novos produtos. A partir dai, acumular objetos se tornou um hábito na vida da grande maioria das pessoas.
 
-O modelo de troca de mercadorias (escambo), apesar de antigo, tem ganhado cada vez mais força devido à crescente preocupação com a sustentabilidade. O que, inclusive, está em acordo com as premissas da economia circular, que prevê o uso e reuso de uma dado item[2]. Além disso, é importante mencionar que, devido à instabilidade financeira causada pela pandemia da COVID-19, muitas pessoas buscaram formas mais baratas de suprir suas necessidades. Ou seja, ao fazer escambo a pessoa evita gastar dinheiro por trocar bens que já possui por outros de que necessita, ganha mais flexibilidade por poder negociar diretamente com a outra pessoa, uma vez que não se tem preço fixo como em lojas, e também é uma forma mais sustentável de consumir.
+O modelo de troca de mercadorias (escambo), apesar de antigo, tem ganhado cada vez mais força devido à crescente preocupação com a sustentabilidade, o que reforça as premissas da economia circular, que prevê o uso e reuso de uma dado item[2]. Além disso, devido à instabilidade financeira causada pela pandemia da COVID-19, muitas pessoas vêm buscado formas mais baratas de suprir suas necessidades. Ou seja, ao fazer escambo a pessoa evita gastar dinheiro por trocar bens que já possui por outros de que necessita, ganha mais flexibilidade por poder negociar diretamente com a outra pessoa, uma vez que não se tem preço fixo como em lojas, e também é uma forma mais sustentável de consumir.
 
 ### 1.2 Problema
 
-O problema gerado pela visão de consumo atual, assim como qualquer excesso, é o desperdício. Para fins de exemplo, um índice comumente utilizado diz com relação ao número de furadeiras para uso doméstico. Em grande parte das residências, é muito comum que seus moradores tenham uma furadeira guardada. No entanto, o que muitos não sabem, é que durante toda a sua vida útil, essa furadeira é usada, em média, por apenas 40 minutos, segundo a Instituição Akatu[3]. Ou seja, um produto que na maior parte de sua vida útil, ficará em desuso.
+O problema gerado pela visão de consumo atual, assim como qualquer excesso, é o desperdício. Para fins de exemplo, um índice comumente utilizado diz com relação ao número de furadeiras para uso doméstico. Em grande parte das residências, é muito comum que seus moradores tenham ao menos uma furadeira guardada. No entanto, o que muitos não sabem, é que durante toda a sua vida útil, essa furadeira é usada, em média, por apenas 40 minutos, segundo a Instituição Akatu[3]. Ou seja, um produto que na maior parte de sua vida útil, ficará em desuso.
 
-Partindo desse pressuposto, seria possível criar uma plataforma na qual as pessoas conseguissem adquirir novos bens, apenas se desfazendo daqueles que já possuem e não usam, economizando dinheiro e, por consequência, consumindo de maneira mais sustentável? Esse é o problema que será analisado e desenvolvido no projeto apresentado a seguir.
+Partindo desse pressuposto, seria possível criar uma plataforma na qual as pessoas conseguissem adquirir novos objetos, apenas se desfazendo daqueles que já possuem e não usam, economizando dinheiro e, por consequência, consumindo de maneira mais sustentável? Esse é o problema que será analisado e desenvolvido no projeto apresentado a seguir.
 
 ### 1.3 Objetivo geral
 
-O objetivo geral do projeto **sKanboo** é desenvolver uma aplicação web que permita a troca de objetos entre os usuários em comum acordo.
+O objetivo geral do projeto em questão é desenvolver uma aplicação web que permita a troca de objetos entre os seus usuários.
 
 #### 1.3.1 Objetivos específicos
 
-- Facilitar a troca de objetos entre os usuários;
-- Fornecer alternativas para obter produtos que não envolvam dinheiro;
-- Permitir que os usuários da aplicação negociem diretamente uns com os outros.
+Para desenvolver a aplicação descrita acima, mapeamos os seguintes objetivos específicos:
+
+- Levantar os principais processos relacionados à troca de objetos;
+- Desenvolver um banco de dados com as informações dos usuários cadastrados e seus respectivos objetos publicados;
+- Mapear os objetos de maior interesse dos usuários da plataforma.
 
 ### 1.4 Justificativas
 
-As principais razões que justificam a adesão ao **sKanboo** são: a aplicação irá facilitar a troca de objetos entre usuários, fornecendo uma plataforma que intermediará todo o processo de troca, trazendo segurança para ambos o ofertador e o buscador; para além, são fornecidas alternativas para obter produtos que não envolvem dinheiro, sendo uma ótima opção para o usuário que tem um produto que deseja oferecer por outro de seu interesse mas não dispõe de uma quantia monetária; por fim, o site permite que os usuários negociem diretamente uns com os outros, dando abertura para que o ofertador e o buscador cheguem em um consenso sobre a melhor forma de realizar a troca. 
+As principais razões que justificam a adesão ao **sKanboo** são:
+
+- Facilitar a troca de objetos entre as pessoas;
+- Fornecer uma plataforma que intermediará todo o processo de troca, trazendo segurança para o [ofertador](#2-participantes-do-processo) e [buscador](#2-participantes-do-processo);
+- É uma alternativa para se obter produtos, que não envolve dinheiro, ideal para aqueles que estão interessados em um produto mas não possuem o valor monetário no momento;
+- Permitir a negociação direta entre os usuários, dando abertura para que o ofertador e o buscador cheguem em um consenso sobre a melhor forma de realizar a troca.
 
 ## 2. Participantes do processo
 
-Foram mapeados 2 participantes em nossos processos, sendo eles: o ofertador, que publica seu produto para receber ofertas, e o buscador, que oferecer algo em troca de algum produto publicado no site.
-
-Dentro do site, o mesmo usuário poderá ter esses dois papeis ao mesmo tempo, uma vez que ele pode disponibilizar seu objeto para ofertas enquanto busca por ofertas de outros usuários.
+Foram mapeados 2 participantes em nossos processos, sendo eles: o ofertador, que publica seu produto na plataforma, e o buscador, que oferece algo em troca de algum produto publicado. Além disso, um mesmo usuário pode assumir esses dois papéis, uma vez que ele pode estar publicando um produto enquanto faz ofertas em outros que o interessam.
 
 As descrições das atividades de cada uma das partes são as seguintes:
 
-**1. Ofertador** 
+**1. Ofertador**
 
-    1.1. Divulga seu produto no site;
-    1.2. Pode informar se possui alguma preferência de objeto para receber.
+    1.1 Divulga seu produto no site;
+    1.2 Informa qual o objeto quer receber em troca do seu produto;
+    1.3 Deixar o seu produto aberto à ofertas dos outros usuários.
 
 **2. Buscador**
 
-    2.1 Oferece um objeto por outro publicado no site;
-    2.2 Pode negociar objetos para trocar pelo do anúncio.
+    2.1 Oferece um objeto seu em troca de outro publicado no site;
+    2.2 Pode negociar diretamente com o ofertador;
+
+Além disso, ambos os participantes podem, ao final do processo de troca, avaliar como foi negociar com um determinado usuário, de modo que os bons negociadores sejam reconhecidos.
 
 ## 3. Modelagem do processo de negócio
 
@@ -96,14 +104,13 @@ Contudo, podemos perceber algumas limitações com relação a adesão de usuár
 
 Apresente aqui o nome e as oportunidades de melhorias para o processo 1. Em seguida, apresente o modelo do processo 1, descrito no padrão BPMN.
 
-![Exemplo de um Modelo BPMN do PROCESSO 1](imagens/process.png "Modelo BPMN do Processo 1.")
-
+![Exemplo de um Modelo BPMN do PROCESSO 1](imagens/process.png 'Modelo BPMN do Processo 1.')
 
 ### 3.3.2 Processo 2 – NOME DO PROCESSO
 
 Apresente aqui o nome e as oportunidades de melhorias para o processo 2. Em seguida, apresente o modelo do processo 2, descrito no padrão BPMN.
 
-![Exemplo de um Modelo BPMN do PROCESSO 2](imagens/call_process.png "Modelo BPMN do Processo 2.")
+![Exemplo de um Modelo BPMN do PROCESSO 2](imagens/call_process.png 'Modelo BPMN do Processo 2.')
 
 ## 4. Projeto da Solução
 
@@ -115,35 +122,35 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 
 **Nome da atividade 1**
 
-| **Campo** | **Tipo** | **Restrições** | **Valor default** |
-| --- | --- | --- | --- |
-| [Nome do campo] | [Área de texto, Caixa de texto, Número, Data, Imagem, Seleção única, Múltipla escolha, Arquivo, Link, Tabela] |  |  |
-| ***Exemplo:***  |    |     |
-| login | Caixa de Texto | formato de e-mail |  |
-| senha | Caixa de Texto | mínimo de 8 caracteres |   |
+| **Campo**       | **Tipo**                                                                                                      | **Restrições**         | **Valor default** |
+| --------------- | ------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------------- |
+| [Nome do campo] | [Área de texto, Caixa de texto, Número, Data, Imagem, Seleção única, Múltipla escolha, Arquivo, Link, Tabela] |                        |                   |
+| **_Exemplo:_**  |                                                                                                               |                        |
+| login           | Caixa de Texto                                                                                                | formato de e-mail      |                   |
+| senha           | Caixa de Texto                                                                                                | mínimo de 8 caracteres |                   |
 
 **Nome da atividade 2**
 
-| **Campo** | **Tipo** | **Restrições** | **Valor default** |
-| --- | --- | --- | --- |
-| [Nome do campo] | [Área de texto, Caixa de texto, Número, Data, Imagem, Seleção única, Múltipla escolha, Arquivo, Link, Tabela] |  |  |
-|    |    |     |
+| **Campo**       | **Tipo**                                                                                                      | **Restrições** | **Valor default** |
+| --------------- | ------------------------------------------------------------------------------------------------------------- | -------------- | ----------------- |
+| [Nome do campo] | [Área de texto, Caixa de texto, Número, Data, Imagem, Seleção única, Múltipla escolha, Arquivo, Link, Tabela] |                |                   |
+|                 |                                                                                                               |                |
 
 #### Processo 2 – NOME DO PROCESSO
 
 **Nome da atividade 1**
 
-| **Campo** | **Tipo** | **Restrições** | **Valor default** |
-| --- | --- | --- | --- |
-| [Nome do campo] | [Área de texto, Caixa de texto, Número, Data, Imagem, Seleção única, Múltipla escolha, Arquivo, Link, Tabela] |  |  |
-|    |    |     |
+| **Campo**       | **Tipo**                                                                                                      | **Restrições** | **Valor default** |
+| --------------- | ------------------------------------------------------------------------------------------------------------- | -------------- | ----------------- |
+| [Nome do campo] | [Área de texto, Caixa de texto, Número, Data, Imagem, Seleção única, Múltipla escolha, Arquivo, Link, Tabela] |                |                   |
+|                 |                                                                                                               |                |
 
 **Nome da atividade 2**
 
-| **Campo** | **Tipo** | **Restrições** | **Valor default** |
-| --- | --- | --- | --- |
-| [Nome do campo] | [Área de texto, Caixa de texto, Número, Data, Imagem, Seleção única, Múltipla escolha, Arquivo, Link, Tabela] |  |  |
-|    |    |     |
+| **Campo**       | **Tipo**                                                                                                      | **Restrições** | **Valor default** |
+| --------------- | ------------------------------------------------------------------------------------------------------------- | -------------- | ----------------- |
+| [Nome do campo] | [Área de texto, Caixa de texto, Número, Data, Imagem, Seleção única, Múltipla escolha, Arquivo, Link, Tabela] |                |                   |
+|                 |                                                                                                               |                |
 
 ### 4.2. Tecnologias
 
@@ -151,9 +158,9 @@ Descreva qual(is) tecnologias você vai usar para resolver o seu problema, ou se
 
 ## 5. Modelo de dados
 
-Apresente o modelo de dados por meio de um modelo relacional ou Diagrama de Entidade-Relacionamento (DER) que contemple todos conceitos e atributos apresentados item anterior. 
+Apresente o modelo de dados por meio de um modelo relacional ou Diagrama de Entidade-Relacionamento (DER) que contemple todos conceitos e atributos apresentados item anterior.
 
-![Diagrama de Entidade Relacionamento de Exemplo](imagens/er_diagram.png "Diagrama de Entidade Relacionamento de Exemplo")
+![Diagrama de Entidade Relacionamento de Exemplo](imagens/er_diagram.png 'Diagrama de Entidade Relacionamento de Exemplo')
 
 ## 6. Indicadores de desempenho
 
@@ -161,11 +168,11 @@ Apresente aqui os principais indicadores de desempenho e algumas metas para o pr
 
 Usar o seguinte modelo:
 
-| **Indicador** | **Objetivos** | **Descrição** | **Cálculo** | **Fonte dados** | **Perspectiva** |
-| --- | --- | --- | --- | --- | --- |
-| Percentual reclamações | Avaliar quantitativamente as reclamações | Percentual de reclamações em relação ao total atendimento |   | Tabela reclamações | Aprendizado e Crescimento |
-| Taxa de Requisições abertas | Melhorar a prestação de serviços medindo a porcentagem de requisições | Mede % de requisições atendidas na semana | ![\frac{\sum{atendidas}}{\sum{requisicoes}}100](https://latex.codecogs.com/svg.latex?\frac{\sum{atendidas}}{\sum{requisicoes}}100) | Tabela solicitações | Processos internos |
-| Taxa de entrega de material | Manter controle sobre os materiais que estão sendo entregues | Mede % de material entregue dentro do mês |   | Tabela Pedidos | Clientes |
+| **Indicador**               | **Objetivos**                                                         | **Descrição**                                             | **Cálculo**                                                                                                                        | **Fonte dados**     | **Perspectiva**           |
+| --------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ------------------- | ------------------------- |
+| Percentual reclamações      | Avaliar quantitativamente as reclamações                              | Percentual de reclamações em relação ao total atendimento |                                                                                                                                    | Tabela reclamações  | Aprendizado e Crescimento |
+| Taxa de Requisições abertas | Melhorar a prestação de serviços medindo a porcentagem de requisições | Mede % de requisições atendidas na semana                 | ![\frac{\sum{atendidas}}{\sum{requisicoes}}100](https://latex.codecogs.com/svg.latex?\frac{\sum{atendidas}}{\sum{requisicoes}}100) | Tabela solicitações | Processos internos        |
+| Taxa de entrega de material | Manter controle sobre os materiais que estão sendo entregues          | Mede % de material entregue dentro do mês                 |                                                                                                                                    | Tabela Pedidos      | Clientes                  |
 
 Obs.: todas as informações para gerar os indicadores devem estar no diagrama de classe **a ser proposto**
 
@@ -178,18 +185,16 @@ Faça aqui uma breve descrição do software e coloque as principais telas com u
 Apresente aqui a conclusão do seu trabalho. Discussão dos resultados obtidos no trabalho, onde se verifica as observações pessoais de cada aluno. Poderá também apresentar sugestões de novas linhas de estudo.
 
 # REFERÊNCIAS
+
 Verifique no link abaixo como devem ser as referências no padrão ABNT:
 
 http://www.pucminas.br/imagedb/documento/DOC\_DSC\_NOME\_ARQUI20160217102425.pdf
-
 
 **[1]** - _European route of industrial heritage - cultural routes - publi.coe.int. ([s.d.]). Cultural Routes. Recuperado 2 de março de 2023, de https://www.coe.int/en/web/cultural-routes/european-route-of-industrial-heritage_
 
 **[2]** - _Economia Circular - O que é a Economia Circular? ([s.d.]). Nomia.pt. Recuperado 2 de março de 2023, de https://eco.nomia.pt/pt/economia-circular/estrategias_
 
 **[3]** - _Akatu, E. (2012, outubro 11). Como o consumo colaborativo pode revolucionar uma cidade. Instituto Akatu; Akatu. https://akatu.org.br/como-o-consumo-colaborativo-pode-revolucionar-uma-cidade/_
-
-
 
 # APÊNDICES
 
@@ -202,7 +207,3 @@ Dos artefatos (armazenado do repositório);
 Da apresentação final (armazenado no repositório);
 
 Do vídeo de apresentação (armazenado no repositório).
-
-
-
-
