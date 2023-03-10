@@ -56,7 +56,7 @@ O objetivo geral do projeto **sKanboo** é desenvolver uma aplicação web que p
 
 ### 1.4 Justificativas
 
-As principais razões que justificam a adesão ao **sKanboo** são: a aplicação irá facilitar a troca de objetos entre usuários, fornecendo uma plataforma que intermediará todo o processo de troca, trazendo segurança para ambos o ofertador e o buscador; para além, são fornecidas alternativas para obter produtos que não envolvem dinheiro, sendo uma ótima opção para o usuário que tem um produto que deseja oferecer por outro de seu interesse mas não dispõe de uma quantia monetária; por fim, o site permite que os usuários negociem diretamente uns com os outros, dando abertura para que o ofertador e o buscador cheguem em um conseso sobre a melhor forma de realizar a troca. 
+As principais razões que justificam a adesão ao **sKanboo** são: a aplicação irá facilitar a troca de objetos entre usuários, fornecendo uma plataforma que intermediará todo o processo de troca, trazendo segurança para ambos o ofertador e o buscador; para além, são fornecidas alternativas para obter produtos que não envolvem dinheiro, sendo uma ótima opção para o usuário que tem um produto que deseja oferecer por outro de seu interesse mas não dispõe de uma quantia monetária; por fim, o site permite que os usuários negociem diretamente uns com os outros, dando abertura para que o ofertador e o buscador cheguem em um consenso sobre a melhor forma de realizar a troca. 
 
 ## 2. Participantes do processo
 
