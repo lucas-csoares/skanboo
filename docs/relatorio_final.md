@@ -34,7 +34,7 @@ _**Resumo**. Escrever aqui o resumo. O resumo deve contextualizar rapidamente o 
 
 ### 1.1 Contextualização
 
-O crescimento dos hábitos de consumo da população se mostrou mais expressivo a partir da transição gerada pela Revolução Industrial, que ocorreu em meados do século XVIII, segundo as Rotas Culturais do Conselho Europeu (_European Route of Industrial Heritage_)[1]. Como resultado de um maior investimento nos setores industriais, a quantidade de mercadorias ofertadas à população cresceu vertiginosamente, estimulando cada vez mais a aquisição de novos produtos. A partir dai, acumular objetos se tornou um hábito na vida da grande maioria das pessoas.
+O crescimento dos hábitos de consumo da população se mostrou mais expressivo a partir da transição gerada pela Revolução Industrial, que ocorreu em meados do século XVIII, segundo as Rotas Culturais do Conselho Europeu (_European Route of Industrial Heritage_)[1]. Como resultado de um maior investimento nos setores industriais, a quantidade de mercadorias ofertadas à população cresceu vertiginosamente, estimulando cada vez mais a aquisição de novos produtos. A partir então, acumular objetos se tornou um hábito na vida da grande maioria das pessoas.
 
 O modelo de troca de mercadorias (escambo), apesar de antigo, tem ganhado cada vez mais força devido à crescente preocupação com a sustentabilidade, o que reforça as premissas da economia circular, que prevê o uso e reuso de uma dado item[2]. Além disso, devido à instabilidade financeira causada pela pandemia da COVID-19, muitas pessoas vêm buscado formas mais baratas de suprir suas necessidades. Ou seja, ao fazer escambo a pessoa evita gastar dinheiro por trocar bens que já possui por outros de que necessita, ganha mais flexibilidade por poder negociar diretamente com a outra pessoa, uma vez que não se tem preço fixo como em lojas, e também é uma forma mais sustentável de consumir.
 
@@ -53,31 +53,29 @@ O objetivo geral do projeto em questão é desenvolver uma aplicação web que p
 Para desenvolver a aplicação descrita acima, mapeamos os seguintes objetivos específicos:
 
 - Levantar os principais processos relacionados à troca de objetos;
-- Desenvolver um banco de dados com as informações dos usuários cadastrados e seus respectivos objetos publicados;
+- Desenvolver um banco de dados com as informações dos usuários cadastrados e objetos publicados;
 - Mapear os objetos de maior interesse dos usuários da plataforma.
 
 ### 1.4 Justificativas
 
-O **sKanboo** tem como intenção facilitar a troca de objetos entre as pessoas e fornecer uma plataforma que intermediará todo o processo, trazendo segurança para o [ofertador](#2-participantes-do-processo) e [buscador](#2-participantes-do-processo). É uma alternativa para se obter produtos, que não envolve dinheiro, ideal para aqueles que estão interessados em um produto mas não possuem o valor monetário no momento. Além disso, a aplicação permitirá a negociação direta entre os usuários, dando abertura para que o ofertador e o buscador cheguem em um consenso sobre a melhor forma de realizar a troca.
+O **sKanboo** tem como intenção facilitar a troca de objetos entre as pessoas e fornecer uma plataforma que intermediará todo o processo, trazendo segurança para ambos os [negociantes](#2-participantes-do-processo). É uma alternativa que não envolve dinheiro para obter produtos, ideal para aqueles que estão interessados em algo mas não possuem o dinheiro no momento. Além disso, a aplicação permitirá a negociação direta entre os usuários, dando abertura para que eles cheguem em um consenso sobre a melhor forma de realizar a troca.
 
 ## 2. Participantes do processo
 
-Foram mapeados 2 participantes em nossos processos, sendo eles: o ofertador, que publica seu produto na plataforma, e o buscador, que oferece algo em troca de algum produto publicado. Além disso, um mesmo usuário pode assumir esses dois papéis, uma vez que ele pode estar publicando um produto enquanto faz ofertas em outros que o interessam.
+Foram mapeados dois papeis no processo de troca, **negociante 1** e **negociante 2**, cujas atividades são descritas a seguir: 
 
-As descrições das atividades de cada uma das partes são as seguintes:
+**Negociante 1**
 
-**1. Ofertador**
+    1.1 Publica seu produto na plataforma; 
+    1.2 Aceita ou recusa ofertas;
+    1.3 Informar se quer receber um produto específico ou outras ofertas.
 
-    1.1 Divulga seu produto no site;
-    1.2 Informa qual o objeto quer receber em troca do seu produto;
-    1.3 Deixar o seu produto aberto à ofertas dos outros usuários.
-
-**2. Buscador**
+**Negociante 2**
 
     2.1 Oferece um objeto seu em troca de outro publicado no site;
-    2.2 Pode negociar diretamente com o ofertador;
+    2.2 Caso sua oferta seja aceita ele pode conversar com o negociante 1.
 
-Além disso, ambos os participantes podem, ao final do processo de troca, avaliar como foi negociar com um determinado usuário, de modo que os bons negociadores sejam reconhecidos.
+Além disso, ambos os participantes podem, ao final do processo de troca, avaliar como foi negociar com um determinado usuário, de modo que os bons negociantes sejam reconhecidos.
 
 ## 3. Modelagem do processo de negócio
 
@@ -85,7 +83,7 @@ Além disso, ambos os participantes podem, ao final do processo de troca, avalia
 
 Os sistemas atuais abordam a troca de bens somente através do uso de dinheiro. Nos modelos atuais, caso uma pessoa esteja interessada em um determinado objeto divulgado em um site de vendas, mas não tenha o dinheiro necessário, a negociação não poderá ocorrer.
 
-A proposta do **sKanboo** é inovadora pois, conforme citado no tópico [1.2](#12-problema), oferece maneiras alternativas de se realizar a troca de objetos sem o uso de dinheiro, sendo através da troca mútua de objetos ou utilizando uma moeda virtual.
+A proposta do **sKanboo** é inovadora pois, conforme citado no tópico [1.2](#12-problema), oferece maneiras alternativas de se realizar a troca de objetos sem o uso de dinheiro, sendo através da troca mútua de objetos.
 
 ### 3.2. Descrição Geral da proposta
 
@@ -202,3 +200,4 @@ Dos artefatos (armazenado do repositório);
 Da apresentação final (armazenado no repositório);
 
 Do vídeo de apresentação (armazenado no repositório).
+
