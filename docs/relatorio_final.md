@@ -40,9 +40,14 @@ O modelo de troca de mercadorias (escambo), apesar de antigo, tem ganhado cada v
 
 ### 1.2 Problema
 
-O problema gerado pela visão de consumo atual, assim como qualquer excesso, é o desperdício. Para fins de exemplo, um índice comumente utilizado diz com relação ao número de furadeiras para uso doméstico. Em grande parte das residências, é muito comum que seus moradores tenham ao menos uma furadeira guardada. No entanto, o que muitos não sabem, é que durante toda a sua vida útil, essa furadeira é usada, em média, por apenas 40 minutos, segundo a Instituição Akatu[3]. Ou seja, um produto que na maior parte de sua vida útil, ficará em desuso.
+Um problema comum enfrentado por muitas pessoas é o fato de querer adquirir novos objetos, seja por uma questão de necessidade ou desejo, mas ao mesmo tempo já possuírem muitos objetos em casa. Essa situação pode gerar uma sensação de culpa por gastar dinheiro em algo que talvez não seja realmente necessário.
 
-Partindo desse pressuposto, seria possível criar uma plataforma na qual as pessoas conseguissem adquirir novos objetos, apenas se desfazendo daqueles que já possuem e não usam, economizando dinheiro e, por consequência, consumindo de maneira mais sustentável? Esse é o problema que será analisado e desenvolvido no projeto apresentado a seguir.
+Além disso, é comum as pessoas se interessarem por algo que excede seu orçamento. Em algumas situações, o indivíduo acaba se endividando para comprar o produto que deseja, o que pode gerar problemas financeiros.
+
+Com isso, surgi a alternativa de trocar objetos com pessoas de seu entorno. No entanto, ele se depara com outro problema: A dificuldade de encontrar alguém interessado em adquirir os seus itens e que não possui o que ele deseja.
+
+Partindo desse pressuposto, seria possível criar uma plataforma na qual as pessoas conseguissem se desfazer daqueles objetos que possuem e não usam, podendo obter o que querem sem ter que gastar para isso? Esse é o problema que será analisado e desenvolvido no projeto apresentado a seguir.
+
 
 ### 1.3 Objetivo geral
 
