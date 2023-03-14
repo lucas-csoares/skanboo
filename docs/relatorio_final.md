@@ -34,9 +34,13 @@ _**Resumo**. Escrever aqui o resumo. O resumo deve contextualizar rapidamente o 
 
 ### 1.1 Contextualização
 
-O crescimento dos hábitos de consumo da população se mostrou mais expressivo a partir da transição gerada pela Revolução Industrial, que ocorreu em meados do século XVIII, segundo as Rotas Culturais do Conselho Europeu (_European Route of Industrial Heritage_)[1]. Como resultado de um maior investimento nos setores industriais, a quantidade de mercadorias ofertadas à população cresceu vertiginosamente, estimulando cada vez mais a aquisição de novos produtos. A partir então, acumular objetos se tornou um hábito na vida da grande maioria das pessoas.
+O escambo é um modelo de comércio caracterizado pela troca direta de bens entre pessoas, sem o uso de dinheiro. Nesse tipo de negociação, cada uma das partes oferece algo que possui em troca de algo que necessita.
 
-O modelo de troca de mercadorias (escambo), apesar de antigo, tem ganhado cada vez mais força devido à crescente preocupação com a sustentabilidade, o que reforça as premissas da economia circular, que prevê o uso e reuso de uma dado item[2]. Além disso, devido à instabilidade financeira causada pela pandemia da COVID-19, muitas pessoas vêm buscado formas mais baratas de suprir suas necessidades. Ou seja, ao fazer escambo a pessoa evita gastar dinheiro por trocar bens que já possui por outros de que necessita, ganha mais flexibilidade por poder negociar diretamente com a outra pessoa, uma vez que não se tem preço fixo como em lojas, e também é uma forma mais sustentável de consumir.
+Apesar de ser uma prática antiga, o escambo vem ganhando cada vez mais força atualmente, em razão da crescente preocupação com a sustentabilidade e aplicação de premissas da economia circular[1], que prevê o uso e reuso de um recurso. Não obstante, o cenário de incerteza financeira gerado durante o período de pandemia fez com que diversas pessoas buscassem formas mais baratas de suprir as suas necessidades. Em [reportagem](https://g1.globo.com/sp/santos-regiao/noticia/2022/07/27/trocas-por-produtos-servicos-e-alimentos-escambo-ganha-forca-em-grupo-no-litoral-de-sp.ghtml) realizada pelo site G1 em julho de 2022, foi descrito um grupo de troca de objetos do Facebook que contava com mais de 6 mil usuários. Segundo a reportagem, o período delicado da pandemia foi a principal motivação para criação do grupo.
+
+O crescimento dos hábitos de consumo da população se mostrou mais expressivo a partir da transição gerada pela Revolução Industrial, que ocorreu em meados do século XVIII, segundo as Rotas Culturais do Conselho Europeu _European Route of Industrial Heritage_[2]. Desde então, acumular objetos tornou-se quase um hábito na vida de diversas pessoas, objetos estes que, muitas vezes, estão em completo desuso. Para fins de exemplo, um índice comumente utilizado tem relação com o número de furadeiras para uso doméstico. Em grande parte das residências, é muito comum que os seus moradores tenham ao menos uma furadeira guardada. No entanto, o que muitos não sabem, é que durante toda a sua vida útil, essa furadeira é usada, em média, por apenas 40 minutos, segundo a Instituição Akatu[3]. Ou seja, um produto que na maior parte da sua vida útil, ficará em desuso.
+
+Portanto, ao fazer escambo, as pessoas podem ser desfazer de bens que já possui (e que por ventura não utiliza), por outros que precisa, ganha mais flexibilidade por poder negociar diretamente com a outra parte, e também é uma forma mais sustentável de consumir.
 
 ### 1.2 Problema
 
@@ -183,9 +187,9 @@ Verifique no link abaixo como devem ser as referências no padrão ABNT:
 
 http://www.pucminas.br/imagedb/documento/DOC\_DSC\_NOME\_ARQUI20160217102425.pdf
 
-**[1]** - _European route of industrial heritage - cultural routes - publi.coe.int. ([s.d.]). Cultural Routes. Recuperado 2 de março de 2023, de https://www.coe.int/en/web/cultural-routes/european-route-of-industrial-heritage_
+**[1]** - _Economia Circular - O que é a Economia Circular? ([s.d.]). Nomia.pt. Recuperado 2 de março de 2023, de https://eco.nomia.pt/pt/economia-circular/estrategias_
 
-**[2]** - _Economia Circular - O que é a Economia Circular? ([s.d.]). Nomia.pt. Recuperado 2 de março de 2023, de https://eco.nomia.pt/pt/economia-circular/estrategias_
+**[2]** - _European route of industrial heritage - cultural routes - publi.coe.int. ([s.d.]). Cultural Routes. Recuperado 2 de março de 2023, de https://www.coe.int/en/web/cultural-routes/european-route-of-industrial-heritage_
 
 **[3]** - _Akatu, E. (2012, outubro 11). Como o consumo colaborativo pode revolucionar uma cidade. Instituto Akatu; Akatu. https://akatu.org.br/como-o-consumo-colaborativo-pode-revolucionar-uma-cidade/_
 
