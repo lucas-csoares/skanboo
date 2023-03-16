@@ -90,9 +90,9 @@ Além disso, ambos os participantes podem, ao final do processo de troca, avalia
 
 ### 3.1. Análise da situação atual
 
-Os sistemas atuais abordam a troca de bens somente através do uso de dinheiro. Nos modelos atuais, caso uma pessoa esteja interessada em um determinado objeto divulgado em um site de vendas, mas não tenha o dinheiro necessário, a negociação não poderá ocorrer.
+Os sistemas que encontramos no mercado atualmente, abordam a troca de bens somente através do uso de dinheiro. Nesses modelos, caso uma pessoa esteja interessada em um determinado objeto divulgado em um site de vendas, mas não tenha o dinheiro necessário, a negociação não poderá ocorrer. Além disso, pessoas que possuem uma grande quantidade de bens guardados, sem serem utilizados, terão de vendê-los para depois comprar algo que desejam, o que pode ser inconveniente, além de demorado.
 
-A proposta do **sKanboo** é inovadora pois, conforme citado no tópico [1.2](#12-problema), oferece maneiras alternativas de se realizar a troca de objetos sem o uso de dinheiro, sendo através da troca mútua de objetos.
+A proposta do **sKanboo** é inovadora pois, conforme citado no tópico [1.2](#12-problema), oferece uma alternativa de se realizar a troca de objetos sem o uso de dinheiro, sendo através da troca mútua de objetos.
 
 ### 3.2. Descrição Geral da proposta
 
