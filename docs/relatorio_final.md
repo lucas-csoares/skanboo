@@ -67,7 +67,7 @@ Para desenvolver a aplicação descrita acima, mapeamos os seguintes objetivos e
 
 ### 1.4 Justificativas
 
-O **sKanboo** tem como intenção facilitar a troca de objetos entre as pessoas e fornecer uma plataforma que intermediará todo o processo, trazendo segurança para ambos os [negociantes](#2-participantes-do-processo). É uma alternativa que não envolve dinheiro para obter produtos, ideal para aqueles que estão interessados em algo mas não possuem o dinheiro no momento. Além disso, a aplicação permitirá a negociação direta entre os usuários, dando abertura para que eles cheguem em um consenso sobre a melhor forma de realizar a troca.
+A aplicação **sKanboo** irá permitir que o usuário negocie e realize a troca de objetos em comum acordo, possibilitando que os usuários cheguem em um consenso sobre a melhor forma de realizar a troca  de modo a facilitar a aquisição de novos produtos. A plataforma **sKanboo** é uma alternativa que não envolve o uso de dinheiro para obter novos produtos, sendo ideal para aqueles que estão interessados em algo mas não possuem o dinheiro no momento.
 
 ## 2. Participantes do processo
 
