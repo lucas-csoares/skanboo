@@ -96,9 +96,9 @@ A proposta do **sKanboo** é inovadora pois, conforme citado no tópico [1.2](#1
 
 ### 3.2. Descrição Geral da proposta
 
-A proposta deste projeto é trazer maneiras alternativas de se realizar trocas para o mundo online, conforme abordado no tópico anterior. Para isso, Para isso, pretende-se criar um sistema de escambo, no qual usuários podem ofertar itens que não são mais utilizados e receberem propostas de troca nas seguintes maneiras: trocando por um outro objeto, que será ofertado por outros usuários da plataforma, ou sendo pago através de uma moeda virtual que ainda será determinada.
+A proposta deste projeto é ampliar as maneiras de se realizar trocas utilizando os benefícios do mundo online. Isso porque a realização do escambo atualmente é limitada ao "boca-a-boca", ou seja, é necessário que alguém do círculo social do negociante esteja interessado no produto que ele tem a ofertar para que essa troca seja realizada. O que está sendo proposto é a ampliação do número de pessoas que o usuário pode alcançar para além da sua comunidade próxima, extendo para todos que tenham acesso ao sistema e interesse em trocar um objeto que não utilizam pelo que o usuário está ofertando. 
 
-Contudo, podemos perceber algumas limitações com relação a adesão de usuários, considerando que seria a implementação de um novo modelo que não inclui a opção de trocas utilizando dinheiro. Porém também com relação à tecnologias, principalmente na implementação da moeda virtual e na forma com que esta interação (moeda-sistema) iria ocorrer.
+Contudo, existem algumas limitações à criação do projeto. Com relação a adesão de usuários, considerando que seria a implementação de um novo modelo que não inclui a opção de trocas utilizando dinheiro ou qualquer tipo de moeda de troca que não seja outro objeto, corre-se o risco de não ser aderido. Também há de se pensar na segurança do usuário, ou seja, na forma com que estas trocas iriam ocorrer, ou pelo menos o que seria permitido dentro das políticas do sistema, que também pode ser uma limitação tecnológica, pois dependendo da maneira que a questão for abordada, poderia gerar complicações no rastreamento do produto (onde está, previsão de entrega, previsão de troca, dentre outros). 
 
 ### 3.3. Modelagem dos Processos
 
