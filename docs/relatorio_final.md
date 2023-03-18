@@ -101,17 +101,50 @@ Além disso, o usuário deverá escolher o raio de distância na qual deseja ver
 
 ### 3.3. Modelagem dos Processos
 
-#### 3.3.1 Processo 1 – NOME DO PROCESSO
+#### 3.3.1 Processo 1 – Cadastro de usuário
 
-Apresente aqui o nome e as oportunidades de melhorias para o processo 1. Em seguida, apresente o modelo do processo 1, descrito no padrão BPMN.
+Na página de login contém um link onde o usuário será encaminhado para a página de cadastro com os campos "nome", "sobrenome", "e-mail" e "senha". Após a confirmação dos dados, um e-mail com código de verificação será enviado para o usuário. Em seguida, o usuário será encaminhado para a página de perfil afim de completar as demais informações.
+
+<!--* Apresente aqui o nome e as oportunidades de melhorias para o processo 1. Em seguida, apresente o modelo do processo 1, descrito no padrão BPMN.-->
 
 ![Exemplo de um Modelo BPMN do PROCESSO 1](imagens/process.png 'Modelo BPMN do Processo 1.')
 
-### 3.3.2 Processo 2 – NOME DO PROCESSO
 
-Apresente aqui o nome e as oportunidades de melhorias para o processo 2. Em seguida, apresente o modelo do processo 2, descrito no padrão BPMN.
+### 3.3.2 Processo 2 – Verificação de pessoa
+
+Na página de perfil, o usuário informa o seu CPF. O sistema verifica a validade do número de CPF informado e se é realmente pertencente ao usuário que está fazendo o cadastro ou a troca (titularidade). Após a confirmação da titularidade, o site pode concluir o cadastro ou a troca. 
+
+
+<!--*Apresente aqui o nome e as oportunidades de melhorias para o processo 2. Em seguida, apresente o modelo do processo 2, descrito no padrão BPMN.-->
 
 ![Exemplo de um Modelo BPMN do PROCESSO 2](imagens/call_process.png 'Modelo BPMN do Processo 2.')
+
+### 3.3.3 Processo 3 – Cadastro de produto
+
+O usuário deve primeiramente fazer login em sua conta de negociante. Ao acessar a sua conta, vai ter a opção de "anunciar produto". Na página de cadastro o usuário deve inserir uma descrição detalhada do produto. Depois, é preciso adicionar fotos do produto. Em seguida, o usuário deve criar o anúncio. 
+
+<!--*Apresente aqui o nome e as oportunidades de melhorias para o processo 2. Em seguida, apresente o modelo do processo 2, descrito no padrão BPMN.-->
+
+![Exemplo de um Modelo BPMN do PROCESSO 2](imagens/call_process.png 'Modelo BPMN do Processo 2.')
+
+
+### 3.3.4 Processo 4 – Troca entre usuários
+
+O negociante 1 deve selecionar qual produto está interessado em receber em troca. Em seguida, ele deve enviar uma proposta afim de apresentar qual produto está oferecendo em troca do produto que ele deseja receber. Caso o negociante 2 aceite a proposta, ele abre chat para negociação. Quando ambos os usuários concordarem com os termos, devem confirmar a negociação.
+
+<!--* Apresente aqui o nome e as oportunidades de melhorias para o processo 2. Em seguida, apresente o modelo do processo 2, descrito no padrão BPMN.-->
+
+![Exemplo de um Modelo BPMN do PROCESSO 2](imagens/call_process.png 'Modelo BPMN do Processo 2.')
+
+
+### 3.3.5 Processo 5 – Avaliação do usuário
+
+O usuário deve acessar o status de negociações e selecionar a negociação que quer avaliar. Em seguida, pode deixar avaliação positiva, neutra ou negativa e escrever um comentário.
+
+<!--*Apresente aqui o nome e as oportunidades de melhorias para o processo 2. Em seguida, apresente o modelo do processo 2, descrito no padrão BPMN.-->
+
+![Exemplo de um Modelo BPMN do PROCESSO 2](imagens/call_process.png 'Modelo BPMN do Processo 2.')
+
 
 ## 4. Projeto da Solução
 
