@@ -62,7 +62,7 @@ Para desenvolver a aplicação descrita acima, mapeamos os seguintes objetivos e
 
 ### 1.4 Justificativas
 
-Com o **sKanboo**, as pessoas poderão trocar objetos que possuem, e não usam, por outros que têm interesse. Dessa forma, será uma alternativa para se obter novos produtos, que não envolve dinheiro, ideal para as pessoas que estão interessadas em algo, mas não possuem o dinheiro no momento.
+Com o **sKanboo**, as pessoas poderão trocar objetos que possuem, e não usam, sem estarem limitadas ao seu ciclo social para que isso aconteça. Dessa forma, será uma alternativa para se obter novos produtos, que não envolve dinheiro, ideal para as pessoas que estão interessadas em algo, mas não possuem o dinheiro no momento.
 
 Além disso, a plataforma pode incentivar a sustentabilidade e o consumo consciente, pois os usuários estarão dando uma nova utilidade a objetos que poderiam ser descartados. A troca de produtos pode estimular a criação de uma comunidade de usuários que compartilham interesses e valores em comum, criando um ambiente mais colaborativo e solidário. Por fim, o escambo pode ser uma forma de experimentar novos itens sem se comprometer financeiramente, permitindo que os usuários testem produtos antes de decidir comprá-los definitivamente.
 
@@ -72,7 +72,7 @@ Foram mapeados dois papeis no processo de troca, **negociante 1** e **negociante
 
 **Negociante 1**
 
-    1.1 Publica seu produto na plataforma; 
+    1.1 Publica seu produto na plataforma;
     1.2 Aceita ou recusa ofertas;
     1.3 Informa se quer receber um produto específico ou outras ofertas.
 
@@ -87,17 +87,11 @@ Além disso, ambos os participantes podem, ao final do processo de troca, avalia
 
 ### 3.1. Análise da situação atual
 
-A maioria dos sistemas existentes trabalham apenas com a compra e venda de mercadorias. Dessa forma, caso uma pessoa esteja interessada em um determinado objeto, mas não tenha o dinheiro necessário, a negociação não poderá ocorrer. Atualmente, se a pessoa desejar trocar um produto que possui por outro, ela pode procurar por pessoas em seu ciclo social ou postar em grupos de conversa, familiares etc. Ou seja, a possibilidade de troca é restrita.
-
-O **sKanboo** apresenta uma proposta inovadora ao possibilitar a conexão entre pessoas interessadas em trocar produtos, permitindo que usuários ultrapassem as barreiras do seu círculo social para realizar as transações.
+Atualmente, o processo de escambo é realizado na base do "boca a boca", ou seja, caso uma pessoa possua um objeto que deseja trocar, ela precisa procurar em seu círculo social se existe alguém que teria interesse nele. Dessa forma, a troca de produtos nos moldes existentes é realizada em uma perspectiva limitada, uma vez que só se consegue trocar um objeto, de modo geral, com alguém próximo a você, seja um amigo, conhecido ou familiar, por exemplo. Por outro lado, caso uma outra pessoa esteja interessada em seu produto, mas você não esteja interessada no que lhe foi oferecido em troca, a troca provavelmente não irá acontecer, fazendo com que ambos os produtos continuem em desuso com seus respectivos donos.
 
 ### 3.2. Descrição Geral da proposta
 
-A proposta deste projeto é ampliar as maneiras de se realizar trocas utilizando os benefícios do mundo online. Isso porque a realização do escambo atualmente é limitada ao "boca-a-boca", ou seja, é necessário que alguém do círculo social do negociante esteja interessado no produto que ele tem a ofertar para que a troca seja realizada. O que está sendo proposto é a ampliação do número de pessoas que o usuário pode alcançar para além da sua comunidade próxima, expandindo para todos que tenham acesso ao sistema e interesse em trocar um objeto que não utilizam mais.
-
-Contudo, existem algumas limitações inerentes à criação de um projeto inovador. Considerando que seria a implementação de um modelo de negócio de troca, ou seja, sem envolvimento de dinheiro, a adesão dos usuários pode ser vagarosa. Uma possível alternativa para isso, seria a criação de uma moeda virtual própria do site, de modo a permitir que as transações fossem realizadas mediante o pagamento com essa moeda.
-
-Além disso, o usuário deverá escolher o raio de distância na qual deseja ver as ofertas disponíveis, restringindo as opções disponíveis. Isso deve ser feito, pois como não há um serviço próprio de entrega de produtos, não seria possível assegurar a troca de produtos entre pessoas estados diferentes, por exemplo.
+A proposta do **sKanboo** consiste em ampliar as maneiras de se realizar trocas, uma vez que buscar eliminar a limitação imposta pelo modelo clássico de troca, na qual uma pessoa, de modo geral, só consegue trocar um objeto por outro com pessoas dentro do seu círculo social. Além disso, o usuário poderá avaliar diversas possibilidades diferentes, ao passo que consegue negociar e fazer ofertas com diversos outros usuários simultaneamente. Contudo, existem algumas limitações inerentes à criação de um projeto inovador. Considerando que seria a implementação de um modelo de negócio de troca, ou seja, sem envolvimento de dinheiro, a adesão dos usuários pode ser vagarosa.
 
 ### 3.3. Modelagem dos Processos
 
@@ -105,46 +99,41 @@ Além disso, o usuário deverá escolher o raio de distância na qual deseja ver
 
 Na página de login contém um link onde o usuário será encaminhado para a página de cadastro com os campos "nome", "sobrenome", "e-mail" e "senha". Após a confirmação dos dados, um e-mail com código de verificação será enviado para o usuário. Em seguida, o usuário será encaminhado para a página de perfil afim de completar as demais informações.
 
-<!--* Apresente aqui o nome e as oportunidades de melhorias para o processo 1. Em seguida, apresente o modelo do processo 1, descrito no padrão BPMN.-->
+<!-- Apresente aqui o nome e as oportunidades de melhorias para o processo 1. Em seguida, apresente o modelo do processo 1, descrito no padrão BPMN.-->
 
 ![Exemplo de um Modelo BPMN do PROCESSO 1](imagens/process.png 'Modelo BPMN do Processo 1.')
 
-
 ### 3.3.2 Processo 2 – Verificação de pessoa
 
-Na página de perfil, o usuário informa o seu CPF. O sistema verifica a validade do número de CPF informado e se é realmente pertencente ao usuário que está fazendo o cadastro ou a troca (titularidade). Após a confirmação da titularidade, o site pode concluir o cadastro ou a troca. 
+Na página de perfil, o usuário informa o seu CPF. O sistema verifica a validade do número de CPF informado e se é realmente pertencente ao usuário que está fazendo o cadastro ou a troca (titularidade). Após a confirmação da titularidade, o site pode concluir o cadastro ou a troca.
 
-
-<!--*Apresente aqui o nome e as oportunidades de melhorias para o processo 2. Em seguida, apresente o modelo do processo 2, descrito no padrão BPMN.-->
+<!--Apresente aqui o nome e as oportunidades de melhorias para o processo 2. Em seguida, apresente o modelo do processo 2, descrito no padrão BPMN.-->
 
 ![Exemplo de um Modelo BPMN do PROCESSO 2](imagens/call_process.png 'Modelo BPMN do Processo 2.')
 
 ### 3.3.3 Processo 3 – Cadastro de produto
 
-O usuário deve primeiramente fazer login em sua conta de negociante. Ao acessar a sua conta, vai ter a opção de "anunciar produto". Na página de cadastro o usuário deve inserir uma descrição detalhada do produto. Depois, é preciso adicionar fotos do produto. Em seguida, o usuário deve criar o anúncio. 
+O usuário deve primeiramente fazer login em sua conta de negociante. Ao acessar a sua conta, vai ter a opção de "anunciar produto". Na página de cadastro o usuário deve inserir uma descrição detalhada do produto. Depois, é preciso adicionar fotos do produto. Em seguida, o usuário deve criar o anúncio.
 
-<!--*Apresente aqui o nome e as oportunidades de melhorias para o processo 2. Em seguida, apresente o modelo do processo 2, descrito no padrão BPMN.-->
+<!--Apresente aqui o nome e as oportunidades de melhorias para o processo 2. Em seguida, apresente o modelo do processo 2, descrito no padrão BPMN.-->
 
 ![Exemplo de um Modelo BPMN do PROCESSO 2](imagens/call_process.png 'Modelo BPMN do Processo 2.')
-
 
 ### 3.3.4 Processo 4 – Troca entre usuários
 
 O negociante 1 deve selecionar qual produto está interessado em receber em troca. Em seguida, ele deve enviar uma proposta afim de apresentar qual produto está oferecendo em troca do produto que ele deseja receber. Caso o negociante 2 aceite a proposta, ele abre chat para negociação. Quando ambos os usuários concordarem com os termos, devem confirmar a negociação.
 
-<!--* Apresente aqui o nome e as oportunidades de melhorias para o processo 2. Em seguida, apresente o modelo do processo 2, descrito no padrão BPMN.-->
+<!--Apresente aqui o nome e as oportunidades de melhorias para o processo 2. Em seguida, apresente o modelo do processo 2, descrito no padrão BPMN.-->
 
 ![Exemplo de um Modelo BPMN do PROCESSO 2](imagens/call_process.png 'Modelo BPMN do Processo 2.')
-
 
 ### 3.3.5 Processo 5 – Avaliação do usuário
 
 O usuário deve acessar o status de negociações e selecionar a negociação que quer avaliar. Em seguida, pode deixar avaliação positiva, neutra ou negativa e escrever um comentário.
 
-<!--*Apresente aqui o nome e as oportunidades de melhorias para o processo 2. Em seguida, apresente o modelo do processo 2, descrito no padrão BPMN.-->
+<!--Apresente aqui o nome e as oportunidades de melhorias para o processo 2. Em seguida, apresente o modelo do processo 2, descrito no padrão BPMN.-->
 
 ![Exemplo de um Modelo BPMN do PROCESSO 2](imagens/call_process.png 'Modelo BPMN do Processo 2.')
-
 
 ## 4. Projeto da Solução
 
@@ -241,4 +230,3 @@ Dos artefatos (armazenado do repositório);
 Da apresentação final (armazenado no repositório);
 
 Do vídeo de apresentação (armazenado no repositório).
-
