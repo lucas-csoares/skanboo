@@ -87,11 +87,25 @@ Além disso, ambos os participantes podem, ao final do processo de troca, avalia
 
 ### 3.1. Análise da situação atual
 
-Atualmente, o processo de escambo é realizado na base do "boca a boca", ou seja, caso uma pessoa possua um objeto que deseja trocar, ela precisa procurar em seu círculo social se existe alguém que teria interesse nele. Dessa forma, a troca de produtos nos moldes existentes é realizada em uma perspectiva limitada, uma vez que só se consegue trocar um objeto, de modo geral, com alguém próximo a você, seja um amigo, conhecido ou familiar, por exemplo. Por outro lado, caso uma outra pessoa esteja interessada em seu produto, mas você não esteja interessada no que lhe foi oferecido em troca, a troca provavelmente não irá acontecer, fazendo com que ambos os produtos continuem em desuso com seus respectivos donos.
+Atualmente, o processo de escambo pode ser realizado das seguintes formas:
+
+- **Boca a boca**: nesse modelo, a pessoa que possui um objeto que deseja trocar procura em seu círculo social alguém que possa ter interesse. Porém, essa troca é realizada de forma limitada, já que só é possível trocar um objeto com alguém próximo, como amigos, conhecidos ou familiares. Além disso, se uma outra pessoa estiver interessada no objeto que você tem para oferecer, mas não tiver nada que você queira em troca, a troca pode não acontecer, deixando ambos os produtos em desuso com seus respectivos donos;
+
+- **Grupos de conversa**: existem grupos em redes sociais, como o Facebook, que possuem como objetivo a troca de produtos entre seus usuários. Esses grupos oferecem maiores possibilidades de troca do que o modelo "boca a boca", mas ainda estão restritos aos usuários que participam da rede social e do grupo específico;
+
+- **Feira de trocas**: são eventos organizados em locais públicos, como praças ou parques, com o objetivo de promover a troca de objetos entre os participantes. Essas feiras podem ser organizadas por grupos de pessoas ou por órgãos públicos e geralmente possuem regras definidas para garantir a segurança e a organização do evento.
 
 ### 3.2. Descrição Geral da proposta
 
-A proposta do **sKanboo** consiste em ampliar as maneiras de se realizar trocas, uma vez que buscar eliminar a limitação imposta pelo modelo clássico de troca, na qual uma pessoa, de modo geral, só consegue trocar um objeto por outro com pessoas dentro do seu círculo social. Além disso, o usuário poderá avaliar diversas possibilidades diferentes, ao passo que consegue negociar e fazer ofertas com diversos outros usuários simultaneamente. Contudo, existem algumas limitações inerentes à criação de um projeto inovador. Considerando que seria a implementação de um modelo de negócio de troca, ou seja, sem envolvimento de dinheiro, a adesão dos usuários pode ser vagarosa.
+A proposta do **sKanboo** consiste em ampliar as maneiras de se realizar trocas, uma vez que buscar eliminar a limitação imposta pelo modelo clássico de troca, na qual uma pessoa, de modo geral, só consegue trocar um objeto por outro com pessoas dentro do seu círculo social. Além disso, o usuário poderá avaliar diversas possibilidades diferentes, ao passo que consegue negociar e fazer ofertas com diversos outros usuários simultaneamente. Neste sentido, o fluxo da aplicação seguirá as seguintes etapas:
+
+- O usuário acessa a plataforma e se cadastra, fornecendo dados básicos como nome, login, email e senha;
+- Feito o cadastro, o usuário estará apto para cadastrar novo produto que deseja publicar para troca ou procurar por produtos que deseja;
+- Caso o usuário se interesse por um produto publico, ele pode fazer uma oferta no produto, que pode ser aceita ou recusada pelo usuário que o publicou;
+- Caso a oferta seja aceita, os usuários podem conversar entre si, para discutirem melhor os detalhes da troca e como ela vai ser realizada;
+- Após conclusão da troca, ambas as partes se avaliam no site, de modo que os bons negociantes sejam reconhecidos.
+
+A avaliação entre usuários é importante, pois fornece maior segurança à outra parte, uma vez que um usuário com boa nota indica que ele já realizou trocas bem sucedidas. Além disso, a aplicação busca se beneficiar com isso, de um crescimento de seus usuários de maneira orgânica, na base do "boca a boca", na qual um usuário que teve uma boa experiência pode indicar a aplicação para um conhecido, por exemplo.
 
 ### 3.3. Modelagem dos Processos
 
