@@ -111,11 +111,13 @@ A avaliação entre usuários é importante, pois fornece maior segurança à ou
 
 #### 3.3.1 Processo 1 – Cadastro de usuário
 
-Na página de login contém um link onde o usuário será encaminhado para a página de cadastro com os campos "nome", "sobrenome", "e-mail" e "senha". Após a confirmação dos dados, um e-mail com código de verificação será enviado para o usuário. Em seguida, o usuário será encaminhado para a página de perfil afim de completar as demais informações.
+Na página de cadastro o usuário preenche os campos "e-mail", "confirme e-mail", "estado". Após a validação dos dados, um e-mail com link de confirmação será enviado. Em seguida, o usuário será encaminhado para a página de cadastro afim de finalizar cadastro com os campos "nome", "sobrenome","nome de usuário", "senha" e "confirmar senha". Após a validação dos dados, o cadastro é finalizado.
 
 <!-- Apresente aqui o nome e as oportunidades de melhorias para o processo 1. Em seguida, apresente o modelo do processo 1, descrito no padrão BPMN.-->
 
-![Exemplo de um Modelo BPMN do PROCESSO 1](imagens/process.png 'Modelo BPMN do Processo 1.')
+![Modelo BPMN para processo de cadastro de usuário](imagens/cadastroUsuario.png 'Modelo BPMN do Processo 1.')
+
+<!--![Exemplo de um Modelo BPMN do PROCESSO 1](imagens/process.png 'Modelo BPMN do Processo 1.')-->
 
 ### 3.3.2 Processo 2 – Verificação de pessoa
 
