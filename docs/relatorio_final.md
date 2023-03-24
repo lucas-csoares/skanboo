@@ -68,7 +68,7 @@ Além disso, a plataforma pode incentivar a sustentabilidade e o consumo conscie
 
 ## 2. Participantes do processo
 
-Foram mapeados dois papeis no processo de troca, **negociante 1** e **negociante 2**, cujas atividades são descritas a seguir:
+Todo o processo de negociação e eventual troca é realizado entre usuários do sistema. No contexto da troca em si, esses usuários podem assumir duas funções distintas, nomeadas **negociante 1** e **negociante 2**, cujas atividades são descritas a seguir:
 
 **Negociante 1**
 
