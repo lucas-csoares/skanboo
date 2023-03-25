@@ -137,11 +137,11 @@ O usuário deve primeiramente fazer login em sua conta de negociante. Ao acessar
 
 ### 3.3.4 Processo 4 – Troca entre usuários
 
-O negociante 1 deve selecionar qual produto está interessado em receber em troca. Em seguida, ele deve enviar uma proposta afim de apresentar qual produto está oferecendo em troca do produto que ele deseja receber. Caso o negociante 2 aceite a proposta, ele abre chat para negociação. Quando ambos os usuários concordarem com os termos, devem confirmar a negociação.
+O negociante 2 deve selecionar qual produto está interessado em receber em troca. Em seguida, ele deve enviar uma proposta afim de apresentar qual produto está oferecendo em troca do produto que ele deseja receber. Caso o negociante 1 aceite a proposta, ele abre chat para negociação. Quando ambos os usuários concordarem com os termos, devem confirmar a negociação.
 
 <!--Apresente aqui o nome e as oportunidades de melhorias para o processo 2. Em seguida, apresente o modelo do processo 2, descrito no padrão BPMN.-->
 
-![Exemplo de um Modelo BPMN do PROCESSO 2](imagens/call_process.png 'Modelo BPMN do Processo 2.')
+![Exemplo de um Modelo BPMN do PROCESSO 2](imagens/processoTroca.png 'Modelo BPMN do Processo 2.')
 
 ### 3.3.5 Processo 5 – Avaliação do usuário
 
