@@ -119,7 +119,8 @@ Na página de cadastro o usuário preenche os campos "e-mail", "confirme e-mail"
 
 O usuário é capaz de adicionar um produto, ou atualizar as informações de produto previamente cadastrados. Em ambos o processos, após cadastro ou atualização das informações, a equipe do **sKanboo** avalia o conteúdo da postagem e define se ela será ou não feita.
 
-![Processo 2 – Gerenciar produtos](imagens/cadastroAtualizacaoProduto.png 'Modelo BPMN do Processo 2.')
+![Processo 2 – Gerenciar produtos](imagens/gerenciarProduto.jpg 'Modelo BPMN do Processo 2.')
+
 
 ### 3.3.3 Processo 3 – Cooptar parceiros
 
