@@ -138,8 +138,7 @@ O negociante 2 deve selecionar qual produto está interessado em receber em troc
 
 O usuário deve acessar o status de negociações e selecionar a negociação que quer avaliar. Em seguida, pode deixar avaliação positiva, neutra ou negativa e escrever um comentário.
 
-![Exemplo de um Modelo BPMN do PROCESSO 2](imagens/call_process.png 'Modelo BPMN do Processo 2.')
-
+![Processo 5 – Avaliação do usuário](imagens/avaliacaoUsuario.png 'Modelo BPMN do Processo 5.')
 ## 4. Projeto da Solução
 
 ### 4.1. Detalhamento das atividades
