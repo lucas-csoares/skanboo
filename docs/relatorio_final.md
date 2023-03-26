@@ -124,9 +124,9 @@ O usuário é capaz de adicionar um produto, ou atualizar as informações de pr
 
 ### 3.3.3 Processo 3 – Cooptar parceiros
 
-O usuário deve primeiramente fazer login em sua conta de negociante. Ao acessar a sua conta, vai ter a opção de "anunciar produto". Na página de cadastro o usuário deve inserir uma descrição detalhada do produto. Depois, é preciso adicionar fotos do produto. Em seguida, o usuário deve criar o anúncio.
+O setor de Marketing irá enviar uma proposta de parceria para o parceiro selecionado. Este parceiro deve decidir se vai aceitar ou nao proposta, caso não seja aceita o processo será encerrado. Caso contrário, o setor de Marketing deve realizar o cadastro do novo parceiro e, a partir disto, o sistema passará automaticamente a divulgar este parceito na plataforma do **sKanboo** e calcular a quantidade de interação (cliques) dos usuários com os anúncios deste determinado parceiro. Ao final de todo mês será gerado um relatório de "Interação Usuário-Parceiro", que deve ser baixado pelo setor de Marketing e enviado ao parceiro. 
 
-![Exemplo de um Modelo BPMN do PROCESSO 2](imagens/call_process.png 'Modelo BPMN do Processo 2.')
+![Processo 3 - Cooptar parceiros](imagens/cooptarParceiros.png 'Modelo BPMN do Processo 3.')
 
 ### 3.3.4 Processo 4 – Troca de objetos entre usuários
 
