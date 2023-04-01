@@ -111,7 +111,7 @@ A avaliação entre usuários é importante, pois fornece maior segurança à ou
 
 #### 3.3.1 Processo 1 – Cadastro de usuário
 
-Na página de cadastro o usuário preenche os campos "e-mail", "confirme e-mail", "estado". Após a validação dos dados, um e-mail com link de confirmação será enviado. Em seguida, o usuário será encaminhado para a página de cadastro afim de finalizar cadastro com os campos "nome", "sobrenome","nome de usuário", "senha" e "confirmar senha". Após a validação dos dados, o cadastro é finalizado.
+O usuário é capaz de se cadastrar Na página de cadastro preenchendo os campos "e-mail", "confirme e-mail" e "estado". Em seguida, um e-mail com link de confirmação será enviado. Em seguida, o usuário será encaminhado para a página de cadastro afim de finalizá-lo com os campos "nome", "sobrenome","nome de usuário", "senha" e "confirmar senha".
 
 ![Processo 1 – Cadastro de usuário](imagens/cadastroUsuario.png 'Modelo BPMN do Processo 1.')
 
@@ -145,23 +145,45 @@ O usuário deve acessar o status de negociações e selecionar a negociação qu
 
 Descrever aqui cada uma das propriedades das atividades de cada um dos processos. Devem estar relacionadas com o modelo de processo apresentado anteriormente.
 
-#### Processo 1 – NOME DO PROCESSO
+#### Processo 1 – Cadastro de usuário
 
-**Nome da atividade 1**
+**Iniciar cadastro**
 
 | **Campo**       | **Tipo**                                                                                                      | **Restrições**         | **Valor default** |
 | --------------- | ------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------------- |
-| [Nome do campo] | [Área de texto, Caixa de texto, Número, Data, Imagem, Seleção única, Múltipla escolha, Arquivo, Link, Tabela] |                        |                   |
-| **_Exemplo:_**  |                                                                                                               |                        |
-| login           | Caixa de Texto                                                                                                | formato de e-mail      |                   |
-| senha           | Caixa de Texto                                                                                                | mínimo de 8 caracteres |                   |
+| E-mail | Caixa de Texto | formato de e-mail |  |
+| Confirmar e-mail | Caixa de texto | formato de e-mail |
+| Estado | Caixa de seleção | Um único estado | 
+| Não sou um robô | seleção única | Um único click | 
 
-**Nome da atividade 2**
+<!--|
+
+login           | Caixa de Texto                                                                                                | formato de e-mail      |                   |
+| senha           | Caixa de Texto                                                                                                | mínimo de 8 caracteres |                   |-->
+
+**Enviar e-mail de confirmação**
 
 | **Campo**       | **Tipo**                                                                                                      | **Restrições** | **Valor default** |
 | --------------- | ------------------------------------------------------------------------------------------------------------- | -------------- | ----------------- |
-| [Nome do campo] | [Área de texto, Caixa de texto, Número, Data, Imagem, Seleção única, Múltipla escolha, Arquivo, Link, Tabela] |                |                   |
-|                 |                                                                                                               |                |
+| Continuar | Link | Link único |                   |
+
+**Confirmar e-mail**
+
+| **Campo**       | **Tipo**                                                                                                      | **Restrições**         | **Valor default** |
+| --------------- | ------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------------- |
+| Confirmar e-mail | Link | Link único | Not |
+
+
+**Completar cadastro**
+
+| **Campo**  | **Tipo**                                                                                                      | **Restrições**         | **Valor default** |
+| --------------- | ------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------------- |
+| Usuário | Caixa de Texto | Mínimo 8 caracteres do tipo alfanumérico |         |
+| Senha | Caixa de texto | Mínimo 12 caracteres com no mínimo uma letra, um número e um caractere especial |
+| Confirmar Senha | Caixa de texto | Mínimo 12 caracteres com no mínimo uma letra, um número e um caractere especial | 
+| Data de Nascimento | Data  | formato dd/mm/aaaa e anterior a data corrente | 
+| CPF | Número | 11 números | 
+
 
 #### Processo 2 – NOME DO PROCESSO
 
