@@ -151,10 +151,10 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 
 | **Campo**       | **Tipo**                                                                                                      | **Restrições**         | **Valor default** |
 | --------------- | ------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------------- |
-| E-mail | Caixa de Texto | formato de e-mail |  |
-| Confirmar e-mail | Caixa de texto | formato de e-mail |
+| E-mail | Caixa de texto | Formato de e-mail |  |
+| Confirmar e-mail | Caixa de texto | Formato de e-mail |
 | Estado | Caixa de seleção | Um único estado | 
-| Não sou um robô | seleção única | Um único click | 
+| Não sou um robô | Seleção única | Um único click | 
 
 <!--|
 
@@ -178,10 +178,10 @@ login           | Caixa de Texto                                                
 
 | **Campo**  | **Tipo**                                                                                                      | **Restrições**         | **Valor default** |
 | --------------- | ------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------------- |
-| Usuário | Caixa de Texto | Mínimo 8 caracteres do tipo alfanumérico |         |
+| Usuário | Caixa de texto | Mínimo 8 caracteres do tipo alfanumérico |         |
 | Senha | Caixa de texto | Mínimo 12 caracteres com no mínimo uma letra, um número e um caractere especial |
 | Confirmar Senha | Caixa de texto | Mínimo 12 caracteres com no mínimo uma letra, um número e um caractere especial | 
-| Data de Nascimento | Data  | formato dd/mm/aaaa e anterior a data corrente | 
+| Data de Nascimento | Data  | Formato dd/mm/aaaa e anterior a data corrente | 
 | CPF | Número | 11 números | 
 
 
