@@ -68,20 +68,20 @@ Além disso, a plataforma pode incentivar a sustentabilidade e o consumo conscie
 
 ## 2. Participantes do processo
 
-Todo o processo de negociação e eventual troca é realizado entre usuários do sistema. No contexto da troca em si, esses usuários podem assumir duas funções distintas, nomeadas **negociante 1** e **negociante 2**, cujas atividades são descritas a seguir:
+Todo o processo de negociação e eventual troca é realizado entre usuários do sistema. No contexto da troca em si, esses usuários podem assumir duas funções distintas, nomeadas **usuário 1** e **usuário 2**, cujas atividades são descritas a seguir:
 
-**Negociante 1**
+**usuário 1**
 
     1.1 Publica seu produto na plataforma;
     1.2 Aceita ou recusa ofertas;
     1.3 Informa se quer receber um produto específico ou outras ofertas.
 
-**Negociante 2**
+**usuário 2**
 
     2.1 Oferece um objeto seu em troca de outro publicado no site;
-    2.2 Caso sua oferta seja aceita ele pode conversar com o negociante 1.
+    2.2 Caso sua oferta seja aceita ele pode conversar com o usuário 1.
 
-Além disso, ambos os participantes podem, ao final do processo de troca, avaliar como foi negociar com um determinado usuário, de modo que os bons negociantes sejam reconhecidos.
+Além disso, ambos os participantes podem, ao final do processo de troca, avaliar como foi negociar com um determinado usuário, de modo que os bons usuários sejam reconhecidos.
 
 ## 3. Modelagem do processo de negócio
 
@@ -103,7 +103,7 @@ A proposta do **sKanboo** consiste em ampliar as maneiras de se realizar trocas,
 - Feito o cadastro, o usuário estará apto para cadastrar novo produto que deseja publicar para troca ou procurar por produtos que deseja;
 - Caso o usuário se interesse por um produto publico, ele pode fazer uma oferta no produto, que pode ser aceita ou recusada pelo usuário que o publicou;
 - Caso a oferta seja aceita, os usuários podem conversar entre si, para discutirem melhor os detalhes da troca e como ela vai ser realizada;
-- Após conclusão da troca, ambas as partes se avaliam no site, de modo que os bons negociantes sejam reconhecidos.
+- Após conclusão da troca, ambas as partes se avaliam no site, de modo que os bons usuários sejam reconhecidos.
 
 A avaliação entre usuários é importante, pois fornece maior segurança à outra parte, uma vez que um usuário com boa nota indica que ele já realizou trocas bem sucedidas. Além disso, a aplicação busca se beneficiar com isso, de um crescimento de seus usuários de maneira orgânica, na base do "boca a boca", na qual um usuário que teve uma boa experiência pode indicar a aplicação para um conhecido, por exemplo.
 
@@ -130,7 +130,7 @@ O setor de Marketing irá enviar uma proposta de parceria para o parceiro seleci
 
 ### 3.3.4 Processo 4 – Troca de objetos entre usuários
 
-O negociante 2 deve selecionar qual produto está interessado em receber em troca. Em seguida, ele deve enviar uma proposta afim de apresentar qual produto está oferecendo em troca do produto que ele deseja receber. Caso o negociante 1 aceite a proposta, ele abre chat para negociação. Quando ambos os usuários concordarem com os termos, devem enviar os produtos.
+O usuário 2 deve selecionar qual produto está interessado em receber em troca. Em seguida, ele deve enviar uma proposta afim de apresentar qual produto está oferecendo em troca do produto que ele deseja receber. Caso o usuário 1 aceite a proposta, ele abre chat para negociação. Quando ambos os usuários concordarem com os termos, devem enviar os produtos.
 
 ![Exemplo de um Modelo BPMN do PROCESSO 2](imagens/processoTrocaUsuarios.png 'Modelo BPMN do Processo 2.')
 
