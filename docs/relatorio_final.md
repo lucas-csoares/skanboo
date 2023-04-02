@@ -68,20 +68,22 @@ Além disso, a plataforma pode incentivar a sustentabilidade e o consumo conscie
 
 ## 2. Participantes do processo
 
-Todo o processo de negociação e eventual troca é realizado entre usuários do sistema. No contexto da troca em si, esses usuários podem assumir duas funções distintas, nomeadas **usuário 1** e **usuário 2**, cujas atividades são descritas a seguir:
+Todo o processo de negociação e eventual troca é realizado entre **usuários** do sistema. No contexto da troca em si, esses usuários podem assumir duas funções distintas, nomeadas **usuário 1** e **usuário 2**, cujas atividades são descritas a seguir:
 
-**usuário 1**
+**Usuário 1**
 
     1.1 Publica seu produto na plataforma;
     1.2 Aceita ou recusa ofertas;
     1.3 Informa se quer receber um produto específico ou outras ofertas.
 
-**usuário 2**
+**Usuário 2**
 
     2.1 Oferece um objeto seu em troca de outro publicado no site;
     2.2 Caso sua oferta seja aceita ele pode conversar com o usuário 1.
 
-Além disso, ambos os participantes podem, ao final do processo de troca, avaliar como foi negociar com um determinado usuário, de modo que os bons usuários sejam reconhecidos.
+Ambos os participantes podem, ao final do processo de troca, avaliar como foi negociar com um determinado usuário, de modo que os bons usuários sejam reconhecidos.
+
+Além disso, durante o processo de cadastro ou atualização das informações de um produto, a **equipe sKanboo** é responsável por avaliar o conteúdo da postagem antes que ela seja feita.
 
 ## 3. Modelagem do processo de negócio
 
@@ -101,6 +103,9 @@ A proposta do **sKanboo** consiste em ampliar as maneiras de se realizar trocas,
 
 - O usuário acessa a plataforma e se cadastra, fornecendo dados básicos como nome, login, email e senha;
 - Feito o cadastro, o usuário estará apto para cadastrar novo produto que deseja publicar para troca ou procurar por produtos que deseja;
+- Caso o usuário queira cadastrar um novo produto, ele deve preencher o formulário de cadastro com as informações desejadas e solicitar a sua publicação;
+- Após isso, a equipe sKanboo avalia o conteúdo da postagem, para decidir se ela pode ou não ser concluída;
+- O usuário recebe uma notificação informando se a sua postagem pode ou não ser concluída e, caso negativo, explicando o motivo;
 - Caso o usuário se interesse por um produto publico, ele pode fazer uma oferta no produto, que pode ser aceita ou recusada pelo usuário que o publicou;
 - Caso a oferta seja aceita, os usuários podem conversar entre si, para discutirem melhor os detalhes da troca e como ela vai ser realizada;
 - Após conclusão da troca, ambas as partes se avaliam no site, de modo que os bons usuários sejam reconhecidos.
@@ -117,14 +122,13 @@ O usuário é capaz de se cadastrar Na página de cadastro preenchendo os campos
 
 ### 3.3.2 Processo 2 – Gerenciar produtos
 
-O usuário é capaz de adicionar um produto, ou atualizar as informações de produto previamente cadastrados. Em ambos o processos, após cadastro ou atualização das informações, a equipe do **sKanboo** avalia o conteúdo da postagem e define se ela será ou não feita.
+O usuário é capaz de adicionar um produto ou atualizar as informações de produto previamente cadastrado. Em ambos o processos, após cadastro ou atualização das informações, a equipe do **sKanboo** avalia o conteúdo da postagem e define se ela será ou não feita. Caso ela seja feita, as informações do banco de dados são atualizadas, adicionando o novo produto ou alterando as informações de um produto cadastrado e, em seguida, é enviada uma notificação ao usuário que a postagem foi realizada. Caso contrário, a postagem não é feita e o usuário recebe uma notificação informando o motivo pelo qual o processo foi abortado.
 
-![Processo 2 – Gerenciar produtos](imagens/gerenciarProduto.jpg 'Modelo BPMN do Processo 2.')
-
+![Processo 2 – Gerenciar produtos](imagens/gerenciarProduto-rev01.jpg 'Modelo BPMN do Processo 2.')
 
 ### 3.3.3 Processo 3 – Cooptar parceiros
 
-O setor de Marketing irá enviar uma proposta de parceria para o parceiro selecionado. Este parceiro deve decidir se vai aceitar ou nao proposta, caso não seja aceita o processo será encerrado. Caso contrário, o setor de Marketing deve realizar o cadastro do novo parceiro e, a partir disto, o sistema passará automaticamente a divulgar este parceito na plataforma do **sKanboo** e calcular a quantidade de interação (cliques) dos usuários com os anúncios deste determinado parceiro. Ao final de todo mês será gerado um relatório de "Interação Usuário-Parceiro", que deve ser baixado pelo setor de Marketing e enviado ao parceiro. 
+O setor de Marketing irá enviar uma proposta de parceria para o parceiro selecionado. Este parceiro deve decidir se vai aceitar ou nao proposta, caso não seja aceita o processo será encerrado. Caso contrário, o setor de Marketing deve realizar o cadastro do novo parceiro e, a partir disto, o sistema passará automaticamente a divulgar este parceito na plataforma do **sKanboo** e calcular a quantidade de interação (cliques) dos usuários com os anúncios deste determinado parceiro. Ao final de todo mês será gerado um relatório de "Interação Usuário-Parceiro", que deve ser baixado pelo setor de Marketing e enviado ao parceiro.
 
 ![Processo 3 - Cooptar parceiros](imagens/cooptarParceiros.png 'Modelo BPMN do Processo 3.')
 
@@ -139,6 +143,7 @@ O usuário 2 deve selecionar qual produto está interessado em receber em troca.
 O usuário deve acessar o status de negociações e selecionar a negociação que quer avaliar. Em seguida, pode deixar avaliação positiva, neutra ou negativa e escrever um comentário.
 
 ![Processo 5 – Avaliação do usuário](imagens/avaliacaoUsuario.png 'Modelo BPMN do Processo 5.')
+
 ## 4. Projeto da Solução
 
 ### 4.1. Detalhamento das atividades
@@ -149,41 +154,34 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 
 **Iniciar cadastro**
 
-| **Campo**       | **Tipo**                                                                                                      | **Restrições**         | **Valor default** |
-| --------------- | ------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------------- |
-| E-mail | Caixa de texto | Formato de e-mail |  |
-| Confirmar e-mail | Caixa de texto | Formato de e-mail |
-| Estado | Caixa de seleção | Um único estado | 
-| Não sou um robô | Seleção única | Um único click | 
-
-<!--|
-
-login           | Caixa de Texto                                                                                                | formato de e-mail      |                   |
-| senha           | Caixa de Texto                                                                                                | mínimo de 8 caracteres |                   |-->
+| **Campo**        | **Tipo**         | **Restrições**    | **Valor default** |
+| ---------------- | ---------------- | ----------------- | ----------------- |
+| E-mail           | Caixa de texto   | Formato de e-mail |                   |
+| Confirmar e-mail | Caixa de texto   | Formato de e-mail |                   |
+| Estado           | Caixa de seleção | Um único estado   |                   |
+| Não sou um robô  | Seleção única    | Um único click    |                   |
 
 **Enviar e-mail de confirmação**
 
-| **Campo**       | **Tipo**                                                                                                      | **Restrições** | **Valor default** |
-| --------------- | ------------------------------------------------------------------------------------------------------------- | -------------- | ----------------- |
-| Continuar | Link | Link único |                   |
+| **Campo** | **Tipo** | **Restrições** | **Valor default** |
+| --------- | -------- | -------------- | ----------------- |
+| Continuar | Link     | Link único     |                   |
 
 **Confirmar e-mail**
 
-| **Campo**       | **Tipo**                                                                                                      | **Restrições**         | **Valor default** |
-| --------------- | ------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------------- |
-| Confirmar e-mail | Link | Link único | Not |
-
+| **Campo**        | **Tipo** | **Restrições** | **Valor default** |
+| ---------------- | -------- | -------------- | ----------------- |
+| Confirmar e-mail | Link     | Link único     | Not               |
 
 **Completar cadastro**
 
-| **Campo**  | **Tipo**                                                                                                      | **Restrições**         | **Valor default** |
-| --------------- | ------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------------- |
-| Usuário | Caixa de texto | Mínimo 8 caracteres do tipo alfanumérico |         |
-| Senha | Caixa de texto | Mínimo 12 caracteres com no mínimo uma letra, um número e um caractere especial |
-| Confirmar Senha | Caixa de texto | Mínimo 12 caracteres com no mínimo uma letra, um número e um caractere especial | 
-| Data de Nascimento | Data  | Formato dd/mm/aaaa e anterior a data corrente | 
-| CPF | Número | 11 números | 
-
+| **Campo**          | **Tipo**       | **Restrições**                                                                  | **Valor default** |
+| ------------------ | -------------- | ------------------------------------------------------------------------------- | ----------------- |
+| Usuário            | Caixa de texto | Mínimo 8 caracteres do tipo alfanumérico                                        |                   |
+| Senha              | Caixa de texto | Mínimo 12 caracteres com no mínimo uma letra, um número e um caractere especial |                   |
+| Confirmar Senha    | Caixa de texto | Mínimo 12 caracteres com no mínimo uma letra, um número e um caractere especial |                   |
+| Data de Nascimento | Data           | Formato dd/mm/aaaa e anterior a data corrente                                   |                   |
+| CPF                | Número         | 11 números                                                                      |                   |
 
 #### Processo 2 – NOME DO PROCESSO
 
@@ -199,7 +197,7 @@ login           | Caixa de Texto                                                
 | **Campo**       | **Tipo**                                                                                                      | **Restrições** | **Valor default** |
 | --------------- | ------------------------------------------------------------------------------------------------------------- | -------------- | ----------------- |
 | [Nome do campo] | [Área de texto, Caixa de texto, Número, Data, Imagem, Seleção única, Múltipla escolha, Arquivo, Link, Tabela] |                |                   |
-|                 |                                                                                                               |                |
+|                 |                                                                                                               |                |                   |
 
 ### 4.2. Tecnologias
 
