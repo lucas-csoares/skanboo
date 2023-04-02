@@ -81,9 +81,13 @@ Todo o processo de negociação e eventual troca é realizado entre **usuários*
     2.1 Oferece um objeto seu em troca de outro publicado no site;
     2.2 Caso sua oferta seja aceita ele pode conversar com o usuário 1.
 
-Ambos os participantes podem, ao final do processo de troca, avaliar como foi negociar com um determinado usuário, de modo que os bons usuários sejam reconhecidos.
+Ambos os participantes podem, ao final do processo de troca, avaliar como foi negociar com um determinado usuário, de modo que os bons usuários sejam reconhecidos. Além disso, durante o processo de cadastro ou atualização das informações de um produto, a **equipe sKanboo** é responsável por avaliar o conteúdo da postagem antes que ela seja feita.
 
-Além disso, durante o processo de cadastro ou atualização das informações de um produto, a **equipe sKanboo** é responsável por avaliar o conteúdo da postagem antes que ela seja feita.
+**Equipe sKanboo**
+
+    3.1 Avaliar conteúdo das postagens;
+    3.2 Atualizar informações do banco de dados;
+    3.3 Notificar o usuário se sua postagem foi ou não concluída.
 
 ## 3. Modelagem do processo de negócio
 
@@ -128,7 +132,7 @@ O usuário é capaz de adicionar um produto ou atualizar as informações de pro
 
 ### 3.3.3 Processo 3 – Cooptar parceiros
 
-O setor de Marketing irá enviar uma proposta de parceria para o parceiro selecionado. Este parceiro deve decidir se vai aceitar ou nao proposta, caso não seja aceita o processo será encerrado. Caso contrário, o setor de Marketing deve realizar o cadastro do novo parceiro e, a partir disto, o sistema passará automaticamente a divulgar este parceito na plataforma do **sKanboo** e calcular a quantidade de interação (cliques) dos usuários com os anúncios deste determinado parceiro. Ao final de todo mês será gerado um relatório de "Interação Usuário-Parceiro", que deve ser baixado pelo setor de Marketing e enviado ao parceiro.
+O setor de Marketing irá enviar uma proposta de parceria para o parceiro selecionado. Este parceiro deve decidir se vai aceitar ou nao proposta, caso não seja aceita o processo será encerrado. Caso contrário, o setor de Marketing deve realizar o cadastro do novo parceiro e, a partir disto, o sistema passará automaticamente a divulgar este parceiro na plataforma do **sKanboo** e calcular a quantidade de interação (cliques) dos usuários com os anúncios deste determinado parceiro. Ao final de todo mês será gerado um relatório de "Interação Usuário-Parceiro", que deve ser baixado pelo setor de Marketing e enviado ao parceiro.
 
 ![Processo 3 - Cooptar parceiros](imagens/cooptarParceiros.png 'Modelo BPMN do Processo 3.')
 
