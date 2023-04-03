@@ -89,6 +89,16 @@ Ambos os participantes podem, ao final do processo de troca, avaliar como foi ne
     3.2 Atualizar informações do banco de dados;
     3.3 Notificar o usuário se sua postagem foi ou não concluída.
 
+**Setor de Marketing**
+
+    3.1 Captar novos parceiros;
+    3.2 Gerenciar parceiros;
+    3.3 Enviar relatório "Usuário-Parceiro" para parceiros.
+
+**Parceiro**
+
+    3.1 Custear o sistema.
+
 ## 3. Modelagem do processo de negócio
 
 ### 3.1. Análise da situação atual
