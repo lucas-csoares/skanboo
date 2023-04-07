@@ -164,7 +164,7 @@ O usuário deve acessar o status de negociações e selecionar a negociação qu
 
 Descrever aqui cada uma das propriedades das atividades de cada um dos processos. Devem estar relacionadas com o modelo de processo apresentado anteriormente.
 
-#### Processo 1 – [Cadastro de usuário](#331-processo-1-–-cadastro-de-usuário)
+#### Processo 1 – Cadastro de usuário
 
 **Iniciar cadastro**
 
@@ -197,7 +197,7 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 | Data de Nascimento | Data           | Formato dd/mm/aaaa e anterior a data corrente                                   |                   |
 | CPF                | Número         | 11 números                                                                      |                   |
 
-#### Processo 2 – [Gerenciar produtos](#332-processo-2-–-gerenciar-produtos)
+#### Processo 2 – Gerenciar produtos
 
 **Consultar produtos**
 
@@ -226,7 +226,7 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 | Adicionar fotos    | Arquivo          | No máximo 5 fotos                          | Fotos atuais      |
 | Categoria produto  | Múltipla escolha | No mínimo 1 categoria deve ser selecionada | Seleção atual     |
 
-#### Processo 3 – [Cooptar parceiros](#333-processo-3-–-cooptar-parceiros)
+#### Processo 3 – Cooptar parceiros
 
 **Nome da atividade 1**
 
@@ -234,7 +234,7 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 | --------- | -------- | -------------- | ----------------- |
 |           |          |                |                   |
 
-#### Processo 4 – [Troca de objetos entre usuários](#334-processo-4-–-troca-de-objetos-entre-usuários)
+#### Processo 4 – Troca de objetos entre usuários
 
 **Nome da atividade 1**
 
@@ -242,7 +242,7 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 | --------- | -------- | -------------- | ----------------- |
 |           |          |                |                   |
 
-#### Processo 5 – [Avaliação do usuário](#335-processo-5-–-avaliação-do-usuário)
+#### Processo 5 – Avaliação do usuário
 
 **Nome da atividade 1**
 
