@@ -74,14 +74,14 @@ Todo o processo de negociação e eventual troca é realizado entre **usuários*
 
     1.1 Publica seu produto na plataforma;
     1.2 Aceita ou recusa ofertas;
-    1.3 Informa se quer receber um produto específico ou outras ofertas.
+    1.3 Informa se quer receber um produto específico ou outras ofertas;
+    1.4 Avaliar negociação com outro usuário.
 
 **Usuário 2**
 
     2.1 Oferece um objeto seu em troca de outro publicado no site;
-    2.2 Caso sua oferta seja aceita ele pode conversar com o usuário 1.
-
-Ambos os participantes podem, ao final do processo de troca, avaliar como foi negociar com um determinado usuário, de modo que os bons usuários sejam reconhecidos. Além disso, durante o processo de cadastro ou atualização das informações de um produto, a **equipe sKanboo** é responsável por avaliar o conteúdo da postagem antes que ela seja feita.
+    2.2 Caso sua oferta seja aceita ele pode conversar com o usuário 1;
+    2.3 Avaliar negociação com outro usuário.
 
 **Equipe sKanboo**
 
@@ -91,13 +91,13 @@ Ambos os participantes podem, ao final do processo de troca, avaliar como foi ne
 
 **Setor de Marketing**
 
-    3.1 Captar novos parceiros;
-    3.2 Gerenciar parceiros;
-    3.3 Enviar relatório "Usuário-Parceiro" para parceiros.
+    4.1 Captar novos parceiros;
+    4.2 Gerenciar parceiros;
+    4.3 Enviar relatório "Usuário-Parceiro" para parceiros.
 
 **Parceiro**
 
-    3.1 Custear o sistema.
+    5.1 Custear o sistema.
 
 ## 3. Modelagem do processo de negócio
 
@@ -164,7 +164,7 @@ O usuário deve acessar o status de negociações e selecionar a negociação qu
 
 Descrever aqui cada uma das propriedades das atividades de cada um dos processos. Devem estar relacionadas com o modelo de processo apresentado anteriormente.
 
-#### Processo 1 – Cadastro de usuário
+#### Processo 1 – [Cadastro de usuário](#331-processo-1-–-cadastro-de-usuário)
 
 **Iniciar cadastro**
 
@@ -197,21 +197,58 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 | Data de Nascimento | Data           | Formato dd/mm/aaaa e anterior a data corrente                                   |                   |
 | CPF                | Número         | 11 números                                                                      |                   |
 
-#### Processo 2 – NOME DO PROCESSO
+#### Processo 2 – [Gerenciar produtos](#332-processo-2-–-gerenciar-produtos)
+
+**Consultar produtos**
+
+| **Campo**         | **Tipo** | **Restrições** | **Valor default** |
+| ----------------- | -------- | -------------- | ----------------- |
+| Editar            | Link     | Link único     | -                 |
+| Adicionar produto | Link     | Link único     | -                 |
+
+**Preencher informações de cadastro**
+
+| **Campo**          | **Tipo**         | **Restrições**                             | **Valor default** |
+| ------------------ | ---------------- | ------------------------------------------ | ----------------- |
+| Título da postagem | Caixa de texto   | Máximo de 30 caracteres                    | -                 |
+| Conteúdo           | Caixa de texto   | Máximo de 140 caracteres                   | -                 |
+| Opções de oferta   | Seleção única    | -                                          | -                 |
+| Adicionar fotos    | Arquivo          | No máximo 5 fotos                          | -                 |
+| Categoria produto  | Múltipla escolha | No mínimo 1 categoria deve ser selecionada | -                 |
+
+**Atualizar informações**
+
+| **Campo**          | **Tipo**         | **Restrições**                             | **Valor default** |
+| ------------------ | ---------------- | ------------------------------------------ | ----------------- |
+| Título da postagem | Caixa de texto   | Máximo de 30 caracteres                    | Informação atual  |
+| Conteúdo           | Caixa de texto   | Máximo de 140 caracteres                   | Informação atual  |
+| Opções de oferta   | Seleção única    | -                                          | Seleção atual     |
+| Adicionar fotos    | Arquivo          | No máximo 5 fotos                          | Fotos atuais      |
+| Categoria produto  | Múltipla escolha | No mínimo 1 categoria deve ser selecionada | Seleção atual     |
+
+#### Processo 3 – [Cooptar parceiros](#333-processo-3-–-cooptar-parceiros)
 
 **Nome da atividade 1**
 
-| **Campo**       | **Tipo**                                                                                                      | **Restrições** | **Valor default** |
-| --------------- | ------------------------------------------------------------------------------------------------------------- | -------------- | ----------------- |
-| [Nome do campo] | [Área de texto, Caixa de texto, Número, Data, Imagem, Seleção única, Múltipla escolha, Arquivo, Link, Tabela] |                |                   |
-|                 |                                                                                                               |                |
+| **Campo** | **Tipo** | **Restrições** | **Valor default** |
+| --------- | -------- | -------------- | ----------------- |
+|           |          |                |                   |
 
-**Nome da atividade 2**
+#### Processo 4 – [Troca de objetos entre usuários](#334-processo-4-–-troca-de-objetos-entre-usuários)
 
-| **Campo**       | **Tipo**                                                                                                      | **Restrições** | **Valor default** |
-| --------------- | ------------------------------------------------------------------------------------------------------------- | -------------- | ----------------- |
-| [Nome do campo] | [Área de texto, Caixa de texto, Número, Data, Imagem, Seleção única, Múltipla escolha, Arquivo, Link, Tabela] |                |                   |
-|                 |                                                                                                               |                |                   |
+**Nome da atividade 1**
+
+| **Campo** | **Tipo** | **Restrições** | **Valor default** |
+| --------- | -------- | -------------- | ----------------- |
+|           |          |                |                   |
+
+#### Processo 5 – [Avaliação do usuário](#335-processo-5-–-avaliação-do-usuário)
+
+**Nome da atividade 1**
+
+| **Campo** | **Tipo** | **Restrições** | **Valor default** |
+| --------- | -------- | -------------- | ----------------- |
+|           |          |                |                   |
 
 ### 4.2. Tecnologias
 
