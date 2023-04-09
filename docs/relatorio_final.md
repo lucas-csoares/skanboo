@@ -170,12 +170,12 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 
 | **Campo**        | **Tipo**         | **Restrições**    | **Valor default** |
 | ---------------- | ---------------- | ----------------- | ----------------- |
-| E-mail           | Caixa de texto   | Formato de e-mail |                   |
-| Confirmar e-mail | Caixa de texto   | Formato de e-mail |                   |
-| Estado           | Caixa de seleção | Um único estado   |                   |
-| Não sou um robô  | Seleção única    | Um único click    |                   |
+| E-mail           | Caixa de texto   | Formato de e-mail |-                   |
+| Confirmar e-mail | Caixa de texto   | Formato de e-mail |-                   |
+| Estado           | Caixa de seleção | Um único estado   |-                   |
+| Não sou um robô  | Seleção única    | Um único click    |-                   |
 
-**Enviar e-mail de confirmação**
+<!-- **Enviar e-mail de confirmação**
 
 | **Campo** | **Tipo** | **Restrições** | **Valor default** |
 | --------- | -------- | -------------- | ----------------- |
@@ -185,17 +185,17 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 
 | **Campo**        | **Tipo** | **Restrições** | **Valor default** |
 | ---------------- | -------- | -------------- | ----------------- |
-| Confirmar e-mail | Link     | Link único     | Not               |
+| Confirmar e-mail | Link     | Link único     | Not               | -->
 
 **Completar cadastro**
 
 | **Campo**          | **Tipo**       | **Restrições**                                                                  | **Valor default** |
 | ------------------ | -------------- | ------------------------------------------------------------------------------- | ----------------- |
-| Usuário            | Caixa de texto | Mínimo 8 caracteres do tipo alfanumérico                                        |                   |
-| Senha              | Caixa de texto | Mínimo 12 caracteres com no mínimo uma letra, um número e um caractere especial |                   |
-| Confirmar Senha    | Caixa de texto | Mínimo 12 caracteres com no mínimo uma letra, um número e um caractere especial |                   |
-| Data de Nascimento | Data           | Formato dd/mm/aaaa e anterior a data corrente                                   |                   |
-| CPF                | Número         | 11 números                                                                      |                   |
+| Usuário            | Caixa de texto | Mínimo 8 caracteres do tipo alfanumérico                                        |-                   |
+| Senha              | Caixa de texto | Mínimo 12 caracteres com no mínimo uma letra, um número e um caractere especial |-                   |
+| Confirmar Senha    | Caixa de texto | Mínimo 12 caracteres com no mínimo uma letra, um número e um caractere especial |-                   |
+| Data de Nascimento | Data           | Formato dd/mm/aaaa e anterior a data corrente                                   |-                   |
+| CPF                | Número         | 11 números                                                                      |-                   |
 
 #### Processo 2 – Gerenciar produtos
 
