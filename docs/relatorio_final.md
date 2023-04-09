@@ -250,11 +250,11 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 
 **Avaliar negociação**
 
-| **Campo**       | **Tipo**         | **Restrições** | **Valor default** |
-| --------------- | ---------------- | -------------- | ----------------- |
-| Avaliar serviço | Múltipla escolha | Obrigatório    | -                 |
+| **Campo**       | **Tipo**      | **Restrições** | **Valor default** |
+| --------------- | ------------- | -------------- | ----------------- |
+| Avaliar serviço | Seleção única | Obrigatório    | -                 |
 
-**Comentar avaliação**
+**Enviar comentário**
 
 | **Campo**  | **Tipo**       | **Restrições**           | **Valor default** |
 | ---------- | -------------- | ------------------------ | ----------------- |
