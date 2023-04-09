@@ -228,11 +228,15 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 
 #### Processo 3 – Cooptar parceiros
 
-**Nome da atividade 1**
+**Cadastrar parceiro**
 
-| **Campo** | **Tipo** | **Restrições** | **Valor default** |
-| --------- | -------- | -------------- | ----------------- |
-|           |          |                |                   |
+| **Campo**          | **Tipo**         | **Restrições**                             | **Valor default** |
+| ------------------ | ---------------- | ------------------------------------------ | ----------------- |
+| Nome da empresa    | Caixa de texto   | -                                          | -                 |
+| E-mail             | Caixa de texto   | Formato de e-mail                          | -                 |
+| CNPJ               | Número           | Máximo de 14 dígitos                       | -                 |
+| Plano de parceria  | Seleção única    | No mínimo 1 categoria deve ser selecionada | Standard          |
+| Contrato           | Arquivo          | No máximo 5 PDF                            | -                 |
 
 #### Processo 4 – Troca de objetos entre usuários
 
