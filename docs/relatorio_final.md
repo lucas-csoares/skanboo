@@ -251,8 +251,8 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 **Avaliar negociação**
 
 | **Campo** | **Tipo** | **Restrições** | **Valor default** |
-| Avaliação do serviço | Múltipla escolha | Obrigatório | - |
-| | | | |
+| --------- | -------- | -------------- | ----------------- |
+|           |          |                |                   |
 
 ### 4.2. Tecnologias
 
