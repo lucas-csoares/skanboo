@@ -240,11 +240,28 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 
 #### Processo 4 – Troca de objetos entre usuários
 
-**Nome da atividade 1**
+**Oferecer Objeto para Troca**
 
-| **Campo** | **Tipo** | **Restrições** | **Valor default** |
-| --------- | -------- | -------------- | ----------------- |
-|           |          |                |                   |
+| **Campo**           | **Tipo**         | **Restrições**           | **Valor default** |
+| ---------           | --------         | --------------           | ----------------- |
+| Nome do objeto      | Caixa de texto   | Máximo de 30 caracteres  |                   |
+| Descrição do objeto | Caixa de texto   | Máximo de 140 caracteres |                   |
+| Categoria           | Múltipla escolha | -                        |                   |
+| Estado              | Multipla escolha | -                        |                   |
+| Cidade              | Multipla escolha | -                        |                   |
+| CEP                 | Caixa de texto   | Formato de CEP           |                   |
+
+**Enviar Recusa**
+
+| **Campo** | **Tipo**      | **Restrições** | **Valor default** |
+| --------- | --------      | -------------- | ----------------- |
+| Recusar   | Seleção única | -              |                   |
+
+**Concordar com os Termos**
+
+| **Campo** | **Tipo**      | **Restrições** | **Valor default** |
+| --------- | --------      | -------------- | ----------------- |
+| Concordar | Seleção única | -              |                   |
 
 #### Processo 5 – Avaliação do usuário
 
