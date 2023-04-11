@@ -212,7 +212,7 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 | Conteúdo           | Caixa de texto   | Máximo de 140 caracteres                                                                | Informação atual  |
 | Opções de oferta   | Seleção única    | [Definir produto desejado, Aberto a ofertas]                                            | Seleção atual     |
 | Adicionar fotos    | Arquivo          | Máximo de 5 fotos                                                                       | Fotos atuais      |
-| Categoria produto  | Seleção múltipla | [Eletrônicos, Moda e beleza, Esportes, Música, Produtos de casa, Serviços, Video Games] | Categorias atual  |
+| Categoria produto  | Seleção múltipla | [Eletrônicos, Moda e beleza, Esportes, Música, Produtos de casa, Serviços, Video Games] | Categorias atuais  |
 
 #### Processo 3 – Cooptar parceiros
 
