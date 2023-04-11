@@ -138,7 +138,7 @@ O usuário é capaz de se cadastrar Na página de cadastro preenchendo os campos
 
 O usuário é capaz de adicionar um produto ou atualizar as informações de produto previamente cadastrado. Em ambos o processos, após cadastro ou atualização das informações, a equipe do **sKanboo** avalia o conteúdo da postagem e define se ela será ou não feita. Caso ela seja feita, as informações do banco de dados são atualizadas, adicionando o novo produto ou alterando as informações de um produto cadastrado e, em seguida, é enviada uma notificação ao usuário que a postagem foi realizada. Caso contrário, a postagem não é feita e o usuário recebe uma notificação informando o motivo pelo qual o processo foi abortado.
 
-![Processo 2 – Gerenciar produtos](imagens/gerenciarProduto-rev02.png "Modelo BPMN do Processo 2.")
+![Processo 2 – Gerenciar produtos](imagens/gerenciarProduto-rev03.png "Modelo BPMN do Processo 2.")
 
 ### 3.3.3 Processo 3 – Cooptar parceiros
 
@@ -174,18 +174,6 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 | Confirmar e-mail | Caixa de texto   | Formato de e-mail | -                 |
 | Estado           | Caixa de seleção | Um único estado   | -                 |
 | Não sou um robô  | Seleção única    | Um único click    | -                 |
-
-<!-- **Enviar e-mail de confirmação**
-
-| **Campo** | **Tipo** | **Restrições** | **Valor default** |
-| --------- | -------- | -------------- | ----------------- |
-| Continuar | Link     | Link único     |                   |
-
-**Confirmar e-mail**
-
-| **Campo**        | **Tipo** | **Restrições** | **Valor default** |
-| ---------------- | -------- | -------------- | ----------------- |
-| Confirmar e-mail | Link     | Link único     | Not               | -->
 
 **Completar cadastro**
 
