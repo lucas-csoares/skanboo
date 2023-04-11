@@ -132,31 +132,31 @@ A avaliação entre usuários é importante, pois fornece maior segurança à ou
 
 O usuário é capaz de se cadastrar Na página de cadastro preenchendo os campos "e-mail", "confirme e-mail" e "estado". Em seguida, um e-mail com link de confirmação será enviado. Em seguida, o usuário será encaminhado para a página de cadastro afim de finalizá-lo com os campos "nome", "sobrenome","nome de usuário", "senha" e "confirmar senha".
 
-![Processo 1 – Cadastro de usuário](imagens/cadastroUsuario.png "Modelo BPMN do Processo 1.")
+![Processo 1 – Cadastro de usuário](imagens/cadastroUsuario.png 'Modelo BPMN do Processo 1.')
 
 ### 3.3.2 Processo 2 – Gerenciar produtos
 
 O usuário é capaz de adicionar um produto ou atualizar as informações de produto previamente cadastrado. Em ambos o processos, após cadastro ou atualização das informações, a equipe do **sKanboo** avalia o conteúdo da postagem e define se ela será ou não feita. Caso ela seja feita, as informações do banco de dados são atualizadas, adicionando o novo produto ou alterando as informações de um produto cadastrado e, em seguida, é enviada uma notificação ao usuário que a postagem foi realizada. Caso contrário, a postagem não é feita e o usuário recebe uma notificação informando o motivo pelo qual o processo foi abortado.
 
-![Processo 2 – Gerenciar produtos](imagens/gerenciarProduto-rev03.png "Modelo BPMN do Processo 2.")
+![Processo 2 – Gerenciar produtos](imagens/gerenciarProduto-rev03.png 'Modelo BPMN do Processo 2.')
 
 ### 3.3.3 Processo 3 – Cooptar parceiros
 
 O setor de Marketing irá enviar uma proposta de parceria para o parceiro selecionado. Este parceiro deve decidir se vai aceitar ou nao proposta, caso não seja aceita o processo será encerrado. Caso contrário, o setor de Marketing deve realizar o cadastro do novo parceiro e, a partir disto, o sistema passará automaticamente a divulgar este parceiro na plataforma do **sKanboo** e calcular a quantidade de interação (cliques) dos usuários com os anúncios deste determinado parceiro. Ao final de todo mês será gerado um relatório de "Interação Usuário-Parceiro", que deve ser baixado pelo setor de Marketing e enviado ao parceiro.
 
-![Processo 3 - Cooptar parceiros](imagens/cooptarParceiros.png "Modelo BPMN do Processo 3.")
+![Processo 3 - Cooptar parceiros](imagens/cooptarParceiros.png 'Modelo BPMN do Processo 3.')
 
 ### 3.3.4 Processo 4 – Troca de objetos entre usuários
 
 O usuário 2 deve selecionar qual produto está interessado em receber em troca. Em seguida, ele deve enviar uma proposta afim de apresentar qual produto está oferecendo em troca do produto que ele deseja receber. Caso o usuário 1 aceite a proposta, ele abre chat para negociação. Quando ambos os usuários concordarem com os termos, devem enviar os produtos.
 
-![Exemplo de um Modelo BPMN do PROCESSO 2](imagens/processoTrocaUsuarios.png "Modelo BPMN do Processo 4.")
+![Exemplo de um Modelo BPMN do PROCESSO 2](imagens/processoTrocaUsuarios.png 'Modelo BPMN do Processo 4.')
 
 ### 3.3.5 Processo 5 – Avaliação do usuário
 
 O usuário deve acessar o status de negociações e selecionar a negociação que quer avaliar. Em seguida, pode deixar avaliação positiva, neutra ou negativa e escrever um comentário.
 
-![Processo 5 – Avaliação do usuário](imagens/avaliacaoUsuario.png "Modelo BPMN do Processo 5.")
+![Processo 5 – Avaliação do usuário](imagens/avaliacaoUsuario.png 'Modelo BPMN do Processo 5.')
 
 ## 4. Projeto da Solução
 
@@ -201,8 +201,8 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 | Título da postagem | Caixa de texto   | Máximo de 30 caracteres                    | -                 |
 | Conteúdo           | Caixa de texto   | Máximo de 140 caracteres                   | -                 |
 | Opções de oferta   | Seleção única    | -                                          | -                 |
-| Adicionar fotos    | Arquivo          | No máximo 5 fotos                          | -                 |
-| Categoria produto  | Múltipla escolha | No mínimo 1 categoria deve ser selecionada | -                 |
+| Adicionar fotos    | Arquivo          | Máximo de 5 fotos                          | -                 |
+| Categoria produto  | Seleção múltipla | No mínimo 1 categoria deve ser selecionada | -                 |
 
 **Atualizar informações**
 
@@ -211,8 +211,8 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 | Título da postagem | Caixa de texto   | Máximo de 30 caracteres                    | Informação atual  |
 | Conteúdo           | Caixa de texto   | Máximo de 140 caracteres                   | Informação atual  |
 | Opções de oferta   | Seleção única    | -                                          | Seleção atual     |
-| Adicionar fotos    | Arquivo          | No máximo 5 fotos                          | Fotos atuais      |
-| Categoria produto  | Múltipla escolha | No mínimo 1 categoria deve ser selecionada | Seleção atual     |
+| Adicionar fotos    | Arquivo          | Máximo de 5 fotos                          | Fotos atuais      |
+| Categoria produto  | Seleção múltipla | No mínimo 1 categoria deve ser selecionada | Categorias atual  |
 
 #### Processo 3 – Cooptar parceiros
 
@@ -231,24 +231,24 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 **Oferecer Objeto para Troca**
 
 | **Campo**           | **Tipo**         | **Restrições**           | **Valor default** |
-| ---------           | --------         | --------------           | ----------------- |
+| ------------------- | ---------------- | ------------------------ | ----------------- |
 | Nome do objeto      | Caixa de texto   | Máximo de 30 caracteres  |                   |
 | Descrição do objeto | Caixa de texto   | Máximo de 140 caracteres |                   |
-| Categoria           | Múltipla escolha | -                        |                   |
-| Estado              | Multipla escolha | -                        |                   |
-| Cidade              | Multipla escolha | -                        |                   |
+| Categoria           | Seleção múltipla | -                        |                   |
+| Estado              | Seleção múltipla | -                        |                   |
+| Cidade              | Seleção múltipla | -                        |                   |
 | CEP                 | Caixa de texto   | Formato de CEP           |                   |
 
 **Enviar Recusa**
 
 | **Campo** | **Tipo**      | **Restrições** | **Valor default** |
-| --------- | --------      | -------------- | ----------------- |
+| --------- | ------------- | -------------- | ----------------- |
 | Recusar   | Seleção única | -              |                   |
 
 **Concordar com os Termos**
 
 | **Campo** | **Tipo**      | **Restrições** | **Valor default** |
-| --------- | --------      | -------------- | ----------------- |
+| --------- | ------------- | -------------- | ----------------- |
 | Concordar | Seleção única | -              |                   |
 
 #### Processo 5 – Avaliação do usuário
@@ -273,7 +273,7 @@ Descreva qual(is) tecnologias você vai usar para resolver o seu problema, ou se
 
 Apresente o modelo de dados por meio de um modelo relacional ou Diagrama de Entidade-Relacionamento (DER) que contemple todos conceitos e atributos apresentados item anterior.
 
-![Diagrama de Entidade Relacionamento de Exemplo](imagens/er_diagram.png "Diagrama de Entidade Relacionamento de Exemplo")
+![Diagrama de Entidade Relacionamento de Exemplo](imagens/er_diagram.png 'Diagrama de Entidade Relacionamento de Exemplo')
 
 ## 6. Indicadores de desempenho
 
