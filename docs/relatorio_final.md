@@ -199,7 +199,7 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 | **Campo**          | **Tipo**         | **Restrições**                                                                          | **Valor default** |
 | ------------------ | ---------------- | --------------------------------------------------------------------------------------- | ----------------- |
 | Título da postagem | Caixa de texto   | Máximo de 30 caracteres                                                                 | -                 |
-| Conteúdo           | Caixa de texto   | Máximo de 140 caracteres                                                                | -                 |
+| Descrição          | Caixa de texto   | Máximo de 140 caracteres                                                                | -                 |
 | Opções de oferta   | Seleção única    | [Definir produto desejado, Aberto a ofertas]                                            | -                 |
 | Adicionar fotos    | Arquivo          | Máximo de 5 fotos                                                                       | -                 |
 | Categoria produto  | Seleção múltipla | [Eletrônicos, Moda e beleza, Esportes, Música, Produtos de casa, Serviços, Video Games] | -                 |
@@ -209,7 +209,7 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 | **Campo**          | **Tipo**         | **Restrições**                                                                          | **Valor default** |
 | ------------------ | ---------------- | --------------------------------------------------------------------------------------- | ----------------- |
 | Título da postagem | Caixa de texto   | Máximo de 30 caracteres                                                                 | Informação atual  |
-| Conteúdo           | Caixa de texto   | Máximo de 140 caracteres                                                                | Informação atual  |
+| Descrição          | Caixa de texto   | Máximo de 140 caracteres                                                                | Informação atual  |
 | Opções de oferta   | Seleção única    | [Definir produto desejado, Aberto a ofertas]                                            | Seleção atual     |
 | Adicionar fotos    | Arquivo          | Máximo de 5 fotos                                                                       | Fotos atuais      |
 | Categoria produto  | Seleção múltipla | [Eletrônicos, Moda e beleza, Esportes, Música, Produtos de casa, Serviços, Video Games] | Categorias atuais  |
