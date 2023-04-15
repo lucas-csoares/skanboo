@@ -172,14 +172,14 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 | ---------------- | ---------------- | ----------------- | ----------------- |
 | E-mail           | Caixa de texto   | Formato de e-mail | -                 |
 | Confirmar e-mail | Caixa de texto   | Formato de e-mail | -                 |
-| Estado           | Caixa de seleção | Um único estado   | -                 |
+| UF           | Seleção única | Unidades Federativas do Brasil   | -                 |
 | Não sou um robô  | Seleção única    | Um único click    | -                 |
 
 **Completar cadastro**
 
 | **Campo**          | **Tipo**       | **Restrições**                                                                  | **Valor default** |
 | ------------------ | -------------- | ------------------------------------------------------------------------------- | ----------------- |
-| Usuário            | Caixa de texto | Mínimo 8 caracteres do tipo alfanumérico                                        | -                 |
+| Usuário            | Caixa de texto | Mínimo 8 caracteres do tipo alfabético ou alfanumérico                                        | -                 |
 | Senha              | Caixa de texto | Mínimo 12 caracteres com no mínimo uma letra, um número e um caractere especial | -                 |
 | Confirmar Senha    | Caixa de texto | Mínimo 12 caracteres com no mínimo uma letra, um número e um caractere especial | -                 |
 | Data de Nascimento | Data           | Formato dd/mm/aaaa e anterior a data corrente                                   | -                 |
