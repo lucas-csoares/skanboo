@@ -150,7 +150,7 @@ O setor de Marketing irá enviar uma proposta de parceria para o parceiro seleci
 
 O usuário 2 deve selecionar qual produto está interessado em receber em troca. Em seguida, ele deve enviar uma proposta afim de apresentar qual produto está oferecendo em troca do produto que ele deseja receber. Caso o usuário 1 aceite a proposta, ele abre chat para negociação. Quando ambos os usuários concordarem com os termos, devem enviar os produtos.
 
-![Exemplo de um Modelo BPMN do PROCESSO 2](imagens/processoTrocaUsuarios.png 'Modelo BPMN do Processo 4.')
+![Processo 4 – Troca de objetos entre usuários](imagens/processoTrocaUsuarios.png 'Modelo BPMN do Processo 4.')
 
 ### 3.3.5 Processo 5 – Avaliação do usuário
 
@@ -274,6 +274,10 @@ Descreva qual(is) tecnologias você vai usar para resolver o seu problema, ou se
 Apresente o modelo de dados por meio de um modelo relacional ou Diagrama de Entidade-Relacionamento (DER) que contemple todos conceitos e atributos apresentados item anterior.
 
 ![Diagrama de Entidade Relacionamento de Exemplo](imagens/er_diagram.png 'Diagrama de Entidade Relacionamento de Exemplo')
+
+## 5.4. Modelo de Trocas (provisório)
+
+![5.4. Modelo de Entidade Relacionamento - Trocas (provisório)](imagens/modeloProvisorioTrocas.png 'Diagrama de Entidade Relacionamento da Parte de Trocas.')
 
 ## 6. Indicadores de desempenho
 
