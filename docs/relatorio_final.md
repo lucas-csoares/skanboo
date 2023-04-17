@@ -223,7 +223,7 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 | Nome da empresa   | Caixa de texto | -                                          | -                 |
 | E-mail            | Caixa de texto | Formato de e-mail                          | -                 |
 | CNPJ              | Número         | Máximo de 14 dígitos                       | -                 |
-| Plano de parceria | Seleção única  | No mínimo 1 categoria deve ser selecionada | Standard          |
+| Plano de parceria | Seleção única  | Standard, Premium, Basic                   | Standard          |
 | Contrato          | Arquivo        | No máximo 5 PDF                            | -                 |
 
 #### Processo 4 – Troca de objetos entre usuários
