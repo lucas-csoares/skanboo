@@ -138,7 +138,7 @@ O usuário é capaz de se cadastrar Na página de cadastro preenchendo os campos
 
 O usuário é capaz de adicionar um produto ou atualizar as informações de produto previamente cadastrado. Em ambos o processos, após cadastro ou atualização das informações, a equipe do **sKanboo** avalia o conteúdo da postagem e define se ela será ou não feita. Caso ela seja feita, as informações do banco de dados são atualizadas, adicionando o novo produto ou alterando as informações de um produto cadastrado e, em seguida, é enviada uma notificação ao usuário que a postagem foi realizada. Caso contrário, a postagem não é feita e o usuário recebe uma notificação informando o motivo pelo qual o processo foi abortado.
 
-![Processo 2 – Gerenciar produtos](imagens/gerenciarProduto-rev03.png 'Modelo BPMN do Processo 2.')
+![Processo 2 – Gerenciar produtos](imagens/gerenciarProduto.png 'Modelo BPMN do Processo 2.')
 
 ### 3.3.3 Processo 3 – Cooptar parceiros
 
@@ -168,18 +168,18 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 
 **Iniciar cadastro**
 
-| **Campo**        | **Tipo**         | **Restrições**    | **Valor default** |
-| ---------------- | ---------------- | ----------------- | ----------------- |
-| E-mail           | Caixa de texto   | Formato de e-mail | -                 |
-| Confirmar e-mail | Caixa de texto   | Formato de e-mail | -                 |
-| UF           | Seleção única | Unidades Federativas do Brasil   | -                 |
-| Não sou um robô  | Seleção única    | Um único click    | -                 |
+| **Campo**        | **Tipo**       | **Restrições**                 | **Valor default** |
+| ---------------- | -------------- | ------------------------------ | ----------------- |
+| E-mail           | Caixa de texto | Formato de e-mail              | -                 |
+| Confirmar e-mail | Caixa de texto | Formato de e-mail              | -                 |
+| UF               | Seleção única  | Unidades Federativas do Brasil | -                 |
+| Não sou um robô  | Seleção única  | Um único click                 | -                 |
 
 **Completar cadastro**
 
 | **Campo**          | **Tipo**       | **Restrições**                                                                  | **Valor default** |
 | ------------------ | -------------- | ------------------------------------------------------------------------------- | ----------------- |
-| Usuário            | Caixa de texto | Mínimo 8 caracteres do tipo alfabético ou alfanumérico                                        | -                 |
+| Usuário            | Caixa de texto | Mínimo 8 caracteres do tipo alfabético ou alfanumérico                          | -                 |
 | Senha              | Caixa de texto | Mínimo 12 caracteres com no mínimo uma letra, um número e um caractere especial | -                 |
 | Confirmar Senha    | Caixa de texto | Mínimo 12 caracteres com no mínimo uma letra, um número e um caractere especial | -                 |
 | Data de Nascimento | Data           | Formato dd/mm/aaaa e anterior a data corrente                                   | -                 |
@@ -212,19 +212,19 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 | Descrição          | Caixa de texto   | Máximo de 140 caracteres                                                                | Informação atual  |
 | Opções de oferta   | Seleção única    | [Definir produto desejado, Aberto a ofertas]                                            | Seleção atual     |
 | Adicionar fotos    | Arquivo          | Máximo de 5 fotos                                                                       | Fotos atuais      |
-| Categoria produto  | Seleção múltipla | [Eletrônicos, Moda e beleza, Esportes, Música, Produtos de casa, Serviços, Video Games] | Categorias atuais  |
+| Categoria produto  | Seleção múltipla | [Eletrônicos, Moda e beleza, Esportes, Música, Produtos de casa, Serviços, Video Games] | Categorias atuais |
 
 #### Processo 3 – Cooptar parceiros
 
 **Cadastrar parceiro**
 
-| **Campo**         | **Tipo**       | **Restrições**                             | **Valor default** |
-| ----------------- | -------------- | ------------------------------------------ | ----------------- |
-| Nome da empresa   | Caixa de texto | -                                          | -                 |
-| E-mail            | Caixa de texto | Formato de e-mail                          | -                 |
-| CNPJ              | Número         | Máximo de 14 dígitos                       | -                 |
-| Plano de parceria | Seleção única  | Standard, Premium, Basic                   | Standard          |
-| Contrato          | Arquivo        | No máximo 5 PDF                            | -                 |
+| **Campo**         | **Tipo**       | **Restrições**           | **Valor default** |
+| ----------------- | -------------- | ------------------------ | ----------------- |
+| Nome da empresa   | Caixa de texto | -                        | -                 |
+| E-mail            | Caixa de texto | Formato de e-mail        | -                 |
+| CNPJ              | Número         | Máximo de 14 dígitos     | -                 |
+| Plano de parceria | Seleção única  | Standard, Premium, Basic | Standard          |
+| Contrato          | Arquivo        | No máximo 5 PDF          | -                 |
 
 #### Processo 4 – Troca de objetos entre usuários
 
@@ -271,13 +271,9 @@ Descreva qual(is) tecnologias você vai usar para resolver o seu problema, ou se
 
 ## 5. Modelo de dados
 
-Apresente o modelo de dados por meio de um modelo relacional ou Diagrama de Entidade-Relacionamento (DER) que contemple todos conceitos e atributos apresentados item anterior.
+A seguir é apresentado o Diagrama de Entidade-Relacionamento (DER) do projeto.
 
-![Diagrama de Entidade Relacionamento de Exemplo](imagens/er_diagram.png 'Diagrama de Entidade Relacionamento de Exemplo')
-
-## 5.4. Modelo de Trocas (provisório)
-
-![5.4. Modelo de Entidade Relacionamento - Trocas (provisório)](imagens/modeloProvisorioTrocas.png 'Diagrama de Entidade Relacionamento da Parte de Trocas.')
+![Diagrama de Entidade Relacionamento](imagens/diagrama-entidade-relacionamento.png 'Diagrama de Entidade Relacionamento')
 
 ## 6. Indicadores de desempenho
 
