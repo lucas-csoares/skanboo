@@ -160,7 +160,7 @@ O usuário deve acessar o status de negociações e selecionar a negociação qu
 
 ## 4. Projeto da Solução
 
-### 4.1. Detalhamento das atividades
+### 4.1. Detalhamento das atividades 
 
 Descrever aqui cada uma das propriedades das atividades de cada um dos processos. Devem estar relacionadas com o modelo de processo apresentado anteriormente.
 
