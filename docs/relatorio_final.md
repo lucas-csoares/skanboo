@@ -267,7 +267,20 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 
 ### 4.2. Tecnologias
 
-Descreva qual(is) tecnologias você vai usar para resolver o seu problema, ou seja implementar a sua solução. Liste todas as tecnologias envolvidas, linguagens a serem utilizadas, serviços web, frameworks, bibliotecas, IDEs de desenvolvimento, e ferramentas. Apresente também uma figura explicando como as tecnologias estão relacionadas ou como uma interação do usuário com o sistema vai ser conduzida, por onde ela passa até retornar uma resposta ao usuário.
+As tecnologias que serão utilizadas para resolição do problema são:
+
+- Github;
+- Figma;
+- Photoshop;
+- Whatsapp;
+- Discord; 
+- Visual Studio Code;
+- HTML;
+- CSS;
+- Javascript;
+- Springboot;
+- Java;
+- SQL
 
 ## 5. Modelo de dados
 
