@@ -274,6 +274,13 @@ As tecnologias que serão utilizadas para resolição do problema são:
 - Photoshop;
 - Whatsapp;
 - Discord; 
+- Visual Studio Code;
+- HTML;
+- CSS;
+- Javascript;
+- Springboot;
+- Java;
+- SQL
 
 ## 5. Modelo de dados
 
