@@ -128,7 +128,7 @@ A avaliação entre usuários é importante, pois fornece maior segurança à ou
 
 ### 3.3. Modelagem dos Processos
 
-#### 3.3.1 Processo 1 – Cadastro de usuário
+### 3.3.1 Processo 1 – Cadastro de usuário
 
 O usuário é capaz de se cadastrar Na página de cadastro preenchendo os campos "e-mail", "confirme e-mail" e "estado". Em seguida, um e-mail com link de confirmação será enviado. Em seguida, o usuário será encaminhado para a página de cadastro afim de finalizá-lo com os campos "nome", "sobrenome","nome de usuário", "senha" e "confirmar senha".
 
