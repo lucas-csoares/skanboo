@@ -239,18 +239,6 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 | Cidade              | Seleção múltipla | -                        |                   |
 | CEP                 | Caixa de texto   | Formato de CEP           |                   |
 
-**Enviar Recusa**
-
-| **Campo** | **Tipo**      | **Restrições** | **Valor default** |
-| --------- | ------------- | -------------- | ----------------- |
-| Recusar   | Seleção única | -              |                   |
-
-**Concordar com os Termos**
-
-| **Campo** | **Tipo**      | **Restrições** | **Valor default** |
-| --------- | ------------- | -------------- | ----------------- |
-| Concordar | Seleção única | -              |                   |
-
 #### Processo 5 – Avaliação do usuário
 
 **Avaliar negociação**
@@ -269,18 +257,18 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 
 As tecnologias que serão utilizadas para resolição do problema são:
 
-- Github;
-- Figma;
-- Photoshop;
-- Whatsapp;
-- Discord; 
-- Visual Studio Code;
-- HTML;
-- CSS;
-- Javascript;
-- Springboot;
-- Java;
-- SQL
+- Github: Usado para organizar as tarefas de cada participante do trabalho.
+- Figma: Plataforma para design gráfico, usada para criar a estilização do site.
+- Photoshop: 
+- Whatsapp: Usado para facilitar a comunicação entre os participantes do grupo.
+- Discord: Utilizado para realizar reuniões com os participantes do trabalho para organizar as tarefas.
+- Visual Studio Code: Software utilizado para programar os códigos para o trabalho e realizar commits para o Github.
+- HTML: Linguagem de programação front-end usada na base do site.
+- CSS: Linguagem de programação front-end usada para criar uma UI agradável aos usuários do site.
+- Javascript: Linguagem de programação front-end usada para a implementação de funcionalidades no site.
+- Springboot: Framework back-end usado para facilitar a conexão entre o banco de dados e o site.
+- Java: Linguagem de programação utilizada no back-end do site.
+- SQL: Linguagem de programação usada para gerenciar o banco de dados do site.
 
 ## 5. Modelo de dados
 
