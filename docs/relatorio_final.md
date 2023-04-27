@@ -272,7 +272,7 @@ As tecnologias que serão utilizadas para resolição do problema são:
 
 ## 5. Modelo de dados
 
-A seguir é apresentado o Diagrama de Entidade-Relacionamento (DER) do projeto.
+A seguir é apresentado o Diagrama de Entidade-Relacionamento (DER) do projeto desenvolvido.
 
 ![Diagrama de Entidade Relacionamento](imagens/diagrama-entidade-relacionamento.png 'Diagrama de Entidade Relacionamento')
 
