@@ -160,11 +160,11 @@ O usuário deve acessar o status de negociações e selecionar a negociação qu
 
 ## 4. Projeto da Solução
 
-### 4.1. Detalhamento das atividades 
+### 4.1. Detalhamento das atividades
 
 Descrever aqui cada uma das propriedades das atividades de cada um dos processos. Devem estar relacionadas com o modelo de processo apresentado anteriormente.
 
-#### Processo 1 – Cadastro de usuário 
+#### Processo 1 – Cadastro de usuário
 
 **Iniciar cadastro**
 
@@ -184,6 +184,8 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 | Confirmar Senha    | Caixa de texto | Mínimo 12 caracteres com no mínimo uma letra, um número e um caractere especial | -                 |
 | Data de Nascimento | Data           | Formato dd/mm/aaaa e anterior a data corrente                                   | -                 |
 | CPF                | Número         | 11 números                                                                      | -                 |
+| Foto               | Arquivo        | Máximo de 1 foto                                                                | -                 |
+| Telefone           | Caixa de texto | Telefones seguindo plano de numeração brasileiro                                | -                 |
 
 #### Processo 2 – Gerenciar produtos
 
@@ -259,7 +261,7 @@ As tecnologias que serão utilizadas para resolição do problema são:
 
 - Github: Usado para organizar as tarefas de cada participante do trabalho.
 - Figma: Plataforma para design gráfico, usada para criar a estilização do site.
-- Photoshop: 
+- Photoshop:
 - Whatsapp: Usado para facilitar a comunicação entre os participantes do grupo.
 - Discord: Utilizado para realizar reuniões com os participantes do trabalho para organizar as tarefas.
 - Visual Studio Code: Software utilizado para programar os códigos para o trabalho e realizar commits para o Github.
