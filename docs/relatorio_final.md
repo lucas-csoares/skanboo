@@ -128,7 +128,7 @@ A avaliação entre usuários é importante, pois fornece maior segurança à ou
 
 ### 3.3. Modelagem dos Processos
 
-#### 3.3.1 Processo 1 – Cadastro de usuário
+### 3.3.1 Processo 1 – Cadastro de usuário
 
 O usuário é capaz de se cadastrar Na página de cadastro preenchendo os campos "e-mail", "confirme e-mail" e "estado". Em seguida, um e-mail com link de confirmação será enviado. Em seguida, o usuário será encaminhado para a página de cadastro afim de finalizá-lo com os campos "nome", "sobrenome","nome de usuário", "senha" e "confirmar senha".
 
@@ -160,11 +160,11 @@ O usuário deve acessar o status de negociações e selecionar a negociação qu
 
 ## 4. Projeto da Solução
 
-### 4.1. Detalhamento das atividades 
+### 4.1. Detalhamento das atividades
 
 Descrever aqui cada uma das propriedades das atividades de cada um dos processos. Devem estar relacionadas com o modelo de processo apresentado anteriormente.
 
-#### Processo 1 – Cadastro de usuário 
+#### Processo 1 – Cadastro de usuário
 
 **Iniciar cadastro**
 
@@ -184,6 +184,8 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 | Confirmar Senha    | Caixa de texto | Mínimo 12 caracteres com no mínimo uma letra, um número e um caractere especial | -                 |
 | Data de Nascimento | Data           | Formato dd/mm/aaaa e anterior a data corrente                                   | -                 |
 | CPF                | Número         | 11 números                                                                      | -                 |
+| Foto               | Arquivo        | Máximo de 1 foto                                                                | -                 |
+| Telefone           | Caixa de texto | Telefones seguindo plano de numeração brasileiro                                | -                 |
 
 #### Processo 2 – Gerenciar produtos
 
@@ -239,18 +241,6 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 | Cidade              | Seleção múltipla | -                        |                   |
 | CEP                 | Caixa de texto   | Formato de CEP           |                   |
 
-**Enviar Recusa**
-
-| **Campo** | **Tipo**      | **Restrições** | **Valor default** |
-| --------- | ------------- | -------------- | ----------------- |
-| Recusar   | Seleção única | -              |                   |
-
-**Concordar com os Termos**
-
-| **Campo** | **Tipo**      | **Restrições** | **Valor default** |
-| --------- | ------------- | -------------- | ----------------- |
-| Concordar | Seleção única | -              |                   |
-
 #### Processo 5 – Avaliação do usuário
 
 **Avaliar negociação**
@@ -269,22 +259,22 @@ Descrever aqui cada uma das propriedades das atividades de cada um dos processos
 
 As tecnologias que serão utilizadas para resolição do problema são:
 
-- Github;
-- Figma;
-- Photoshop;
-- Whatsapp;
-- Discord; 
-- Visual Studio Code;
-- HTML;
-- CSS;
-- Javascript;
-- Springboot;
-- Java;
-- SQL
+- Github: Usado para organizar as tarefas de cada participante do trabalho.
+- Figma: Plataforma para design gráfico, usada para criar a estilização do site.
+- Photoshop:
+- Whatsapp: Usado para facilitar a comunicação entre os participantes do grupo.
+- Discord: Utilizado para realizar reuniões com os participantes do trabalho para organizar as tarefas.
+- Visual Studio Code: Software utilizado para programar os códigos para o trabalho e realizar commits para o Github.
+- HTML: Linguagem de programação front-end usada na base do site.
+- CSS: Linguagem de programação front-end usada para criar uma UI agradável aos usuários do site.
+- Javascript: Linguagem de programação front-end usada para a implementação de funcionalidades no site.
+- Springboot: Framework back-end usado para facilitar a conexão entre o banco de dados e o site.
+- Java: Linguagem de programação utilizada no back-end do site.
+- SQL: Linguagem de programação usada para gerenciar o banco de dados do site.
 
 ## 5. Modelo de dados
 
-A seguir é apresentado o Diagrama de Entidade-Relacionamento (DER) do projeto.
+A seguir é apresentado o Diagrama de Entidade-Relacionamento (DER) do projeto desenvolvido.
 
 ![Diagrama de Entidade Relacionamento](imagens/diagrama-entidade-relacionamento.png 'Diagrama de Entidade Relacionamento')
 
