@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
@@ -31,11 +32,11 @@ public class EnderecoUsuario {
         @Column(name = "id", unique = true)
         private Long id;
 
-        @OneToOne
-        @JoinColumn(name = "id_usuario", nullable = false, updatable = false) 
-        private Long id_usuario;
+        @OneToOne(mappedBy = "endereco")
+        @JoinColumn(name = "id_usuario", nullable = false, updatable = false)
+        private Usuario id_usuario;
 
-        @Column(name = "rua", length = 45,nullable = false)
+        @Column(name = "rua", length = 45, nullable = false)
         @NotNull
         @NotEmpty
         private String rua;
@@ -45,28 +46,27 @@ public class EnderecoUsuario {
         @NotEmpty
         private String bairro;
 
-        @Column(name="uf", length = 45, nullable=false)
+        @Column(name = "uf", length = 45, nullable = false)
         @NotNull
         @NotEmpty
         private String uf;
 
-        @Column(name="cidade", length = 45, nullable=false)
+        @Column(name = "cidade", length = 45, nullable = false)
         @NotNull
         @NotEmpty
         private String cidade;
 
-        @Column(name="numero", length = 45, nullable=false)
+        @Column(name = "numero", length = 45, nullable = false)
         @NotNull
         @NotEmpty
         private Integer numero;
 
-        @Column(name="complemento", length = 45)
+        @Column(name = "complemento", length = 45)
         private String complemento;
 
-        @Column(name="cep", length = 45, nullable=false)
+        @Column(name = "cep", length = 45, nullable = false)
         @NotNull
         @NotEmpty
         private String cep;
-
 
 }
