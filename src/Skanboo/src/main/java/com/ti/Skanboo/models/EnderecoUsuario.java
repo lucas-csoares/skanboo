@@ -55,7 +55,6 @@ public class EnderecoUsuario {
 
         @Column(name = "numero", length = 45, nullable = false)
         @NotNull
-        @NotEmpty
         private Integer numero;
 
         @Column(name = "complemento", length = 45)

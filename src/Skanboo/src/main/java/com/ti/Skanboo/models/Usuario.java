@@ -1,5 +1,10 @@
 package com.ti.Skanboo.models;
 
+import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -42,7 +47,7 @@ public class Usuario {
     @Column(name = "cpf", length = 11, nullable = false, unique = true, updatable = false)
     @NotNull
     @NotEmpty
-    private Integer cpf;
+    private String cpf;
 
     @Column(name = "email", length = 45, nullable = false, unique = true)
     @NotNull
@@ -57,18 +62,17 @@ public class Usuario {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id", referencedColumnName = "id")
+    @JsonProperty(access = Access.WRITE_ONLY)
     private EnderecoUsuario endereco = new EnderecoUsuario();
 
     @Column(name = "tipo_usuario", nullable = false)
     @NotNull
     @NotEmpty
     // todo: atributo oculto para usuario, devemos verificar como vamos tratar isso
-    private int tipoUsuario;
+    private String tipoUsuario;
 
     @Column(name = "data_nascimento", length = 8, nullable = false)
-    @NotNull
-    @NotEmpty
-    private Integer dataNascimento;
+    private LocalDate dataNascimento; //formato yyyy-mm-dd
 
     @Column(name = "foto", length = 255)
     private String foto;
@@ -76,5 +80,5 @@ public class Usuario {
     @Column(name = "telefone", length = 11, nullable = false, unique = true)
     @NotNull
     @NotEmpty
-    private Integer telefone;
+    private String telefone;
 }

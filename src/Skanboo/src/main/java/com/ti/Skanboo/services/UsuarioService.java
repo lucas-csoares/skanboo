@@ -16,26 +16,30 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    // @Autowired
-    // private EnderecoUsuarioRepository enderecoUsuarioRepository;
+    @Autowired
+    private EnderecoUsuarioRepository enderecoUsuarioRepository;
+    //todo: verificar se posso usar o repository
 
     public Usuario encontrarPorId(Long id) {
-
         Optional<Usuario> usuario = this.usuarioRepository.findById(id);
 
-        return usuario.orElseThrow(() -> new RuntimeException("Usuario nao encontrado."));
+        return usuario.orElseThrow(() -> new RuntimeException("Usuario nao encontrado!"));
     }
 
     @Transactional
-    public Usuario criarUsuario(Usuario obj) {
+    public Usuario criar(Usuario obj) {
+
+        obj.getEndereco().setId_usuario(obj);
+        this.enderecoUsuarioRepository.save(obj.getEndereco());
+
         return this.usuarioRepository.save(obj);
     }
 
     @Transactional
-    public Usuario atualizarUsuario (Usuario obj) {
+    public Usuario atualizar(Usuario obj) {
 
         Usuario novoUsuario = encontrarPorId(obj.getId());
-        
+
         novoUsuario.setNome(obj.getNome());
         novoUsuario.setEmail(obj.getEmail());
         novoUsuario.setSenha(obj.getSenha());
@@ -47,14 +51,14 @@ public class UsuarioService {
         return this.usuarioRepository.save(novoUsuario);
     }
 
-    public void deletarUsuario (Long id) {
+    public void deletar(Long id) {
 
-        encontrarPorId(id); //retorna se o usuario existe ou nao
+        encontrarPorId(id); // retorna se o usuario existe ou nao
 
         try {
             this.usuarioRepository.deleteById(id);
         } catch (Exception e) {
-            throw new RuntimeException("Nao e possivel excluir usuario pois ele possui entidades relacionadas");
+            throw new RuntimeException("Nao e possivel excluir usuario pois ele possui entidades relacionadas!");
         }
     }
 }
