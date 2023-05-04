@@ -32,7 +32,6 @@ public class EnderecoUsuario {
         private Long id;
 
         @OneToOne(mappedBy = "endereco")
-        @JoinColumn(name = "id_usuario", nullable = false, updatable = false)
         private Usuario id_usuario;
 
         @Column(name = "rua", length = 45, nullable = false)

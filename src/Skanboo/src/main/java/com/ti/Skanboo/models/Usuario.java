@@ -1,5 +1,6 @@
 package com.ti.Skanboo.models;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -54,7 +55,7 @@ public class Usuario {
     @Size(min = 6, max = 20)
     private String senha;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_endereco", referencedColumnName = "id")
     private EnderecoUsuario endereco = new EnderecoUsuario();
 
