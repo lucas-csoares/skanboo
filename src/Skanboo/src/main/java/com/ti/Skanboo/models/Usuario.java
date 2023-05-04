@@ -39,7 +39,7 @@ public class Usuario {
     @Size(min = 2, max = 100)
     private String nome;
 
-    @Column(name = "cpf", length = 11, nullable = false, unique = true)
+    @Column(name = "cpf", length = 11, nullable = false, unique = true, updatable = false)
     @NotNull
     @NotEmpty
     private Integer cpf;
@@ -62,6 +62,7 @@ public class Usuario {
     @Column(name = "tipo_usuario", nullable = false)
     @NotNull
     @NotEmpty
+    // todo: atributo oculto para usuario, devemos verificar como vamos tratar isso
     private int tipoUsuario;
 
     @Column(name = "data_nascimento", length = 8, nullable = false)
