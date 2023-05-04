@@ -56,7 +56,7 @@ public class Usuario {
     private String senha;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_endereco", referencedColumnName = "id")
+    @JoinColumn(name = "id", referencedColumnName = "id")
     private EnderecoUsuario endereco = new EnderecoUsuario();
 
     @Column(name = "tipo_usuario", nullable = false)
