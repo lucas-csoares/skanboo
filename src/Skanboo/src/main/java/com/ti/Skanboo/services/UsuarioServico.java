@@ -43,6 +43,7 @@ public class UsuarioServico {
     public Usuario updateUsuario (Usuario obj) {
 
         Usuario novoUsuario = findById(obj.getId());
+        
         novoUsuario.setNome(obj.getNome());
         novoUsuario.setEmail(obj.getEmail());
         novoUsuario.setSenha(obj.getSenha());
