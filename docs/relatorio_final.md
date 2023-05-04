@@ -261,7 +261,7 @@ As tecnologias que serão utilizadas para resolição do problema são:
 
 - Github: Usado para organizar as tarefas de cada participante do trabalho.
 - Figma: Plataforma para design gráfico, usada para criar a estilização do site.
-- Photoshop:
+- Photoshop: utilizado para o design do Style Guide.
 - Whatsapp: Usado para facilitar a comunicação entre os participantes do grupo.
 - Discord: Utilizado para realizar reuniões com os participantes do trabalho para organizar as tarefas.
 - Visual Studio Code: Software utilizado para programar os códigos para o trabalho e realizar commits para o Github.
@@ -272,6 +272,9 @@ As tecnologias que serão utilizadas para resolição do problema são:
 - Java: Linguagem de programação utilizada no back-end do site.
 - SQL: Linguagem de programação usada para gerenciar o banco de dados do site.
 
+A seguir é apresentada a arquitetura de data flow da aplicação web.
+
+![Arquitetura de data flow da aplicação web](imagens/Tecnologias.png 'Arquitetura de data flow da aplicação web')
 ## 5. Modelo de dados
 
 A seguir é apresentado o Diagrama de Entidade-Relacionamento (DER) do projeto desenvolvido.
