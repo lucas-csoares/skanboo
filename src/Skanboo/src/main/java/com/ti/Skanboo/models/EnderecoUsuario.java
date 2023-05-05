@@ -1,10 +1,12 @@
 package com.ti.Skanboo.models;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
@@ -30,8 +32,9 @@ public class EnderecoUsuario {
         @Column(name = "id", unique = true)
         private Long id;
 
-        @OneToOne(mappedBy = "endereco")
-        private Usuario id_usuario;
+        @OneToOne(cascade = CascadeType.ALL)
+        @JoinColumn(name = "id_usuario", referencedColumnName = "id", nullable = false)
+        private Usuario usuario;
 
         @Column(name = "rua", length = 45, nullable = false)
         @NotNull
