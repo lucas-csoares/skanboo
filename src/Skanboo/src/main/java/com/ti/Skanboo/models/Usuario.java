@@ -56,6 +56,7 @@ public class Usuario {
     @NotNull
     @NotEmpty
     @Size(min = 6, max = 20)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String senha;
 
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.REMOVE)
