@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ti.Skanboo.models.EnderecoUsuario;
+import com.ti.Skanboo.models.Usuario;
 import com.ti.Skanboo.repositories.EnderecoUsuarioRepository;
 
 import jakarta.transaction.Transactional;
@@ -15,6 +16,9 @@ public class EnderecoUsuarioService {
 
     @Autowired
     private EnderecoUsuarioRepository enderecoUsuarioRepository;
+
+    @Autowired
+    private UsuarioService usuarioService;
 
     public EnderecoUsuario encontrarPorId(Long id) {
 
@@ -26,9 +30,13 @@ public class EnderecoUsuarioService {
     @Transactional
     public EnderecoUsuario criar(EnderecoUsuario obj) {
 
+        Usuario usuario = this.usuarioService.encontrarPorId(obj.getUsuario().getId());
+
+        obj.setUsuario(usuario);
+
         return this.enderecoUsuarioRepository.save(obj);
     }
-
+ 
     @Transactional
     public EnderecoUsuario atualizar(EnderecoUsuario obj) {
 

@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -58,7 +57,7 @@ public class Usuario {
     @Size(min = 6, max = 20)
     private String senha;
 
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "usuario")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) // para evitar acesso ciclico as entidades
     private EnderecoUsuario endereco = new EnderecoUsuario();
 

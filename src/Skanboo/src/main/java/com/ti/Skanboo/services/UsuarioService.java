@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ti.Skanboo.models.Usuario;
-import com.ti.Skanboo.repositories.EnderecoUsuarioRepository;
 import com.ti.Skanboo.repositories.UsuarioRepository;
 
 @Service
@@ -15,10 +14,6 @@ public class UsuarioService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
-
-    @Autowired
-    private EnderecoUsuarioRepository enderecoUsuarioRepository;
-    //todo: verificar se posso usar o repository
 
     public Usuario encontrarPorId(Long id) {
         Optional<Usuario> usuario = this.usuarioRepository.findById(id);
@@ -29,8 +24,8 @@ public class UsuarioService {
     @Transactional
     public Usuario criar(Usuario obj) {
 
-        obj.getEndereco().setUsuario(obj);
-        this.enderecoUsuarioRepository.save(obj.getEndereco());
+        obj.setId(null);
+        obj.setEndereco(null);
 
         return this.usuarioRepository.save(obj);
     }
@@ -43,7 +38,6 @@ public class UsuarioService {
         novoUsuario.setNome(obj.getNome());
         novoUsuario.setEmail(obj.getEmail());
         novoUsuario.setSenha(obj.getSenha());
-        novoUsuario.setEndereco(obj.getEndereco());
         novoUsuario.setDataNascimento(obj.getDataNascimento());
         novoUsuario.setFoto(obj.getFoto());
         novoUsuario.setTelefone(obj.getTelefone());
