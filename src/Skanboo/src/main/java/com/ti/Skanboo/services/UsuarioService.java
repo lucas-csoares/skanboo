@@ -29,7 +29,7 @@ public class UsuarioService {
     @Transactional
     public Usuario criar(Usuario obj) {
 
-        obj.getEndereco().setId_usuario(obj);
+        obj.getEndereco().setUsuario(obj);
         this.enderecoUsuarioRepository.save(obj.getEndereco());
 
         return this.usuarioRepository.save(obj);
