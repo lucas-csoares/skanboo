@@ -49,8 +49,12 @@ export default {
   data() {
     return {
       cadastroFinal: {
-        email: "",
-        confirmarEmail: "",
+        usuario: "",
+        senha: "",
+        nascimento: "",
+        cpf: "",
+        foto: "",
+        telefone: "",
       },
     };
   },
