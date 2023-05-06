@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebMvc
-// Para permitir cross origin
+// Para permitir cross origin (utilizado com servidor Vue)
 public class WebConfig implements WebMvcConfigurer {
 
     @Override
