@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import Usuario from './services/UsuarioService';
+import Usuario from '../services/UsuarioService';
 
 export default {
   data() {
