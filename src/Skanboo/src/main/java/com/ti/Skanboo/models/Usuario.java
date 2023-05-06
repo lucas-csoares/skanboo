@@ -63,11 +63,11 @@ public class Usuario {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) // para evitar acesso ciclico as entidades
     private EnderecoUsuario endereco = new EnderecoUsuario();
 
-    @Column(name = "tipo_usuario", nullable = false)
-    @NotNull
-    @NotEmpty
     // todo: atributo oculto para usuario, devemos verificar como vamos tratar isso
-    private String tipoUsuario;
+    // @Column(name = "tipo_usuario", nullable = false)
+    // @NotNull
+    // @NotEmpty
+    // private String tipoUsuario;
 
     @Column(name = "data_nascimento", length = 8, nullable = false)
     private LocalDate dataNascimento; // formato yyyy-mm-dd
