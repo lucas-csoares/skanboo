@@ -10,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
@@ -73,7 +74,8 @@ public class Usuario {
     private LocalDate dataNascimento; // formato yyyy-mm-dd
 
     @Column(name = "foto", length = 255)
-    private String foto;
+    @Lob //*Campo de objeto grande (Large Object)
+    private byte[] foto;
 
     @Column(name = "telefone", length = 11, nullable = false, unique = true)
     @NotNull
