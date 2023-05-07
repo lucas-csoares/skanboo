@@ -1,0 +1,72 @@
+<template>
+  <section class="login">
+    <h1>Login</h1>
+    <form>
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" v-model="login.email" />
+
+      <label for="email">Senha</label>
+      <input type="password" name="senha" id="senha" v-model="login.senha" />
+
+      <button class="btn" @click.prevent="logar">Entrar</button>
+    </form>
+  </section>
+</template>
+
+<script>
+
+export default {
+  data() {
+    return {
+      login: {
+        email: '',
+        senha: '',
+      },
+    };
+  },
+};
+</script>
+
+<style scoped>
+.login {
+  max-width: 500px;
+  margin: 0 auto;
+}
+form {
+  display: grid;
+}
+
+input {
+  width: 300px;
+  height: 0px;
+  background-color: #fcfcfc;
+  border: 1px solid #e2e2e2;
+  border-radius: 4px;
+  color: #9798b0;
+  font-size: 16px;
+  letter-spacing: -0.006em;
+  padding: 20px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.btn {
+  width: 300px;
+  height: 32px;
+  background: #f9dc5c;
+  border: 1px solid #e2e2e2;
+  border-radius: 16px;
+  font-weight: 600;
+  color: #515864;
+  transition: 0.3s;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 20px;
+}
+
+label {
+  margin-right: auto;
+  margin-left: 80px;
+  padding: 10px 10px 10px 0;
+}
+</style>
