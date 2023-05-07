@@ -29,7 +29,7 @@
 
       <label>Telefone</label><input type="text" id="telefone" name="telefone" placeholder="(xx)xxxxx-xxxx" v-model="usuario.telefone" />
 
-      <button class="btn">Criar a sua conta</button>
+      <butto*n class="btn">Criar a sua conta</button>
     </form>
   </section>
 </template>

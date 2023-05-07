@@ -1,18 +1,19 @@
 <template>
   <div id="app">
     <TheHeader />
-    <main id="main">
-    </main>
     <router-view />
+    <TheFooter />
   </div>
 </template>
 
 <script>
 import TheHeader from "@/components/TheHeader.vue";
+import TheFooter from "@/components/TheFooter.vue";
 
 export default {
   components: {
     TheHeader,
+    TheFooter,
   },
 };
 </script>
@@ -24,10 +25,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  margin-top: -0px !important;
 }
 
 nav {
   padding: 30px;
+  margin: 0px !important;
 }
 
 nav a {

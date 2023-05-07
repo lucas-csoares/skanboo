@@ -9,7 +9,6 @@
       <input type="password" name="senha" id="senha" v-model="login.senha" />
 
       <button class="btn" @click.prevent="logar">Entrar</button>
-      <p>Não tem uma conta? <a href="/cadastroView">Cadastre-se!</a></p>
     </form>
   </section>
 </template>
