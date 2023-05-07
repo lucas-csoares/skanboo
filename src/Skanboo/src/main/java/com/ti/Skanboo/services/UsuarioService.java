@@ -1,12 +1,16 @@
 package com.ti.Skanboo.services;
 
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ti.Skanboo.models.Usuario;
+import com.ti.Skanboo.models.enums.UsuarioEnum;
 import com.ti.Skanboo.repositories.UsuarioRepository;
 
 @Service
@@ -14,6 +18,9 @@ public class UsuarioService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public Usuario encontrarPorId(Long id) {
         Optional<Usuario> usuario = this.usuarioRepository.findById(id);
@@ -25,6 +32,10 @@ public class UsuarioService {
     public Usuario criar(Usuario obj) {
 
         obj.setId(null);
+        // obj.setSenha(this.bCryptPasswordEncoder.encode(obj.getSenha()));
+        obj.setSenha(this.bCryptPasswordEncoder.encode(obj.getSenha()));
+        /* Usuario padro e salvo como USER - num 2 */
+        obj.setPerfis(Stream.of(UsuarioEnum.USER.getCode()).collect(Collectors.toSet()));
         obj.setEndereco(null);
 
         return this.usuarioRepository.save(obj);
@@ -35,12 +46,8 @@ public class UsuarioService {
 
         Usuario novoUsuario = encontrarPorId(obj.getId());
 
-        novoUsuario.setNome(obj.getNome());
-        novoUsuario.setEmail(obj.getEmail());
         novoUsuario.setSenha(obj.getSenha());
-        novoUsuario.setDataNascimento(obj.getDataNascimento());
-        novoUsuario.setFoto(obj.getFoto());
-        novoUsuario.setTelefone(obj.getTelefone());
+        novoUsuario.setSenha(this.bCryptPasswordEncoder.encode(obj.getSenha()));
 
         return this.usuarioRepository.save(novoUsuario);
     }
