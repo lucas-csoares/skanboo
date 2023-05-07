@@ -35,13 +35,6 @@
           </nav>
         </div>
       </header>
-      <router-link to="/loginView" class="logo"
-        ><button>Login</button></router-link
-      >
-
-      <router-link to="/cadastroView" class="logo"
-        ><button>Cadastrar</button></router-link
-      >
     </nav>
   </header>
 </template>
@@ -101,6 +94,7 @@ body {
 
 nav {
   margin: 0px !important;
+  background-color: #fff;
 }
 
 .menu {

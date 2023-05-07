@@ -213,7 +213,7 @@ h1 {
 
 .like img {
   width: 20px;
-  margin-left: 218px;
+  margin-left: 212px;
   margin-top: -20px;
 }
 </style>

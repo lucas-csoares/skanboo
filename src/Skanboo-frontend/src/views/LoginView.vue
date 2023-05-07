@@ -9,7 +9,7 @@
       <input type="password" name="senha" id="senha" v-model="login.senha" />
 
       <button class="btn" @click.prevent="logar">Entrar</button>
-      <p>Não tem uma conta? <a href="/cadastroView">Cadastre-se!</a></p>
+      <p>Não tem uma conta? <a href="/cadastroView">Criar conta.</a></p>
     </form>
   </section>
 </template>
@@ -68,5 +68,10 @@ label {
   margin-right: auto;
   margin-left: 80px;
   padding: 10px 10px 10px 0;
+}
+
+a {
+  text-decoration: none;
+  font-weight: bold;
 }
 </style>
