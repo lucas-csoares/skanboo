@@ -19,34 +19,52 @@
       <input type="password" name="senha" id="senha" v-model="usuario.senha" />
 
       <label>Data de nascimento</label>
-      <input type="date" name="nascimento" id="nascimento" v-model="usuario.dataNascimento" />
+      <input
+        type="date"
+        name="nascimento"
+        id="nascimento"
+        v-model="usuario.dataNascimento"
+      />
 
       <label>CPF</label>
-      <input type="text" name="cpf" id="cpf" placeholder="xxx.xxx.xxx-xx" v-model="usuario.cpf" />
+      <input
+        type="text"
+        name="cpf"
+        id="cpf"
+        placeholder="xxx.xxx.xxx-xx"
+        v-model="usuario.cpf"
+      />
 
       <!-- <label for="foto">Selecione uma foto de perfil</label>
       <input type="file" id="foto" name="foto" accept="image/*" /> -->
 
-      <label>Telefone</label><input type="text" id="telefone" name="telefone" placeholder="(xx)xxxxx-xxxx" v-model="usuario.telefone" />
+      <label>Telefone</label
+      ><input
+        type="text"
+        id="telefone"
+        name="telefone"
+        placeholder="(xx)xxxxx-xxxx"
+        v-model="usuario.telefone"
+      />
 
-      <butto*n class="btn">Criar a sua conta</button>
+      <button class="btn">Criar a sua conta</button>
     </form>
   </section>
 </template>
 
 <script>
-import Usuario from '../services/UsuarioService';
+import Usuario from "../services/UsuarioService";
 
 export default {
   data() {
     return {
       usuario: {
-        nome: '',
-        cpf: '',
-        email: '',
-        senha: '',
-        dataNascimento: '',
-        telefone: '',
+        nome: "",
+        cpf: "",
+        email: "",
+        senha: "",
+        dataNascimento: "",
+        telefone: "",
       },
       errors: [],
     };
@@ -56,7 +74,7 @@ export default {
     criar() {
       Usuario.criar(this.usuario)
         .then((/*resposta*/) => {
-          alert('Usuario salvo com sucesso');
+          alert("Usuario salvo com sucesso");
           this.errors = [];
         })
         .catch((e) => {
