@@ -42,9 +42,9 @@ public class UsuarioService {
     public Usuario criar(Usuario obj) {
 
         obj.setId(null);
-        // obj.setSenha(this.bCryptPasswordEncoder.encode(obj.getSenha()));
         obj.setSenha(this.bCryptPasswordEncoder.encode(obj.getSenha()));
-        /* Usuario padro e salvo como USER - num 2 */
+
+        /* Usuario padrao e salvo como USER - num 2 */
         obj.setPerfis(Stream.of(UsuarioEnum.USER.getCode()).collect(Collectors.toSet()));
         obj.setEndereco(null);
 
