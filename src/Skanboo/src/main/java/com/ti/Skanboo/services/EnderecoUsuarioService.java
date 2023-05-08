@@ -44,8 +44,8 @@ public class EnderecoUsuarioService {
         if (Objects.isNull(userSpringSecurity))
             throw new AuthorizationException("Acesso negado!");
 
-        List<EnderecoUsuario> tasks = this.enderecoUsuarioRepository.findByUsuario_Id(userSpringSecurity.getId());
-        return tasks;
+        List<EnderecoUsuario> endereco = this.enderecoUsuarioRepository.findByUsuario_Id(userSpringSecurity.getId());
+        return endereco;
     }
 
     @Transactional

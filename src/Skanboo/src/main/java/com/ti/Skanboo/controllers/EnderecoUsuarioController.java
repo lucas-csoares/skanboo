@@ -39,7 +39,7 @@ public class EnderecoUsuarioController {
 
     // Busca todas as tasks relacionadas a um usuario
     @GetMapping("/usuario")
-    public ResponseEntity<List<EnderecoUsuario>> findAllTasksByUser() {
+    public ResponseEntity<List<EnderecoUsuario>> encontrarEnderecoUsuario() {
         List<EnderecoUsuario> obj = this.enderecoUsuarioService.encontrarEnderecoUsuario();
         return ResponseEntity.ok().body(obj);
     }
