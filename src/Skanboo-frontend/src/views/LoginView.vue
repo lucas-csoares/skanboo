@@ -1,28 +1,44 @@
 <template>
   <section class="login">
     <h1>Login</h1>
-    <form>
+    <form @submit.prevent="logar">
       <label for="email">Email</label>
-      <input type="email" name="email" id="email" v-model="login.email" />
+      <input type="email" name="email" id="email" v-model="usuario.email" />
 
       <label for="email">Senha</label>
-      <input type="password" name="senha" id="senha" v-model="login.senha" />
+      <input type="password" name="senha" id="senha" v-model="usuario.senha" />
 
-      <button class="btn" @click.prevent="logar">Entrar</button>
+      <button class="btn">Entrar</button>
       <p>Não tem uma conta? <a href="/cadastroView">Criar conta.</a></p>
     </form>
   </section>
 </template>
 
 <script>
+import Usuario from '../services/UsuarioService';
+
 export default {
   data() {
     return {
-      login: {
+      usuario: {
         email: "",
         senha: "",
       },
     };
+  },
+
+  methods: {
+    logar() {
+      Usuario.logar(this.usuario)
+        .then((/*resposta*/) => {
+          alert('Usuario logado com sucesso');
+          this.errors = [];
+        })
+        .catch((e) => {
+          this.errors = e.response.data.errors;
+          console.log(this.errors);
+        });
+    },
   },
 };
 </script>

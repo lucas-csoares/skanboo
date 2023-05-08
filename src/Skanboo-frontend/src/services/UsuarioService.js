@@ -8,4 +8,8 @@ export default {
   atualizar: (usuario) => {
     return http.put('usuario', usuario);
   },
+
+  logar: (usuario) => {
+    return http.post('login', usuario);
+  }
 };
