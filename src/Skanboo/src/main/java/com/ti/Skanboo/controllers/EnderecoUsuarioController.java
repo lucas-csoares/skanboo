@@ -1,6 +1,7 @@
 package com.ti.Skanboo.controllers;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +34,13 @@ public class EnderecoUsuarioController {
 
         EnderecoUsuario obj = this.enderecoUsuarioService.encontrarPorId(id);
 
+        return ResponseEntity.ok().body(obj);
+    }
+
+    // Busca todas as tasks relacionadas a um usuario
+    @GetMapping("/usuario")
+    public ResponseEntity<List<EnderecoUsuario>> findAllTasksByUser() {
+        List<EnderecoUsuario> obj = this.enderecoUsuarioService.encontrarEnderecoUsuario();
         return ResponseEntity.ok().body(obj);
     }
 

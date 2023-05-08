@@ -1,5 +1,6 @@
 package com.ti.Skanboo.services;
 
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,15 @@ public class EnderecoUsuarioService {
             throw new AuthorizationException("Acesso negado!");
 
         return endereco;
+    }
+
+    public List<EnderecoUsuario> encontrarEnderecoUsuario() {
+        UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
+        if (Objects.isNull(userSpringSecurity))
+            throw new AuthorizationException("Acesso negado!");
+
+        List<EnderecoUsuario> tasks = this.enderecoUsuarioRepository.findByUsuario_Id(userSpringSecurity.getId());
+        return tasks;
     }
 
     @Transactional
