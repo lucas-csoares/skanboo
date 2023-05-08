@@ -138,17 +138,17 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler imple
                 request);
     }
 
-    // @ExceptionHandler(AuthorizationException.class)
-    // @ResponseStatus(HttpStatus.FORBIDDEN)
-    // public ResponseEntity<Object> handleAuthorizationException(
-    //         AuthorizationException authorizationException,
-    //         WebRequest request) {
-    //     log.error("Authorization error ", authorizationException);
-    //     return buildErrorResponse(
-    //             authorizationException,
-    //             HttpStatus.FORBIDDEN,
-    //             request);
-    // }
+    @ExceptionHandler(AuthorizationException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public ResponseEntity<Object> handleAuthorizationException(
+            AuthorizationException authorizationException,
+            WebRequest request) {
+        log.error("Authorization error ", authorizationException);
+        return buildErrorResponse(
+                authorizationException,
+                HttpStatus.FORBIDDEN,
+                request);
+    }
 
     private ResponseEntity<Object> buildErrorResponse(
             Exception exception,
