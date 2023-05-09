@@ -1,7 +1,9 @@
 package com.ti.Skanboo.models;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -18,6 +20,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
@@ -37,6 +40,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Usuario {
+
     public static final String NOME_TABELA = "usuario";
 
     @Id
@@ -75,13 +79,17 @@ public class Usuario {
     private LocalDate dataNascimento; // formato yyyy-mm-dd
 
     @Column(name = "foto", length = 255)
-    @Lob //*Campo de objeto grande (Large Object)
+    @Lob //Campo de objeto grande (Large Object)
     private byte[] foto;
 
     @Column(name = "telefone", length = 11, nullable = false, unique = true)
     @NotNull
     @NotEmpty
     private String telefone;
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) // para evitar acesso ciclico as entidades
+    private List<Postagem> postagem = new ArrayList<Postagem>();
 
     /*-----Codigos para autenticadao de usuario-----*/
 
