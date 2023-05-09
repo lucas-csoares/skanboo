@@ -150,7 +150,7 @@ O setor de Marketing irá enviar uma proposta de parceria para o parceiro seleci
 
 O usuário 2 deve selecionar qual produto está interessado em receber em troca. Em seguida, ele deve enviar uma proposta afim de apresentar qual produto está oferecendo em troca do produto que ele deseja receber. Caso o usuário 1 aceite a proposta, ele abre chat para negociação. Quando ambos os usuários concordarem com os termos, devem enviar os produtos.
 
-![Processo 4 – Troca de objetos entre usuários](imagens/processoTrocaUsuarios.png 'Modelo BPMN do Processo 4.')
+![Processo 4 – Troca de objetos entre usuários](imagens/processoTroca.png 'Modelo BPMN do Processo 4.')
 
 ### 3.3.5 Processo 5 – Avaliação do usuário
 
