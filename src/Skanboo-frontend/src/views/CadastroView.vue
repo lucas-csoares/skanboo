@@ -33,6 +33,7 @@
         id="cpf"
         placeholder="xxx.xxx.xxx-xx"
         v-model="usuario.cpf"
+        class="form-control cpf-mask"
       />
 
       <!-- <label for="foto">Selecione uma foto de perfil</label>
@@ -45,6 +46,7 @@
         name="telefone"
         placeholder="(xx)xxxxx-xxxx"
         v-model="usuario.telefone"
+        class="form-control cel-sp-mask"
       />
 
       <button class="btn">Criar a sua conta</button>

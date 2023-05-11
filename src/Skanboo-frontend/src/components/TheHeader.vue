@@ -22,7 +22,7 @@
             <ul>
               <li>
                 <a href="/loginView"
-                  ><img src="../assets/user.png" alt="Carrinho" class="user"
+                  ><img src="../assets/user.png" alt="Usuário" class="user"
                 /></a>
               </li>
 
@@ -37,6 +37,10 @@
       </header>
     </nav>
   </header>
+  <a href="/UsuarioView">Tela do usuário | </a>
+  <a href="/EditarUsuarioView">Tela editar usuário | </a>
+  <a href="/PostarProdutoView">Tela postar produto | </a>
+  <a href="/EditarProdutoView">Tela editar produto </a>
 </template>
 
 <script>

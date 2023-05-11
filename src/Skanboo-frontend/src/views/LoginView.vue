@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import Usuario from '../services/UsuarioService';
+import Usuario from "../services/UsuarioService";
 
 export default {
   data() {
@@ -31,7 +31,7 @@ export default {
     logar() {
       Usuario.logar(this.usuario)
         .then((/*resposta*/) => {
-          alert('Usuario logado com sucesso');
+          alert("Usuario logado com sucesso");
           this.errors = [];
         })
         .catch((e) => {
