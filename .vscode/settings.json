@@ -1,5 +1,6 @@
 {
   "cSpell.language": "en,pt-BR",
   "liveServer.settings.port": 5501,
-  "java.configuration.updateBuildConfiguration": "automatic"
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.compile.nullAnalysis.mode": "disabled"
 }
