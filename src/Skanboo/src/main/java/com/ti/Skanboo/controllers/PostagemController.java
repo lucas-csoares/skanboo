@@ -1,6 +1,8 @@
 package com.ti.Skanboo.controllers;
 
 import java.net.URI;
+//import java.util.List;
+//import java.util.Optional;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,57 +18,57 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.ti.Skanboo.models.EnderecoUsuario;
-import com.ti.Skanboo.services.EnderecoUsuarioService;
+import com.ti.Skanboo.models.Postagem;
+import com.ti.Skanboo.services.PostagemService;
 
 import jakarta.validation.Valid;
 
 @RestController
 @Validated
-@RequestMapping("/endereco")
-public class EnderecoUsuarioController {
+@RequestMapping("/postagem")
+public class PostagemController {
 
     @Autowired
-    private EnderecoUsuarioService enderecoUsuarioService;
+    private PostagemService postagemService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<EnderecoUsuario> encontrarPorId(@PathVariable Long id) {
+    public ResponseEntity<Postagem> encontrarPorId(@PathVariable Long id) {
 
-        EnderecoUsuario obj = this.enderecoUsuarioService.encontrarPorId(id);
+        Postagem obj = this.postagemService.encontrarPorId(id);
 
         return ResponseEntity.ok().body(obj);
     }
 
     @GetMapping("/usuario")
-    public ResponseEntity<List<EnderecoUsuario>> encontrarEnderecoUsuario() {
-        List<EnderecoUsuario> obj = this.enderecoUsuarioService.encontrarEnderecoUsuario();
+    public ResponseEntity<List<Postagem>> encontrarPostagem() {
+        List<Postagem> obj = this.postagemService.listarPostagens();
         return ResponseEntity.ok().body(obj);
     }
 
     @PostMapping
-    public ResponseEntity<EnderecoUsuario> criar(@Valid @RequestBody EnderecoUsuario obj) {
+    public ResponseEntity<Void> criar(@Valid @RequestBody Postagem obj) {
 
-        this.enderecoUsuarioService.criar(obj);
+        this.postagemService.criar(obj);
 
-        // Converte o contexto do user para adicionar o path a ele, e transformar em URI
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+            .path("/{id}").buildAndExpand(obj.getId()).toUri();
 
         return ResponseEntity.created(uri).build();
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> atualizar(@Valid @RequestBody EnderecoUsuario obj, @PathVariable Long id) {
+    public ResponseEntity<Void> atualizar(@Valid @RequestBody Postagem obj, @PathVariable Long id) {
 
         obj.setId(id);
-        obj = this.enderecoUsuarioService.atualizar(obj);
+        obj = this.postagemService.atualizar(obj);
 
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletar(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
 
-        this.enderecoUsuarioService.deletar(id);
+        this.postagemService.deletar(id);
 
         return ResponseEntity.noContent().build();
     }
