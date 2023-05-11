@@ -73,8 +73,7 @@ Todo o processo de negociação e eventual troca é realizado entre **usuários*
 **Usuário 1**
 
     * Publica seu produto na plataforma;
-    * Aceita ou recusa ofertas;
-    * Informa se quer receber um produto específico ou outras ofertas;
+    * Aceita ou recusa trocas;
     * Avaliar negociação com outro usuário.
 
 **Usuário 2**
@@ -188,7 +187,6 @@ O usuário deve acessar o status de negociações e selecionar a negociação qu
 | ------------------ | -------------- | --------------------------------------------------------------------------------------- | ----------------- |
 | Título da postagem | Caixa de texto | Máximo de 30 caracteres                                                                 | -                 |
 | Descrição          | Caixa de texto | Máximo de 140 caracteres                                                                | -                 |
-| Opções de oferta   | Seleção única  | [Definir produto desejado, Aberto a ofertas]                                            | -                 |
 | Adicionar fotos    | Arquivo        | Máximo de 5 fotos                                                                       | -                 |
 | Categoria produto  | Seleção única  | [Eletrônicos, Moda e beleza, Esportes, Música, Produtos de casa, Serviços, Video Games] | -                 |
 
@@ -198,7 +196,6 @@ O usuário deve acessar o status de negociações e selecionar a negociação qu
 | ------------------ | -------------- | --------------------------------------------------------------------------------------- | ----------------- |
 | Título da postagem | Caixa de texto | Máximo de 30 caracteres                                                                 | Informação atual  |
 | Descrição          | Caixa de texto | Máximo de 140 caracteres                                                                | Informação atual  |
-| Opções de oferta   | Seleção única  | [Definir produto desejado, Aberto a ofertas]                                            | Seleção atual     |
 | Adicionar fotos    | Arquivo        | Máximo de 5 fotos                                                                       | Fotos atuais      |
 | Categoria produto  | Seleção única  | [Eletrônicos, Moda e beleza, Esportes, Música, Produtos de casa, Serviços, Video Games] | Categorias atuais |
 
