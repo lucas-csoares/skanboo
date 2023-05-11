@@ -54,7 +54,7 @@ public class Usuario {
     @Size(min = 2, max = 100)
     private String nome;
 
-    @Column(name = "cpf", length = 11, nullable = false, unique = true, updatable = false)
+    @Column(name = "cpf", length = 14, nullable = false, unique = true, updatable = false)
     @NotNull
     @NotEmpty
     private String cpf;
@@ -82,7 +82,7 @@ public class Usuario {
     @Lob //Campo de objeto grande (Large Object)
     private byte[] foto;
 
-    @Column(name = "telefone", length = 11, nullable = false, unique = true)
+    @Column(name = "telefone", length = 15, nullable = false, unique = true)
     @NotNull
     @NotEmpty
     private String telefone;

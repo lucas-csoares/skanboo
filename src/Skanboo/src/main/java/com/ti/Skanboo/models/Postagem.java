@@ -1,14 +1,9 @@
 package com.ti.Skanboo.models;
 
-import java.time.LocalDateTime;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.ti.Skanboo.models.enums.CategoriaPostagem;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,7 +13,6 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-//import java.time.LocalDateTime;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -73,11 +67,5 @@ public class Postagem {
     // @Column(name = "foto", length = 255)
     // @Lob //*Campo de objeto grande (Large Object)
     // private byte[] foto;
-
-    // public Postagem(Long id) {
-    //     this.id = id;
-    //     this.data = LocalDateTime.now().withNano(0).withSecond(0);
-    //     this.hora = LocalDateTime.now().withNano(0);
-    // }
 
 }

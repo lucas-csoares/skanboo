@@ -39,7 +39,7 @@ public class EnderecoUsuarioService {
         return endereco;
     }
 
-    public List<EnderecoUsuario> encontrarEnderecoUsuario() {
+    public List<EnderecoUsuario> listarEnderecoUsuario() {
         UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
         if (Objects.isNull(userSpringSecurity))
             throw new AuthorizationException("Acesso negado!");

@@ -38,8 +38,8 @@ public class EnderecoUsuarioController {
     }
 
     @GetMapping("/usuario")
-    public ResponseEntity<List<EnderecoUsuario>> encontrarEnderecoUsuario() {
-        List<EnderecoUsuario> obj = this.enderecoUsuarioService.encontrarEnderecoUsuario();
+    public ResponseEntity<List<EnderecoUsuario>> listarEnderecoUsuario() {
+        List<EnderecoUsuario> obj = this.enderecoUsuarioService.listarEnderecoUsuario();
         return ResponseEntity.ok().body(obj);
     }
 
