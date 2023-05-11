@@ -65,7 +65,7 @@ public class PostagemService {
 
         Usuario usuario = this.usuarioService.encontrarPorId(userSpringSecurity.getId());
         
-        obj.setId(null);
+        obj.setUsuario(usuario);
 
         return this.postagemRepository.save(obj);
     }
