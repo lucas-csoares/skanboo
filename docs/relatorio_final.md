@@ -70,7 +70,7 @@ Além disso, a plataforma pode incentivar a sustentabilidade e o consumo conscie
 
 Todo o processo de negociação e eventual troca é realizado entre **usuários** do sistema. No contexto da troca em si, esses usuários podem assumir duas funções distintas, nomeadas **usuário 1** e **usuário 2**, cujas atividades são descritas a seguir:
 
-**1 - Usuário 1**
+**Usuário 1**
 
     * Publica seu produto na plataforma;
     * Aceita ou recusa ofertas;
