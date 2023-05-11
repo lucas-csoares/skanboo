@@ -59,9 +59,8 @@ public class PostagemController {
     @PutMapping("/{id}")
     public ResponseEntity<Void> atualizar(@Valid @RequestBody Postagem obj, @PathVariable Long id) {
 
-        obj.setId(null);
-
-        this.postagemService.atualizar(obj);
+        obj.setId(id);
+        obj = this.postagemService.atualizar(obj);
 
         return ResponseEntity.noContent().build();
     }

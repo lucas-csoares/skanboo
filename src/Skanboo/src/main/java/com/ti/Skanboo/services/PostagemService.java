@@ -75,6 +75,9 @@ public class PostagemService {
         
         Postagem novaPostagem = encontrarPorId(obj.getId());
 
+        novaPostagem.setTitulo(obj.getTitulo());
+        novaPostagem.setDescricao(obj.getDescricao());
+
         return this.postagemRepository.save(novaPostagem);        
     }
 

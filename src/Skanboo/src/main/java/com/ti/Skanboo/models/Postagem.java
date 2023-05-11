@@ -2,6 +2,7 @@ package com.ti.Skanboo.models;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ti.Skanboo.models.enums.CategoriaPostagem;
 
 import jakarta.persistence.Column;
@@ -48,34 +49,35 @@ public class Postagem {
 
     @ManyToOne
     @JoinColumn(name = "id_usuario", referencedColumnName = "id", nullable = false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Usuario usuario;
 
     @Column(name = "descricao", length = 255, nullable = false)
     @Size(min = 1, max = 255)
     private String descricao;
 
-    @Column(name = "hora_postagem", length = 8, nullable = false)
-    @NotNull
-    private LocalDateTime hora;
+    // @Column(name = "hora_postagem", length = 8, nullable = false)
+    // @NotNull
+    // private LocalDateTime hora;
 
-    @Column(name = "data_postagem", length = 8, nullable = false)
-    @NotNull
-    private LocalDateTime data;
+    // @Column(name = "data_postagem", length = 8, nullable = false)
+    // @NotNull
+    // private LocalDateTime data;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "categoria_postagem", length = 20, nullable = false)
-    @NotNull
-    @NotEmpty
-    private CategoriaPostagem categoria;
+    // @Enumerated(EnumType.STRING)
+    // @Column(name = "categoria_postagem", length = 20, nullable = false)
+    // @NotNull
+    // @NotEmpty
+    // private CategoriaPostagem categoria;
 
     // @Column(name = "foto", length = 255)
     // @Lob //*Campo de objeto grande (Large Object)
     // private byte[] foto;
 
-    public Postagem(Long id) {
-        this.id = id;
-        this.data = LocalDateTime.now().withNano(0).withSecond(0);
-        this.hora = LocalDateTime.now().withNano(0);
-    }
+    // public Postagem(Long id) {
+    //     this.id = id;
+    //     this.data = LocalDateTime.now().withNano(0).withSecond(0);
+    //     this.hora = LocalDateTime.now().withNano(0);
+    // }
 
 }
