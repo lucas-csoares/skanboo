@@ -21,16 +21,12 @@
         </div>
 
         <div class="info-usuario">
-          <ul>
-            <li>
-              <p class="nome">Fulano da Silva</p>
-              <p class="nascimento">01/02/1986</p>
-              <p class="email">fulaninho@gmail.com</p>
-              <p class="telefone">(31) 00000-0000</p>
-              <p class="senha">******</p>
-              <p class="CPF">143.***.***-41</p>
-            </li>
-          </ul>
+          <p class="nome">{{usuario.nome}}</p>
+          <p class="nascimento">*****</p>
+          <p class="email">{{usuario.email}}</p>
+          <p class="telefone">{{usuario.telefone}}</p>
+          <p class="senha">*****</p>
+          <p class="CPF">{{usuario.cpf}}</p>
         </div>
       </div>
       <button class="editar"><a href="/editarUsuarioView">Editar</a></button>
@@ -47,7 +43,9 @@ import Usuario from '../services/UsuarioService'
 export default {
   data() {
     return {
-      login: {
+      usuario: {
+        nome: "",
+        nascimento: "",
         email: "",
         senha: "",
       },
@@ -56,7 +54,8 @@ export default {
 
   mounted() {
     Usuario.exibirInfo().then(resposta => {
-      console.log(resposta);
+      console.log(resposta.data);
+      this.usuario = resposta.data ;
     })
   }
 };
