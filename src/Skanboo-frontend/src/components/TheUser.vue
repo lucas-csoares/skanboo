@@ -8,29 +8,21 @@
 
       <div class="informacoes">
         <div class="dados-usuario">
-          <ul>
-            <li>
-              <p class="nome">Nome</p>
-              <p class="nascimento">Nascimento</p>
-              <p class="email">Email</p>
-              <p class="telefone">Telefone</p>
-              <p class="senha">Senha</p>
-              <p class="CPF">CPF</p>
-            </li>
-          </ul>
+          <p class="nomeUsuario">Nome</p>
+          <p class="nascimentoUsuario">Nascimento</p>
+          <p class="emailUsuario">Email</p>
+          <p class="telefoneUsuario">Telefone</p>
+          <p class="senhaUsuario">Senha</p>
+          <p class="CPFUsuario">CPF</p>
         </div>
 
         <div class="info-usuario">
-          <ul>
-            <li>
-              <p class="nome">Fulano da Silva</p>
-              <p class="nascimento">01/02/1986</p>
-              <p class="email">fulaninho@gmail.com</p>
-              <p class="telefone">(31) 00000-0000</p>
-              <p class="senha">******</p>
-              <p class="CPF">143.***.***-41</p>
-            </li>
-          </ul>
+          <p class="nome">Fulano da Silva</p>
+          <p class="nascimento">01/02/1986</p>
+          <p class="email">fulaninho@gmail.com</p>
+          <p class="telefone">(31) 00000-0000</p>
+          <p class="senha">******</p>
+          <p class="CPF">143.***.***-41</p>
         </div>
       </div>
       <button class="editar"><a href="/editarUsuarioView">Editar</a></button>
@@ -41,15 +33,18 @@
 </template>
 
 <script>
-
-import Usuario from '../services/UsuarioService'
+import Usuario from "../services/UsuarioService";
 
 export default {
   data() {
     return {
-      login: {
+      uusario: {
+        nome: "",
+        nascimento: "",
         email: "",
+        telefone: "",
         senha: "",
+        cpf: "",
       },
     };
   },
