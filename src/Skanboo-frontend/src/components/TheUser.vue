@@ -8,25 +8,23 @@
 
       <div class="informacoes">
         <div class="dados-usuario">
-          <ul>
-            <li>
-              <p class="nome">Nome</p>
-              <p class="nascimento">Nascimento</p>
-              <p class="email">Email</p>
-              <p class="telefone">Telefone</p>
-              <p class="senha">Senha</p>
-              <p class="CPF">CPF</p>
-            </li>
-          </ul>
+          <p class="nomeUsuario">Nome</p>
+          <p class="nascimentoUsuario">Nascimento</p>
+          <p class="emailUsuario">Email</p>
+          <p class="telefoneUsuario">Telefone</p>
+          <p class="senhaUsuario">Senha</p>
+          <p class="CPFUsuario">CPF</p>
         </div>
 
         <div class="info-usuario">
+
           <p class="nome">{{usuario.nome}}</p>
           <p class="nascimento">*****</p>
           <p class="email">{{usuario.email}}</p>
           <p class="telefone">{{usuario.telefone}}</p>
           <p class="senha">*****</p>
           <p class="CPF">{{usuario.cpf}}</p>
+
         </div>
       </div>
       <button class="editar"><a href="/editarUsuarioView">Editar</a></button>
@@ -37,17 +35,18 @@
 </template>
 
 <script>
-
-import Usuario from '../services/UsuarioService'
+import Usuario from "../services/UsuarioService";
 
 export default {
   data() {
     return {
-      usuario: {
+      uusario: {
         nome: "",
         nascimento: "",
         email: "",
+        telefone: "",
         senha: "",
+        cpf: "",
       },
     };
   },

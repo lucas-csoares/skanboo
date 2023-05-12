@@ -84,16 +84,7 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      login: {
-        email: "",
-        senha: "",
-      },
-    };
-  },
-};
+export default {};
 </script>
 
 <style scoped>
