@@ -32,7 +32,10 @@ export default {
       Usuario.logar(this.usuario)
         .then((resposta) => {
           alert("Usuario logado com sucesso");
-          console.log(resposta);
+
+          console.log(resposta)
+
+          localStorage.setItem('token', resposta.headers.getAuthorization());
           
           this.errors = [];
         })

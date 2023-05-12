@@ -56,7 +56,7 @@ export default {
 
   mounted() {
     Usuario.exibirInfo().then(resposta => {
-      console.log(resposta);
+      console.log(resposta.data);
     })
   }
 };
