@@ -82,12 +82,6 @@ Todo o processo de negociação e eventual troca é realizado entre **usuários*
     * Caso sua oferta seja aceita ele pode entrar em contato com o usuário 1;
     * Avaliar negociação com outro usuário.
 
-**Equipe sKanboo**
-
-    * Avaliar conteúdo das postagens;
-    * Atualizar informações do banco de dados;
-    * Notificar o usuário se sua postagem foi ou não concluída.
-
 **Setor de Marketing**
 
     * Captar novos parceiros;
@@ -116,8 +110,6 @@ A proposta do **sKanboo** consiste em ampliar as maneiras de se realizar trocas,
 - O usuário acessa a plataforma e se cadastra, fornecendo dados básicos como nome, email, senha, cpf, endereço, telefone e data de nascimento;
 - Feito o cadastro, o usuário estará apto para cadastrar uma postagem que deseja publicar para trocar ou procurar por produtos que deseja;
 - Caso o usuário queira cadastrar um novo produto, ele deve preencher o formulário de cadastro com as informações desejadas e solicitar a sua publicação;
-- Após isso, a equipe **sKanboo** avalia o conteúdo da postagem, para decidir se ela pode ou não ser concluída;
-- O usuário recebe uma notificação informando se a sua postagem pode ou não ser concluída e, caso negativo, explicando o motivo;
 - Caso o usuário se interesse por um produto de outro usuário, ele pode fazer uma oferta no produto, que pode ser aceita ou recusada pelo usuário que o publicou;
 - Caso a oferta seja aceita, os usuários podem entrar em contato entre si, para discutirem melhor os detalhes da troca e como ela vai ser realizada;
 - Após conclusão da troca, ambas as partes se avaliam no site, de modo que os bons usuários sejam reconhecidos.
@@ -134,9 +126,9 @@ O usuário se cadastra preenchendo os campos de "nome", "cpf", "e-mail", "senha"
 
 ### 3.3.2 Processo 2 – Gerenciar produtos
 
-O usuário é capaz de adicionar um produto ou atualizar as informações de produto previamente cadastrado. Em ambos o processos, após cadastro ou atualização das informações, a equipe do **sKanboo** avalia o conteúdo da postagem e define se ela será ou não feita. Caso ela seja feita, as informações do banco de dados são atualizadas, adicionando o novo produto ou alterando as informações de um produto cadastrado.
+O usuário é capaz de adicionar um produto ou atualizar as informações de produto previamente cadastrado.
 
-![Processo 2 – Gerenciar produtos](imagens/gerenciarProduto.png 'Modelo BPMN do Processo 2.')
+![Processo 2 – Gerenciar produtos](imagens/gerenciarProduto-rev04.png 'Modelo BPMN do Processo 2.')
 
 ### 3.3.3 Processo 3 – Cooptar parceiros
 
