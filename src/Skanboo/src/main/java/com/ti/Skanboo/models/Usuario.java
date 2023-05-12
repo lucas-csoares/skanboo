@@ -23,9 +23,8 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -49,24 +48,20 @@ public class Usuario {
     private Long id;
 
     @Column(name = "nome", length = 100, nullable = false)
-    @NotNull
-    @NotEmpty
+    @NotBlank
     @Size(min = 2, max = 100)
     private String nome;
 
     @Column(name = "cpf", length = 14, nullable = false, unique = true, updatable = false)
-    @NotNull
-    @NotEmpty
+    @NotBlank
     private String cpf;
 
     @Column(name = "email", length = 45, nullable = false, unique = true)
-    @NotNull
-    @NotEmpty
+    @NotBlank
     private String email;
 
     @Column(name = "senha", length = 200, nullable = false)
-    @NotNull
-    @NotEmpty
+    @NotBlank
     @Size(min = 6, max = 200)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String senha;
@@ -79,12 +74,11 @@ public class Usuario {
     private LocalDate dataNascimento; // formato yyyy-mm-dd
 
     @Column(name = "foto", length = 255)
-    @Lob //Campo de objeto grande (Large Object)
+    @Lob
     private byte[] foto;
 
     @Column(name = "telefone", length = 15, nullable = false, unique = true)
-    @NotNull
-    @NotEmpty
+    @NotBlank
     private String telefone;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)

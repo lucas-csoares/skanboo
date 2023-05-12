@@ -41,6 +41,9 @@
 </template>
 
 <script>
+
+import Usuario from '../services/UsuarioService'
+
 export default {
   data() {
     return {
@@ -50,6 +53,12 @@ export default {
       },
     };
   },
+
+  mounted() {
+    Usuario.exibirInfo().then(resposta => {
+      console.log(resposta);
+    })
+  }
 };
 </script>
 

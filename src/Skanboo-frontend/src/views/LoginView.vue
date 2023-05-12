@@ -30,8 +30,10 @@ export default {
   methods: {
     logar() {
       Usuario.logar(this.usuario)
-        .then((/*resposta*/) => {
+        .then((resposta) => {
           alert("Usuario logado com sucesso");
+          console.log(resposta);
+          
           this.errors = [];
         })
         .catch((e) => {

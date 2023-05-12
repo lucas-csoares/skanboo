@@ -9,8 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 import jakarta.persistence.ManyToOne;
@@ -37,8 +36,7 @@ public class Postagem {
     private Long id;
 
     @Column(name = "titulo", length = 30, nullable = false)
-    @NotNull
-    @NotEmpty
+    @NotBlank
     private String titulo;
 
     @ManyToOne

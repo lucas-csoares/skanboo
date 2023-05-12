@@ -29,7 +29,7 @@ public class UsuarioService {
     public Usuario encontrarPorId(Long id) {
         // Confere se o usuario logado esta autenticado para achar o ID indicado
         UserSpringSecurity userSpringSecurity = authenticated();
-        
+
         if (!Objects.nonNull(userSpringSecurity)
                 || !userSpringSecurity.hasRole(UsuarioEnum.ADMIN) && !id.equals(userSpringSecurity.getId()))
             throw new AuthorizationException("Acesso negado");
@@ -37,6 +37,15 @@ public class UsuarioService {
         Optional<Usuario> usuario = this.usuarioRepository.findById(id);
 
         return usuario.orElseThrow(() -> new RuntimeException("Usuario nao encontrado!"));
+    }
+
+    public Usuario listasInfoUsuario() {
+        // Confere se o usuario logado esta autenticado para achar o ID indicado
+        UserSpringSecurity userSpringSecurity = authenticated();
+
+        Optional<Usuario> usuario = this.usuarioRepository.findById(userSpringSecurity.getId());
+
+        return usuario.orElseThrow(() -> new RuntimeException("Falha ao carregar informacoes do usuario!"));
     }
 
     @Transactional

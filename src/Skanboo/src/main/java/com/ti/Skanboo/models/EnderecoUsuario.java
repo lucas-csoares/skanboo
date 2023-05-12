@@ -11,7 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -34,28 +34,24 @@ public class EnderecoUsuario {
         private Long id;
 
         @OneToOne
-        @JoinColumn(name = "id_usuario", referencedColumnName = "id", nullable = false)
+        @JoinColumn(name = "id_usuario", referencedColumnName = "id")
         @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
         private Usuario usuario;
 
         @Column(name = "rua", length = 45, nullable = false)
-        @NotNull
-        @NotEmpty
+        @NotBlank
         private String rua;
 
         @Column(name = "bairro", length = 45, nullable = false)
-        @NotNull
-        @NotEmpty
+        @NotBlank
         private String bairro;
 
         @Column(name = "uf", length = 45, nullable = false)
-        @NotNull
-        @NotEmpty
+        @NotBlank
         private String uf;
 
         @Column(name = "cidade", length = 45, nullable = false)
-        @NotNull
-        @NotEmpty
+        @NotBlank
         private String cidade;
 
         @Column(name = "numero", length = 45, nullable = false)
@@ -66,8 +62,7 @@ public class EnderecoUsuario {
         private String complemento;
 
         @Column(name = "cep", length = 45, nullable = false)
-        @NotNull
-        @NotEmpty
+        @NotBlank
         private String cep;
 
 }
