@@ -10,6 +10,15 @@
         architecto minus voluptatem dolorum eaque at in. Laborum minima, cum
         soluta sint odit, veniam eos eius sit quibusdam suscipit ducimus!
       </p>
+
+      <span><b>Preferências: </b></span>
+      <span class="preferencias">Video-game ou bolsa</span><br />
+
+      <span><b>Aberto a ofertas? </b></span>
+      <span class="oferta">Sim</span><br />
+
+      <span><b>Categoria: </b></span>
+      <span class="categoria">Moda</span><br /><br />
       <button>Negociar</button>
     </div>
   </section>
@@ -44,6 +53,10 @@ img {
 
 .informacoes-produto {
   margin-left: 50px;
+}
+
+span {
+  line-height: 1.5em;
 }
 
 button {
