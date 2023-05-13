@@ -19,7 +19,7 @@
         <div class="info-usuario">
 
           <p class="nome">{{usuario.nome}}</p>
-          <p class="nascimento">*****</p>
+          <p class="nascimento">{{ usuario.dataNascimento ? `${usuario.dataNascimento[2]}/${usuario.dataNascimento[1]}/${usuario.dataNascimento[0]}` : '' }}</p>
           <p class="email">{{usuario.email}}</p>
           <p class="telefone">{{usuario.telefone}}</p>
           <p class="senha">*****</p>
@@ -40,7 +40,7 @@ import Usuario from "../services/UsuarioService";
 export default {
   data() {
     return {
-      uusario: {
+      usuario: {
         nome: "",
         nascimento: "",
         email: "",
@@ -52,11 +52,18 @@ export default {
   },
 
   mounted() {
-    Usuario.exibirInfo().then(resposta => {
-      console.log(resposta.data);
-      this.usuario = resposta.data ;
-    })
-  }
+  Usuario.exibirInfo().then(resposta => {
+    if (resposta.data && resposta.data.dataNascimento) {
+      this.usuario = resposta.data;
+    } else {
+      // Handle the case when dataNascimento is missing or undefined
+      console.error('Invalid API response');
+    }
+  }).catch(error => {
+    // Handle any error that occurs during the API request
+    console.error(error);
+  });
+}
 };
 </script>
 
