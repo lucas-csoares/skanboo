@@ -33,11 +33,15 @@ export default {
         .then((resposta) => {
           alert("Usuario logado com sucesso");
 
-          console.log(resposta)
+          console.log(resposta);
+          const token = resposta.headers.getAuthorization();
 
-          localStorage.setItem('token', resposta.headers.getAuthorization());
-          
-          this.errors = [];
+          if (!token)
+            throw new Error("Ocorreu um erro ao tentar logar usuário!");
+          localStorage.setItem("token", token);
+          //aqui redirecionar pagina
+          return this.$router.push({ name: "usuarioView" });
+          // this.errors = [];
         })
         .catch((e) => {
           this.errors = e.response.data.errors;
