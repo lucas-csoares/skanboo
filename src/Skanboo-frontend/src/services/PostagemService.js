@@ -2,7 +2,11 @@ import { http } from './config';
 
 export default {
   criar: (postagem) => {
-    return http.post('postagem', postagem);
+    return http.post('postagem', postagem, {
+      headers: {
+        Authorization: localStorage.getItem('token')
+      }
+    });
   },
 
   exibirInfo: () => {
@@ -13,7 +17,11 @@ export default {
     });
   },
 
-  atualizar: (postagem) => {
-    return http.put('postagem', postagem);
+  atualizar: (postId, postagem) => {
+    return http.put(`postagem/${postId}`, postagem, {
+      headers: {
+        Authorization: localStorage.getItem('token')
+      }
+    });
   },
 };
