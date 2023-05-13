@@ -1,8 +1,6 @@
 package com.ti.Skanboo.controllers;
 
 import java.net.URI;
-//import java.util.List;
-//import java.util.Optional;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +38,7 @@ public class PostagemController {
     }
 
     @GetMapping("/usuario")
-    public ResponseEntity<List<Postagem>> encontrarPostagem() {
+    public ResponseEntity<List<Postagem>> listarPostagens() {
         List<Postagem> obj = this.postagemService.listarPostagens();
         return ResponseEntity.ok().body(obj);
     }

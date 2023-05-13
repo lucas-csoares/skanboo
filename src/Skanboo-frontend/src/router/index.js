@@ -6,6 +6,7 @@ import UsuarioView from "../views/UsuarioView";
 import EditarUsuarioView from "../views/EditarUsuarioView";
 import PostarProdutoView from "../views/PostarProdutoView";
 import EditarProdutoView from "../views/EditarProdutoView";
+import PaginaProdutoView from "../views/PaginaProdutoView";
 
 const routes = [
   {
@@ -43,7 +44,11 @@ const routes = [
     name: "editarProdutoView",
     component: EditarProdutoView,
   },
-
+  {
+    path: "/paginaProdutoView",
+    name: "paginaProdutoView",
+    component: PaginaProdutoView,
+  },
   // {
   //   path: '/about',
   //   name: 'about',
