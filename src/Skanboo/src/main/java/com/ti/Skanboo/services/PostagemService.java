@@ -12,6 +12,9 @@ import com.ti.Skanboo.security.UserSpringSecurity;
 import com.ti.Skanboo.exceptions.AuthorizationException;
 import jakarta.transaction.Transactional;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -57,6 +60,8 @@ public class PostagemService {
         Usuario usuario = this.usuarioService.encontrarPorId(userSpringSecurity.getId());
         
         obj.setUsuario(usuario);
+        obj.setDataPostagem(DateTimeFormatter.ofPattern("dd/MM/yyyy").format(LocalDate.now()));
+        obj.setHoraPostagem(LocalTime.now());
 
         return this.postagemRepository.save(obj);
     }
