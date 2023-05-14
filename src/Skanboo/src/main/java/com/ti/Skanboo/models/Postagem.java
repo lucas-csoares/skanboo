@@ -1,5 +1,10 @@
 package com.ti.Skanboo.models;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Column;
@@ -48,19 +53,25 @@ public class Postagem {
     @Size(min = 1, max = 255)
     private String descricao;
 
-    // @Column(name = "hora_postagem", length = 8, nullable = false)
-    // @NotNull
-    // private LocalDateTime hora;
+    @Column(name = "hora_postagem", nullable = false)
+    @JsonFormat(pattern = "HH:mm:ss")
+    private LocalTime horaPostagem;
 
-    // @Column(name = "data_postagem", length = 8, nullable = false)
-    // @NotNull
-    // private LocalDateTime data;
+    @Column(name = "data_postagem", nullable = false)
+    private String dataPostagem;
 
-    // @Enumerated(EnumType.STRING)
-    // @Column(name = "categoria_postagem", length = 20, nullable = false)
-    // @NotNull
-    // @NotEmpty
-    // private CategoriaPostagem categoria;
+
+    public Postagem(String titulo, Usuario usuario, String descricao) {
+        this.titulo = titulo;
+        this.usuario = usuario;
+        this.descricao = descricao;
+        this.horaPostagem = LocalTime.now();
+        this.dataPostagem = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+    }
+
+    // @Column(name = "foto", length = 255)
+    // @Lob //*Campo de objeto grande (Large Object)
+    // private byte[] foto;
 
     // @Column(name = "foto", length = 255)
     // @Lob //*Campo de objeto grande (Large Object)
