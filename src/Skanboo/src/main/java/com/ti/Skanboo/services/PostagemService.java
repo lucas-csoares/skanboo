@@ -73,6 +73,8 @@ public class PostagemService {
 
         novaPostagem.setTitulo(obj.getTitulo());
         novaPostagem.setDescricao(obj.getDescricao());
+        novaPostagem.setDataPostagem(DateTimeFormatter.ofPattern("dd/MM/yyyy").format(LocalDate.now()));
+        novaPostagem.setHoraPostagem(LocalTime.now());
 
         return this.postagemRepository.save(novaPostagem);        
     }
