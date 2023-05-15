@@ -7,6 +7,7 @@ import EditarUsuarioView from "../views/EditarUsuarioView";
 import PostarProdutoView from "../views/PostarProdutoView";
 import EditarProdutoView from "../views/EditarProdutoView";
 import PaginaProdutoView from "../views/PaginaProdutoView";
+import PostsDoUsuarioView from "../views/PostsDoUsuarioView";
 
 const routes = [
   {
@@ -48,6 +49,11 @@ const routes = [
     path: "/paginaProdutoView",
     name: "paginaProdutoView",
     component: PaginaProdutoView,
+  },
+  {
+    path: "/postsDoUsuarioView",
+    name: "PostsDoUsuarioView",
+    component: PostsDoUsuarioView,
   },
   // {
   //   path: '/about',
