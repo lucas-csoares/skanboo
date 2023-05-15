@@ -12,10 +12,10 @@
             <form action="">
               <h2>Dados da conta</h2>
               <label for="email">Editar email</label>
-              <input type="text" id="email" />
+              <input type="text" id="email" :placeholder= usuario.email />
 
               <label for="email">Trocar senha</label>
-              <input type="text" id="senha" placeholder="Senha atual" />
+              <input type="text" id="senha" :placeholder= usuario.senha />
               <input type="text" id="nova-senha" placeholder="Nova senha" />
               <input
                 type="text"
@@ -25,7 +25,7 @@
               <br />
               <h2>Dados pessoais</h2>
               <label for="nome">Editar nome</label>
-              <input type="text" id="nome" />
+              <input type="text" id="nome" :placeholder= usuario.nome />
 
               <label for="nome">Editar nascimento</label>
               <input type="date" id="nascimento" />
@@ -36,6 +36,7 @@
                 id="telefone"
                 name="telefone"
                 class="form-control cel-sp-mask"
+                :placeholder= usuario.telefone
               />
 
               <label for="cpf">Editar CPF</label>
@@ -44,6 +45,7 @@
                 id="cpf"
                 name="cpf"
                 class="form-control cpf-mask"
+                :placeholder= usuario.cpf
               />
             </form>
           </div>
@@ -56,15 +58,28 @@
 </template>
 
 <script>
+import Usuario from "../services/UsuarioService";
+
 export default {
   data() {
     return {
       usuario: {
+        nome: "",
+        nascimento: "",
         email: "",
+        telefone: "",
         senha: "",
+        cpf: "",
       },
     };
   },
+
+  mounted() {
+    Usuario.exibirInfo().then(resposta => {
+      console.log(resposta.data);
+      this.usuario = resposta.data ;
+    })
+  }
 };
 </script>
 

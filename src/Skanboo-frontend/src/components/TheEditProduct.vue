@@ -5,7 +5,7 @@
       <div class="dados-postagem">
         <form action="">
           <label for="titulo">Título</label>
-          <input type="text" id="titulo" maxlength="30" />
+          <input type="text" id="titulo" maxlength="30" :placeholder="umaPostagem.titulo ? umaPostagem.titulo : ''" />
 
           <label for="descricao">Descrição</label><br />
           <textarea
@@ -14,6 +14,7 @@
             rows="4"
             cols="50"
             maxlength="140"
+            :placeholder="umaPostagem.titulo ? umaPostagem.descricao : ''"
           ></textarea
           ><br />
 
@@ -90,15 +91,31 @@
 </template>
 
 <script>
+import Postagem from "../services/PostagemService";
+
 export default {
   data() {
     return {
-      login: {
-        email: "",
-        senha: "",
+      postagem: {
+        id: "",
+        titulo: "",
+        descricao: "",
+        categoria: "",
+        status: "",
       },
+      umaPostagem: {}
     };
   },
+
+  mounted() {
+    Postagem.exibirInfo().then(resposta => {
+      console.log(resposta.data);
+      const postagens = resposta.data; // Todas postagens do usuario
+      const umaPostagem = postagens.find(postagem => postagem.id === 4) //Depois mudar a ID do produto escolhido
+      console.log(umaPostagem.titulo);
+      this.umaPostagem = umaPostagem; // So a postagem escolhida
+    })
+  }
 };
 </script>
 
