@@ -4,11 +4,10 @@
       <img src="../assets/imagem-produto.avif" alt="Foto do Produto" />
     </div>
     <div class="informacoes-produto">
-      <h1>Título produto</h1>
+      <h1>Camisa gato japonês</h1>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt provident
-        architecto minus voluptatem dolorum eaque at in. Laborum minima, cum
-        soluta sint odit, veniam eos eius sit quibusdam suscipit ducimus!
+        Camisa importada do Japão em ótimo estado tamanho M (cabe um G pequeno)
+        100% algodão orgânico do Himalaia.
       </p>
 
       <span><b>Preferências: </b></span>
