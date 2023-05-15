@@ -14,7 +14,11 @@ export default {
   },
 
   atualizar: (usuario) => {
-    return http.put("usuario", usuario);
+    return http.put("usuario", usuario , {
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+    });
   },
 
   logar: (usuario) => {
