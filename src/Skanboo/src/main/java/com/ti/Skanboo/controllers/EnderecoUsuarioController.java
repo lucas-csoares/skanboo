@@ -37,9 +37,9 @@ public class EnderecoUsuarioController {
         return ResponseEntity.ok().body(obj);
     }
 
-    @GetMapping("/usuario")
-    public ResponseEntity<List<EnderecoUsuario>> listarEnderecoUsuario() {
-        List<EnderecoUsuario> obj = this.enderecoUsuarioService.listarEnderecoUsuario();
+    @GetMapping("/me")
+    public ResponseEntity<List<EnderecoUsuario>> listarEnderecoUsuarioAtivo() {
+        List<EnderecoUsuario> obj = this.enderecoUsuarioService.listarEnderecoUsuarioAtivo();
         return ResponseEntity.ok().body(obj);
     }
 
@@ -55,18 +55,34 @@ public class EnderecoUsuarioController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> atualizar(@Valid @RequestBody EnderecoUsuario obj, @PathVariable Long id) {
+    public ResponseEntity<Void> atualizarPorId(@Valid @RequestBody EnderecoUsuario obj, @PathVariable Long id) {
 
         obj.setId(id);
-        obj = this.enderecoUsuarioService.atualizar(obj);
+        obj = this.enderecoUsuarioService.atualizarPorId(obj);
+
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/me")
+    public ResponseEntity<Void> atualizarEnderecoUsuarioAtivo(@Valid @RequestBody EnderecoUsuario obj) {
+
+        obj = this.enderecoUsuarioService.atualizarEnderecoUsuarioAtivo(obj);
 
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletar(@PathVariable Long id) {
+    public ResponseEntity<Void> deletarPorId(@PathVariable Long id) {
 
-        this.enderecoUsuarioService.deletar(id);
+        this.enderecoUsuarioService.deletarPorId(id);
+
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/me")
+    public ResponseEntity<Void> deletarEnderecoUsuarioAtivo() {
+
+        this.enderecoUsuarioService.deletarEnderecoUsuarioAtivo();
 
         return ResponseEntity.noContent().build();
     }

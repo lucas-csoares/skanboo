@@ -19,6 +19,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
@@ -66,9 +67,10 @@ public class Usuario {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String senha;
 
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.REMOVE)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) // para evitar acesso ciclico as entidades
-    private EnderecoUsuario endereco = new EnderecoUsuario();
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_endereco", referencedColumnName = "id", nullable = true)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private EnderecoUsuario endereco;
 
     @Column(name = "uf", length = 2, nullable = false)
     @NotBlank
@@ -89,13 +91,13 @@ public class Usuario {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) // para evitar acesso ciclico as entidades
     private List<Postagem> postagem = new ArrayList<Postagem>();
 
-    /*-----Codigos para autenticadao de usuario-----*/
-
     @ElementCollection(fetch = FetchType.EAGER)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @CollectionTable(name = "perfis_usuario")
     @Column(name = "perfil", nullable = false)
     private Set<Integer> perfis = new HashSet<>();
+
+    /*-----Codigos para autenticadao de usuario-----*/
 
     public Set<UsuarioEnum> getPerfil() {
         return this.perfis.stream().map(x -> UsuarioEnum.toEnum(x)).collect(Collectors.toSet());

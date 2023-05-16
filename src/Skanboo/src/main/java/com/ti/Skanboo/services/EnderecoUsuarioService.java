@@ -39,12 +39,16 @@ public class EnderecoUsuarioService {
         return endereco;
     }
 
-    public List<EnderecoUsuario> listarEnderecoUsuario() {
+    public List<EnderecoUsuario> listarEnderecoUsuarioAtivo() {
         UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
         if (Objects.isNull(userSpringSecurity))
             throw new AuthorizationException("Acesso negado!");
 
         List<EnderecoUsuario> endereco = this.enderecoUsuarioRepository.findByUsuario_Id(userSpringSecurity.getId());
+
+        if (endereco.isEmpty())
+            throw new RuntimeException("Usuario nao possui indereco cadastrado!");
+
         return endereco;
     }
 
@@ -58,11 +62,16 @@ public class EnderecoUsuarioService {
 
         obj.setUsuario(usuario);
 
+        if (usuario.getEndereco() == null)
+            usuario.setEndereco(obj);
+        else
+            throw new RuntimeException("Usuario ja possui endereco cadastrado!");
+
         return this.enderecoUsuarioRepository.save(obj);
     }
 
     @Transactional
-    public EnderecoUsuario atualizar(EnderecoUsuario obj) {
+    public EnderecoUsuario atualizarPorId(EnderecoUsuario obj) {
 
         EnderecoUsuario novoEnderecoUsuario = encontrarPorId(obj.getId());
 
@@ -77,9 +86,44 @@ public class EnderecoUsuarioService {
         return this.enderecoUsuarioRepository.save(novoEnderecoUsuario);
     }
 
-    public void deletar(Long id) {
+    public EnderecoUsuario atualizarEnderecoUsuarioAtivo(EnderecoUsuario obj) {
 
-        encontrarPorId(id); // retorna se o endereco existe ou nao
+        UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
+        Usuario usuario = usuarioService.encontrarPorId(userSpringSecurity.getId());
+        EnderecoUsuario novoEnderecoUsuario = encontrarPorId(usuario.getEndereco().getId());
+
+        novoEnderecoUsuario.setBairro(obj.getBairro());
+        novoEnderecoUsuario.setCep(obj.getCep());
+        novoEnderecoUsuario.setCidade(obj.getCidade());
+        novoEnderecoUsuario.setComplemento(obj.getComplemento());
+        novoEnderecoUsuario.setNumero(obj.getNumero());
+        novoEnderecoUsuario.setRua(obj.getRua());
+        novoEnderecoUsuario.setUf(obj.getUf());
+
+        return this.enderecoUsuarioRepository.save(novoEnderecoUsuario);
+    }
+
+    public void deletarPorId(Long id) {
+
+        encontrarPorId(id);
+
+        //todo: alterar endereco usuario para null
+
+        try {
+            this.enderecoUsuarioRepository.deleteById(id);
+        } catch (Exception e) {
+            throw new RuntimeException("Nao e possivel excluir o endereco!");
+        }
+    }
+
+    public void deletarEnderecoUsuarioAtivo() {
+
+        UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
+        Usuario usuario = usuarioService.encontrarPorId(userSpringSecurity.getId());
+        Long id = encontrarPorId(usuario.getEndereco().getId()).getId();
+
+        encontrarPorId(id);
+        usuario.setEndereco(null);
 
         try {
             this.enderecoUsuarioRepository.deleteById(id);
