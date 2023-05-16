@@ -4,14 +4,13 @@
       <img src="../assets/imagem-produto.avif" alt="Foto do Produto" />
     </div>
     <div class="informacoes-produto">
-      <h1>Camisa gato japonês</h1>
+      <h1>{{ postagem.titulo }}</h1>
       <p>
-        Camisa importada do Japão em ótimo estado tamanho M (cabe um G pequeno)
-        100% algodão orgânico do Himalaia.
+        {{ postagem.descricao }}
       </p>
 
-      <span><b>Preferências: </b></span>
-      <span class="preferencias">Video-game ou bolsa</span><br />
+      <!-- <span><b>Preferências: </b></span>
+      <span class="preferencias">Video-game ou bolsa</span><br /> -->
 
       <span><b>Aberto a ofertas? </b></span>
       <span class="oferta">Sim</span><br />
@@ -24,7 +23,34 @@
 </template>
 
 <script>
-export default {};
+
+import Postagem from "../services/PostagemService";
+
+export default {
+  data() {
+    return {
+      postagem: {
+        id: "",
+        titulo: "",
+        descricao: "",
+        categoria: "",
+        status: "",
+      },
+      umaPostagem: {}
+    };
+  },
+
+  mounted() {
+    Postagem.exibirInfo().then(resposta => {
+      console.log(resposta.data);
+      const postagens = resposta.data; // Todas postagens do usuario
+      const umaPostagem = postagens.find(postagem => postagem.id === 2) //Depois mudar a ID do produto escolhido
+      console.log(umaPostagem.titulo);
+      this.postagem = umaPostagem; // So a postagem escolhida
+    })
+  },
+};
+
 </script>
 
 <style scoped>

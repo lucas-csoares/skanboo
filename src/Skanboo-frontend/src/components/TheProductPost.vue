@@ -1,11 +1,19 @@
 <template>
   <section class="container">
     <h1>Postar produto</h1>
+
+    <ul>
+      <li v-for="(error, index) of errors" :key="index">
+        campo <b>{{ error.field }}</b> - {{ error.defaultMessage }}
+      </li>
+    </ul>
+
     <div class="postagem">
       <div class="dados-postagem">
-        <form action="">
+        <form @submit.prevent="criar">
+          
           <label for="titulo">Título</label>
-          <input type="text" id="titulo" maxlength="30" />
+          <input type="text" id="titulo" maxlength="30" v-model="postagem.titulo" />
 
           <label for="descricao">Descrição</label><br />
           <textarea
@@ -14,11 +22,9 @@
             rows="4"
             cols="50"
             maxlength="140"
+            v-model="postagem.descricao"
           ></textarea
           ><br />
-
-          <label for="preferencias">Preferências</label>
-          <input type="text" id="preferencias" />
 
           <fieldset>
             <legend>Aberto a ofertas?</legend>
@@ -82,22 +88,42 @@
               </div>
             </fieldset>
           </div>
+          <button class="editar">Postar</button>
         </form>
-        <button class="editar">Postar</button>
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import Postagem from "../services/PostagemService";
+
 export default {
   data() {
     return {
-      login: {
-        email: "",
-        senha: "",
+      postagem: {
+        id: "",
+        titulo: "",
+        descricao: "",
+        categoria: "",
+        status: "",
       },
+      umaPostagem: {}
     };
+  },
+
+  methods: {
+    criar() {
+      Postagem.criar(this.postagem)
+        .then((/*resposta*/) => {
+          alert("Postagem criada com sucesso");
+          this.errors = [];
+        })
+        .catch((e) => {
+          this.errors = e.response.data.errors;
+          console.log(this.errors);
+        });
+    },
   },
 };
 </script>

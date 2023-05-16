@@ -55,6 +55,7 @@ const routes = [
     name: "PostsDoUsuarioView",
     component: PostsDoUsuarioView,
   },
+
   // {
   //   path: '/about',
   //   name: 'about',

@@ -1,6 +1,13 @@
 <template>
   <section class="container">
     <h1>Alterar informações da conta</h1>
+
+    <ul>
+      <li v-for="(error, index) of errors" :key="index">
+        campo <b>{{ error.field }}</b> - {{ error.defaultMessage }}
+      </li>
+    </ul>
+
     <div class="usuario">
       <!--<div class="foto-usuario">
                
@@ -9,13 +16,14 @@
       <div class="informacoes">
         <div class="dados-usuario">
           <div class="dados-conta">
-            <form action="">
+            <form @submit.prevent="atualizar">
               <h2>Dados da conta</h2>
               <label for="email">Editar email</label>
-              <input type="text" id="email" :placeholder= usuario.email />
+              <input type="text" id="email" :placeholder="usuario.email ? usuario.email : ''" 
+              v-model="usuario.email" />
 
               <label for="email">Trocar senha</label>
-              <input type="text" id="senha" :placeholder= usuario.senha />
+              <input type="text" id="senha" placeholder="*****" />
               <input type="text" id="nova-senha" placeholder="Nova senha" />
               <input
                 type="text"
@@ -25,7 +33,8 @@
               <br />
               <h2>Dados pessoais</h2>
               <label for="nome">Editar nome</label>
-              <input type="text" id="nome" :placeholder= usuario.nome />
+              <input type="text" id="nome" :placeholder="usuario.nome ? usuario.nome : ''" 
+              v-model="usuario.nome" />
 
               <label for="nome">Editar nascimento</label>
               <input type="date" id="nascimento" />
@@ -36,7 +45,8 @@
                 id="telefone"
                 name="telefone"
                 class="form-control cel-sp-mask"
-                :placeholder= usuario.telefone
+                :placeholder="usuario.telefone ? usuario.telefone : ''" 
+                v-model="usuario.telefone"
               />
 
               <label for="cpf">Editar CPF</label>
@@ -45,14 +55,16 @@
                 id="cpf"
                 name="cpf"
                 class="form-control cpf-mask"
-                :placeholder= usuario.cpf
+                :placeholder="usuario.cpf ? usuario.cpf : ''" 
+                v-model="usuario.cpf"
               />
+              <button class="salvar">Salvar alterações</button>
+              <button class="cancelar">Cancelar</button>
             </form>
           </div>
         </div>
       </div>
-      <button class="salvar">Salvar alterações</button>
-      <button class="cancelar">Cancelar</button>
+      
     </div>
   </section>
 </template>
@@ -79,6 +91,21 @@ export default {
       console.log(resposta.data);
       this.usuario = resposta.data ;
     })
+  },
+
+  methods: {
+    atualizar() {
+      Usuario.atualizar(this.usuario.id, this.usuario)
+        .then((/*resposta*/) => {
+          alert("Informações do usuario editadas com sucesso");
+          this.errors = [];
+        })
+        .catch((e) => {
+          this.errors = e.response.data.errors;
+          console.log(this.errors);
+          console.log(this.usuario);
+        });
+    },
   }
 };
 </script>

@@ -1,11 +1,22 @@
 <template>
   <section class="container">
     <h1>Editar produto</h1>
+
+    <ul>
+      <li v-for="(error, index) of errors" :key="index">
+        campo <b>{{ error.field }}</b> - {{ error.defaultMessage }}
+      </li>
+    </ul>
+
     <div class="postagem">
       <div class="dados-postagem">
-        <form action="">
+        <form @submit.prevent="atualizar">
+
           <label for="titulo">Título</label>
-          <input type="text" id="titulo" maxlength="30" :placeholder="umaPostagem.titulo ? umaPostagem.titulo : ''" />
+          <input type="text" id="titulo" maxlength="30" 
+          :placeholder="umaPostagem.titulo ? umaPostagem.titulo : ''" 
+          v-model="postagem.titulo" 
+          />
 
           <label for="descricao">Descrição</label><br />
           <textarea
@@ -15,11 +26,9 @@
             cols="50"
             maxlength="140"
             :placeholder="umaPostagem.titulo ? umaPostagem.descricao : ''"
+            v-model="postagem.descricao" 
           ></textarea
           ><br />
-
-          <label for="preferencias">Preferências</label>
-          <input type="text" id="preferencias" />
 
           <fieldset>
             <legend>Aberto a ofertas?</legend>
@@ -83,8 +92,8 @@
               </div>
             </fieldset>
           </div>
+          <button class="editar">Editar</button>
         </form>
-        <button class="editar">Postar</button>
       </div>
     </div>
   </section>
@@ -111,11 +120,25 @@ export default {
     Postagem.exibirInfo().then(resposta => {
       console.log(resposta.data);
       const postagens = resposta.data; // Todas postagens do usuario
-      const umaPostagem = postagens.find(postagem => postagem.id === 4) //Depois mudar a ID do produto escolhido
+      const umaPostagem = postagens.find(postagem => postagem.id === 2) //Depois mudar a ID do produto escolhido
       console.log(umaPostagem.titulo);
-      this.umaPostagem = umaPostagem; // So a postagem escolhida
+      this.postagem = umaPostagem; // So a postagem escolhida
     })
-  }
+  },
+
+  methods: {
+    atualizar() {
+      Postagem.atualizar(this.postagem.id, this.postagem)
+        .then((/*resposta*/) => {
+          alert("Postagem editada com sucesso");
+          this.errors = [];
+        })
+        .catch((e) => {
+          this.errors = e.response.data.errors;
+          console.log(this.errors);
+        });
+    },
+  },
 };
 </script>
 
