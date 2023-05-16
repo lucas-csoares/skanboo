@@ -1,6 +1,7 @@
 package com.ti.Skanboo.controllers;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,17 +33,24 @@ public class UsuarioController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> encontrarPorId(@PathVariable Long id) {
- 
+
         Usuario obj = this.usuarioService.encontrarPorId(id);
 
         return ResponseEntity.ok().body(obj);
     }
 
-    @GetMapping
-    public ResponseEntity<Usuario> listasInfoUsuario() {
+    @GetMapping("/me")
+    public ResponseEntity<Usuario> listarInformacoesUsuarioAtivo() {
 
-        Usuario obj = this.usuarioService.listasInfoUsuario();
+        Usuario obj = this.usuarioService.listarInformacoesUsuarioAtivo();
 
+        return ResponseEntity.ok().body(obj);
+    }
+
+    @GetMapping("/lista")
+    public ResponseEntity<List<Usuario>> listarUsuariosCadastrados() {
+
+        List<Usuario> obj = this.usuarioService.listarUsuariosCadastrados();
         return ResponseEntity.ok().body(obj);
     }
 
@@ -58,18 +66,34 @@ public class UsuarioController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> atualizar(@Valid @RequestBody Usuario obj, @PathVariable Long id) {
+    public ResponseEntity<Void> atualizarPorId(@Valid @RequestBody Usuario obj, @PathVariable Long id) {
 
         obj.setId(id);
-        obj = this.usuarioService.atualizar(obj);
+        obj = this.usuarioService.atualizarPorId(obj);
+
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/me")
+    public ResponseEntity<Void> atualizarUsuarioAtivo(@Valid @RequestBody Usuario obj) {
+
+        obj = this.usuarioService.atualizarUsuarioAtivo(obj);
 
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletar(@PathVariable Long id) {
+    public ResponseEntity<Void> deletarPorId(@PathVariable Long id) {
 
-        this.usuarioService.deletar(id);
+        this.usuarioService.deletarPorId(id);
+
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/me")
+    public ResponseEntity<Void> deletarUsuarioAtivo() {
+
+        this.usuarioService.deletarUsuarioAtivo();
 
         return ResponseEntity.noContent().build();
     }

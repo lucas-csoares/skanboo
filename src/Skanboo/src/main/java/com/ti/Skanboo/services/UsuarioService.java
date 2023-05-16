@@ -1,5 +1,6 @@
 package com.ti.Skanboo.services;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -39,13 +40,25 @@ public class UsuarioService {
         return usuario.orElseThrow(() -> new RuntimeException("Usuario nao encontrado!"));
     }
 
-    public Usuario listasInfoUsuario() {
-        // Confere se o usuario logado esta autenticado para achar o ID indicado
+    public Usuario listarInformacoesUsuarioAtivo() {
+
         UserSpringSecurity userSpringSecurity = authenticated();
 
         Optional<Usuario> usuario = this.usuarioRepository.findById(userSpringSecurity.getId());
 
         return usuario.orElseThrow(() -> new RuntimeException("Falha ao carregar informacoes do usuario!"));
+    }
+
+    public List<Usuario> listarUsuariosCadastrados() {
+
+        UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
+
+        if (Objects.isNull(userSpringSecurity) || !userSpringSecurity.hasRole(UsuarioEnum.ADMIN))
+            throw new AuthorizationException("Acesso negado!");
+
+        List<Usuario> usuario = this.usuarioRepository.findAll();
+
+        return usuario;
     }
 
     @Transactional
@@ -62,22 +75,56 @@ public class UsuarioService {
     }
 
     @Transactional
-    public Usuario atualizar(Usuario obj) {
+    public Usuario atualizarPorId(Usuario obj) {
 
-        Usuario novoUsuario = encontrarPorId(obj.getId());
+        Usuario usuario = encontrarPorId(obj.getId());
 
-        novoUsuario.setSenha(obj.getSenha());
-        novoUsuario.setSenha(this.bCryptPasswordEncoder.encode(obj.getSenha()));
+        usuario.setNome(obj.getNome());
+        usuario.setCpf(obj.getCpf());
+        usuario.setEmail(obj.getEmail());
+        usuario.setSenha(obj.getSenha());
+        usuario.setSenha(this.bCryptPasswordEncoder.encode(obj.getSenha()));
+        usuario.setUf(obj.getUf());
+        usuario.setTelefone(obj.getTelefone());
 
-        return this.usuarioRepository.save(novoUsuario);
+        return this.usuarioRepository.save(usuario);
     }
 
-    public void deletar(Long id) {
+    @Transactional
+    public Usuario atualizarUsuarioAtivo(Usuario obj) {
+
+        UserSpringSecurity userSpringSecurity = authenticated();
+
+        Usuario usuario = encontrarPorId(userSpringSecurity.getId());
+
+        usuario.setNome(obj.getNome());
+        usuario.setCpf(obj.getCpf());
+        usuario.setEmail(obj.getEmail());
+        usuario.setSenha(obj.getSenha());
+        usuario.setSenha(this.bCryptPasswordEncoder.encode(obj.getSenha()));
+        usuario.setUf(obj.getUf());
+        usuario.setTelefone(obj.getTelefone());
+
+        return this.usuarioRepository.save(usuario);
+    }
+
+    public void deletarPorId(Long id) {
 
         encontrarPorId(id);
 
         try {
             this.usuarioRepository.deleteById(id);
+        } catch (Exception e) {
+            throw new RuntimeException("Nao e possivel excluir usuario pois ele possui entidades relacionadas!");
+        }
+    }
+
+    public void deletarUsuarioAtivo() {
+
+        UserSpringSecurity userSpringSecurity = authenticated();
+
+        try {
+            this.usuarioRepository.deleteById(userSpringSecurity.getId());
         } catch (Exception e) {
             throw new RuntimeException("Nao e possivel excluir usuario pois ele possui entidades relacionadas!");
         }

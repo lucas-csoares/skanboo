@@ -60,7 +60,6 @@ public class Postagem {
     @Column(name = "data_postagem", nullable = false)
     private String dataPostagem;
 
-
     public Postagem(String titulo, Usuario usuario, String descricao) {
         this.titulo = titulo;
         this.usuario = usuario;
@@ -68,10 +67,6 @@ public class Postagem {
         this.horaPostagem = LocalTime.now();
         this.dataPostagem = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
-
-    // @Column(name = "foto", length = 255)
-    // @Lob //*Campo de objeto grande (Large Object)
-    // private byte[] foto;
 
     // @Column(name = "foto", length = 255)
     // @Lob //*Campo de objeto grande (Large Object)
