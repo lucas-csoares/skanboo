@@ -106,8 +106,8 @@ public class EnderecoUsuarioService {
     public void deletarPorId(Long id) {
 
         encontrarPorId(id);
-
-        //todo: alterar endereco usuario para null
+        Usuario usuario = encontrarPorId(id).getUsuario();
+        usuario.setEndereco(null);
 
         try {
             this.enderecoUsuarioRepository.deleteById(id);
