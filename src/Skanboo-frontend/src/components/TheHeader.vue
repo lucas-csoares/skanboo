@@ -41,7 +41,8 @@
   <a href="/EditarUsuarioView">Tela editar usuário | </a>
   <a href="/PostarProdutoView">Tela postar produto | </a>
   <a href="/PaginaProdutoView">Tela do produto | </a>
-  <a href="/EditarProdutoView">Tela editar produto </a>
+  <a href="/EditarProdutoView">Tela editar produto | </a>
+  <a href="/PostsDoUsuarioView">Tela meus anúncios </a>
 </template>
 
 <script>

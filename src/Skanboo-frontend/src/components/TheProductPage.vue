@@ -1,5 +1,6 @@
 <template>
-  <section class="container">
+  <div v-if="postagem">
+    <section class="container">
     <div class="imagem">
       <img src="../assets/imagem-produto.avif" alt="Foto do Produto" />
     </div>
@@ -20,6 +21,7 @@
       <button>Negociar</button>
     </div>
   </section>
+  </div>
 </template>
 
 <script>
@@ -27,26 +29,23 @@
 import Postagem from "../services/PostagemService";
 
 export default {
+  props: ["id"],
   data() {
     return {
-      postagem: {
-        id: "",
-        titulo: "",
-        descricao: "",
-        categoria: "",
-        status: "",
-      },
-      umaPostagem: {}
-    };
+      postagem: null
+    }
   },
 
   mounted() {
-    Postagem.exibirInfo().then(resposta => {
+
+    // fetch('http://localhost:8080/postagem/' + this.id)
+    // .then(resposta => {})
+
+
+    Postagem.exibirInfoPostagem(this.id).then(resposta => {
+      this.postagem = resposta.data;
       console.log(resposta.data);
-      const postagens = resposta.data; // Todas postagens do usuario
-      const umaPostagem = postagens.find(postagem => postagem.id === 2) //Depois mudar a ID do produto escolhido
-      console.log(umaPostagem.titulo);
-      this.postagem = umaPostagem; // So a postagem escolhida
+      return this.postagem;
     })
   },
 };

@@ -6,7 +6,7 @@ export default {
   },
 
   exibirInfo: () => {
-    return http.get("usuario", {
+    return http.get("usuario/me", {
       headers: {
         Authorization: localStorage.getItem("token"),
       },

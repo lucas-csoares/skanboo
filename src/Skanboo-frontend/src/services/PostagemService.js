@@ -17,6 +17,14 @@ export default {
     });
   },
 
+  exibirInfoPostagem: (id) => {
+    return http.get(`postagem/${id}`, {
+      headers: {
+        Authorization: localStorage.getItem('token')
+      }
+    });
+  },
+
   atualizar: (postId, postagem) => {
     return http.put(`postagem/${postId}`, postagem, {
       headers: {
