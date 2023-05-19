@@ -118,9 +118,9 @@ A avaliação entre usuários é importante, pois fornece maior segurança à ou
 
 ### 3.3. Modelagem dos Processos
 
-### 3.3.1 Processo 1 – Cadastro de usuário
+### 3.3.1 Processo 1 – Gerenciar usuário
 
-O usuário se cadastra preenchendo os campos de "nome", "cpf", "e-mail", "senha", "endereço", "data de nascimento" e "telefone". Caso todas restrições de criação de usuário sejam contempladas, como, "cpf", "email" e "telefone" únicos, o usuário será criado.
+O usuário se cadastra preenchendo os campos de "nome", "cpf", "e-mail", "senha", "data de nascimento", "telefone", "UF". Caso todas restrições de criação de usuário sejam contempladas, como, "cpf", "email" e "telefone" únicos, o usuário será criado. Além disso, o usuário cadastrado pode atualizar suas informações de cadastro.
 
 ![Processo 1 – Cadastro de usuário](imagens/cadastroUsuario.png 'Modelo BPMN do Processo 1.')
 
