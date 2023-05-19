@@ -15,32 +15,39 @@
 </template>
 
 <script>
-import Usuario from "../services/UsuarioService";
+import Usuario from '../services/UsuarioService';
 
 export default {
   data() {
     return {
       usuario: {
-        email: "",
-        senha: "",
+        email: '',
+        senha: '',
       },
     };
+  },
+
+  //redireciona o usuario para a tela do usuario caso esteja logado, caso contrario, permanece na pagina de login
+  beforeRouteEnter(to, from, next) {
+    const token = localStorage.getItem('token');
+
+    if (token) next({ name: 'usuarioView' });
+    else next();
   },
 
   methods: {
     logar() {
       Usuario.logar(this.usuario)
         .then((resposta) => {
-          alert("Usuario logado com sucesso");
+          alert('Usuario logado com sucesso');
 
           console.log(resposta);
           const token = resposta.headers.getAuthorization();
 
-          if (!token)
-            throw new Error("Ocorreu um erro ao tentar logar usuário!");
-          localStorage.setItem("token", token);
-          //aqui redirecionar pagina
-          return this.$router.push({ name: "usuarioView" });
+          if (!token) throw new Error('Ocorreu um erro ao tentar logar usuário!');
+          localStorage.setItem('token', token);
+          //aqui redireciona pagina
+          return this.$router.push({ name: 'usuarioView' });
           // this.errors = [];
         })
         .catch((e) => {

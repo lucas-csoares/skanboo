@@ -40,7 +40,8 @@
   <a href="/UsuarioView">Tela do usuário | </a>
   <a href="/EditarUsuarioView">Tela editar usuário | </a>
   <a href="/PostarProdutoView">Tela postar produto | </a>
-  <a href="/EditarProdutoView">Tela editar produto </a>
+  <a href="/EditarProdutoView">Tela editar produto | </a>
+  <a href="/PaginaAdmView">Tela admin </a>
 </template>
 
 <script>

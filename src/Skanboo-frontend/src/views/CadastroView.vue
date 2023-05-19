@@ -27,7 +27,7 @@
       />
 
       <label for="uf">UF</label>
-      <select>
+      <select v-model="usuario.uf">
         <option value="">Selecione</option>
         <option value="AC">Acre</option>
         <option value="AL">Alagoas</option>
@@ -100,6 +100,7 @@ export default {
         email: "",
         senha: "",
         dataNascimento: "",
+        uf: "",
         telefone: "",
       },
       errors: [],

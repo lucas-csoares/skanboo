@@ -10,19 +10,12 @@
         <div class="dados-usuario">
           <div class="dados-conta">
             <form action="">
+              
               <h2>Dados da conta</h2>
-              <!-- <label for="email">Editar email</label>
-              <input type="text" id="email" :placeholder= usuario.email /> -->
-
               <label for="email">Trocar senha</label>
-              <input type="text" id="senha" :placeholder="usuario.senha" />
               <input type="text" id="nova-senha" placeholder="Nova senha" />
-              <input
-                type="text"
-                id="nova-senha"
-                placeholder="Confirmar senha"
-              />
-              <br />
+              <input type="text" id="nova-senha" placeholder="Confirmar senha" />
+
               <h2>Dados pessoais</h2>
               <label for="nome">Editar nome</label>
               <input type="text" id="nome" :placeholder="usuario.nome" />
