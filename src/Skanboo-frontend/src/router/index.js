@@ -10,6 +10,7 @@ import PaginaProdutoView from "../views/PaginaProdutoView";
 import PostsDoUsuarioView from "../views/PostsDoUsuarioView";
 import PaginaAdmView from "../views/PaginaAdmView";
 import CooptarParceirosView from "../views/CooptarParceirosView";
+import PaginaProdutoUsuarioView from "../views/PaginaProdutoUsuarioView";
 
 const routes = [
   {
@@ -66,6 +67,11 @@ const routes = [
     path: "/cooptarParceirosView",
     name: "CooptarParceirosView",
     component: CooptarParceirosView,
+  },
+  {
+    path: "/paginaProdutoUsuarioView",
+    name: "PaginaProdutoUsuarioView",
+    component: PaginaProdutoUsuarioView,
   },
   // {
   //   path: '/about',

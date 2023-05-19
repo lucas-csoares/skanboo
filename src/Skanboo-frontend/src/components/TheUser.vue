@@ -37,7 +37,8 @@
 
     <h1>Gerenciar produtos</h1>
     <div class="gerenciar-produtos container usuario">
-      <a href="/postsdousuarioview">Minha página</a><br />
+      <a href="/paginaProdutoUsuarioView">Minha página</a><br />
+      <a href="/postsdousuarioview">Gerenciar meus produtos</a><br />
       <a href="/postarprodutoview">Postar produto</a><br />
     </div>
   </section>
