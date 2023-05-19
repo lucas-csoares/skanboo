@@ -152,7 +152,7 @@ O usuário deve acessar o status de negociações e selecionar a negociação qu
 
 ### 4.1. Detalhamento das atividades
 
-#### Processo 1 – Cadastro de usuário
+#### Processo 1 – Gerenciar usuário
 
 | **Campo**          | **Tipo**       | **Restrições**                                                                  | **Valor default** |
 | ------------------ | -------------- | ------------------------------------------------------------------------------- | ----------------- |
