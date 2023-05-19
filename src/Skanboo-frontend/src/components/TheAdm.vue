@@ -1,11 +1,7 @@
 <template>
   <section class="container">
-    <h1>Informações da conta</h1>
+    <h1>Informações do administrador</h1>
     <div class="usuario">
-      <div class="foto-usuario">
-        <img src="" alt="" />
-      </div>
-
       <div class="informacoes">
         <div class="dados-usuario">
           <p class="nomeUsuario">Nome</p>
@@ -37,8 +33,7 @@
 
     <h1>Gerenciar produtos</h1>
     <div class="gerenciar-produtos container usuario">
-      <a href="/postsdousuarioview">Minha página</a><br />
-      <a href="/postarprodutoview">Postar produto</a><br />
+      <a href="/postsdousuarioview">Cooptar parceiros</a><br />
     </div>
   </section>
 </template>
