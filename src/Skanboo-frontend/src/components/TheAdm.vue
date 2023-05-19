@@ -31,9 +31,9 @@
       <button class="sair"><a href="http://">Sair</a></button>
     </div>
 
-    <h1>Gerenciar produtos</h1>
+    <h1>Gerenciar tarefas</h1>
     <div class="gerenciar-produtos container usuario">
-      <a href="/postsdousuarioview">Cooptar parceiros</a><br />
+      <a href="/cooptarparceirosview">Cooptar parceiros</a><br />
     </div>
   </section>
 </template>

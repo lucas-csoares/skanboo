@@ -9,6 +9,7 @@ import EditarProdutoView from "../views/EditarProdutoView";
 import PaginaProdutoView from "../views/PaginaProdutoView";
 import PostsDoUsuarioView from "../views/PostsDoUsuarioView";
 import PaginaAdmView from "../views/PaginaAdmView";
+import CooptarParceirosView from "../views/CooptarParceirosView";
 
 const routes = [
   {
@@ -60,6 +61,11 @@ const routes = [
     path: "/paginaAdmView",
     name: "PaginsAdmView",
     component: PaginaAdmView,
+  },
+  {
+    path: "/cooptarParceirosView",
+    name: "CooptarParceirosView",
+    component: CooptarParceirosView,
   },
   // {
   //   path: '/about',
