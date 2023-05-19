@@ -33,7 +33,7 @@
         id="cpf"
         placeholder="xxx.xxx.xxx-xx"
         v-model="usuario.cpf"
-        class="form-control cpf-mask"
+        v-mask="['###.###.###-##']"
       />
 
       <!-- <label for="foto">Selecione uma foto de perfil</label>
@@ -46,7 +46,7 @@
         name="telefone"
         placeholder="(xx)xxxxx-xxxx"
         v-model="usuario.telefone"
-        class="form-control cel-sp-mask"
+        v-mask="['(##) ####-####', '(##) #####-####']"
       />
 
       <button class="btn">Criar a sua conta</button>
@@ -56,8 +56,10 @@
 
 <script>
 import Usuario from "../services/UsuarioService";
+import { mask } from "vue-the-mask";
 
 export default {
+  directives: { mask },
   data() {
     return {
       usuario: {

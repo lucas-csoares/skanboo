@@ -35,7 +35,7 @@
                 type="text"
                 id="telefone"
                 name="telefone"
-                class="form-control cel-sp-mask"
+                v-mask="['(##) ####-####', '(##) #####-####']"
                 :placeholder="usuario.telefone"
               />
 
@@ -44,7 +44,7 @@
                 type="text"
                 id="cpf"
                 name="cpf"
-                class="form-control cpf-mask"
+                v-mask="['###.###.###-##']"
                 :placeholder="usuario.cpf"
               />
             </form>
@@ -59,8 +59,10 @@
 
 <script>
 import Usuario from "../services/UsuarioService";
+import { mask } from "vue-the-mask";
 
 export default {
+  directives: { mask },
   data() {
     return {
       usuario: {
