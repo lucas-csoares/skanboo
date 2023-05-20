@@ -11,6 +11,8 @@ import PostsDoUsuarioView from "../views/PostsDoUsuarioView";
 import PaginaAdmView from "../views/PaginaAdmView";
 import CooptarParceirosView from "../views/CooptarParceirosView";
 import PaginaProdutoUsuarioView from "../views/PaginaProdutoUsuarioView";
+import TheProductPage from "../components/TheProductPage"
+import TheEditProduct from "../components/TheEditProduct"
 
 const routes = [
   {
@@ -73,6 +75,19 @@ const routes = [
     name: "PaginaProdutoUsuarioView",
     component: PaginaProdutoUsuarioView,
   },
+  {
+    path: "/postagem/:id",
+    name: "TheProductPage",
+    component: TheProductPage,
+    props: true
+  },
+  {
+    path: "/postagem/:id",
+    name: "TheEditProduct",
+    component: TheEditProduct,
+    props: true
+  }
+
   // {
   //   path: '/about',
   //   name: 'about',

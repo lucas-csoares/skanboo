@@ -1,122 +1,117 @@
 <template>
-  <section class="container">
-    <h1>Editar produto</h1>
-    <div class="postagem">
-      <div class="dados-postagem">
-        <form action="">
-          <label for="titulo">Título</label>
-          <input type="text" id="titulo" maxlength="30" :placeholder="umaPostagem.titulo ? umaPostagem.titulo : ''" />
+  <div v-if="postagem">
+    <section class="container">
+      <h1>Editar produto</h1>
 
-          <label for="descricao">Descrição</label><br />
-          <textarea
-            id="descricao"
-            name="descricao"
-            rows="4"
-            cols="50"
-            maxlength="140"
-            :placeholder="umaPostagem.titulo ? umaPostagem.descricao : ''"
-          ></textarea
-          ><br />
+      <ul>
+        <li v-for="(error, index) of errors" :key="index">
+          campo <b>{{ error.field }}</b> - {{ error.defaultMessage }}
+        </li>
+      </ul>
 
-          <label for="preferencias">Preferências</label>
-          <input type="text" id="preferencias" />
+      <div class="postagem">
+        <div class="dados-postagem">
+          <form @submit.prevent="atualizar">
 
-          <fieldset>
-            <legend>Aberto a ofertas?</legend>
-            <input type="radio" id="sim" name="oferta" value="sim" />
-            <label for="sim">Sim</label>
+            <label for="titulo">Título</label>
+            <input type="text" id="titulo" maxlength="30" :placeholder="postagem.titulo" v-model="postagem.titulo" />
 
-            <input type="radio" id="nao" name="oferta" value="nao" />
-            <label for="nao">Não</label>
-          </fieldset>
-          <br /><br />
-          <label for="fotos">Adicionar fotos</label>
-          <input type="file" id="fotos" name="fotos" /><br />
+            <label for="descricao">Descrição</label><br />
+            <textarea id="descricao" name="descricao" rows="4" cols="50" maxlength="140" :placeholder="postagem.descricao"
+              v-model="postagem.descricao"></textarea><br />
 
-          <div class="categoria">
             <fieldset>
-              <legend>Seleciona a categoria:</legend>
+              <legend>Aberto a ofertas?</legend>
+              <input type="radio" id="sim" name="oferta" value="sim" />
+              <label for="sim">Sim</label>
 
-              <div>
-                <input
-                  type="radio"
-                  id="eletronico"
-                  name="categoria"
-                  value="eletronico"
-                />
-                <label for="eletronico">Eletrônicos</label>
-              </div>
-
-              <div>
-                <input
-                  type="radio"
-                  id="modaBeleza"
-                  name="categoria"
-                  value="modaBeleza"
-                />
-                <label for="modaBeleza">Moda e Beleza</label>
-              </div>
-
-              <div>
-                <input
-                  type="radio"
-                  id="musica"
-                  name="categoria"
-                  value="musica"
-                />
-                <label for="musica">Música</label>
-              </div>
-
-              <div>
-                <input type="radio" id="casa" name="categoria" value="casa" />
-                <label for="casa">Casa</label>
-              </div>
-
-              <div>
-                <input
-                  type="radio"
-                  id="servicos"
-                  name="categoria"
-                  value="servicos"
-                />
-                <label for="servicos">Serviços</label>
-              </div>
+              <input type="radio" id="nao" name="oferta" value="nao" />
+              <label for="nao">Não</label>
             </fieldset>
-          </div>
-        </form>
-        <button class="editar">Postar</button>
+            <br /><br />
+            <label for="fotos">Adicionar fotos</label>
+            <input type="file" id="fotos" name="fotos" /><br />
+
+            <div class="categoria">
+              <fieldset>
+                <legend>Seleciona a categoria:</legend>
+
+                <div>
+                  <input type="radio" id="eletronico" name="categoria" value="eletronico" />
+                  <label for="eletronico">Eletrônicos</label>
+                </div>
+
+                <div>
+                  <input type="radio" id="modaBeleza" name="categoria" value="modaBeleza" />
+                  <label for="modaBeleza">Moda e Beleza</label>
+                </div>
+
+                <div>
+                  <input type="radio" id="musica" name="categoria" value="musica" />
+                  <label for="musica">Música</label>
+                </div>
+
+                <div>
+                  <input type="radio" id="casa" name="categoria" value="casa" />
+                  <label for="casa">Casa</label>
+                </div>
+
+                <div>
+                  <input type="radio" id="servicos" name="categoria" value="servicos" />
+                  <label for="servicos">Serviços</label>
+                </div>
+              </fieldset>
+            </div>
+            <button class="editar">Editar</button>
+          </form>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </template>
 
 <script>
+
 import Postagem from "../services/PostagemService";
 
 export default {
+  props: ["id"],
   data() {
     return {
-      postagem: {
-        id: "",
-        titulo: "",
-        descricao: "",
-        categoria: "",
-        status: "",
-      },
-      umaPostagem: {}
-    };
+      postagem: null
+    }
   },
 
   mounted() {
-    Postagem.exibirInfo().then(resposta => {
+
+    // fetch('http://localhost:8080/postagem/' + this.id)
+    // .then(resposta => {})
+
+
+    Postagem.exibirInfoPostagem(this.id).then(resposta => {
+      this.postagem = resposta.data;
       console.log(resposta.data);
-      const postagens = resposta.data; // Todas postagens do usuario
-      const umaPostagem = postagens.find(postagem => postagem.id === 4) //Depois mudar a ID do produto escolhido
-      console.log(umaPostagem.titulo);
-      this.umaPostagem = umaPostagem; // So a postagem escolhida
+      return this.postagem;
     })
-  }
+  },
+
+  methods: {
+
+    atualizar() {
+      Postagem.atualizar(this.postagem.id, this.postagem)
+        .then((/*resposta*/) => {
+          alert("Postagem editada com sucesso");
+          this.errors = [];
+        })
+        .catch((e) => {
+          this.errors = e.response.data.errors;
+          console.log(this.errors);
+        });
+    },
+  },
+
 };
+
 </script>
 
 <style scoped>
