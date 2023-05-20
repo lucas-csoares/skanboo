@@ -78,6 +78,7 @@ export default {
         nascimento: "",
         email: "",
         telefone: "",
+        uf: "",
         senha: "",
         cpf: "",
       },

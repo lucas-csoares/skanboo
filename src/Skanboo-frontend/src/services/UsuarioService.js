@@ -23,5 +23,5 @@ export default {
 
   logar: (usuario) => {
     return http.post("login", usuario);
-  },
+  }
 };
