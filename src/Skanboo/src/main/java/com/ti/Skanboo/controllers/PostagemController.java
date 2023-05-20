@@ -43,6 +43,13 @@ public class PostagemController {
         return ResponseEntity.ok().body(obj);
     }
 
+    @GetMapping("/todos")
+    public ResponseEntity<List<Postagem>> listarTodasPostagens() {
+        List<Postagem> postagens = postagemService.listarPostagensCadastradas();
+        return ResponseEntity.ok().body(postagens);
+    }
+
+
     @PostMapping
     public ResponseEntity<Void> criar(@Valid @RequestBody Postagem obj) {
 
