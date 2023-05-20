@@ -94,7 +94,4 @@ public class PostagemService {
     private Boolean PostagemPertenceAoUsuario(UserSpringSecurity userSpringSecurity, Postagem postagem) {
         return postagem.getUsuario().getId().equals(userSpringSecurity.getId());
     }
-
-
-
 }

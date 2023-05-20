@@ -66,9 +66,8 @@ public class ParceiroService {
         }
     }
 
+    //todo: conferir se mantem
     public @Valid Parceiro atualizarParceiroAtivo(@Valid Parceiro obj) {
         return null;
     }
-
-
 }
