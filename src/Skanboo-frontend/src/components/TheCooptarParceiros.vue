@@ -1,41 +1,42 @@
 <template>
   <section class="container">
     <h1>Cadastrar parceiro</h1>
-    <div class="postagem">
-      <div class="dados-postagem">
-        <form action="">
-          <label for="titulo">Nome da empresa</label>
-          <input type="text" id="nome" maxlength="30" />
 
-          <label for="logo">Logo da empresa</label><br />
-          <input type="file" id="logo" name="logo" />
+    <ul>
+      <li v-for="(error, index) of errors" :key="index">
+        campo <b>{{ error.field }}</b> - {{ error.defaultMessage }}
+      </li>
+    </ul>
 
-          <label for="preferencias">CNPJ</label>
-          <input type="text" id="cnpj" v-mask="['##.###.###/####-##']" />
+    <div class="parceiro">
+      <div class="dados-parceiro">
+        <form @submit.prevent="criar">
+            <label for="titulo">Nome da empresa</label>
+            <input type="text" id="nome" maxlength="30" />
 
-          <fieldset>
-            <legend>Plano de parceria</legend>
-            <input
-              type="radio"
-              id="standard"
-              name="plano"
-              value="stantard"
-              checked
-            />
-            <label for="sim">Standard</label>
+            <label for="logo">Logo da empresa</label><br />
+            <input type="file" id="logo" name="logo" />
 
-            <input type="radio" id="premium" name="plano" value="premium" />
-            <label for="premium">Premium</label>
+            <label for="preferencias">CNPJ</label>
+            <input type="text" id="cnpj" v-mask="['##.###.###/####-##']" />
 
-            <input type="radio" id="basic" name="plano" value="basic" />
-            <label for="basic">Basic</label>
-          </fieldset>
-          <br /><br />
+            <fieldset>
+              <legend>Plano de parceria</legend>
+              <input type="radio" id="standard" name="plano" value="standard" checked />
+              <label for="sim">Standard</label>
 
-          <label for="contrato">Adicionar contrato</label>
-          <input type="file" id="contrato" name="contrato" /><br />
+              <input type="radio" id="premium" name="plano" value="premium" />
+              <label for="premium">Premium</label>
+
+              <input type="radio" id="basic" name="plano" value="basic" />
+              <label for="basic">Basic</label>
+            </fieldset>
+            <br /><br />
+
+            <label for="contrato">Adicionar contrato</label>
+            <input type="file" id="contrato" name="contrato" /><br />
+          <button class="editar">Enviar</button>
         </form>
-        <button class="editar">Enviar</button>
       </div>
     </div>
   </section>
@@ -82,7 +83,7 @@ export default {
   margin-bottom: 30px;
 }
 
-.postagem {
+.parceiro {
   border: 1px solid #eae9e9;
   border-radius: 4px;
   padding: 20px;
