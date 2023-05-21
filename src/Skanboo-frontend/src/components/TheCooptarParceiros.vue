@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-    <h1>Cooptar parceiros</h1>
+    <h1>Cadastrar parceiro</h1>
     <div class="postagem">
       <div class="dados-postagem">
         <form action="">
@@ -42,6 +42,7 @@
 </template>
 
 <script>
+import Parceiro from "../services/ParceiroService";
 import { mask } from "vue-the-mask";
 export default {
   directives: { mask },
@@ -55,6 +56,20 @@ export default {
         contrato: "",
       },
     };
+  },
+
+  methods: {
+    criar() {
+      Parceiro.criar(this.Parceiro)
+        .then((/*resposta*/) => {
+          alert("Parceiro salvo com sucesso");
+          this.errors = [];
+        })
+        .catch((e) => {
+          this.errors = e.response.data.errors;
+          console.log(this.errors);
+        });
+    },
   },
 };
 </script>
@@ -82,7 +97,7 @@ li {
   list-style: none;
 }
 
-.foto-usuario {
+.foto-Parceiro {
   width: 120px;
   height: 120px;
   border-radius: 100%;
@@ -107,7 +122,7 @@ button {
   margin-top: 15px;
 }
 
-.info-usuario p {
+.info-Parceiro p {
   color: #c0c2c7;
 }
 

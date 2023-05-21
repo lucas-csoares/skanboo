@@ -48,13 +48,32 @@
 </template>
 
 <script>
-export default {};
+
+import Parceiro from "../services/ParceiroService";
+
+export default {
+  props: ["id"],
+  data() {
+    return {
+      parceiro: null
+    }
+  },
+
+  mounted() {
+    Parceiro.exibirInfo(this.id).then(resposta => {
+      this.parceiro = resposta.data;
+      console.log(resposta.data);
+      return this.parceiro;
+    })
+  },
+};
 </script>
 
 <style scoped>
 * {
   box-sizing: border-box;
 }
+
 body,
 h1,
 h2,
@@ -78,6 +97,7 @@ img {
   display: block;
   max-width: 100%;
 }
+
 .container {
   display: flex;
   justify-content: center;
