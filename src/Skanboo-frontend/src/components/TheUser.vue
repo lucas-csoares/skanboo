@@ -151,6 +151,7 @@ h2 {
 }
 
 .sair {
+  cursor: pointer;
   box-sizing: border-box;
   padding: 2px 6px 2px 8px;
   gap: 4px;

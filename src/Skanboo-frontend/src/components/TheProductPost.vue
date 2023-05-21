@@ -29,16 +29,6 @@
             v-model="postagem.descricao"
           ></textarea
           ><br />
-
-          <fieldset>
-            <legend>Aberto a ofertas?</legend>
-            <input type="radio" id="sim" name="oferta" value="sim" />
-            <label for="sim">Sim</label>
-
-            <input type="radio" id="nao" name="oferta" value="nao" />
-            <label for="nao">Não</label>
-          </fieldset>
-          <br /><br />
           <label for="fotos">Adicionar fotos</label>
           <input type="file" id="fotos" name="fotos" /><br />
 
