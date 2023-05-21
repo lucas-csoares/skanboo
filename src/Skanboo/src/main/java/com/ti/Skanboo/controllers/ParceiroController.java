@@ -2,7 +2,6 @@ package com.ti.Skanboo.controllers;
 
 import java.net.URI;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -32,7 +31,7 @@ public class ParceiroController {
     private ParceiroService parceiroService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Parceiro> encontrarPorId(@PathVariable Long id) throws Exception {
+    public ResponseEntity<Parceiro> encontrarPorId(@PathVariable Long id) {
 
         Parceiro obj = this.parceiroService.encontrarPorId(id);
 
@@ -43,6 +42,7 @@ public class ParceiroController {
     public ResponseEntity<List<Parceiro>> listarParceirosCadastrados() {
 
         List<Parceiro> obj = this.parceiroService.listarParceirosCadastrados();
+        
         return ResponseEntity.ok().body(obj);
     }
 

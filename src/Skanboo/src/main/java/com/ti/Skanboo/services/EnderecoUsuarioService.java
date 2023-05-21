@@ -40,7 +40,9 @@ public class EnderecoUsuarioService {
     }
 
     public List<EnderecoUsuario> listarEnderecoUsuarioAtivo() {
+
         UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
+
         if (Objects.isNull(userSpringSecurity))
             throw new AuthorizationException("Acesso negado!");
 
@@ -54,7 +56,9 @@ public class EnderecoUsuarioService {
 
     @Transactional
     public EnderecoUsuario criar(EnderecoUsuario obj) {
+
         UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
+
         if (Objects.isNull(userSpringSecurity))
             throw new AuthorizationException("Acesso negado!");
 
