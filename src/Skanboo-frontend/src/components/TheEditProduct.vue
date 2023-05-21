@@ -12,42 +12,116 @@
       <div class="postagem">
         <div class="dados-postagem">
           <form @submit.prevent="atualizar">
-
             <label for="titulo">Título</label>
-            <input type="text" id="titulo" maxlength="30" :placeholder="postagem.titulo" v-model="postagem.titulo" />
+            <input
+              type="text"
+              id="titulo"
+              maxlength="30"
+              :placeholder="postagem.titulo"
+              v-model="postagem.titulo"
+            />
 
             <label for="descricao">Descrição</label><br />
-            <textarea id="descricao" name="descricao" rows="4" cols="50" maxlength="140" :placeholder="postagem.descricao"
-              v-model="postagem.descricao"></textarea><br />
+            <textarea
+              id="descricao"
+              name="descricao"
+              rows="4"
+              cols="50"
+              maxlength="140"
+              :placeholder="postagem.descricao"
+              v-model="postagem.descricao"
+            ></textarea
+            ><br />
 
-            <fieldset>
-              <legend>Aberto a ofertas?</legend>
-              <input type="radio" id="sim" name="oferta" value="sim" />
-              <label for="sim">Sim</label>
-
-              <input type="radio" id="nao" name="oferta" value="nao" />
-              <label for="nao">Não</label>
-            </fieldset>
-            <br /><br />
             <label for="fotos">Adicionar fotos</label>
             <input type="file" id="fotos" name="fotos" /><br />
 
             <div class="categoria">
               <fieldset>
+                <fieldset>
+                  <legend>Selecione a categoria de interesse:</legend>
+
+                  <div>
+                    <input
+                      type="radio"
+                      id="eletronico-interesse"
+                      name="categoria-interesse"
+                      value="eletronico-interesse"
+                    />
+                    <label for="eletronico">Eletrônicos</label>
+                  </div>
+
+                  <div>
+                    <input
+                      type="radio"
+                      id="modaBeleza-interesse"
+                      name="categoria-interesse"
+                      value="modaBeleza-interesse"
+                    />
+                    <label for="modaBeleza">Moda e Beleza</label>
+                  </div>
+
+                  <div>
+                    <input
+                      type="radio"
+                      id="musica-interesse"
+                      name="categoria-interesse"
+                      value="musica-interesse"
+                    />
+                    <label for="musica">Música</label>
+                  </div>
+
+                  <div>
+                    <input
+                      type="radio"
+                      id="casa-interesse"
+                      name="categoria-interesse"
+                      value="casa-interesse"
+                    />
+                    <label for="casa">Casa</label>
+                  </div>
+
+                  <div>
+                    <input
+                      type="radio"
+                      id="servicos-interesse"
+                      name="categoria-interesse"
+                      value="servicos-interesse"
+                    />
+                    <label for="servicos">Serviços</label>
+                  </div>
+                </fieldset>
+                <br /><br />
+
                 <legend>Seleciona a categoria:</legend>
 
                 <div>
-                  <input type="radio" id="eletronico" name="categoria" value="eletronico" />
+                  <input
+                    type="radio"
+                    id="eletronico"
+                    name="categoria"
+                    value="eletronico"
+                  />
                   <label for="eletronico">Eletrônicos</label>
                 </div>
 
                 <div>
-                  <input type="radio" id="modaBeleza" name="categoria" value="modaBeleza" />
+                  <input
+                    type="radio"
+                    id="modaBeleza"
+                    name="categoria"
+                    value="modaBeleza"
+                  />
                   <label for="modaBeleza">Moda e Beleza</label>
                 </div>
 
                 <div>
-                  <input type="radio" id="musica" name="categoria" value="musica" />
+                  <input
+                    type="radio"
+                    id="musica"
+                    name="categoria"
+                    value="musica"
+                  />
                   <label for="musica">Música</label>
                 </div>
 
@@ -57,7 +131,12 @@
                 </div>
 
                 <div>
-                  <input type="radio" id="servicos" name="categoria" value="servicos" />
+                  <input
+                    type="radio"
+                    id="servicos"
+                    name="categoria"
+                    value="servicos"
+                  />
                   <label for="servicos">Serviços</label>
                 </div>
               </fieldset>
@@ -71,32 +150,28 @@
 </template>
 
 <script>
-
 import Postagem from "../services/PostagemService";
 
 export default {
   props: ["id"],
   data() {
     return {
-      postagem: null
-    }
+      postagem: null,
+    };
   },
 
   mounted() {
-
     // fetch('http://localhost:8080/postagem/' + this.id)
     // .then(resposta => {})
 
-
-    Postagem.exibirInfoPostagem(this.id).then(resposta => {
+    Postagem.exibirInfoPostagem(this.id).then((resposta) => {
       this.postagem = resposta.data;
       console.log(resposta.data);
       return this.postagem;
-    })
+    });
   },
 
   methods: {
-
     atualizar() {
       Postagem.atualizar(this.postagem.id, this.postagem)
         .then((/*resposta*/) => {
@@ -109,9 +184,7 @@ export default {
         });
     },
   },
-
 };
-
 </script>
 
 <style scoped>

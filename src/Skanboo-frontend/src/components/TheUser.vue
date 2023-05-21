@@ -32,7 +32,7 @@
         </div>
       </div>
       <button class="editar"><a href="/editarUsuarioView">Editar</a></button>
-      <button class="sair"><a href="http://">Sair</a></button>
+      <button class="sair" @click="logout">Sair</button>
     </div>
 
     <h1>Gerenciar produtos</h1>
@@ -75,6 +75,12 @@ export default {
         // Handle any error that occurs during the API request
         console.error(error);
       });
+  },
+  methods: {
+    logout() {
+      localStorage.removeItem("token");
+      return this.$router.push({ name: "loginView" });
+    },
   },
 };
 </script>
@@ -145,6 +151,7 @@ h2 {
 }
 
 .sair {
+  cursor: pointer;
   box-sizing: border-box;
   padding: 2px 6px 2px 8px;
   gap: 4px;

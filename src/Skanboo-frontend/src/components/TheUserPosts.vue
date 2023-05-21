@@ -12,50 +12,76 @@
           </div>
           <h2>{{ postagem.titulo }}</h2>
         </router-link>
-        <button class="editar"><router-link
-            :to="{ name: 'TheEditProduct', params: { id: postagem.id } }">Editar</router-link></button>
-        <button class="excluir">Excluir</button>
+        <button class="editar">
+          <router-link :to="{ name: 'TheEditProduct', params: { id: postagem.id } }"
+            >Editar</router-link
+          >
+        </button>
+        <button class="excluir" @click="excluirPostagem(postagem.id)">Excluir</button>
       </div>
-
-
     </div>
   </section>
 </template>
-  
-<script>
 
-import Postagem from "../services/PostagemService";
+<script>
+import Postagem from '../services/PostagemService';
 
 export default {
   data() {
     return {
       postagem: {
-        id: "",
-        titulo: "",
-        descricao: "",
-        categoria: "",
-        status: "",
+        id: '',
+        titulo: '',
+        descricao: '',
+        categoria: '',
+        status: '',
       },
-      postagens: []
+      postagens: [],
     };
   },
 
   mounted() {
-    Postagem.exibirInfo().then(resposta => {
-      console.log(resposta.data);
-      const postagens = resposta.data; // Todas postagens do usuario
-      const postsLength = Object.keys(postagens).length
-      console.log(postsLength);
-      this.postagens = postagens;
-      //const umaPostagem = postagens.find(postagem => postagem.id === 1) //Depois mudar a ID do produto escolhido
-      //console.log(umaPostagem.titulo);
-      //this.postagem = umaPostagem; // So a postagem escolhida
-    }).catch(err => console.log(err.message));
+    Postagem.exibirInfo()
+      .then((resposta) => {
+        console.log(resposta.data);
+        const postagens = resposta.data; // Todas postagens do usuario
+        const postsLength = Object.keys(postagens).length;
+        console.log(postsLength);
+        this.postagens = postagens;
+        //const umaPostagem = postagens.find(postagem => postagem.id === 1) //Depois mudar a ID do produto escolhido
+        //console.log(umaPostagem.titulo);
+        //this.postagem = umaPostagem; // So a postagem escolhida
+      })
+      .catch((err) => console.log(err.message));
+  },
+
+  methods: {
+    excluirPostagem(id) {
+      Postagem.excluirPostagem(id)
+        .then(() => {
+          // Atualizar a lista de postagens
+          this.carregarPostagens();
+        })
+        .catch((error) => {
+          console.error('Erro ao excluir a postagem', error);
+        });
+    },
+
+    carregarPostagens() {
+      Postagem.exibirInfo()
+        .then((resposta) => {
+          console.log(resposta.data);
+          const postagens = resposta.data;
+          const postsLength = Object.keys(postagens).length;
+          console.log(postsLength);
+          this.postagens = postagens;
+        })
+        .catch((err) => console.log(err.message));
+    },
   },
 };
-
 </script>
-  
+
 <style scoped>
 * {
   box-sizing: border-box;
@@ -209,4 +235,3 @@ h1 {
   text-align: left;
 }
 </style>
-  

@@ -82,6 +82,9 @@
       />
 
       <button class="btn">Criar a sua conta</button>
+      <p>
+        Já tem uma conta? <a href="/loginView"><b>Entrar.</b></a>
+      </p>
     </form>
   </section>
 </template>
@@ -169,5 +172,9 @@ label {
   margin-right: auto;
   margin-left: 80px;
   padding: 10px 10px 10px 0;
+}
+
+a {
+  text-decoration: none;
 }
 </style>

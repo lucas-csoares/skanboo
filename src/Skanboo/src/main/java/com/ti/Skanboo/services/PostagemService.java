@@ -51,7 +51,7 @@ public class PostagemService {
         return postagem;
     }
 
-    // * Falta permitir acesso para usuário não autenticado
+    // Falta permitir acesso para usuário não autenticado
     public List<Postagem> listarPostagensCadastradas() {
         return postagemRepository.findAll();
     }
