@@ -11,9 +11,13 @@
     <div class="postagem">
       <div class="dados-postagem">
         <form @submit.prevent="criar">
-          
           <label for="titulo">Título</label>
-          <input type="text" id="titulo" maxlength="30" v-model="postagem.titulo" />
+          <input
+            type="text"
+            id="titulo"
+            maxlength="30"
+            v-model="postagem.titulo"
+          />
 
           <label for="descricao">Descrição</label><br />
           <textarea
@@ -40,7 +44,61 @@
 
           <div class="categoria">
             <fieldset>
-              <legend>Seleciona a categoria:</legend>
+              <legend>Selecione a categoria de interesse:</legend>
+
+              <div>
+                <input
+                  type="radio"
+                  id="eletronico-interesse"
+                  name="categoria-interesse"
+                  value="eletronico-interesse"
+                />
+                <label for="eletronico">Eletrônicos</label>
+              </div>
+
+              <div>
+                <input
+                  type="radio"
+                  id="modaBeleza-interesse"
+                  name="categoria-interesse"
+                  value="modaBeleza-interesse"
+                />
+                <label for="modaBeleza">Moda e Beleza</label>
+              </div>
+
+              <div>
+                <input
+                  type="radio"
+                  id="musica-interesse"
+                  name="categoria-interesse"
+                  value="musica-interesse"
+                />
+                <label for="musica">Música</label>
+              </div>
+
+              <div>
+                <input
+                  type="radio"
+                  id="casa-interesse"
+                  name="categoria-interesse"
+                  value="casa-interesse"
+                />
+                <label for="casa">Casa</label>
+              </div>
+
+              <div>
+                <input
+                  type="radio"
+                  id="servicos-interesse"
+                  name="categoria-interesse"
+                  value="servicos-interesse"
+                />
+                <label for="servicos">Serviços</label>
+              </div>
+            </fieldset>
+            <br /><br />
+            <fieldset>
+              <legend>Selecione a categoria do produto:</legend>
 
               <div>
                 <input
@@ -108,7 +166,7 @@ export default {
         categoria: "",
         status: "",
       },
-      umaPostagem: {}
+      umaPostagem: {},
     };
   },
 
