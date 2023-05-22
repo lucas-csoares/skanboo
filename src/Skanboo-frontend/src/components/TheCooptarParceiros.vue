@@ -12,29 +12,58 @@
       <div class="dados-parceiro">
         <form @submit.prevent="criar">
             <label for="titulo">Nome da empresa</label>
-            <input type="text" id="nome" maxlength="30" />
+            <input 
+            type="text" 
+            id="nome" 
+            maxlength="30"
+            v-model="parceiro.titulo"
+            />
 
             <label for="logo">Logo da empresa</label><br />
-            <input type="file" id="logo" name="logo" />
+            <input 
+            type="file" 
+            id="logo" 
+            name="logo"
+            />
 
             <label for="preferencias">CNPJ</label>
-            <input type="text" id="cnpj" v-mask="['##.###.###/####-##']" />
+            <input 
+            type="text" 
+            id="cnpj" 
+            v-mask="['##.###.###/####-##']" 
+            v-model="parceiro.cnpj"
+            />
 
             <fieldset>
               <legend>Plano de parceria</legend>
-              <input type="radio" id="standard" name="plano" value="standard" checked />
+              <input 
+              type="radio" 
+              id="standard" 
+              name="plano" 
+              value="standard" checked />
               <label for="sim">Standard</label>
 
-              <input type="radio" id="premium" name="plano" value="premium" />
+              <input 
+              type="radio" 
+              id="premium" 
+              name="plano" 
+              value="premium" />
               <label for="premium">Premium</label>
 
-              <input type="radio" id="basic" name="plano" value="basic" />
+              <input 
+              type="radio" 
+              id="basic" 
+              name="plano" 
+              value="basic" />
               <label for="basic">Basic</label>
             </fieldset>
             <br /><br />
 
             <label for="contrato">Adicionar contrato</label>
-            <input type="file" id="contrato" name="contrato" /><br />
+            <input 
+            type="file" 
+            id="contrato" 
+            name="contrato" /><br />
           <button class="editar">Enviar</button>
         </form>
       </div>
@@ -49,13 +78,12 @@ export default {
   directives: { mask },
   data() {
     return {
-      cooptar: {
+      parceiro: {
         nome: "",
-        logo: "",
         cnpj: "",
         plano: "",
-        contrato: "",
       },
+      errors: [],
     };
   },
 
