@@ -12,19 +12,20 @@
         <h2>{{ postagem.titulo }}</h2>
         <button class="negociar">NEGOCIAR</button>
       </div>
+    </div>
   </section>
 </template>
 
 <script>
-import Postagem from "../services/PostagemService";
+import Postagem from '../services/PostagemService';
 
 export default {
   data() {
     return {
       postagem: {
-        id: "",
-        titulo: "",
-        imagem: "",
+        id: '',
+        titulo: '',
+        imagem: '',
       },
       postagens: [],
     };
