@@ -36,7 +36,7 @@ public class SecurityConfig {
     @Autowired
     private JWTUtil jwtUtil;
 
-    private static final String[] PUBLIC_MATCHERS = { "/" };
+    private static final String[] PUBLIC_MATCHERS = { "/", "/postagem/lista" };
 
     private static final String[] PUBLIC_MATCHERS_POST = { "/usuario", "/login" };
 

@@ -38,17 +38,16 @@ public class PostagemController {
     }
 
     @GetMapping("/usuario")
-    public ResponseEntity<List<Postagem>> listarPostagens() {
-        List<Postagem> obj = this.postagemService.listarPostagens();
+    public ResponseEntity<List<Postagem>> listarPostagensUsuarioAtivo() {
+        List<Postagem> obj = this.postagemService.listarPostagensUsuarioAtivo();
         return ResponseEntity.ok().body(obj);
     }
 
-    @GetMapping("/todos")
-    public ResponseEntity<List<Postagem>> listarTodasPostagens() {
-        List<Postagem> postagens = postagemService.listarPostagensCadastradas();
-        return ResponseEntity.ok().body(postagens);
+    @GetMapping("/lista")
+    public ResponseEntity<List<Postagem>> listarPostagensCadastradas() {
+        List<Postagem> obj = postagemService.listarPostagensCadastradas();
+        return ResponseEntity.ok().body(obj);
     }
-
 
     @PostMapping
     public ResponseEntity<Void> criar(@Valid @RequestBody Postagem obj) {
@@ -56,24 +55,24 @@ public class PostagemController {
         this.postagemService.criar(obj);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-            .path("/{id}").buildAndExpand(obj.getId()).toUri();
+                .path("/{id}").buildAndExpand(obj.getId()).toUri();
 
         return ResponseEntity.created(uri).build();
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> atualizar(@Valid @RequestBody Postagem obj, @PathVariable Long id) {
+    public ResponseEntity<Void> atualizarPorId(@Valid @RequestBody Postagem obj, @PathVariable Long id) {
 
         obj.setId(id);
-        obj = this.postagemService.atualizar(obj);
+        obj = this.postagemService.atualizarPorId(obj);
 
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
+    public ResponseEntity<Void> deletarPorId(@PathVariable Long id) {
 
-        this.postagemService.deletar(id);
+        this.postagemService.deletarPorId(id);
 
         return ResponseEntity.noContent().build();
     }
