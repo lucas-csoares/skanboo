@@ -13,11 +13,11 @@
       <!-- <span><b>Preferências: </b></span>
       <span class="preferencias">Video-game ou bolsa</span><br /> -->
 
-      <span><b>Aberto a ofertas? </b></span>
-      <span class="oferta">Sim</span><br />
+      <span><b>Categoria de interesse </b></span>
+      <span class="oferta">{{ postagem.categoriaProdutoDesejado }}</span><br />
 
-      <span><b>Categoria: </b></span>
-      <span class="categoria">Moda</span><br /><br />
+      <span><b>Categoria do produto: </b></span>
+      <span class="categoria">{{ postagem.categoriaProduto }}</span><br /><br />
       <button>Negociar</button>
     </div>
   </section>
