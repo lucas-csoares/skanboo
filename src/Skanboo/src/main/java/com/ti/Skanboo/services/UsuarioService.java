@@ -102,6 +102,7 @@ public class UsuarioService {
         usuario.setEmail(obj.getEmail());
         usuario.setSenha(obj.getSenha());
         usuario.setSenha(this.bCryptPasswordEncoder.encode(obj.getSenha()));
+        usuario.setDataNascimento(obj.getDataNascimento());
         usuario.setUf(obj.getUf());
         usuario.setTelefone(obj.getTelefone());
 

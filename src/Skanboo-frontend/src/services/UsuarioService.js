@@ -14,7 +14,7 @@ export default {
   },
 
   atualizar: (usuario) => {
-    return http.put("usuario", usuario, {
+    return http.put("usuario/me", usuario, {
       headers: {
         Authorization: localStorage.getItem("token"),
       },
