@@ -2,105 +2,39 @@
   <section class="products">
     <h1>Produtos</h1>
     <div class="container">
-      <div class="card">
-        <button class="like">
+      <div v-for="postagem in postagens" :key="postagem.id" class="card">
+        <!--<button class="like"> 
           <a href="http://"><img src="../assets/like.png" alt="" /></a>
-        </button>
+        </button> -->
         <div class="card-img-produto">
-          <img src="../assets/ex1.jpg" alt="" class="card-img" />
+          <img :src="postagem.imagem" alt="" class="card-img" />
         </div>
-        <h2>Air Fryer</h2>
+        <h2>{{ postagem.titulo }}</h2>
         <button class="negociar">NEGOCIAR</button>
       </div>
-
-      <div class="card">
-        <button class="like"><img src="../assets/like.png" alt="" /></button>
-        <div class="card-img-produto">
-          <img src="../assets/ex2.jpg" alt="" class="card-img" />
-        </div>
-        <h2>Título</h2>
-        <button class="negociar">NEGOCIAR</button>
-      </div>
-
-      <div class="card">
-        <button class="like"><img src="../assets/like.png" alt="" /></button>
-        <div class="card-img-produto">
-          <img src="../assets/ex3.jpg" alt="" class="card-img" />
-        </div>
-        <h2>Título</h2>
-        <button class="negociar">NEGOCIAR</button>
-      </div>
-
-      <div class="card">
-        <button class="like"><img src="../assets/like.png" alt="" /></button>
-        <div class="card-img-produto">
-          <img src="../assets/ex11.jpg" alt="" class="card-img" />
-        </div>
-        <h2>Título</h2>
-        <button class="negociar">NEGOCIAR</button>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="card">
-        <button class="like">
-          <a href="http://"><img src="../assets/like.png" alt="" /></a>
-        </button>
-        <div class="card-img-produto">
-          <img src="../assets/ex1.jpg" alt="" class="card-img" />
-        </div>
-        <h2>Air Fryer</h2>
-        <button class="negociar">NEGOCIAR</button>
-      </div>
-
-      <div class="card">
-        <button class="like"><img src="../assets/like.png" alt="" /></button>
-        <div class="card-img-produto">
-          <img src="../assets/ex6.jpg" alt="" class="card-img" />
-        </div>
-        <h2>Título</h2>
-        <button class="negociar">NEGOCIAR</button>
-      </div>
-
-      <div class="card">
-        <button class="like"><img src="../assets/like.png" alt="" /></button>
-        <div class="card-img-produto">
-          <img src="../assets/ex7.jpg" alt="" class="card-img" />
-        </div>
-        <h2>Título</h2>
-        <button class="negociar">NEGOCIAR</button>
-      </div>
-
-      <div class="card">
-        <button class="like"><img src="../assets/like.png" alt="" /></button>
-        <div class="card-img-produto">
-          <img src="../assets/ex8.jpg" alt="" class="card-img" />
-        </div>
-        <h2>Título</h2>
-        <button class="negociar">NEGOCIAR</button>
-      </div>
-    </div>
   </section>
 </template>
 
 <script>
-import Postagem from '../services/PostagemService';
+import Postagem from "../services/PostagemService";
 
 export default {
-
   data() {
-
     return {
+      postagem: {
+        id: "",
+        titulo: "",
+        imagem: "",
+      },
       postagens: [],
-    }
+    };
   },
 
   mounted() {
-
     Postagem.exibirTodasPostagens().then((resposta) => {
-        const postagens = resposta.data;
-        this.postagens = postagens;
-        console.log(postagens);
+      const postagens = resposta.data;
+      this.postagens = postagens;
+      console.log(postagens);
     });
   },
 };
