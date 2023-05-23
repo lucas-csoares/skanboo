@@ -9,6 +9,8 @@ import com.ti.Skanboo.repositories.PostagemRepository;
 import com.ti.Skanboo.models.enums.UsuarioEnum;
 import com.ti.Skanboo.security.UserSpringSecurity;
 import com.ti.Skanboo.exceptions.AuthorizationException;
+import com.ti.Skanboo.exceptions.PostCreationException;
+
 import jakarta.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -61,6 +63,12 @@ public class PostagemService {
         if (Objects.isNull(userSpringSecurity))
             throw new AuthorizationException("Acesso negado!");
 
+        if (obj.getDescricao() == null || obj.getTitulo() == null)
+            throw new PostCreationException("A postagem deve possuir um titulo e descricao!");
+
+        if (obj.getCategoriaProduto() == null || obj.getCategoriaProdutoDesejado() == null)
+            throw new PostCreationException("A postagem deve ter uma categoria e a categoria do produto desejado!");
+
         Usuario usuario = this.usuarioService.encontrarPorId(userSpringSecurity.getId());
 
         obj.setId(null);
@@ -78,6 +86,8 @@ public class PostagemService {
 
         novaPostagem.setTitulo(obj.getTitulo());
         novaPostagem.setDescricao(obj.getDescricao());
+        novaPostagem.setCategoriaProduto(obj.getCategoriaProduto());
+        novaPostagem.setCategoriaProdutoDesejado(obj.getCategoriaProdutoDesejado());
         novaPostagem.setDataPostagem(DateTimeFormatter.ofPattern("dd/MM/yyyy").format(LocalDate.now()));
         novaPostagem.setHoraPostagem(LocalTime.now());
 

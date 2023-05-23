@@ -50,11 +50,11 @@ public class Postagem {
     @Size(min = 1, max = 255)
     private String descricao;
 
-    @Column(name = "categoria_produto", length = 30, nullable = false)
+    @Column(name = "categoria_produto", length = 30, nullable = false, updatable = true)
     @Size(min = 1, max = 30)
     private String categoriaProduto;
 
-    @Column(name = "categoria_produto_desejado", length = 30, nullable = false)
+    @Column(name = "categoria_produto_desejado", length = 30, nullable = false, updatable = true)
     @Size(min = 1, max = 30)
     private String categoriaProdutoDesejado;
 

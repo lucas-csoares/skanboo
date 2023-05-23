@@ -34,7 +34,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler imple
     @Value("${server.error.include-exception}")
     private boolean printStackTrace;
 
-//    @Override
+    // @Override
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     protected ResponseEntity<Object> handleMethodArgumentNotValid(
             MethodArgumentNotValidException methodArgumentNotValidException,
@@ -70,7 +70,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler imple
             DataIntegrityViolationException dataIntegrityViolationException,
             WebRequest request) {
         String errorMessage = dataIntegrityViolationException.getMostSpecificCause().getMessage();
-        log.error("Falha para salvar a entidade com os seguintes problemas: " + errorMessage, dataIntegrityViolationException);
+        log.error("Falha para salvar a entidade com os seguintes problemas: " + errorMessage,
+                dataIntegrityViolationException);
         return buildErrorResponse(
                 dataIntegrityViolationException,
                 errorMessage,
@@ -150,6 +151,15 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler imple
                 request);
     }
 
+    @ExceptionHandler(PostCreationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<Object> handlePostCreationException(PostCreationException postCreationException,
+            WebRequest request) {
+
+        log.error("Post creation error", postCreationException);
+        return buildErrorResponse(postCreationException, HttpStatus.BAD_REQUEST, request);
+    }
+
     private ResponseEntity<Object> buildErrorResponse(
             Exception exception,
             String message,
@@ -170,11 +180,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler imple
     }
 
     @Override
-    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
+    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
+            AuthenticationException exception) throws IOException, ServletException {
         int status = HttpStatus.UNAUTHORIZED.value();
         response.setStatus(status);
         response.setContentType("application/json");
-        ErrorResponse errorResponse = new ErrorResponse(status,"Email ou senha invalidos");
+        ErrorResponse errorResponse = new ErrorResponse(status, "Email ou senha invalidos");
         response.getWriter().append(errorResponse.toJson());
     }
 }
