@@ -3,7 +3,7 @@
     <h1>Postar produto</h1>
 
     <ul>
-      <li v-for="(error, index) of errors" :key="index">
+      <li v-for="(error, index) of errors" :key="index"> 
         campo <b>{{ error.field }}</b> - {{ error.defaultMessage }}
       </li>
     </ul>
@@ -11,131 +11,81 @@
     <div class="postagem">
       <div class="dados-postagem">
         <form @submit.prevent="criar">
+
+          <label for="fotos">Adicionar foto</label>
+          <input type="file" id="fotos" name="fotos" @change="adicionarFoto()"/>
+
           <label for="titulo">Título</label>
-          <input
-            type="text"
-            id="titulo"
-            maxlength="30"
-            v-model="postagem.titulo"
-          />
+          <input type="text" id="titulo" maxlength="30" v-model="postagem.titulo" />
 
           <label for="descricao">Descrição</label><br />
-          <textarea
-            id="descricao"
-            name="descricao"
-            rows="4"
-            cols="50"
-            maxlength="140"
-            v-model="postagem.descricao"
-          ></textarea
-          ><br />
-          <label for="fotos">Adicionar fotos</label>
-          <input type="file" id="fotos" name="fotos" /><br />
+          <textarea id="descricao" name="descricao" rows="4" cols="50" maxlength="140" v-model="postagem.descricao" ></textarea >
 
           <div class="categoria">
             <fieldset>
-              <legend>Selecione a categoria de interesse:</legend>
 
-              <div>
-                <input
-                  type="radio"
-                  id="eletronico-interesse"
-                  name="categoria-interesse"
-                  value="eletronico-interesse"
-                />
-                <label for="eletronico">Eletrônicos</label>
-              </div>
-
-              <div>
-                <input
-                  type="radio"
-                  id="modaBeleza-interesse"
-                  name="categoria-interesse"
-                  value="modaBeleza-interesse"
-                />
-                <label for="modaBeleza">Moda e Beleza</label>
-              </div>
-
-              <div>
-                <input
-                  type="radio"
-                  id="musica-interesse"
-                  name="categoria-interesse"
-                  value="musica-interesse"
-                />
-                <label for="musica">Música</label>
-              </div>
-
-              <div>
-                <input
-                  type="radio"
-                  id="casa-interesse"
-                  name="categoria-interesse"
-                  value="casa-interesse"
-                />
-                <label for="casa">Casa</label>
-              </div>
-
-              <div>
-                <input
-                  type="radio"
-                  id="servicos-interesse"
-                  name="categoria-interesse"
-                  value="servicos-interesse"
-                />
-                <label for="servicos">Serviços</label>
-              </div>
-            </fieldset>
-            <br /><br />
-            <fieldset>
               <legend>Selecione a categoria do produto:</legend>
 
               <div>
-                <input
-                  type="radio"
-                  id="eletronico"
-                  name="categoria"
-                  value="eletronico"
-                />
+                <input type="radio" id="eletronico" name="categoria" value="Eletrônico" v-model="postagem.categoriaProduto" />
                 <label for="eletronico">Eletrônicos</label>
               </div>
 
               <div>
-                <input
-                  type="radio"
-                  id="modaBeleza"
-                  name="categoria"
-                  value="modaBeleza"
-                />
+                <input type="radio" id="modaBeleza" name="categoria" value="Moda e Beleza" v-model="postagem.categoriaProduto" />
                 <label for="modaBeleza">Moda e Beleza</label>
               </div>
 
               <div>
-                <input
-                  type="radio"
-                  id="musica"
-                  name="categoria"
-                  value="musica"
-                />
+                <input type="radio" id="musica" name="categoria" value="Música" v-model="postagem.categoriaProduto" />
                 <label for="musica">Música</label>
               </div>
 
               <div>
-                <input type="radio" id="casa" name="categoria" value="casa" />
+                <input type="radio" id="casa" name="categoria" value="Casa" v-model="postagem.categoriaProduto"/>
                 <label for="casa">Casa</label>
               </div>
 
               <div>
-                <input
-                  type="radio"
-                  id="servicos"
-                  name="categoria"
-                  value="servicos"
-                />
+                <input type="radio" id="servicos" name="categoria" value="Serviços" v-model="postagem.categoriaProduto"/>
                 <label for="servicos">Serviços</label>
               </div>
+
             </fieldset>
+
+            <fieldset>
+
+              <legend>Selecione a categoria de interesse:</legend>
+
+              <div>
+                <input type="radio" id="eletronico-interesse" name="categoria-interesse" value="Eletrônico" v-model="postagem.categoriaProdutoDesejado"/>
+                <label for="eletronico">Eletrônicos</label>
+              </div>
+
+              <div>
+                <input type="radio" id="modaBeleza-interesse" name="categoria-interesse" value="Moda e Beleza" v-model="postagem.categoriaProdutoDesejado"/>
+                <label for="modaBeleza">Moda e Beleza</label>
+              </div>
+
+              <div>
+                <input type="radio" id="musica-interesse" name="categoria-interesse" value="Música" v-model="postagem.categoriaProdutoDesejado"/>
+                <label for="musica">Música</label>
+              </div>
+
+              <div>
+                <input type="radio" id="casa-interesse" name="categoria-interesse" value="Casa" v-model="postagem.categoriaProdutoDesejado"/>
+                <label for="casa">Casa</label>
+              </div>
+
+              <div>
+                <input type="radio" id="servicos-interesse" name="categoria-interesse" value="Serviços" v-model="postagem.categoriaProdutoDesejado"/>
+                <label for="servicos">Serviços</label>
+              </div>
+
+            </fieldset>
+
           </div>
+
           <button class="editar">Postar</button>
         </form>
       </div>
@@ -144,34 +94,44 @@
 </template>
 
 <script>
-import Postagem from "../services/PostagemService";
+import Postagem from '../services/PostagemService';
 
 export default {
+
   data() {
+
     return {
       postagem: {
-        id: "",
-        titulo: "",
-        descricao: "",
-        categoria: "",
-        status: "",
-      },
-      umaPostagem: {},
+        id: '',
+        titulo: '',
+        descricao: '',
+        categoriaProduto: '',
+        categoriaProdutoDesejado: '',
+        status: '',
+      }
     };
   },
 
   methods: {
+
     criar() {
       Postagem.criar(this.postagem)
-        .then((/*resposta*/) => {
-          alert("Postagem criada com sucesso");
+        .then(() => {
+          alert('Postagem criada com sucesso');
           this.errors = [];
+
+          this.$router.push({ name: "PostsDoUsuarioView" });
         })
         .catch((e) => {
+          alert("Todos os campos da postagem devem ser preenchidos!");
           this.errors = e.response.data.errors;
           console.log(this.errors);
         });
     },
+
+    adicionarFoto() {
+      
+    }
   },
 };
 </script>
@@ -274,7 +234,7 @@ h2 {
   padding-left: 0;
 }
 
-input[type="radio"] {
+input[type='radio'] {
   display: inline-block;
   width: auto;
   height: auto;

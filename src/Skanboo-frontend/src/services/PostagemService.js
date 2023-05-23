@@ -9,7 +9,7 @@ export default {
     });
   },
 
-  exibirInfo: () => {
+  exibirPostagensUsuarioLogado: () => {
     return http.get('postagem/usuario', {
       headers: {
         Authorization: localStorage.getItem('token')

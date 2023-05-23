@@ -1,25 +1,24 @@
 <template>
   <section class="products">
+
     <h1>Meus anúncios</h1>
+    <!-- Revisar, icone provisório -->
+    <a href="/postarProdutoView"><img src="../assets/plus-icon.png" alt="Adicionar postagem" class="adicionar_postagem" style="width: 20px; height: 20px;"/></a>
+
     <div class="container">
       <div v-for="postagem in postagens" :key="postagem.id" class="card">
+
         <router-link :to="{ name: 'TheProductPage', params: { id: postagem.id } }">
-          <!-- <button class="like">
-            <a href="http://"><img src="../assets/like.png" alt="" /></a>
-          </button> -->
-          <div class="card-img-produto">
-            <img src="../assets/ex1.jpg" alt="" class="card-img" />
-          </div>
           <h2>{{ postagem.titulo }}</h2>
+          <div class="card-img-produto"><img src="../assets/ex1.jpg" alt="" class="card-img" /></div>
         </router-link>
-        <button class="editar">
-          <router-link :to="{ name: 'TheEditProduct', params: { id: postagem.id } }"
-            >Editar</router-link
-          >
-        </button>
+
+        <button class="editar"><router-link :to="{ name: 'TheEditProduct', params: { id: postagem.id } }" >Editar</router-link></button>
         <button class="excluir" @click="excluirPostagem(postagem.id)">Excluir</button>
+
       </div>
     </div>
+
   </section>
 </template>
 
@@ -28,12 +27,14 @@ import Postagem from '../services/PostagemService';
 
 export default {
   data() {
+
     return {
       postagem: {
         id: '',
         titulo: '',
         descricao: '',
-        categoria: '',
+        categoriaProduto: '',
+        categoriaProdutoDesejado: '',
         status: '',
       },
       postagens: [],
@@ -41,18 +42,13 @@ export default {
   },
 
   mounted() {
-    Postagem.exibirInfo()
+
+    Postagem.exibirPostagensUsuarioLogado()
       .then((resposta) => {
-        console.log(resposta.data);
-        const postagens = resposta.data; // Todas postagens do usuario
-        const postsLength = Object.keys(postagens).length;
-        console.log(postsLength);
+        const postagens = resposta.data;
         this.postagens = postagens;
-        //const umaPostagem = postagens.find(postagem => postagem.id === 1) //Depois mudar a ID do produto escolhido
-        //console.log(umaPostagem.titulo);
-        //this.postagem = umaPostagem; // So a postagem escolhida
       })
-      .catch((err) => console.log(err.message));
+      .catch((e) => console.log(e.message));
   },
 
   methods: {
@@ -68,15 +64,12 @@ export default {
     },
 
     carregarPostagens() {
-      Postagem.exibirInfo()
+      Postagem.exibirPostagensUsuarioLogado()
         .then((resposta) => {
-          console.log(resposta.data);
           const postagens = resposta.data;
-          const postsLength = Object.keys(postagens).length;
-          console.log(postsLength);
           this.postagens = postagens;
         })
-        .catch((err) => console.log(err.message));
+        .catch((e) => console.log(e.message));
     },
   },
 };

@@ -1,55 +1,51 @@
 <template>
   <div v-if="postagem">
     <section class="container">
-    <div class="imagem">
-      <img src="../assets/imagem-produto.avif" alt="Foto do Produto" />
-    </div>
-    <div class="informacoes-produto">
-      <h1>{{ postagem.titulo }}</h1>
-      <p>
-        {{ postagem.descricao }}
-      </p>
+      <div class="imagem">
+        <img src="../assets/imagem-produto.avif" alt="Foto do Produto" />
+      </div>
+      <div class="informacoes-produto">
+        <h1>{{ postagem.titulo }}</h1>
+        <p>
+          {{ postagem.descricao }}
+        </p>
 
-      <!-- <span><b>Preferências: </b></span>
-      <span class="preferencias">Video-game ou bolsa</span><br /> -->
+        <span><b>Categoria do produto: </b></span>
+        <span class="categoria">{{ postagem.categoriaProduto }}</span>
 
-      <span><b>Categoria de interesse </b></span>
-      <span class="oferta">{{ postagem.categoriaProdutoDesejado }}</span><br />
+        <br>
 
-      <span><b>Categoria do produto: </b></span>
-      <span class="categoria">{{ postagem.categoriaProduto }}</span><br /><br />
-      <button>Negociar</button>
-    </div>
-  </section>
+        <span><b>Categoria de interesse </b></span>
+        <span class="oferta">{{ postagem.categoriaProdutoDesejado }}</span >
+
+        <button>Negociar</button>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
-
-import Postagem from "../services/PostagemService";
+import Postagem from '../services/PostagemService';
 
 export default {
-  props: ["id"],
+  props: ['id'],
   data() {
     return {
-      postagem: null
-    }
+      postagem: null,
+    };
   },
 
   mounted() {
-
     // fetch('http://localhost:8080/postagem/' + this.id)
     // .then(resposta => {})
 
-
-    Postagem.exibirInfoPostagem(this.id).then(resposta => {
+    Postagem.exibirInfoPostagem(this.id).then((resposta) => {
       this.postagem = resposta.data;
       console.log(resposta.data);
       return this.postagem;
-    })
+    });
   },
 };
-
 </script>
 
 <style scoped>
