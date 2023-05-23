@@ -84,7 +84,26 @@
 </template>
 
 <script>
-export default {};
+import Postagem from '../services/PostagemService';
+
+export default {
+
+  data() {
+
+    return {
+      postagens: [],
+    }
+  },
+
+  mounted() {
+
+    Postagem.exibirTodasPostagens().then((resposta) => {
+        const postagens = resposta.data;
+        this.postagens = postagens;
+        console.log(postagens);
+    });
+  },
+};
 </script>
 
 <style scoped>

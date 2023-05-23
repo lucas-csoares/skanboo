@@ -25,8 +25,8 @@ export default {
     });
   },
 
-  atualizar: (postId, postagem) => {
-    return http.put(`postagem/${postId}`, postagem, {
+  atualizar: (id, postagem) => {
+    return http.put(`postagem/${id}`, postagem, {
       headers: {
         Authorization: localStorage.getItem('token')
       }
@@ -39,5 +39,9 @@ export default {
         Authorization: localStorage.getItem('token')
       }
     });
+  },
+
+  exibirTodasPostagens() {
+    return http.get('postagem/lista');
   }
 };
