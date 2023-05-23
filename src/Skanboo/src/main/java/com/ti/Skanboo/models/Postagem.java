@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -58,6 +59,10 @@ public class Postagem {
     @Size(min = 1, max = 30)
     private String categoriaProdutoDesejado;
 
+    @Column(name = "foto", length = 100000, nullable = true, updatable = true)
+    @Lob 
+    private String foto;
+
     @Column(name = "hora_postagem", nullable = false)
     @JsonFormat(pattern = "HH:mm:ss")
     private LocalTime horaPostagem;
@@ -75,9 +80,5 @@ public class Postagem {
         this.horaPostagem = LocalTime.now();
         this.dataPostagem = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
-
-    // @Column(name = "foto", length = 255)
-    // @Lob //*Campo de objeto grande (Large Object)
-    // private byte[] foto;
 
 }

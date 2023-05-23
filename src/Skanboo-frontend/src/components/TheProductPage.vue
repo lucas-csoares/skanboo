@@ -2,21 +2,19 @@
   <div v-if="postagem">
     <section class="container">
       <div class="imagem">
-        <img src="../assets/imagem-produto.avif" alt="Foto do Produto" />
+        <img :src="postagem.foto" alt="Foto do Produto" />
       </div>
       <div class="informacoes-produto">
         <h1>{{ postagem.titulo }}</h1>
-        <p>
-          {{ postagem.descricao }}
-        </p>
+        <p>{{ postagem.descricao }}</p>
 
         <span><b>Categoria do produto: </b></span>
         <span class="categoria">{{ postagem.categoriaProduto }}</span>
 
-        <br>
+        <br />
 
         <span><b>Categoria de interesse </b></span>
-        <span class="oferta">{{ postagem.categoriaProdutoDesejado }}</span >
+        <span class="oferta">{{ postagem.categoriaProdutoDesejado }}</span>
 
         <button>Negociar</button>
       </div>
@@ -36,9 +34,6 @@ export default {
   },
 
   mounted() {
-    // fetch('http://localhost:8080/postagem/' + this.id)
-    // .then(resposta => {})
-
     Postagem.exibirInfoPostagem(this.id).then((resposta) => {
       this.postagem = resposta.data;
       console.log(resposta.data);

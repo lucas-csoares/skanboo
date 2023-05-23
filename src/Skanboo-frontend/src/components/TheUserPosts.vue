@@ -10,7 +10,7 @@
 
         <router-link :to="{ name: 'TheProductPage', params: { id: postagem.id } }">
           <h2>{{ postagem.titulo }}</h2>
-          <div class="card-img-produto"><img src="../assets/ex1.jpg" alt="" class="card-img" /></div>
+          <div class="card-img-produto"><img :src="postagem.foto" alt="" class="card-img" /></div>
         </router-link>
 
         <button class="editar"><router-link :to="{ name: 'TheEditProduct', params: { id: postagem.id } }" >Editar</router-link></button>

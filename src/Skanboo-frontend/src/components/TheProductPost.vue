@@ -3,7 +3,7 @@
     <h1>Postar produto</h1>
 
     <ul>
-      <li v-for="(error, index) of errors" :key="index"> 
+      <li v-for="(error, index) of errors" :key="index">
         campo <b>{{ error.field }}</b> - {{ error.defaultMessage }}
       </li>
     </ul>
@@ -11,79 +11,140 @@
     <div class="postagem">
       <div class="dados-postagem">
         <form @submit.prevent="criar">
-
           <label for="fotos">Adicionar foto</label>
-          <input type="file" id="fotos" name="fotos" @change="adicionarFoto()"/>
+          <input type="file" id="fotos" name="fotos" />
 
           <label for="titulo">Título</label>
           <input type="text" id="titulo" maxlength="30" v-model="postagem.titulo" />
 
           <label for="descricao">Descrição</label><br />
-          <textarea id="descricao" name="descricao" rows="4" cols="50" maxlength="140" v-model="postagem.descricao" ></textarea >
+          <textarea
+            id="descricao"
+            name="descricao"
+            rows="4"
+            cols="50"
+            maxlength="140"
+            v-model="postagem.descricao"
+          ></textarea>
 
           <div class="categoria">
             <fieldset>
-
               <legend>Selecione a categoria do produto:</legend>
 
               <div>
-                <input type="radio" id="eletronico" name="categoria" value="Eletrônico" v-model="postagem.categoriaProduto" />
+                <input
+                  type="radio"
+                  id="eletronico"
+                  name="categoria"
+                  value="Eletrônico"
+                  v-model="postagem.categoriaProduto"
+                />
                 <label for="eletronico">Eletrônicos</label>
               </div>
 
               <div>
-                <input type="radio" id="modaBeleza" name="categoria" value="Moda e Beleza" v-model="postagem.categoriaProduto" />
+                <input
+                  type="radio"
+                  id="modaBeleza"
+                  name="categoria"
+                  value="Moda e Beleza"
+                  v-model="postagem.categoriaProduto"
+                />
                 <label for="modaBeleza">Moda e Beleza</label>
               </div>
 
               <div>
-                <input type="radio" id="musica" name="categoria" value="Música" v-model="postagem.categoriaProduto" />
+                <input
+                  type="radio"
+                  id="musica"
+                  name="categoria"
+                  value="Música"
+                  v-model="postagem.categoriaProduto"
+                />
                 <label for="musica">Música</label>
               </div>
 
               <div>
-                <input type="radio" id="casa" name="categoria" value="Casa" v-model="postagem.categoriaProduto"/>
+                <input
+                  type="radio"
+                  id="casa"
+                  name="categoria"
+                  value="Casa"
+                  v-model="postagem.categoriaProduto"
+                />
                 <label for="casa">Casa</label>
               </div>
 
               <div>
-                <input type="radio" id="servicos" name="categoria" value="Serviços" v-model="postagem.categoriaProduto"/>
+                <input
+                  type="radio"
+                  id="servicos"
+                  name="categoria"
+                  value="Serviços"
+                  v-model="postagem.categoriaProduto"
+                />
                 <label for="servicos">Serviços</label>
               </div>
-
             </fieldset>
 
             <fieldset>
-
               <legend>Selecione a categoria de interesse:</legend>
 
               <div>
-                <input type="radio" id="eletronico-interesse" name="categoria-interesse" value="Eletrônico" v-model="postagem.categoriaProdutoDesejado"/>
+                <input
+                  type="radio"
+                  id="eletronico-interesse"
+                  name="categoria-interesse"
+                  value="Eletrônico"
+                  v-model="postagem.categoriaProdutoDesejado"
+                />
                 <label for="eletronico">Eletrônicos</label>
               </div>
 
               <div>
-                <input type="radio" id="modaBeleza-interesse" name="categoria-interesse" value="Moda e Beleza" v-model="postagem.categoriaProdutoDesejado"/>
+                <input
+                  type="radio"
+                  id="modaBeleza-interesse"
+                  name="categoria-interesse"
+                  value="Moda e Beleza"
+                  v-model="postagem.categoriaProdutoDesejado"
+                />
                 <label for="modaBeleza">Moda e Beleza</label>
               </div>
 
               <div>
-                <input type="radio" id="musica-interesse" name="categoria-interesse" value="Música" v-model="postagem.categoriaProdutoDesejado"/>
+                <input
+                  type="radio"
+                  id="musica-interesse"
+                  name="categoria-interesse"
+                  value="Música"
+                  v-model="postagem.categoriaProdutoDesejado"
+                />
                 <label for="musica">Música</label>
               </div>
 
               <div>
-                <input type="radio" id="casa-interesse" name="categoria-interesse" value="Casa" v-model="postagem.categoriaProdutoDesejado"/>
+                <input
+                  type="radio"
+                  id="casa-interesse"
+                  name="categoria-interesse"
+                  value="Casa"
+                  v-model="postagem.categoriaProdutoDesejado"
+                />
                 <label for="casa">Casa</label>
               </div>
 
               <div>
-                <input type="radio" id="servicos-interesse" name="categoria-interesse" value="Serviços" v-model="postagem.categoriaProdutoDesejado"/>
+                <input
+                  type="radio"
+                  id="servicos-interesse"
+                  name="categoria-interesse"
+                  value="Serviços"
+                  v-model="postagem.categoriaProdutoDesejado"
+                />
                 <label for="servicos">Serviços</label>
               </div>
-
             </fieldset>
-
           </div>
 
           <button class="editar">Postar</button>
@@ -97,41 +158,64 @@
 import Postagem from '../services/PostagemService';
 
 export default {
-
   data() {
-
     return {
       postagem: {
         id: '',
+        foto: null,
         titulo: '',
         descricao: '',
         categoriaProduto: '',
         categoriaProdutoDesejado: '',
         status: '',
-      }
+      },
     };
   },
 
   methods: {
-
     criar() {
-      Postagem.criar(this.postagem)
-        .then(() => {
-          alert('Postagem criada com sucesso');
-          this.errors = [];
-
-          this.$router.push({ name: "PostsDoUsuarioView" });
+      this.uploadFoto().then((foto) => {
+        Postagem.criar({
+          ...this.postagem,
+          foto: foto,
         })
-        .catch((e) => {
-          alert("Todos os campos da postagem devem ser preenchidos!");
-          this.errors = e.response.data.errors;
-          console.log(this.errors);
-        });
+          .then(() => {
+            alert('Postagem criada com sucesso!');
+            this.errors = [];
+
+            this.$router.push({ name: 'PostsDoUsuarioView' });
+          })
+          .catch((e) => {
+            alert('Todos os campos da postagem devem ser preenchidos!');
+            this.errors = e.response.data.errors;
+            console.log(this.errors);
+          });
+      });
     },
 
-    adicionarFoto() {
-      
-    }
+    uploadFoto() {
+      return new Promise((resolve, reject) => {
+        const fileInput = document.querySelector('input[type=file]');
+        const file = fileInput.files[0];
+
+        const reader = new FileReader();
+        reader.addEventListener(
+          'load',
+          () => {
+            resolve(reader.result);
+          },
+          false
+        );
+
+        reader.addEventListener('error', reject);
+
+        if (file) {
+          reader.readAsDataURL(file);
+        } else {
+          resolve(null);
+        }
+      });
+    },
   },
 };
 </script>

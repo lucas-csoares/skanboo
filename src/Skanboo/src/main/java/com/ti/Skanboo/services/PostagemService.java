@@ -91,6 +91,9 @@ public class PostagemService {
         novaPostagem.setDataPostagem(DateTimeFormatter.ofPattern("dd/MM/yyyy").format(LocalDate.now()));
         novaPostagem.setHoraPostagem(LocalTime.now());
 
+        if (obj.getFoto() != null)
+            novaPostagem.setFoto(obj.getFoto());
+
         return this.postagemRepository.save(novaPostagem);
     }
 
