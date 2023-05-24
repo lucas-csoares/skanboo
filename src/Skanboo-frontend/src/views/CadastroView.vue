@@ -106,27 +106,50 @@ export default {
         uf: "",
         telefone: "",
       },
+      usuarioLogin: {
+        email: "",
+        senha: "",
+      },
       errors: [],
     };
   },
 
   methods: {
-    criar() {
-      Usuario.criar(this.usuario)
-        .then((/*resposta*/) => {
-          alert("Usuario salvo com sucesso");
-          this.errors = [];
-        })
-        .catch((e) => {
-          this.errors = e.response.data.errors;
-          console.log(this.errors);
-        });
-    },
-
-    atualizar(usuario) {
-      this.usuario = usuario;
-    },
+  criar() {
+    Usuario.criar(this.usuario)
+      .then(() => {
+        alert("Usuário salvo com sucesso");
+        this.errors = [];
+        this.usuarioLogin.email = this.usuario.email;
+        this.usuarioLogin.senha = this.usuario.senha;
+        console.log(this.usuarioLogin);
+        this.logar();
+      })
+      .catch((e) => {
+        this.errors = e.response.data.errors;
+        console.log(this.errors);
+      });
   },
+  
+  logar() {
+    Usuario.logar(this.usuarioLogin)
+      .then((resposta) => {
+        alert('Usuário logado com sucesso');
+        console.log(resposta);
+        const token = resposta.headers.getAuthorization();
+        if (!token) throw new Error('Ocorreu um erro ao tentar logar usuário!');
+        localStorage.setItem('token', token);
+        // aqui redireciona pagina
+        return this.$router.push({ name: 'usuarioView' });
+        // this.errors = [];
+      })
+      .catch((e) => {
+        this.errors = e.response.data.errors;
+        console.log(this.errors);
+      });
+  },
+},
+
 };
 </script>
 
