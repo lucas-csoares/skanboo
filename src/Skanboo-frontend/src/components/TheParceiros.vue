@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import Postagem from '../services/ParceiroService';
+import Parceiro from '../services/ParceiroService';
 
 export default {
   data() {
