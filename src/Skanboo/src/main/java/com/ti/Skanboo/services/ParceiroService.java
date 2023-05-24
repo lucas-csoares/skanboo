@@ -35,11 +35,6 @@ public class ParceiroService {
 
     public List<Parceiro> listarParceirosCadastrados() {
 
-        UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
-
-        if (Objects.isNull(userSpringSecurity) || !userSpringSecurity.hasRole(UsuarioEnum.ADMIN))
-            throw new AuthorizationException("Acesso negado!");
-
         List<Parceiro> parceiro = this.parceiroRepository.findAll();
 
         return parceiro;
