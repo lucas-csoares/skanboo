@@ -80,6 +80,7 @@ export default {
   data() {
     return {
       usuario: {
+        foto: "",
         nome: "",
         telefone: "",
         uf: "",
@@ -96,19 +97,46 @@ export default {
 
   methods: {
     atualizar() {
-
-      Usuario.atualizar(this.usuario)
-        .then((/*resposta*/) => {
-          alert("Informações do usuario editadas com sucesso");
-          this.errors = [];
-        })
-        .catch((e) => {
-          this.errors = e.response.data.errors;
-          console.log(this.errors);
-          console.log(this.usuario);
-        });
+      this.uploadFoto().then((foto) => {
+        this.usuario.foto = foto;
+        
+        Usuario.atualizar(this.usuario)
+          .then((/*resposta*/) => {
+            alert("Informações do usuario editadas com sucesso");
+            this.errors = [];
+          })
+          .catch((e) => {
+            this.errors = e.response.data.errors;
+            console.log(this.errors);
+            console.log(this.usuario);
+          });
+      });
     },
-  }
+
+    uploadFoto() {
+      return new Promise((resolve, reject) => {
+        const fileInput = document.querySelector('input[type=file]');
+        const file = fileInput.files[0];
+
+        const reader = new FileReader();
+        reader.addEventListener(
+          'load',
+          () => {
+            resolve(reader.result);
+          },
+          false
+        );
+
+        reader.addEventListener('error', reject);
+
+        if (file) {
+          reader.readAsDataURL(file);
+        } else {
+          resolve(null);
+        }
+      });
+    },
+  },
 };
 </script>
 
