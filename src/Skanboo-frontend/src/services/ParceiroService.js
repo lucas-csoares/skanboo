@@ -17,6 +17,10 @@ export default {
     });
   },
 
+  exibirTodosParceiros() {
+    return http.get('parceiro/lista');
+  },
+
   atualizar: (parceiro) => {
     return http.put('parceiro', parceiro, {
       headers: {

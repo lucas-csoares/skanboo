@@ -1,19 +1,16 @@
 <template>
-  <section class="products">
+  <section class="partners">
 
     <h1>Os parceiros</h1>
-    <!-- Revisar, icone provisório -->
-    <a href="/CooptarParceirosView"><img src="../assets/plus-icon.png" alt="Cadastrar novo parceiro" class="adicionar_parceiro" style="width: 20px; height: 20px;"/></a>
 
     <div class="container">
       <div v-for="parceiro in parceiros" :key="parceiro.id" class="card">
 
-        <!-- <router-link :to="{ name: 'TheProductPage', params: { id: postagem.id } }"> -->
-          <h2>{{ parceiro.nome }}</h2>
-          <div class="card-img-produto"><img :src="parceiro.foto" alt="" class="card-img" /></div>
-        <!-- </router-link> -->
+        <h2>{{ parceiro.nome }}</h2>
+        <div class="card-img-parceiro"><img :src="parceiro.foto" alt="" class="card-img" /></div>
 
-        <button class="editar"><router-link :to="{ name: 'TheEditPartner', params: { id: parceiro.id } }" >Editar</router-link></button>
+        <button class="editar"><router-link
+            :to="{ name: 'TheEditPartner', params: { id: parceiro.id } }">Editar</router-link></button>
         <button class="excluir" @click="excluir(parceiro.id)">Excluir</button>
 
       </div>
@@ -42,12 +39,11 @@ export default {
 
   mounted() {
 
-    Parceiro.exibirInfo()
-      .then((resposta) => {
-        const parceiro = resposta.data;
-        this.parceiro = parceiro;
-      })
-      .catch((e) => console.log(e.message));
+    Parceiro.exibirTodosParceiros().then((resposta) => {
+      const parceiros = resposta.data;
+      this.parceiros = parceiros;
+      console.log(parceiros);
+    });
   },
 
   methods: {
@@ -62,12 +58,11 @@ export default {
     },
 
     carregarParceiro() {
-      Parceiro.exibirInfo()
-        .then((resposta) => {
-          const parceiro = resposta.data;
-        this.parceiro = parceiro;
-        })
-        .catch((e) => console.log(e.message));
+      Parceiro.exibirTodosParceiros().then((resposta) => {
+        const parceiros = resposta.data;
+        this.parceiros = parceiros;
+        console.log(parceiros);
+      });
     },
   },
 };
@@ -109,7 +104,7 @@ img {
   gap: 20px;
 }
 
-.products {
+.partners {
   margin-left: 200px;
   margin-right: 200px;
 }
@@ -137,7 +132,7 @@ img {
   margin-top: 20px;
 }
 
-.card-img-produto img {
+.card-img-parceiro img {
   max-height: 200px;
   margin-top: 20px;
 }
