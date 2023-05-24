@@ -1,5 +1,7 @@
 package com.ti.Skanboo.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -36,19 +38,23 @@ public class Parceiro {
     @Size(min = 2, max = 100)
     private String nome;
 
-    @Column(name = "logo", length = 255)
-    @Lob
-    private byte[] logo;
+    @Column(name = "foto", length = 100000, nullable = true, updatable = true)
+    @Lob 
+    private String foto;
+
+    @Column(name = "contrato", length = 100000, nullable = true, updatable = true)
+    @Lob 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String contrato;
 
     @Column(name = "cnpj", length = 18, nullable = false, unique = true, updatable = false)
     @NotBlank
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String cnpj;
 
     @Column(name = "plano", length = 10, nullable = false)
     @NotBlank
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String plano;
 
-    @Column(name = "contrato", length = 255)
-    @Lob
-    private byte[] contrato;
 }

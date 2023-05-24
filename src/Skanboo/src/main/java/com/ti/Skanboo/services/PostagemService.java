@@ -31,12 +31,12 @@ public class PostagemService {
         Postagem postagem = this.postagemRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Postagem nao encontrada!"));
 
-        // Verifica se usuario esta logado e se o endereco que ele busca pertence a ele
-        UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
+        // // Verifica se usuario esta logado e se o endereco que ele busca pertence a ele
+        // UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
 
-        if (Objects.isNull(userSpringSecurity) || !userSpringSecurity.hasRole(UsuarioEnum.ADMIN)
-                && !PostagemPertenceAoUsuario(userSpringSecurity, postagem))
-            throw new AuthorizationException("Acesso negado!");
+        // if (Objects.isNull(userSpringSecurity) || !userSpringSecurity.hasRole(UsuarioEnum.ADMIN)
+        //         && !PostagemPertenceAoUsuario(userSpringSecurity, postagem))
+        //     throw new AuthorizationException("Acesso negado!");
 
         return postagem;
     }

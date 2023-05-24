@@ -1,70 +1,69 @@
 <template>
-  <section class="products">
-    <h1>Meus anúncios</h1>
+  <section class="partners">
+
+    <h1>Os parceiros</h1>
+
     <div class="container">
-      <div class="card">
-        <!-- <button class="like">
-            <a href="http://"><img src="../assets/like.png" alt="" /></a>
-          </button> -->
-        <div class="card-img-produto">
-          <img src="../assets/ex1.jpg" alt="" class="card-img" />
-        </div>
-        <h2>Air Fryer</h2>
-        <button class="editar"><a href="/editarProdutoView">Editar</a></button>
-        <button class="excluir">Excluir</button>
-      </div>
+      <div v-for="parceiro in parceiros" :key="parceiro.id" class="card">
 
-      <div class="card">
-        <!-- <button class="like"><img src="../assets/like.png" alt="" /></button> -->
-        <div class="card-img-produto">
-          <img src="../assets/ex2.jpg" alt="" class="card-img" />
-        </div>
-        <h2>Título</h2>
-        <button class="editar"><a href="/editarProdutoView">Editar</a></button>
-        <button class="excluir">Excluir</button>
-      </div>
+        <h2>{{ parceiro.nome }}</h2>
+        <div class="card-img-parceiro"><img :src="parceiro.foto" alt="" class="card-img" /></div>
 
-      <div class="card">
-        <!-- <button class="like"><img src="../assets/like.png" alt="" /></button> -->
-        <div class="card-img-produto">
-          <img src="../assets/ex3.jpg" alt="" class="card-img" />
-        </div>
-        <h2>Título</h2>
-        <button class="editar"><a href="/editarProdutoView">Editar</a></button>
-        <button class="excluir">Excluir</button>
-      </div>
+        <button class="editar"><router-link
+            :to="{ name: 'TheEditPartner', params: { id: parceiro.id } }">Editar</router-link></button>
+        <button class="excluir" @click="excluir(parceiro.id)">Excluir</button>
 
-      <div class="card">
-        <!-- <button class="like"><img src="../assets/like.png" alt="" /></button> -->
-        <div class="card-img-produto">
-          <img src="../assets/ex11.jpg" alt="" class="card-img" />
-        </div>
-        <h2>Título</h2>
-        <button class="editar"><a href="/editarProdutoView">Editar</a></button>
-        <button class="excluir">Excluir</button>
       </div>
     </div>
+
   </section>
 </template>
 
 <script>
-
-import Parceiro from "../services/ParceiroService";
+import Parceiro from '../services/ParceiroService';
 
 export default {
-  props: ["id"],
   data() {
+
     return {
-      parceiro: null
-    }
+      parceiro: {
+        nome: '',
+        foto: null,
+        contrato: null,
+        cnpj: '',
+        plano: '',
+      },
+      parceiro: [],
+    };
   },
 
   mounted() {
-    Parceiro.exibirInfo(this.id).then(resposta => {
-      this.parceiro = resposta.data;
-      console.log(resposta.data);
-      return this.parceiro;
-    })
+
+    Parceiro.exibirTodosParceiros().then((resposta) => {
+      const parceiros = resposta.data;
+      this.parceiros = parceiros;
+      console.log(parceiros);
+    });
+  },
+
+  methods: {
+    excluirParceiro(id) {
+      Parceiro.excluir(id)
+        .then(() => {
+          this.carregarParceiros();
+        })
+        .catch((error) => {
+          console.error('Erro ao excluir parceiro', error);
+        });
+    },
+
+    carregarParceiro() {
+      Parceiro.exibirTodosParceiros().then((resposta) => {
+        const parceiros = resposta.data;
+        this.parceiros = parceiros;
+        console.log(parceiros);
+      });
+    },
   },
 };
 </script>
@@ -105,7 +104,7 @@ img {
   gap: 20px;
 }
 
-.products {
+.partners {
   margin-left: 200px;
   margin-right: 200px;
 }
@@ -133,7 +132,7 @@ img {
   margin-top: 20px;
 }
 
-.card-img-produto img {
+.card-img-parceiro img {
   max-height: 200px;
   margin-top: 20px;
 }

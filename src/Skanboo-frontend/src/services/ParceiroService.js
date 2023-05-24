@@ -17,6 +17,10 @@ export default {
     });
   },
 
+  exibirTodosParceiros() {
+    return http.get('parceiro/lista');
+  },
+
   atualizar: (parceiro) => {
     return http.put('parceiro', parceiro, {
       headers: {
@@ -24,4 +28,12 @@ export default {
       }
     });
   },
+
+  excluir(id) {
+    return http.delete(`parceiro/${id}`, {
+      headers: {
+        Authorization: localStorage.getItem('token')
+      }
+    });
+  }
 };

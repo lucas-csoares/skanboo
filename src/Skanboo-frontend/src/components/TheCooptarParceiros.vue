@@ -2,68 +2,46 @@
   <section class="container">
     <h1>Cadastrar parceiro</h1>
 
-    <ul>
-      <li v-for="(error, index) of errors" :key="index">
-        campo <b>{{ error.field }}</b> - {{ error.defaultMessage }}
-      </li>
-    </ul>
-
     <div class="parceiro">
       <div class="dados-parceiro">
         <form @submit.prevent="criar">
-            <label for="titulo">Nome da empresa</label>
-            <input 
-            type="text" 
-            id="nome" 
-            maxlength="30"
-            v-model="parceiro.titulo"
+          <label for="titulo">Nome fantasia</label>
+          <input type="text" id="nome" maxlength="30" v-model="parceiro.nome" />
+
+          <label for="preferencias">CNPJ</label>
+          <input type="text" id="cnpj" v-mask="['##.###.###/####-##']" v-model="parceiro.cnpj" />
+
+          <fieldset>
+            <legend>Plano de parceria</legend>
+
+            <input
+              type="radio"
+              id="basic"
+              name="plano"
+              value="basic"
+              v-model="parceiro.plano"
             />
+            <label for="sim">Basic</label>
 
-            <label for="logo">Logo da empresa</label><br />
-            <input 
-            type="file" 
-            id="logo" 
-            name="logo"
+            <input
+              type="radio"
+              id="standard"
+              name="plano"
+              value="standard"
+              v-model="parceiro.plano"
             />
+            <label for="premium">Standard</label>
 
-            <label for="preferencias">CNPJ</label>
-            <input 
-            type="text" 
-            id="cnpj" 
-            v-mask="['##.###.###/####-##']" 
-            v-model="parceiro.cnpj"
-            />
+            <input type="radio" id="premium" name="plano" value="premium" v-model="parceiro.plano" />
+            <label for="basic">Premium</label>
+          </fieldset>
 
-            <fieldset>
-              <legend>Plano de parceria</legend>
-              <input 
-              type="radio" 
-              id="standard" 
-              name="plano" 
-              value="standard" checked />
-              <label for="sim">Standard</label>
+          <label for="logo">Foto</label><br />
+          <input type="file" id="foto" name="foto" />
 
-              <input 
-              type="radio" 
-              id="premium" 
-              name="plano" 
-              value="premium" />
-              <label for="premium">Premium</label>
+          <label for="contrato">Adicionar contrato</label>
+          <input type="file" id="contrato" name="contrato" />
 
-              <input 
-              type="radio" 
-              id="basic" 
-              name="plano" 
-              value="basic" />
-              <label for="basic">Basic</label>
-            </fieldset>
-            <br /><br />
-
-            <label for="contrato">Adicionar contrato</label>
-            <input 
-            type="file" 
-            id="contrato" 
-            name="contrato" /><br />
           <button class="editar">Enviar</button>
         </form>
       </div>
@@ -72,32 +50,93 @@
 </template>
 
 <script>
-import Parceiro from "../services/ParceiroService";
-import { mask } from "vue-the-mask";
+import Parceiro from '../services/ParceiroService';
+import { mask } from 'vue-the-mask';
+
 export default {
   directives: { mask },
+
   data() {
     return {
       parceiro: {
-        nome: "",
-        cnpj: "",
-        plano: "",
+        nome: '',
+        foto: null,
+        contrato: null,
+        cnpj: '',
+        plano: '',
       },
-      errors: [],
     };
   },
 
   methods: {
     criar() {
-      Parceiro.criar(this.Parceiro)
-        .then((/*resposta*/) => {
-          alert("Parceiro salvo com sucesso");
-          this.errors = [];
+      Promise.all([this.uploadFoto(), this.uploadContrato()]).then(([foto, contrato]) => {
+        Parceiro.criar({
+          ...this.parceiro,
+          foto: foto,
+          contrato: contrato,
         })
-        .catch((e) => {
-          this.errors = e.response.data.errors;
-          console.log(this.errors);
-        });
+          .then(() => {
+            alert('Parceiro criada com sucesso!');
+            this.errors = [];
+            //todo: adicionar router para pagina do administrador
+          })
+          .catch((e) => {
+            alert('Todos os campos devem ser preenchidos!');
+            this.errors = e.response.data.errors;
+            console.log(this.errors);
+          });
+      });
+    },
+
+    uploadFoto() {
+      return new Promise((resolve, reject) => {
+        
+        const fileInput = document.querySelector('input[id=foto]');
+        const file = fileInput.files[0];
+
+        const reader = new FileReader();
+        reader.addEventListener(
+          'load',
+          () => {
+            resolve(reader.result);
+          },
+          false
+        );
+
+        reader.addEventListener('error', reject);
+
+        if (file) {
+          reader.readAsDataURL(file);
+        } else {
+          resolve(null);
+        }
+      });
+    },
+
+    uploadContrato() {
+      return new Promise((resolve, reject) => {
+        
+        const fileInput = document.querySelector('input[id=contrato]');
+        const file = fileInput.files[0];
+
+        const reader = new FileReader();
+        reader.addEventListener(
+          'load',
+          () => {
+            resolve(reader.result);
+          },
+          false
+        );
+
+        reader.addEventListener('error', reject);
+
+        if (file) {
+          reader.readAsDataURL(file);
+        } else {
+          resolve(null);
+        }
+      });
     },
   },
 };
@@ -201,7 +240,7 @@ h2 {
   padding-left: 0;
 }
 
-input[type="radio"] {
+input[type='radio'] {
   display: inline-block;
   width: auto;
   height: auto;

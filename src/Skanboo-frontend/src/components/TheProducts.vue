@@ -1,15 +1,16 @@
 <template>
   <section class="products">
+
     <h1>Produtos</h1>
+
     <div class="container">
       <div v-for="postagem in postagens" :key="postagem.id" class="card">
-        <!--<button class="like"> 
-          <a href="http://"><img src="../assets/like.png" alt="" /></a>
-        </button> -->
-        <div class="card-img-produto">
-          <img :src="postagem.imagem" alt="" class="card-img" />
-        </div>
-        <h2>{{ postagem.titulo }}</h2>
+
+        <router-link :to="{ name: 'TheProductPage', params: { id: postagem.id } }">
+          <h2>{{ postagem.titulo }}</h2>
+          <div class="card-img-produto"><img :src="postagem.foto" alt="" class="card-img" /></div>
+        </router-link>
+
         <button class="negociar">NEGOCIAR</button>
       </div>
     </div>

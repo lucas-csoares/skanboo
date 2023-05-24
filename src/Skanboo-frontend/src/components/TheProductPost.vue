@@ -2,15 +2,10 @@
   <section class="container">
     <h1>Postar produto</h1>
 
-    <ul>
-      <li v-for="(error, index) of errors" :key="index">
-        campo <b>{{ error.field }}</b> - {{ error.defaultMessage }}
-      </li>
-    </ul>
-
     <div class="postagem">
       <div class="dados-postagem">
         <form @submit.prevent="criar">
+          
           <label for="fotos">Adicionar foto</label>
           <input type="file" id="fotos" name="fotos" />
 
@@ -186,7 +181,7 @@ export default {
             this.$router.push({ name: 'PostsDoUsuarioView' });
           })
           .catch((e) => {
-            alert('Todos os campos da postagem devem ser preenchidos!');
+            alert('Todos os campos devem ser preenchidos!');
             this.errors = e.response.data.errors;
             console.log(this.errors);
           });

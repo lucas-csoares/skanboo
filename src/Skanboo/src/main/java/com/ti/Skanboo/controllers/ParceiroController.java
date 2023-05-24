@@ -42,7 +42,7 @@ public class ParceiroController {
     public ResponseEntity<List<Parceiro>> listarParceirosCadastrados() {
 
         List<Parceiro> obj = this.parceiroService.listarParceirosCadastrados();
-        
+
         return ResponseEntity.ok().body(obj);
     }
 
@@ -57,7 +57,7 @@ public class ParceiroController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> atualizarPorId(@Valid @RequestBody Parceiro obj, @PathVariable Long id) throws Exception {
+    public ResponseEntity<Void> atualizarPorId(@Valid @RequestBody Parceiro obj, @PathVariable Long id) {
 
         obj.setId(id);
         obj = this.parceiroService.atualizarPorId(obj);
@@ -66,7 +66,7 @@ public class ParceiroController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarPorId(@PathVariable Long id) throws Exception {
+    public ResponseEntity<Void> deletarPorId(@PathVariable Long id) {
 
         this.parceiroService.deletarPorId(id);
 
