@@ -24,4 +24,12 @@ export default {
       }
     });
   },
+
+  excluir(id) {
+    return http.delete(`parceiro/${id}`, {
+      headers: {
+        Authorization: localStorage.getItem('token')
+      }
+    });
+  }
 };

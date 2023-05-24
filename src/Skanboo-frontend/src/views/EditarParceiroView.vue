@@ -1,15 +1,15 @@
 <template>
     <section>
-      <TheUserPosts />
+      <TheEditProduct />
     </section>
   </template>
   
   <script>
-  import TheParceiros from "@/components/TheParceiros.vue";
+  import TheEditPartner from "@/components/TheEditPartner.vue";
   
   export default {
     components: {
-        TheParceiros,
+        TheEditPartner,
     },
   };
   </script>
