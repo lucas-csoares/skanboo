@@ -109,6 +109,7 @@ public class UsuarioService {
         usuario.setUf(obj.getUf());
         usuario.setFoto(obj.getFoto());
         usuario.setTelefone(obj.getTelefone());
+        usuario.setFoto(obj.getFoto());
 
         return this.usuarioRepository.save(usuario);
     }
