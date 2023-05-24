@@ -61,14 +61,15 @@ public class ParceiroService {
     @Transactional
     public Parceiro atualizarPorId(Parceiro obj) {
 
-        Parceiro parceiro = encontrarPorId(obj.getId());
+        Parceiro novoParceiro = encontrarPorId(obj.getId());
 
-        parceiro.setNome(obj.getNome());
-        parceiro.setCnpj(obj.getCnpj());
-        parceiro.setPlano(obj.getPlano());
-        // todo: adicionar contrato e logo
+        novoParceiro.setNome(obj.getNome());
+        novoParceiro.setCnpj(obj.getCnpj());
+        novoParceiro.setPlano(obj.getPlano());
+        novoParceiro.setFoto(obj.getFoto());
+        novoParceiro.setContrato(obj.getContrato());
 
-        return this.parceiroRepository.save(parceiro);
+        return this.parceiroRepository.save(novoParceiro);
     }
 
     public void deletarPorId(Long id) {
