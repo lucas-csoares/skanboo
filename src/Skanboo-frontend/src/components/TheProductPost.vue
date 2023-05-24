@@ -2,15 +2,10 @@
   <section class="container">
     <h1>Postar produto</h1>
 
-    <ul>
-      <li v-for="(error, index) of errors" :key="index">
-        campo <b>{{ error.field }}</b> - {{ error.defaultMessage }}
-      </li>
-    </ul>
-
     <div class="postagem">
       <div class="dados-postagem">
         <form @submit.prevent="criar">
+          
           <label for="fotos">Adicionar foto</label>
           <input type="file" id="fotos" name="fotos" />
 

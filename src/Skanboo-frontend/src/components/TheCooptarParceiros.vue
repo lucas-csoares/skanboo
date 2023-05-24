@@ -2,68 +2,35 @@
   <section class="container">
     <h1>Cadastrar parceiro</h1>
 
-    <ul>
-      <li v-for="(error, index) of errors" :key="index">
-        campo <b>{{ error.field }}</b> - {{ error.defaultMessage }}
-      </li>
-    </ul>
-
     <div class="parceiro">
       <div class="dados-parceiro">
         <form @submit.prevent="criar">
-            <label for="titulo">Nome da empresa</label>
-            <input 
-            type="text" 
-            id="nome" 
-            maxlength="30"
-            v-model="parceiro.titulo"
-            />
 
-            <label for="logo">Logo da empresa</label><br />
-            <input 
-            type="file" 
-            id="logo" 
-            name="logo"
-            />
+            <label for="titulo">Nome fantasia</label>
+            <input type="text" id="nome" maxlength="30" v-model="parceiro.nome" />
+
+            <label for="logo">Foto</label><br />
+            <input type="file" id="logo" name="logo" />
 
             <label for="preferencias">CNPJ</label>
-            <input 
-            type="text" 
-            id="cnpj" 
-            v-mask="['##.###.###/####-##']" 
-            v-model="parceiro.cnpj"
-            />
+            <input type="text" id="cnpj" v-mask="['##.###.###/####-##']" v-model="parceiro.cnpj" />
 
             <fieldset>
               <legend>Plano de parceria</legend>
-              <input 
-              type="radio" 
-              id="standard" 
-              name="plano" 
-              value="standard" checked />
+
+              <input type="radio" id="standard" name="plano" value="standard" v-model="parceiro.plano" checked />
               <label for="sim">Standard</label>
 
-              <input 
-              type="radio" 
-              id="premium" 
-              name="plano" 
-              value="premium" />
+              <input type="radio" id="premium" name="plano" value="premium" v-model="parceiro.plano" />
               <label for="premium">Premium</label>
 
-              <input 
-              type="radio" 
-              id="basic" 
-              name="plano" 
-              value="basic" />
+              <input type="radio" id="basic" name="plano" value="basic" v-model="parceiro.plano" />
               <label for="basic">Basic</label>
             </fieldset>
-            <br /><br />
 
             <label for="contrato">Adicionar contrato</label>
-            <input 
-            type="file" 
-            id="contrato" 
-            name="contrato" /><br />
+            <input type="file" id="contrato" name="contrato" />
+
           <button class="editar">Enviar</button>
         </form>
       </div>
@@ -74,14 +41,17 @@
 <script>
 import Parceiro from "../services/ParceiroService";
 import { mask } from "vue-the-mask";
+
 export default {
   directives: { mask },
   data() {
     return {
       parceiro: {
         nome: "",
+        foto: null,
+        contrato: null,
         cnpj: "",
-        plano: "",
+        plano: ""
       },
       errors: [],
     };
@@ -100,6 +70,52 @@ export default {
         });
     },
   },
+
+  // ----------------------------------------------
+
+  // criar() {
+  //     this.uploadFoto().then((foto) => {
+  //       Postagem.criar({
+  //         ...this.parceiro,
+  //         foto: foto,
+  //       })
+  //         .then(() => {
+  //           alert('Postagem criada com sucesso!');
+  //           this.errors = [];
+
+  //           this.$router.push({ name: 'PostsDoUsuarioView' });
+  //         })
+  //         .catch((e) => {
+  //           alert('Todos os campos da postagem devem ser preenchidos!');
+  //           this.errors = e.response.data.errors;
+  //           console.log(this.errors);
+  //         });
+  //     });
+  //   },
+
+  //   uploadFoto() {
+  //     return new Promise((resolve, reject) => {
+  //       const fileInput = document.querySelector('input[type=file]');
+  //       const file = fileInput.files[0];
+
+  //       const reader = new FileReader();
+  //       reader.addEventListener(
+  //         'load',
+  //         () => {
+  //           resolve(reader.result);
+  //         },
+  //         false
+  //       );
+
+  //       reader.addEventListener('error', reject);
+
+  //       if (file) {
+  //         reader.readAsDataURL(file);
+  //       } else {
+  //         resolve(null);
+  //       }
+  //     });
+  //   },
 };
 </script>
 
