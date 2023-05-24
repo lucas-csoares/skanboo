@@ -99,11 +99,14 @@ export default {
     atualizar() {
       this.uploadFoto().then((foto) => {
         this.usuario.foto = foto;
+
+        this.usuario.senha = "senhaa"
         
         Usuario.atualizar(this.usuario)
           .then((/*resposta*/) => {
             alert("Informações do usuario editadas com sucesso");
             this.errors = [];
+            return this.$router.push({ name: 'usuarioView' });
           })
           .catch((e) => {
             this.errors = e.response.data.errors;

@@ -61,10 +61,10 @@ public class Usuario {
     @NotBlank
     private String email;
 
-    @Column(name = "senha", length = 200, nullable = false)
+    @Column(name = "senha", length = 200, nullable = false, updatable = false)
     @NotBlank
     @Size(min = 6, max = 200)
-    @JsonProperty(access = JsonProperty.Access.READ_WRITE) //READ_WRITE para editar usuário
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //READ_WRITE para editar usuário
     private String senha;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -81,7 +81,7 @@ public class Usuario {
 
     @Column(name = "foto", length = 255)
     @Lob
-    private byte[] foto;
+    private String[] foto;
 
     @Column(name = "telefone", length = 15, nullable = false, unique = true)
     @NotBlank

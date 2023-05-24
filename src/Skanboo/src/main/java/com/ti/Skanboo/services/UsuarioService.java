@@ -105,6 +105,7 @@ public class UsuarioService {
         usuario.setDataNascimento(obj.getDataNascimento());
         usuario.setUf(obj.getUf());
         usuario.setTelefone(obj.getTelefone());
+        usuario.setFoto(obj.getFoto());
 
         return this.usuarioRepository.save(usuario);
     }
