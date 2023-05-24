@@ -87,6 +87,9 @@ public class UsuarioService {
         usuario.setUf(obj.getUf());
         usuario.setTelefone(obj.getTelefone());
 
+        if (obj.getFoto() != null)
+            usuario.setFoto(obj.getFoto());
+
         return this.usuarioRepository.save(usuario);
     }
 
@@ -104,6 +107,7 @@ public class UsuarioService {
         usuario.setSenha(this.bCryptPasswordEncoder.encode(obj.getSenha()));
         usuario.setDataNascimento(obj.getDataNascimento());
         usuario.setUf(obj.getUf());
+        usuario.setFoto(obj.getFoto());
         usuario.setTelefone(obj.getTelefone());
 
         return this.usuarioRepository.save(usuario);

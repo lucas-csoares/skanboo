@@ -79,9 +79,9 @@ public class Usuario {
     @Column(name = "data_nascimento", length = 8, nullable = false)
     private LocalDate dataNascimento; // formato yyyy-mm-dd
 
-    @Column(name = "foto", length = 255)
+    @Column(name = "foto", length = 100000, nullable = true, updatable = true)
     @Lob
-    private byte[] foto;
+    private String foto;
 
     @Column(name = "telefone", length = 15, nullable = false, unique = true)
     @NotBlank
