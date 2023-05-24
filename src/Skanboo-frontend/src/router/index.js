@@ -11,8 +11,10 @@ import PostsDoUsuarioView from "../views/PostsDoUsuarioView";
 import PaginaAdmView from "../views/PaginaAdmView";
 import CooptarParceirosView from "../views/CooptarParceirosView";
 import PaginaProdutoUsuarioView from "../views/PaginaProdutoUsuarioView";
-import TheProductPage from "../components/TheProductPage"
-import TheEditProduct from "../components/TheEditProduct"
+import TheProductPage from "../components/TheProductPage";
+import TheEditProduct from "../components/TheEditProduct";
+import TheParceiros from "../components/TheParceiros";
+import TheEditPartner from "../components/TheEditPartner";
 
 const routes = [
   {
@@ -86,16 +88,18 @@ const routes = [
     name: "TheEditProduct",
     component: TheEditProduct,
     props: true
+  },
+  {
+    path: "/exibirParceirosView",
+    name: "ExibirParceirosView",
+    component: TheParceiros
+  },
+  {
+    path: "/parceiro/:id",
+    name: "TheEditPartner",
+    component: TheEditPartner,
+    props: true
   }
-
-  // {
-  //   path: '/about',
-  //   name: 'about',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  // },
 ];
 
 const router = createRouter({

@@ -1,21 +1,16 @@
 <template>
   <section class="partners">
-
     <h1>Os parceiros</h1>
 
     <div class="container">
       <div v-for="parceiro in parceiros" :key="parceiro.id" class="card">
-
         <h2>{{ parceiro.nome }}</h2>
         <div class="card-img-parceiro"><img :src="parceiro.foto" alt="" class="card-img" /></div>
 
-        <button class="editar"><router-link
-            :to="{ name: 'TheEditPartner', params: { id: parceiro.id } }">Editar</router-link></button>
+        <button class="editar"><router-link :to="{ name: 'TheEditPartner', params: { id: parceiro.id } }">Editar</router-link></button>
         <button class="excluir" @click="excluir(parceiro.id)">Excluir</button>
-
       </div>
     </div>
-
   </section>
 </template>
 
@@ -24,30 +19,29 @@ import Parceiro from '../services/ParceiroService';
 
 export default {
   data() {
-
     return {
       parceiro: {
+        id: '',
         nome: '',
         foto: null,
         contrato: null,
         cnpj: '',
         plano: '',
       },
-      parceiro: [],
+      parceiros: [],
     };
   },
 
   mounted() {
-
     Parceiro.exibirTodosParceiros().then((resposta) => {
       const parceiros = resposta.data;
       this.parceiros = parceiros;
-      console.log(parceiros);
+      console.log(parceiros)
     });
   },
 
   methods: {
-    excluirParceiro(id) {
+    excluir(id) {
       Parceiro.excluir(id)
         .then(() => {
           this.carregarParceiros();
@@ -57,11 +51,10 @@ export default {
         });
     },
 
-    carregarParceiro() {
+    carregarParceiros() {
       Parceiro.exibirTodosParceiros().then((resposta) => {
         const parceiros = resposta.data;
         this.parceiros = parceiros;
-        console.log(parceiros);
       });
     },
   },

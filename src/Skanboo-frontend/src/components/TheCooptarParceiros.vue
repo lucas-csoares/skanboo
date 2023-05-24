@@ -36,7 +36,7 @@
             <label for="basic">Premium</label>
           </fieldset>
 
-          <label for="logo">Foto</label><br />
+          <label for="logo">Foto</label>
           <input type="file" id="foto" name="foto" />
 
           <label for="contrato">Adicionar contrato</label>

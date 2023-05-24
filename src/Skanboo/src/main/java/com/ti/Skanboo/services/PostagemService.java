@@ -6,7 +6,6 @@ import com.ti.Skanboo.models.Postagem;
 import com.ti.Skanboo.models.Usuario;
 import java.util.Objects;
 import com.ti.Skanboo.repositories.PostagemRepository;
-import com.ti.Skanboo.models.enums.UsuarioEnum;
 import com.ti.Skanboo.security.UserSpringSecurity;
 import com.ti.Skanboo.exceptions.AuthorizationException;
 import com.ti.Skanboo.exceptions.PostCreationException;
@@ -31,7 +30,7 @@ public class PostagemService {
         Postagem postagem = this.postagemRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Postagem nao encontrada!"));
 
-        // // Verifica se usuario esta logado e se o endereco que ele busca pertence a ele
+        // Verifica se usuario esta logado e se o endereco que ele busca pertence a ele
         // UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
 
         // if (Objects.isNull(userSpringSecurity) || !userSpringSecurity.hasRole(UsuarioEnum.ADMIN)

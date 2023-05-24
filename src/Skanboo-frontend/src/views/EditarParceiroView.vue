@@ -1,16 +1,15 @@
 <template>
-    <section>
-      <TheEditProduct />
-    </section>
-  </template>
-  
-  <script>
-  import TheEditPartner from "@/components/TheEditPartner.vue";
-  
-  export default {
-    components: {
-        TheEditPartner,
-    },
-  };
-  </script>
-  
+  <section>
+    <TheEditPartner />
+  </section>
+</template>
+
+<script>
+import TheEditPartner from '@/components/TheEditPartner.vue';
+
+export default {
+  components: {
+    TheEditPartner,
+  },
+};
+</script>

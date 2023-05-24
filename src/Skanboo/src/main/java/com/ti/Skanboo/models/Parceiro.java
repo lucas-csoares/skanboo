@@ -42,7 +42,7 @@ public class Parceiro {
     @Lob 
     private String foto;
 
-    @Column(name = "contrato", length = 100000, nullable = true, updatable = true)
+    @Column(name = "contrato", length = 100000, nullable = true, updatable = false)
     @Lob 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String contrato;
@@ -52,7 +52,7 @@ public class Parceiro {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String cnpj;
 
-    @Column(name = "plano", length = 10, nullable = false)
+    @Column(name = "plano", length = 10, nullable = false, updatable = false)
     @NotBlank
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String plano;
