@@ -181,7 +181,7 @@ export default {
             this.$router.push({ name: 'PostsDoUsuarioView' });
           })
           .catch((e) => {
-            alert('Todos os campos da postagem devem ser preenchidos!');
+            alert('Todos os campos devem ser preenchidos!');
             this.errors = e.response.data.errors;
             console.log(this.errors);
           });
