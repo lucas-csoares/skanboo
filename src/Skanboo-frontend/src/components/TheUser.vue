@@ -21,8 +21,8 @@
           <p class="nascimento">
             {{
               usuario.dataNascimento
-                ? `${usuario.dataNascimento[2]}/${usuario.dataNascimento[1]}/${usuario.dataNascimento[0]}`
-                : ""
+              ? `${usuario.dataNascimento[2]}/${usuario.dataNascimento[1]}/${usuario.dataNascimento[0]}`
+              : ""
             }}
           </p>
           <p class="email">{{ usuario.email }}</p>
@@ -96,18 +96,13 @@ export default {
       }),
 
       Endereco.exibirInfo()
-      .then((resposta) => {
-        if (resposta.data && resposta.data.dataNascimento) {
-          this.uendereco = resposta.data;
-        } else {
-          // Handle the case when dataNascimento is missing or undefined
-          console.error("Invalid API response");
-        }
-      })
-      .catch((error) => {
-        // Handle any error that occurs during the API request
-        console.error(error);
-      });
+        .then((resposta) => {
+          this.endereco = resposta.data;
+        })
+        .catch((error) => {
+          // Handle any error that occurs during the API request
+          console.error(error);
+        });
   },
   methods: {
     logout() {
@@ -150,9 +145,9 @@ li {
 }
 
 img {
-    border-radius:50% 50% 50% 50%;
-    width:120px;
-    height:120px;
+  border-radius: 50% 50% 50% 50%;
+  width: 120px;
+  height: 120px;
 }
 
 button {
@@ -170,14 +165,17 @@ button {
   margin-left: 30px;
   margin-top: 30px;
 }
+
 p {
   font-size: 1rem;
   text-align: left !important;
   padding: 10px;
 }
+
 .dados-usuario {
   margin-left: 30px;
 }
+
 .info-usuario p {
   color: #c0c2c7;
   margin-left: 50px;
@@ -210,5 +208,4 @@ h2 {
   line-height: 2em;
   text-decoration: none;
   text-align: left !important;
-}
-</style>
+}</style>
