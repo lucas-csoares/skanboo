@@ -3,7 +3,7 @@
     <h1>Informações da conta</h1>
     <div class="usuario">
       <div class="foto-usuario">
-        <img src="" alt="" />
+        <img :src="usuario.foto" alt="" />
       </div>
 
       <div class="informacoes">
@@ -21,15 +21,22 @@
           <p class="nascimento">
             {{
               usuario.dataNascimento
-                ? `${usuario.dataNascimento[2]}/${usuario.dataNascimento[1]}/${usuario.dataNascimento[0]}`
-                : ""
+              ? `${usuario.dataNascimento[2]}/${usuario.dataNascimento[1]}/${usuario.dataNascimento[0]}`
+              : ""
             }}
           </p>
           <p class="email">{{ usuario.email }}</p>
           <p class="telefone">{{ usuario.telefone }}</p>
-          <p class="senha">*****</p>
+          <p class="senha">************</p>
           <p class="CPF">{{ usuario.cpf }}</p>
         </div>
+
+        <div class="info-endereco">
+          <p class="CEP">{{ endereco.cep }}</p>
+          <p class="Rua">{{ endereco.rua }}</p>
+          <p class="N°">{{ endereco.numero }}</p>
+        </div>
+
       </div>
       <button class="editar"><a href="/editarUsuarioView">Editar</a></button>
       <button class="sair" @click="logout">Sair</button>
@@ -40,12 +47,14 @@
       <a href="/paginaProdutoUsuarioView">Minha página</a><br />
       <a href="/postsdousuarioview">Gerenciar meus produtos</a><br />
       <a href="/postarprodutoview">Postar produto</a><br />
+      <a href="/CadastroEnderecoView">Cadastrar endereço</a><br />
     </div>
   </section>
 </template>
 
 <script>
 import Usuario from "../services/UsuarioService";
+import Endereco from "../services/EnderecoService";
 
 export default {
   data() {
@@ -57,6 +66,16 @@ export default {
         telefone: "",
         senha: "",
         cpf: "",
+        foto: null,
+      },
+      endereco: {
+        uf: "",
+        cep: "",
+        cidade: "",
+        bairro: "",
+        rua: "",
+        numero: null,
+        complemento: "",
       },
     };
   },
@@ -74,7 +93,16 @@ export default {
       .catch((error) => {
         // Handle any error that occurs during the API request
         console.error(error);
-      });
+      }),
+
+      Endereco.exibirInfo()
+        .then((resposta) => {
+          this.endereco = resposta.data;
+        })
+        .catch((error) => {
+          // Handle any error that occurs during the API request
+          console.error(error);
+        });
   },
   methods: {
     logout() {
@@ -116,6 +144,12 @@ li {
   margin-left: 180px;
 }
 
+img {
+  border-radius: 50% 50% 50% 50%;
+  width: 120px;
+  height: 120px;
+}
+
 button {
   box-sizing: border-box;
   padding: 2px 6px 2px 8px;
@@ -131,14 +165,17 @@ button {
   margin-left: 30px;
   margin-top: 30px;
 }
+
 p {
   font-size: 1rem;
   text-align: left !important;
   padding: 10px;
 }
+
 .dados-usuario {
   margin-left: 30px;
 }
+
 .info-usuario p {
   color: #c0c2c7;
   margin-left: 50px;
@@ -171,5 +208,4 @@ h2 {
   line-height: 2em;
   text-decoration: none;
   text-align: left !important;
-}
-</style>
+}</style>

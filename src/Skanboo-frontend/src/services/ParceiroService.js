@@ -21,8 +21,8 @@ export default {
     return http.get('parceiro/lista');
   },
 
-  atualizar: (parceiro) => {
-    return http.put('parceiro', parceiro, {
+  atualizar: (id, parceiro) => {
+    return http.put(`parceiro/${id}`, parceiro, {
       headers: {
         Authorization: localStorage.getItem('token')
       }

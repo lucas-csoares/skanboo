@@ -126,9 +126,30 @@ export default {
         this.logar();
       })
       .catch((e) => {
-        this.errors = e.response.data.errors;
-        console.log(this.errors);
-      });
+            console.log(this.errors);
+
+            if (e.response && e.response.status === 400) {
+              this.errorMessage = 'Por favor, preencha todos os campos corretamente.';
+
+            } else if (e.response && e.response.status === 401) {
+              this.errorMessage = 'Favor realizar o Login para continuar.';
+
+            } else if (e.response && e.response.status === 500) {
+              this.errorMessage = 'Por favor, tente novamente mais tarde.';
+
+            }
+            
+            //   else if (e.response && e.response.status === 409) {
+            //   this.errorMessage = 'Já existe um usuário com este emai, nome, telefone ou CPF!';
+            // } 
+            
+            else {
+              this.errorMessage = 'Houve um erro. Por favor, tente novamente.';
+            }
+
+            console.log(this.errorMessage);
+            alert(this.errorMessage);
+          });
   },
   
   logar() {

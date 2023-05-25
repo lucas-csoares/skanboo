@@ -3,12 +3,6 @@
     <section class="container">
       <h1>Editar produto</h1>
 
-      <ul>
-        <li v-for="(error, index) of errors" :key="index">
-          campo <b>{{ error.field }}</b> - {{ error.defaultMessage }}
-        </li>
-      </ul>
-
       <div class="postagem">
         <div class="dados-postagem">
           <form @submit.prevent="atualizar">
