@@ -171,12 +171,12 @@ nav {
 }
 
 .cart {
-  width: 30px;
+  width: 32px;
 }
 
 .user {
-  width: 26px !important;
-  margin-right: 20px;
+  width: 25px !important;
+  margin-right: 0px;
 }
 
 .cart,
@@ -211,12 +211,44 @@ input {
   .menu-logo {
     width: 100px;
     height: 100px;
+    margin-top: 5px;
   }
   .search-bar input {
-    width: 100px;
+    width: 200px;
     padding: 5px;
     height: 30px;
-    margin-left: -9px;
+    margin-left: 8px;
+    margin-top: -10px;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid black;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .search-bar input:hover {
+    width: 220px;
+    padding: 5px;
+    height: 30px;
+    margin-left: 5px;
+    margin-top: -10px;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid black;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .menu-bg {
+    background-color: #fff;
+    border-bottom: 0px solid #e2e2e2;
+    height: 50px;
+    max-width: 100%;
+    margin: 0px !important;
+  }
+
+  .search-button img {
+    display: none;
   }
 
   .cart {

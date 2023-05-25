@@ -14,6 +14,7 @@
           <p class="telefoneUsuario">Telefone</p>
           <p class="senhaUsuario">Senha</p>
           <p class="CPFUsuario">CPF</p>
+          <p class="cep">Endereço</p>
         </div>
 
         <div class="info-usuario">
@@ -21,16 +22,21 @@
           <p class="nascimento">
             {{
               usuario.dataNascimento
-              ? `${usuario.dataNascimento[2]}/${usuario.dataNascimento[1]}/${usuario.dataNascimento[0]}`
-              : ""
+                ? `${usuario.dataNascimento[2]}/${usuario.dataNascimento[1]}/${usuario.dataNascimento[0]}`
+                : ""
             }}
           </p>
           <p class="email">{{ usuario.email }}</p>
           <p class="telefone">{{ usuario.telefone }}</p>
           <p class="senha">************</p>
           <p class="CPF">{{ usuario.cpf }}</p>
+          <p class="cepRuaNumero">
+            {{ endereco.cep }} | Rua {{ endereco.rua }}, {{ endereco.numero }}
+          </p>
         </div>
       </div>
+
+      <!-- DIV ENDEREÇO INICIAL
 
       <div class="informacoes-endereco">
         <div class="dados-endereco">
@@ -38,9 +44,11 @@
         </div>
 
         <div class="info-endereco">
-          <p class="cepRuaNumero">{{ endereco.cep }} | Rua {{ endereco.rua }}, {{ endereco.numero }}</p>
-        </div>
-      </div>
+          <p class="cepRuaNumero">
+            {{ endereco.cep }} | Rua {{ endereco.rua }}, {{ endereco.numero }}
+          </p>
+        </div> 
+      </div>-->
 
       <button class="editar"><a href="/editarUsuarioView">Editar</a></button>
       <button class="sair" @click="logout">Sair</button>
@@ -98,7 +106,6 @@ export default {
         // Handle any error that occurs during the API request
         console.error(error);
       }),
-
       Endereco.exibirInfo()
         .then((resposta) => {
           this.endereco = resposta.data[0];
