@@ -34,15 +34,11 @@
 
       <div class="informacoes-endereco">
         <div class="dados-endereco">
-          <p class="cep">CEP</p>
-          <p class="rua">Rua</p>
-          <p class="numero">N°</p>
+          <p class="cep">Endereço</p>
         </div>
 
         <div class="info-endereco">
-          <p class="cep">{{ endereco.cep }}</p>
-          <p class="rua">{{ endereco.rua }}</p>
-          <p class="numero">{{ endereco.numero }}</p>
+          <p class="cepRuaNumero">{{ endereco.cep }} | Rua {{ endereco.rua }}, {{ endereco.numero }}</p>
         </div>
       </div>
 
@@ -144,6 +140,8 @@ export default {
 .informacoes-endereco {
   display: flex;
   justify-content: center;
+  border: 2px solid #c0c2c7;
+  border-radius: 10px;
 }
 
 li {
@@ -185,6 +183,12 @@ p {
   font-size: 1rem;
   text-align: left !important;
   padding: 10px;
+}
+
+.informacoes-endereco p {
+  font-size: 1rem;
+  text-align: left !important;
+  padding: 0px;
 }
 
 .dados-usuario {
