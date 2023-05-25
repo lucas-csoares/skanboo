@@ -1,32 +1,74 @@
 <template>
   <section class="products">
-
     <h1>Produtos</h1>
-
     <div class="container">
       <div v-for="postagem in postagens" :key="postagem.id" class="card">
-
-        <router-link :to="{ name: 'TheProductPage', params: { id: postagem.id } }">
+        <router-link
+          :to="{ name: 'TheProductPage', params: { id: postagem.id } }"
+        >
           <h2>{{ postagem.titulo }}</h2>
-          <div class="card-img-produto"><img :src="postagem.foto" alt="" class="card-img" /></div>
+          <div class="card-img-produto">
+            <img :src="postagem.foto" alt="" class="card-img" />
+          </div>
         </router-link>
 
         <button class="negociar">NEGOCIAR</button>
       </div>
+
+      <!-- DIVS DE TESTE
+      <div class="card">
+        <h2>Blusa top</h2>
+        <div class="card-img-produto">
+          <img src="../assets/imagem-produto.avif" class="card-img" />
+        </div>
+        <button class="negociar">NEGOCIAR</button>
+      </div>
+
+      <div class="card">
+        <h2>Blusa top</h2>
+        <div class="card-img-produto">
+          <img src="../assets/imagem-produto.avif" class="card-img" />
+        </div>
+        <button class="negociar">NEGOCIAR</button>
+      </div>
+
+      <div class="card">
+        <h2>Blusa top</h2>
+        <div class="card-img-produto">
+          <img src="../assets/imagem-produto.avif" class="card-img" />
+        </div>
+        <button class="negociar">NEGOCIAR</button>
+      </div>
+
+      <div class="card">
+        <h2>Blusa top</h2>
+        <div class="card-img-produto">
+          <img src="../assets/imagem-produto.avif" class="card-img" />
+        </div>
+        <button class="negociar">NEGOCIAR</button>
+      </div>
+
+      <div class="card">
+        <h2>Blusa top</h2>
+        <div class="card-img-produto">
+          <img src="../assets/imagem-produto.avif" class="card-img" />
+        </div>
+        <button class="negociar">NEGOCIAR</button>
+      </div>-->
     </div>
   </section>
 </template>
 
 <script>
-import Postagem from '../services/PostagemService';
+import Postagem from "../services/PostagemService";
 
 export default {
   data() {
     return {
       postagem: {
-        id: '',
-        titulo: '',
-        imagem: '',
+        id: "",
+        titulo: "",
+        imagem: "",
       },
       postagens: [],
     };
@@ -65,41 +107,48 @@ img {
   max-width: 100%;
 }
 .container {
+  width: 1156px;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   margin-top: 20px;
   gap: 20px;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .products {
-  margin-left: 200px;
-  margin-right: 200px;
 }
 
 .card {
-  width: 274.5px;
-  height: 360px;
+  display: block;
+  width: 274px;
+  height: 370px;
   background: #ffffff;
   border: 1px solid #e5e9eb;
   border-radius: 4px;
   flex: none;
-  order: 0;
-  flex-grow: 1;
 }
 
 .card img {
-  margin-top: -20px;
+  margin-top: 10px;
 }
 
 .card h2 {
-  padding: 10px;
+  padding: 8px;
   box-sizing: border-box;
   margin-left: 5px;
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 .card-img-produto img {
-  max-height: 200px;
+  max-height: 250px;
+  width: 250px;
+  background-color: grey;
+  object-fit: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .negociar {
@@ -141,7 +190,7 @@ img {
 }
 
 h2 {
-  font-size: 14px;
+  font-size: 15px;
   color: #252c32;
   kerning: -0.6%;
   font-weight: 400;
@@ -149,7 +198,7 @@ h2 {
 }
 
 h1 {
-  text-align: left;
+  display: block;
 }
 
 .like {
