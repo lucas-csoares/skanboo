@@ -161,7 +161,7 @@ export default {
         if (!token) throw new Error('Ocorreu um erro ao tentar logar usuário!');
         localStorage.setItem('token', token);
         // aqui redireciona pagina
-        return this.$router.push({ name: 'usuarioView' });
+        return this.$router.push({ name: 'UsuarioView' });
         // this.errors = [];
       })
       .catch((e) => {

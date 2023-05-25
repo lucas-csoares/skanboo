@@ -64,7 +64,7 @@
       <button class="btn">Finalizar cadastro</button>
 
       <button class="cancelar">
-                <router-link :to="{ name: 'usuarioView' }">Cancelar</router-link>
+                <router-link :to="{ name: 'UsuarioView' }">Cancelar</router-link>
               </button>
     </form>
   </section>
