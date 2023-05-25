@@ -34,7 +34,7 @@ public class PostagemService {
         // UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
 
         // if (Objects.isNull(userSpringSecurity) || !userSpringSecurity.hasRole(UsuarioEnum.ADMIN)
-        //         && !PostagemPertenceAoUsuario(userSpringSecurity, postagem))
+        //         && !postagemPertenceAoUsuario(userSpringSecurity, postagem))
         //     throw new AuthorizationException("Acesso negado!");
 
         return postagem;
@@ -43,10 +43,12 @@ public class PostagemService {
     public List<Postagem> listarPostagensUsuarioAtivo() {
 
         UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
+
         if (Objects.isNull(userSpringSecurity))
             throw new AuthorizationException("Acesso negado!");
 
         List<Postagem> postagem = this.postagemRepository.findByUsuario_Id(userSpringSecurity.getId());
+        
         return postagem;
     }
 
@@ -62,11 +64,8 @@ public class PostagemService {
         if (Objects.isNull(userSpringSecurity))
             throw new AuthorizationException("Acesso negado!");
 
-        if (obj.getDescricao() == null || obj.getTitulo() == null)
-            throw new PostCreationException("A postagem deve possuir um titulo e descricao!");
-
-        if (obj.getCategoriaProduto() == null || obj.getCategoriaProdutoDesejado() == null)
-            throw new PostCreationException("A postagem deve ter uma categoria e a categoria do produto desejado!");
+        if (obj.getDescricao() == null || obj.getTitulo() == null || obj.getCategoriaProduto() == null || obj.getCategoriaProdutoDesejado() == null)
+            throw new PostCreationException("Todos os campos da postagem devem ser preenchidos");
 
         Usuario usuario = this.usuarioService.encontrarPorId(userSpringSecurity.getId());
 
@@ -108,7 +107,7 @@ public class PostagemService {
         }
     }
 
-    private Boolean PostagemPertenceAoUsuario(UserSpringSecurity userSpringSecurity, Postagem postagem) {
+    public Boolean postagemPertenceAoUsuario(UserSpringSecurity userSpringSecurity, Postagem postagem) {
         return postagem.getUsuario().getId().equals(userSpringSecurity.getId());
     }
 }

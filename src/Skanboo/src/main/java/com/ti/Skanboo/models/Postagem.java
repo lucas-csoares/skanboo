@@ -8,6 +8,8 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,6 +21,7 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -66,9 +69,13 @@ public class Postagem {
     @Lob 
     private String foto;
 
-    @OneToMany(mappedBy = "id_postagem_pai", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "postagemOrigem", cascade = CascadeType.REMOVE)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private List<Oferta> ofertas = new ArrayList<Oferta>();
+    private List<Oferta> ofertasRecebidas = new ArrayList<Oferta>();
+
+    @OneToMany(mappedBy = "postagemOfertada", cascade = CascadeType.REMOVE)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private List<Oferta> ofertasFeitas = new ArrayList<Oferta>();
 
     @Column(name = "hora_postagem", nullable = false)
     @JsonFormat(pattern = "HH:mm:ss")
