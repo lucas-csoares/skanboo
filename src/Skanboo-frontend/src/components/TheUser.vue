@@ -30,14 +30,22 @@
           <p class="senha">************</p>
           <p class="CPF">{{ usuario.cpf }}</p>
         </div>
+      </div>
 
-        <div class="info-endereco">
-          <p class="CEP">{{ endereco.cep }}</p>
-          <p class="Rua">{{ endereco.rua }}</p>
-          <p class="N°">{{ endereco.numero }}</p>
+      <div class="informacoes-endereco">
+        <div class="dados-endereco">
+          <p class="cep">CEP</p>
+          <p class="rua">Rua</p>
+          <p class="numero">N°</p>
         </div>
 
+        <div class="info-endereco">
+          <p class="cep">{{ endereco.cep }}</p>
+          <p class="rua">{{ endereco.rua }}</p>
+          <p class="numero">{{ endereco.numero }}</p>
+        </div>
       </div>
+
       <button class="editar"><a href="/editarUsuarioView">Editar</a></button>
       <button class="sair" @click="logout">Sair</button>
     </div>
@@ -97,7 +105,9 @@ export default {
 
       Endereco.exibirInfo()
         .then((resposta) => {
-          this.endereco = resposta.data;
+          this.endereco = resposta.data[0];
+          console.log(this.endereco);
+          console.log(this.endereco.cep);
         })
         .catch((error) => {
           // Handle any error that occurs during the API request
@@ -129,6 +139,11 @@ export default {
 .informacoes {
   display: flex;
   justify-content: flex-start;
+}
+
+.informacoes-endereco {
+  display: flex;
+  justify-content: center;
 }
 
 li {
@@ -181,6 +196,11 @@ p {
   margin-left: 50px;
 }
 
+.info-endereco {
+  color: #c0c2c7;
+  margin-left: 50px;
+}
+
 h1,
 h2 {
   padding: 10px;
@@ -208,4 +228,5 @@ h2 {
   line-height: 2em;
   text-decoration: none;
   text-align: left !important;
-}</style>
+}
+</style>
