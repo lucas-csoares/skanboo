@@ -15,6 +15,7 @@ import TheProductPage from "../components/TheProductPage";
 import TheEditProduct from "../components/TheEditProduct";
 import TheParceiros from "../components/TheParceiros";
 import TheEditPartner from "../components/TheEditPartner";
+import CadastroEnderecoView from "../views/CadastroEnderecoView"
 
 const routes = [
   {
@@ -76,6 +77,11 @@ const routes = [
     path: "/paginaProdutoUsuarioView",
     name: "PaginaProdutoUsuarioView",
     component: PaginaProdutoUsuarioView,
+  },
+  {
+    path: "/CadastroEnderecoView",
+    name: "CadastroEnderecoView",
+    component: CadastroEnderecoView,
   },
   {
     path: "/postagem/:id",

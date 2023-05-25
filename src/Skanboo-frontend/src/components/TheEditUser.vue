@@ -22,9 +22,8 @@
               <label for="nome">Editar nome</label>
               <input type="text" id="nome" :placeholder="usuario.nome ? usuario.nome : ''" v-model="usuario.nome" />
 
-              <label for="telefone">Editar telefone</label>
-              <input type="text" id="telefone" name="telefone" class="form-control cel-sp-mask"
-                :placeholder="usuario.telefone ? usuario.telefone : ''" v-model="usuario.telefone" />
+              <label>Editar telefone</label><input type="text" id="telefone" name="telefone" placeholder="(xx)xxxxx-xxxx"
+                v-model="usuario.telefone" v-mask="['(##) ####-####', '(##) #####-####']" />
 
               <label for="uf">UF</label>
               <select v-model="usuario.uf">
@@ -80,10 +79,10 @@ export default {
   data() {
     return {
       usuario: {
-        foto: "",
         nome: "",
         telefone: "",
         uf: "",
+        foto: null,
       },
     };
   },
@@ -97,21 +96,39 @@ export default {
 
   methods: {
     atualizar() {
+      this.usuario.senha = "000000"
       this.uploadFoto().then((foto) => {
         this.usuario.foto = foto;
+        console.log(this.usuario)
 
-        this.usuario.senha = "senhaa"
-        
         Usuario.atualizar(this.usuario)
-          .then((/*resposta*/) => {
-            alert("Informações do usuario editadas com sucesso");
+          .then(() => {
+            alert('Usuario editado com sucesso!');
             this.errors = [];
-            return this.$router.push({ name: 'usuarioView' });
+
           })
           .catch((e) => {
+            //alert('Todos os campos do usuario devem ser preenchidos!');
             this.errors = e.response.data.errors;
             console.log(this.errors);
-            console.log(this.usuario);
+
+            if (e.response && e.response.status === 400) {
+              // Bad request error
+              this.errorMessage = 'Por favor, preencha todos os campos corretamente. "Bad request"';
+            } else if (e.response && e.response.status === 401) {
+              // Unauthorized error
+              this.errorMessage = 'Favor realizar o Login para continuar. "Unauthorized"';
+            } else if (e.response && e.response.status === 500) {
+              // Internal server error
+              this.errorMessage = 'Por favor, tente novamente mais tarde. "Internal server error"';
+            } else {
+              // Other errors
+              this.errorMessage = 'Houve um erro. Por favor, tente novamente.';
+            }
+
+            console.log(this.errorMessage);
+            alert(this.errorMessage);
+
           });
       });
     },

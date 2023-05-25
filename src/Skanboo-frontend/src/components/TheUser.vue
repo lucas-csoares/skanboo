@@ -3,7 +3,7 @@
     <h1>Informações da conta</h1>
     <div class="usuario">
       <div class="foto-usuario">
-        <img src="" alt="" />
+        <img :src="usuario.foto" alt="" />
       </div>
 
       <div class="informacoes">
@@ -27,9 +27,16 @@
           </p>
           <p class="email">{{ usuario.email }}</p>
           <p class="telefone">{{ usuario.telefone }}</p>
-          <p class="senha">*****</p>
+          <p class="senha">************</p>
           <p class="CPF">{{ usuario.cpf }}</p>
         </div>
+
+        <div class="info-endereco">
+          <p class="CEP">{{ endereco.cep }}</p>
+          <p class="Rua">{{ endereco.rua }}</p>
+          <p class="N°">{{ endereco.numero }}</p>
+        </div>
+
       </div>
       <button class="editar"><a href="/editarUsuarioView">Editar</a></button>
       <button class="sair" @click="logout">Sair</button>
@@ -40,12 +47,14 @@
       <a href="/paginaProdutoUsuarioView">Minha página</a><br />
       <a href="/postsdousuarioview">Gerenciar meus produtos</a><br />
       <a href="/postarprodutoview">Postar produto</a><br />
+      <a href="/CadastroEnderecoView">Cadastrar endereço</a><br />
     </div>
   </section>
 </template>
 
 <script>
 import Usuario from "../services/UsuarioService";
+import Endereco from "../services/EnderecoService";
 
 export default {
   data() {
@@ -57,6 +66,16 @@ export default {
         telefone: "",
         senha: "",
         cpf: "",
+        foto: null,
+      },
+      endereco: {
+        uf: "",
+        cep: "",
+        cidade: "",
+        bairro: "",
+        rua: "",
+        numero: null,
+        complemento: "",
       },
     };
   },
@@ -66,6 +85,20 @@ export default {
       .then((resposta) => {
         if (resposta.data && resposta.data.dataNascimento) {
           this.usuario = resposta.data;
+        } else {
+          // Handle the case when dataNascimento is missing or undefined
+          console.error("Invalid API response");
+        }
+      })
+      .catch((error) => {
+        // Handle any error that occurs during the API request
+        console.error(error);
+      }),
+
+      Endereco.exibirInfo()
+      .then((resposta) => {
+        if (resposta.data && resposta.data.dataNascimento) {
+          this.uendereco = resposta.data;
         } else {
           // Handle the case when dataNascimento is missing or undefined
           console.error("Invalid API response");
@@ -114,6 +147,12 @@ li {
   background-color: lightgray;
   align-items: center;
   margin-left: 180px;
+}
+
+img {
+    border-radius:50% 50% 50% 50%;
+    width:120px;
+    height:120px;
 }
 
 button {
