@@ -3,6 +3,9 @@ package com.ti.Skanboo.models;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
@@ -62,6 +65,10 @@ public class Postagem {
     @Column(name = "foto", length = 100000, nullable = true, updatable = true)
     @Lob 
     private String foto;
+
+    @OneToMany(mappedBy = "id_postagem_pai", cascade = CascadeType.REMOVE)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private List<Oferta> ofertas = new ArrayList<Oferta>();
 
     @Column(name = "hora_postagem", nullable = false)
     @JsonFormat(pattern = "HH:mm:ss")

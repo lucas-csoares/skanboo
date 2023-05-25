@@ -68,7 +68,7 @@ public class Usuario {
     private String senha;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_endereco", referencedColumnName = "id", nullable = true)
+    @JoinColumn(name = "endereco_id", referencedColumnName = "id", nullable = true)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private EnderecoUsuario endereco;
 
@@ -88,7 +88,7 @@ public class Usuario {
     private String telefone;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) // para evitar acesso ciclico as entidades
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Postagem> postagem = new ArrayList<Postagem>();
 
     @ElementCollection(fetch = FetchType.EAGER)
