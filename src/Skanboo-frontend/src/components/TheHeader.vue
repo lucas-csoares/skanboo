@@ -37,11 +37,12 @@
       </header>
     </nav>
   </header>
+  <!--
   <a href="/UsuarioView">Tela do usuário | </a>
   <a href="/EditarUsuarioView">Tela editar usuário | </a>
   <a href="/PostarProdutoView">Tela postar produto | </a>
   <a href="/EditarProdutoView">Tela editar produto | </a>
-  <a href="/PaginaAdmView">Tela admin </a>
+  <a href="/PaginaAdmView">Tela admin </a> -->
 </template>
 
 <script>
@@ -204,5 +205,26 @@ input {
   width: 20px;
   height: 20px;
   object-fit: cover;
+}
+
+@media (max-width: 600px) {
+  .menu-logo {
+    width: 100px;
+    height: 100px;
+  }
+  .search-bar input {
+    width: 100px;
+    padding: 5px;
+    height: 30px;
+    margin-left: -9px;
+  }
+
+  .cart {
+    width: 17px;
+  }
+  .user {
+    width: 16px !important;
+    margin-right: 20px;
+  }
 }
 </style>
