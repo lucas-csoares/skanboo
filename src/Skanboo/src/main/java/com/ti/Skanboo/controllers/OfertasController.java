@@ -5,6 +5,7 @@ import java.net.URI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -30,6 +31,14 @@ public class OfertasController {
 
     @Autowired
     private PostagemService postagemService;
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Oferta> encontrarPorId(@PathVariable Long id) {
+
+        Oferta obj = this.ofertaService.encontrarPorId(id);
+
+        return ResponseEntity.ok().body(obj);
+    }
 
     @PostMapping("/{id_postagem_origem}/{id_postagem_ofertada}")
     public ResponseEntity<Void> criar(@PathVariable Long id_postagem_origem, @PathVariable Long id_postagem_ofertada) {

@@ -14,13 +14,13 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import lombok.Getter;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Setter;
 
-@Table(name = Oferta.NOME_TABELA)
+@Table(name = Oferta.NOME_TABELA, uniqueConstraints = @UniqueConstraint(columnNames = { "id_postagem_origem", "id_postagem_ofertada" }))
 @Entity
 @Getter
 @Setter
@@ -45,12 +45,10 @@ public class Oferta {
 
     @ManyToOne
     @JoinColumn(name = "id_postagem_origem", referencedColumnName = "id", nullable = false, updatable = false)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Postagem postagemOrigem;
 
     @ManyToOne
     @JoinColumn(name = "id_postagem_ofertada", referencedColumnName = "id", nullable = false, updatable = false)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Postagem postagemOfertada;
 
     @Enumerated(EnumType.STRING)

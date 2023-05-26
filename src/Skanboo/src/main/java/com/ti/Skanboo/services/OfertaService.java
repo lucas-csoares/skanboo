@@ -67,11 +67,11 @@ public class OfertaService {
 
         UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
 
-        this.postagemService.encontrarPorId(obj.getPostagemOrigem().getId());
-        this.postagemService.encontrarPorId(obj.getPostagemOfertada().getId());
-
         if (Objects.isNull(userSpringSecurity))
             throw new AuthorizationException("Acesso negado!");
+
+        this.postagemService.encontrarPorId(obj.getPostagemOrigem().getId());
+        this.postagemService.encontrarPorId(obj.getPostagemOfertada().getId());
 
         Boolean postagemOrigemPertenceAoUsuario = this.PostagemOrigemPertenceAoUsuario(userSpringSecurity, obj);
         Boolean postagemOfertadaPertenceAoUsuario = this.PostagemOfertadaPertenceAoUsuario(userSpringSecurity, obj);
@@ -89,6 +89,10 @@ public class OfertaService {
 
         UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
         Oferta novaOferta = encontrarPorId(obj.getId());
+
+        if (novaOferta.getStatus().equals(OfertaEnum.RECUSADA) || novaOferta.getStatus().equals(OfertaEnum.ACEITA))
+            throw new RuntimeException("A oferta ja foi recusada ou aceita, seu status nao pode ser atualizado!");
+
         Boolean postagemOrigemPertenceAoUsuario = this.PostagemOrigemPertenceAoUsuario(userSpringSecurity, novaOferta);
 
         if (obj.getStatus().equals(OfertaEnum.ACEITA)) {
