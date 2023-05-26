@@ -1,5 +1,8 @@
 package com.ti.Skanboo.services;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -10,9 +13,7 @@ import org.springframework.stereotype.Service;
 import com.ti.Skanboo.exceptions.AuthorizationException;
 import com.ti.Skanboo.models.Oferta;
 import com.ti.Skanboo.models.Postagem;
-import com.ti.Skanboo.models.Usuario;
 import com.ti.Skanboo.models.enums.OfertaEnum;
-import com.ti.Skanboo.models.enums.UsuarioEnum;
 import com.ti.Skanboo.repositories.OfertaRepository;
 import com.ti.Skanboo.security.UserSpringSecurity;
 
@@ -26,9 +27,6 @@ public class OfertaService {
 
     @Autowired
     private PostagemService postagemService;
-
-    @Autowired
-    private UsuarioService usuarioService;
 
     public Oferta encontrarPorId(Long id) {
 
@@ -44,23 +42,41 @@ public class OfertaService {
         return oferta;
     }
 
-    // public List<Oferta> listarOfertasUsuarioAtivo() {
+    public List<List<Oferta>> listarOfertasFeitasUsuarioAtivo() {
 
-    // UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
+        List<Postagem> postagens = this.postagemService.listarPostagensUsuarioAtivo();
+        List<List<Oferta>> ofertasFeitas = new ArrayList<List<Oferta>>();
 
-    // if (Objects.isNull(userSpringSecurity))
-    // throw new AuthorizationException("Acesso negado!");
+        for (Postagem postagem : postagens) {
+            List<Oferta> ofertas = this.ofertaRepository.findByPostagemOfertada_Id(postagem.getId());
 
-    // List<Postagem> postagens =
-    // this.postagemService.listarPostagensUsuarioAtivo();
-    // List<Oferta> ofertas = new ArrayList<>();
+            if (!ofertas.isEmpty())
+                ofertasFeitas.add(ofertas);
+        }
 
-    // for (Postagem postagem : postagens) {
-    // ofertas = this.ofertaRepository.findByPostagem_Id(postagem.getId());
-    // }
+        if (ofertasFeitas.isEmpty())
+            throw new RuntimeException("Usuario nao fez nenhuma oferta!");
 
-    // return ofertas;
-    // }
+        return ofertasFeitas;
+    }
+
+    public List<List<Oferta>> listarOfertasRecebidasUsuarioAtivo() {
+
+        List<Postagem> postagens = this.postagemService.listarPostagensUsuarioAtivo();
+        List<List<Oferta>> ofertasRecebidas = new ArrayList<List<Oferta>>();
+
+        for (Postagem postagem : postagens) {
+            List<Oferta> ofertas = this.ofertaRepository.findBypostagemOrigem_Id(postagem.getId());
+
+            if (!ofertas.isEmpty())
+            ofertasRecebidas.add(ofertas);
+        }
+
+        if (ofertasRecebidas.isEmpty())
+            throw new RuntimeException("Usuario nao recebeu nenhuma oferta!");
+
+        return ofertasRecebidas;
+    }
 
     @Transactional
     public Oferta criar(Oferta obj) {
@@ -76,9 +92,11 @@ public class OfertaService {
         Boolean postagemOrigemPertenceAoUsuario = this.PostagemOrigemPertenceAoUsuario(userSpringSecurity, obj);
         Boolean postagemOfertadaPertenceAoUsuario = this.PostagemOfertadaPertenceAoUsuario(userSpringSecurity, obj);
 
-        if (!postagemOrigemPertenceAoUsuario && postagemOfertadaPertenceAoUsuario)
+        if (!postagemOrigemPertenceAoUsuario && postagemOfertadaPertenceAoUsuario) {
             obj.setId(null);
-        else
+            obj.setData(DateTimeFormatter.ofPattern("dd/MM/yyyy").format(LocalDate.now()));
+            obj.setHora(LocalTime.now());
+        } else
             throw new RuntimeException("Nao e possivel fazer essa oferta!");
 
         return this.ofertaRepository.save(obj);
@@ -104,6 +122,22 @@ public class OfertaService {
             novaOferta.setStatus(OfertaEnum.RECUSADA);
 
         return this.ofertaRepository.save(novaOferta);
+    }
+
+    public void deletarPorId(Long id) {
+
+        Oferta oferta = encontrarPorId(id);
+
+        // todo: verificacao se existem uma troca com a oferta referenciada
+        if (!oferta.getStatus().equals(OfertaEnum.RECUSADA))
+            throw new RuntimeException("A oferta precisa ser recusada antes de ser deletada!");
+
+        try {
+            this.ofertaRepository.deleteById(id);
+        } catch (Exception e) {
+            throw new RuntimeException("Nao e possivel excluir a oferta pois ela possui entidades relacionadas!");
+
+        }
     }
 
     private Boolean PostagemOrigemPertenceAoUsuario(UserSpringSecurity userSpringSecurity, Oferta oferta) {

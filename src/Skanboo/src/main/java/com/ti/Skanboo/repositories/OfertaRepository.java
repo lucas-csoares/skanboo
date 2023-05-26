@@ -10,6 +10,6 @@ import com.ti.Skanboo.models.Oferta;
 @Repository
 public interface OfertaRepository extends JpaRepository<Oferta, Long> {
 
-    // List<Oferta> findByPostagem_Id(Long id);
-    
+    List<Oferta> findByPostagemOfertada_Id(Long id);
+    List<Oferta> findBypostagemOrigem_Id(Long id);
 }

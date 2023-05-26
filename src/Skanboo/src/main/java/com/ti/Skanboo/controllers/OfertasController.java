@@ -1,10 +1,12 @@
 package com.ti.Skanboo.controllers;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,6 +42,18 @@ public class OfertasController {
         return ResponseEntity.ok().body(obj);
     }
 
+    @GetMapping("/feitas/me")
+    public ResponseEntity<List<List<Oferta>>> listarOfertasFeitasUsuarioAtivo() {
+        List<List<Oferta>> obj = this.ofertaService.listarOfertasFeitasUsuarioAtivo();
+        return ResponseEntity.ok().body(obj);
+    }
+
+    @GetMapping("/recebidas/me")
+    public ResponseEntity<List<List<Oferta>>> listarOfertasRecebidasUsuarioAtivo() {
+        List<List<Oferta>> obj = this.ofertaService.listarOfertasRecebidasUsuarioAtivo();
+        return ResponseEntity.ok().body(obj);
+    }
+
     @PostMapping("/{id_postagem_origem}/{id_postagem_ofertada}")
     public ResponseEntity<Void> criar(@PathVariable Long id_postagem_origem, @PathVariable Long id_postagem_ofertada) {
 
@@ -61,6 +75,12 @@ public class OfertasController {
         obj.setId(id);
         obj = this.ofertaService.atualizarPorId(obj);
 
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarPorId(@PathVariable Long id) {
+        this.ofertaService.deletarPorId(id);
         return ResponseEntity.noContent().build();
     }
 
