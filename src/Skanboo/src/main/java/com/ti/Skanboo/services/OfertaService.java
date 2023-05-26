@@ -137,7 +137,7 @@ public class OfertaService {
         Oferta oferta = encontrarPorId(id);
 
         // todo: verificacao se existe uma troca com a oferta referenciada antes de
-        // deletar
+        // todo: rever regra para deletar -> apenas ofertas recusadas?
         if (!oferta.getStatus().equals(OfertaEnum.RECUSADA))
             throw new RuntimeException("A oferta precisa ser recusada antes de ser deletada!");
 
