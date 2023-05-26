@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 
 import com.ti.Skanboo.exceptions.AuthorizationException;
 import com.ti.Skanboo.exceptions.EntityNotFoundException;
+import com.ti.Skanboo.exceptions.OfferCreationException;
+import com.ti.Skanboo.exceptions.OfferUpdateException;
+import com.ti.Skanboo.exceptions.DuplicateOfferCreationException;
 import com.ti.Skanboo.models.Oferta;
 import com.ti.Skanboo.models.Postagem;
 import com.ti.Skanboo.models.enums.OfertaEnum;
@@ -91,7 +94,7 @@ public class OfertaService {
         this.postagemService.encontrarPorId(obj.getPostagemOfertada().getId());
         
         if (existeOfertaComPostagensTrocadas(obj.getPostagemOrigem(), obj.getPostagemOfertada()))
-            throw new RuntimeException("Esta oferta ja existe!");
+            throw new DuplicateOfferCreationException("Esta oferta ja existe!");
 
         if (!postagemOrigemPertenceAoUsuario(userSpringSecurity, obj)
                 && postagemOfertadaPertenceAoUsuario(userSpringSecurity, obj)) {
@@ -99,7 +102,7 @@ public class OfertaService {
             obj.setData(DateTimeFormatter.ofPattern("dd/MM/yyyy").format(LocalDate.now()));
             obj.setHora(LocalTime.now());
         } else
-            throw new RuntimeException("Nao e possivel fazer essa oferta!");
+            throw new OfferCreationException("Nao e possivel fazer essa oferta!");
 
         return this.ofertaRepository.save(obj);
     }
@@ -111,7 +114,7 @@ public class OfertaService {
         Oferta novaOferta = encontrarPorId(obj.getId());
 
         if (novaOferta.getStatus().equals(OfertaEnum.RECUSADA) || novaOferta.getStatus().equals(OfertaEnum.ACEITA))
-            throw new RuntimeException("A oferta ja foi recusada ou aceita, seu status nao pode ser atualizado!");
+            throw new OfferUpdateException("A oferta ja foi recusada ou aceita, seu status nao pode ser atualizado!");
 
         Boolean postagemOrigemPertenceAoUsuario = this.postagemOrigemPertenceAoUsuario(userSpringSecurity, novaOferta);
 
@@ -119,7 +122,7 @@ public class OfertaService {
             if (postagemOrigemPertenceAoUsuario)
                 novaOferta.setStatus(OfertaEnum.ACEITA);
             else
-                throw new RuntimeException("O usuario nao pode atualizar essa oferta!");
+                throw new OfferUpdateException("O usuario nao pode atualizar essa oferta!");
         } else if (obj.getStatus().equals(OfertaEnum.RECUSADA))
             novaOferta.setStatus(OfertaEnum.RECUSADA);
 
