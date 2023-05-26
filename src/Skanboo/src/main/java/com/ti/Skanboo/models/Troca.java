@@ -1,11 +1,13 @@
 package com.ti.Skanboo.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.ti.Skanboo.models.enums.TrocaEnum;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -49,8 +51,8 @@ public class Troca {
     private Boolean confirma_usuario02;
     
     
-    @Column(name = "status_troca")
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private TrocaEnum status;
 
     // @Column(name = "descricao", length = 255, nullable = false)
     // @Size(min = 1, max = 255)
