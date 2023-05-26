@@ -1,0 +1,13 @@
+package com.ti.Skanboo.exceptions;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(value = HttpStatus.METHOD_NOT_ALLOWED)
+public class OfferCreationException extends RuntimeException {
+    
+    public OfferCreationException(String message) {
+        super(message);
+    }
+
+}

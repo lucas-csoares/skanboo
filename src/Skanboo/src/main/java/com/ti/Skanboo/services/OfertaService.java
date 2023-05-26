@@ -1,5 +1,8 @@
 package com.ti.Skanboo.services;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -8,11 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ti.Skanboo.exceptions.AuthorizationException;
+import com.ti.Skanboo.exceptions.EntityNotFoundException;
+import com.ti.Skanboo.exceptions.OfferCreationException;
+import com.ti.Skanboo.exceptions.OfferUpdateException;
+import com.ti.Skanboo.exceptions.DuplicateOfferCreationException;
 import com.ti.Skanboo.models.Oferta;
 import com.ti.Skanboo.models.Postagem;
-import com.ti.Skanboo.models.Usuario;
 import com.ti.Skanboo.models.enums.OfertaEnum;
-import com.ti.Skanboo.models.enums.UsuarioEnum;
 import com.ti.Skanboo.repositories.OfertaRepository;
 import com.ti.Skanboo.security.UserSpringSecurity;
 
@@ -27,40 +32,55 @@ public class OfertaService {
     @Autowired
     private PostagemService postagemService;
 
-    @Autowired
-    private UsuarioService usuarioService;
-
     public Oferta encontrarPorId(Long id) {
 
         Oferta oferta = this.ofertaRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Oferta nao encontrada!"));
+                .orElseThrow(() -> new EntityNotFoundException("Oferta nao encontrada!"));
 
         UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
 
-        if (Objects.isNull(userSpringSecurity) || !PostagemOrigemPertenceAoUsuario(userSpringSecurity, oferta)
-                && !PostagemOfertadaPertenceAoUsuario(userSpringSecurity, oferta))
+        if (Objects.isNull(userSpringSecurity) || !postagemOrigemPertenceAoUsuario(userSpringSecurity, oferta)
+                && !postagemOfertadaPertenceAoUsuario(userSpringSecurity, oferta))
             throw new AuthorizationException("Acesso negado!");
 
         return oferta;
     }
 
-    // public List<Oferta> listarOfertasUsuarioAtivo() {
+    public List<List<Oferta>> listarOfertasFeitasUsuarioAtivo() {
 
-    // UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
+        List<Postagem> postagens = this.postagemService.listarPostagensUsuarioAtivo();
+        List<List<Oferta>> ofertasFeitas = new ArrayList<List<Oferta>>();
 
-    // if (Objects.isNull(userSpringSecurity))
-    // throw new AuthorizationException("Acesso negado!");
+        for (Postagem postagem : postagens) {
+            List<Oferta> ofertas = this.ofertaRepository.findByPostagemOfertada_Id(postagem.getId());
 
-    // List<Postagem> postagens =
-    // this.postagemService.listarPostagensUsuarioAtivo();
-    // List<Oferta> ofertas = new ArrayList<>();
+            if (!ofertas.isEmpty())
+                ofertasFeitas.add(ofertas);
+        }
 
-    // for (Postagem postagem : postagens) {
-    // ofertas = this.ofertaRepository.findByPostagem_Id(postagem.getId());
-    // }
+        if (ofertasFeitas.isEmpty())
+            throw new RuntimeException("Usuario nao fez nenhuma oferta!");
 
-    // return ofertas;
-    // }
+        return ofertasFeitas;
+    }
+
+    public List<List<Oferta>> listarOfertasRecebidasUsuarioAtivo() {
+
+        List<Postagem> postagens = this.postagemService.listarPostagensUsuarioAtivo();
+        List<List<Oferta>> ofertasRecebidas = new ArrayList<List<Oferta>>();
+
+        for (Postagem postagem : postagens) {
+            List<Oferta> ofertas = this.ofertaRepository.findBypostagemOrigem_Id(postagem.getId());
+
+            if (!ofertas.isEmpty())
+                ofertasRecebidas.add(ofertas);
+        }
+
+        if (ofertasRecebidas.isEmpty())
+            throw new RuntimeException("Usuario nao recebeu nenhuma oferta!");
+
+        return ofertasRecebidas;
+    }
 
     @Transactional
     public Oferta criar(Oferta obj) {
@@ -72,14 +92,17 @@ public class OfertaService {
 
         this.postagemService.encontrarPorId(obj.getPostagemOrigem().getId());
         this.postagemService.encontrarPorId(obj.getPostagemOfertada().getId());
+        
+        if (existeOfertaComPostagensTrocadas(obj.getPostagemOrigem(), obj.getPostagemOfertada()))
+            throw new DuplicateOfferCreationException("Esta oferta ja existe!");
 
-        Boolean postagemOrigemPertenceAoUsuario = this.PostagemOrigemPertenceAoUsuario(userSpringSecurity, obj);
-        Boolean postagemOfertadaPertenceAoUsuario = this.PostagemOfertadaPertenceAoUsuario(userSpringSecurity, obj);
-
-        if (!postagemOrigemPertenceAoUsuario && postagemOfertadaPertenceAoUsuario)
+        if (!postagemOrigemPertenceAoUsuario(userSpringSecurity, obj)
+                && postagemOfertadaPertenceAoUsuario(userSpringSecurity, obj)) {
             obj.setId(null);
-        else
-            throw new RuntimeException("Nao e possivel fazer essa oferta!");
+            obj.setData(DateTimeFormatter.ofPattern("dd/MM/yyyy").format(LocalDate.now()));
+            obj.setHora(LocalTime.now());
+        } else
+            throw new OfferCreationException("Nao e possivel fazer essa oferta!");
 
         return this.ofertaRepository.save(obj);
     }
@@ -91,27 +114,54 @@ public class OfertaService {
         Oferta novaOferta = encontrarPorId(obj.getId());
 
         if (novaOferta.getStatus().equals(OfertaEnum.RECUSADA) || novaOferta.getStatus().equals(OfertaEnum.ACEITA))
-            throw new RuntimeException("A oferta ja foi recusada ou aceita, seu status nao pode ser atualizado!");
+            throw new OfferUpdateException("A oferta ja foi recusada ou aceita, seu status nao pode ser atualizado!");
 
-        Boolean postagemOrigemPertenceAoUsuario = this.PostagemOrigemPertenceAoUsuario(userSpringSecurity, novaOferta);
+        Boolean postagemOrigemPertenceAoUsuario = this.postagemOrigemPertenceAoUsuario(userSpringSecurity, novaOferta);
 
         if (obj.getStatus().equals(OfertaEnum.ACEITA)) {
             if (postagemOrigemPertenceAoUsuario)
                 novaOferta.setStatus(OfertaEnum.ACEITA);
             else
-                throw new RuntimeException("O usuario nao pode atualizar essa oferta!");
+                throw new OfferUpdateException("O usuario nao pode atualizar essa oferta!");
         } else if (obj.getStatus().equals(OfertaEnum.RECUSADA))
             novaOferta.setStatus(OfertaEnum.RECUSADA);
 
         return this.ofertaRepository.save(novaOferta);
     }
 
-    private Boolean PostagemOrigemPertenceAoUsuario(UserSpringSecurity userSpringSecurity, Oferta oferta) {
+    public void deletarPorId(Long id) {
+
+        Oferta oferta = encontrarPorId(id);
+
+        // todo: verificacao se existe uma troca com a oferta referenciada antes de deletar
+        if (!oferta.getStatus().equals(OfertaEnum.RECUSADA))
+            throw new RuntimeException("A oferta precisa ser recusada antes de ser deletada!");
+
+        try {
+            this.ofertaRepository.deleteById(id);
+        } catch (Exception e) {
+            throw new RuntimeException("Nao e possivel excluir a oferta pois ela possui entidades relacionadas!");
+
+        }
+    }
+
+    private Boolean postagemOrigemPertenceAoUsuario(UserSpringSecurity userSpringSecurity, Oferta oferta) {
         return oferta.getPostagemOrigem().getUsuario().getId().equals(userSpringSecurity.getId());
     }
 
-    private Boolean PostagemOfertadaPertenceAoUsuario(UserSpringSecurity userSpringSecurity, Oferta oferta) {
+    private Boolean postagemOfertadaPertenceAoUsuario(UserSpringSecurity userSpringSecurity, Oferta oferta) {
         return oferta.getPostagemOfertada().getUsuario().getId().equals(userSpringSecurity.getId());
+    }
+
+    /**
+     * Verifica se já existe uma oferta com as postagens trocadas.
+     * 
+     * @param postagemOrigem   a postagem de origem
+     * @param postagemOfertada a postagem ofertada
+     * @return true se existe uma oferta com as postagens trocadas, false caso contrário
+     */
+    private Boolean existeOfertaComPostagensTrocadas(Postagem postagemOrigem, Postagem postagemOfertada) {
+        return ofertaRepository.existsByPostagemOrigemAndPostagemOfertada(postagemOfertada, postagemOrigem);
     }
 
 }

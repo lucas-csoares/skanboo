@@ -8,6 +8,7 @@ import java.util.Objects;
 import com.ti.Skanboo.repositories.PostagemRepository;
 import com.ti.Skanboo.security.UserSpringSecurity;
 import com.ti.Skanboo.exceptions.AuthorizationException;
+import com.ti.Skanboo.exceptions.EntityNotFoundException;
 import com.ti.Skanboo.exceptions.PostCreationException;
 
 import jakarta.transaction.Transactional;
@@ -28,7 +29,7 @@ public class PostagemService {
     public Postagem encontrarPorId(Long id) {
 
         Postagem postagem = this.postagemRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Postagem nao encontrada!"));
+                .orElseThrow(() -> new EntityNotFoundException("Postagem nao encontrada!"));
 
         // Verifica se usuario esta logado e se o endereco que ele busca pertence a ele
         // UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
@@ -102,7 +103,7 @@ public class PostagemService {
         try {
             this.postagemRepository.deleteById(id);
         } catch (Exception e) {
-            throw new RuntimeException("Nao e possivel excluir usuario pois ele possui entidades relacionadas!");
+            throw new RuntimeException("Nao e possivel excluir a postagem pois ela possui entidades relacionadas!");
 
         }
     }

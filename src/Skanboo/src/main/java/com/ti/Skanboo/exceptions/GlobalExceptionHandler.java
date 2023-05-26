@@ -120,7 +120,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler imple
     public ResponseEntity<Object> handleAuthenticationException(
             AuthenticationException authenticationException,
             WebRequest request) {
-        log.error("Authentication error ", authenticationException);
+        log.error("Erro de autenticacao", authenticationException);
         return buildErrorResponse(
                 authenticationException,
                 HttpStatus.UNAUTHORIZED,
@@ -132,7 +132,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler imple
     public ResponseEntity<Object> handleAccessDeniedException(
             AccessDeniedException accessDeniedException,
             WebRequest request) {
-        log.error("Authorization error ", accessDeniedException);
+        log.error("Erro de autenticacao", accessDeniedException);
         return buildErrorResponse(
                 accessDeniedException,
                 HttpStatus.FORBIDDEN,
@@ -144,7 +144,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler imple
     public ResponseEntity<Object> handleAuthorizationException(
             AuthorizationException authorizationException,
             WebRequest request) {
-        log.error("Authorization error ", authorizationException);
+        log.error("Erro de autenticacao", authorizationException);
         return buildErrorResponse(
                 authorizationException,
                 HttpStatus.FORBIDDEN,
@@ -156,8 +156,45 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler imple
     public ResponseEntity<Object> handlePostCreationException(PostCreationException postCreationException,
             WebRequest request) {
 
-        log.error("Post creation error", postCreationException);
+        log.error("Erro na criacao da postagem", postCreationException);
         return buildErrorResponse(postCreationException, HttpStatus.BAD_REQUEST, request);
+    }
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<Object> handleEntityNotFoundException(EntityNotFoundException entityNotFoundException,
+            WebRequest request) {
+
+        log.error("Entidade nao encontrada", entityNotFoundException);
+        return buildErrorResponse(entityNotFoundException, HttpStatus.NOT_FOUND, request);
+    }
+
+    @ExceptionHandler(DuplicateOfferCreationException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public ResponseEntity<Object> handleDuplicateOfferCreationException(
+            DuplicateOfferCreationException duplicateOfferCreationException,
+            WebRequest request) {
+
+        log.error("Oferta duplicada", duplicateOfferCreationException);
+        return buildErrorResponse(duplicateOfferCreationException, HttpStatus.CONFLICT, request);
+    }
+
+    @ExceptionHandler(OfferCreationException.class)
+    @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
+    public ResponseEntity<Object> handleOfferCreationException(OfferCreationException offerCreationException,
+            WebRequest request) {
+
+        log.error("Falha ao criar a oferta", offerCreationException);
+        return buildErrorResponse(offerCreationException, HttpStatus.METHOD_NOT_ALLOWED, request);
+    }
+
+    @ExceptionHandler(OfferUpdateException.class)
+    @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
+    public ResponseEntity<Object> handleOfferCreationException(OfferUpdateException offerUpdateException,
+            WebRequest request) {
+
+        log.error("Falha ao atualizar a oferta", offerUpdateException);
+        return buildErrorResponse(offerUpdateException, HttpStatus.METHOD_NOT_ALLOWED, request);
     }
 
     private ResponseEntity<Object> buildErrorResponse(

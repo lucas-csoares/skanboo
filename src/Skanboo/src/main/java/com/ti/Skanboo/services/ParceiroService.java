@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ti.Skanboo.exceptions.AuthorizationException;
+import com.ti.Skanboo.exceptions.EntityNotFoundException;
 import com.ti.Skanboo.models.Parceiro;
 import com.ti.Skanboo.models.enums.UsuarioEnum;
 import com.ti.Skanboo.repositories.ParceiroRepository;
@@ -23,7 +24,7 @@ public class ParceiroService {
     public Parceiro encontrarPorId(Long id) {
 
         Parceiro parceiro = this.parceiroRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Parceiro nao encontrado!"));
+                .orElseThrow(() -> new EntityNotFoundException("Parceiro nao encontrado!"));
 
         UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
 
