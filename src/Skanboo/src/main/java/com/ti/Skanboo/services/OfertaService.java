@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ti.Skanboo.exceptions.AuthorizationException;
+import com.ti.Skanboo.exceptions.EntityNotFoundException;
 import com.ti.Skanboo.models.Oferta;
 import com.ti.Skanboo.models.Postagem;
 import com.ti.Skanboo.models.enums.OfertaEnum;
@@ -31,12 +32,12 @@ public class OfertaService {
     public Oferta encontrarPorId(Long id) {
 
         Oferta oferta = this.ofertaRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Oferta nao encontrada!"));
+                .orElseThrow(() -> new EntityNotFoundException("Oferta nao encontrada!"));
 
         UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
 
-        if (Objects.isNull(userSpringSecurity) || !PostagemOrigemPertenceAoUsuario(userSpringSecurity, oferta)
-                && !PostagemOfertadaPertenceAoUsuario(userSpringSecurity, oferta))
+        if (Objects.isNull(userSpringSecurity) || !postagemOrigemPertenceAoUsuario(userSpringSecurity, oferta)
+                && !postagemOfertadaPertenceAoUsuario(userSpringSecurity, oferta))
             throw new AuthorizationException("Acesso negado!");
 
         return oferta;
@@ -69,7 +70,7 @@ public class OfertaService {
             List<Oferta> ofertas = this.ofertaRepository.findBypostagemOrigem_Id(postagem.getId());
 
             if (!ofertas.isEmpty())
-            ofertasRecebidas.add(ofertas);
+                ofertasRecebidas.add(ofertas);
         }
 
         if (ofertasRecebidas.isEmpty())
@@ -88,11 +89,12 @@ public class OfertaService {
 
         this.postagemService.encontrarPorId(obj.getPostagemOrigem().getId());
         this.postagemService.encontrarPorId(obj.getPostagemOfertada().getId());
+        
+        if (existeOfertaComPostagensTrocadas(obj.getPostagemOrigem(), obj.getPostagemOfertada()))
+            throw new RuntimeException("Esta oferta ja existe!");
 
-        Boolean postagemOrigemPertenceAoUsuario = this.PostagemOrigemPertenceAoUsuario(userSpringSecurity, obj);
-        Boolean postagemOfertadaPertenceAoUsuario = this.PostagemOfertadaPertenceAoUsuario(userSpringSecurity, obj);
-
-        if (!postagemOrigemPertenceAoUsuario && postagemOfertadaPertenceAoUsuario) {
+        if (!postagemOrigemPertenceAoUsuario(userSpringSecurity, obj)
+                && postagemOfertadaPertenceAoUsuario(userSpringSecurity, obj)) {
             obj.setId(null);
             obj.setData(DateTimeFormatter.ofPattern("dd/MM/yyyy").format(LocalDate.now()));
             obj.setHora(LocalTime.now());
@@ -111,7 +113,7 @@ public class OfertaService {
         if (novaOferta.getStatus().equals(OfertaEnum.RECUSADA) || novaOferta.getStatus().equals(OfertaEnum.ACEITA))
             throw new RuntimeException("A oferta ja foi recusada ou aceita, seu status nao pode ser atualizado!");
 
-        Boolean postagemOrigemPertenceAoUsuario = this.PostagemOrigemPertenceAoUsuario(userSpringSecurity, novaOferta);
+        Boolean postagemOrigemPertenceAoUsuario = this.postagemOrigemPertenceAoUsuario(userSpringSecurity, novaOferta);
 
         if (obj.getStatus().equals(OfertaEnum.ACEITA)) {
             if (postagemOrigemPertenceAoUsuario)
@@ -128,7 +130,7 @@ public class OfertaService {
 
         Oferta oferta = encontrarPorId(id);
 
-        // todo: verificacao se existem uma troca com a oferta referenciada
+        // todo: verificacao se existe uma troca com a oferta referenciada antes de deletar
         if (!oferta.getStatus().equals(OfertaEnum.RECUSADA))
             throw new RuntimeException("A oferta precisa ser recusada antes de ser deletada!");
 
@@ -140,12 +142,23 @@ public class OfertaService {
         }
     }
 
-    private Boolean PostagemOrigemPertenceAoUsuario(UserSpringSecurity userSpringSecurity, Oferta oferta) {
+    private Boolean postagemOrigemPertenceAoUsuario(UserSpringSecurity userSpringSecurity, Oferta oferta) {
         return oferta.getPostagemOrigem().getUsuario().getId().equals(userSpringSecurity.getId());
     }
 
-    private Boolean PostagemOfertadaPertenceAoUsuario(UserSpringSecurity userSpringSecurity, Oferta oferta) {
+    private Boolean postagemOfertadaPertenceAoUsuario(UserSpringSecurity userSpringSecurity, Oferta oferta) {
         return oferta.getPostagemOfertada().getUsuario().getId().equals(userSpringSecurity.getId());
+    }
+
+    /**
+     * Verifica se já existe uma oferta com as postagens trocadas.
+     * 
+     * @param postagemOrigem   a postagem de origem
+     * @param postagemOfertada a postagem ofertada
+     * @return true se existe uma oferta com as postagens trocadas, false caso contrário
+     */
+    private Boolean existeOfertaComPostagensTrocadas(Postagem postagemOrigem, Postagem postagemOfertada) {
+        return ofertaRepository.existsByPostagemOrigemAndPostagemOfertada(postagemOfertada, postagemOrigem);
     }
 
 }
