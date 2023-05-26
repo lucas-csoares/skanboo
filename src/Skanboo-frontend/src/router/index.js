@@ -18,6 +18,7 @@ import TheEditProduct from "../components/TheEditProduct";
 import TheParceiros from "../components/TheParceiros";
 import TheEditPartner from "../components/TheEditPartner";
 import CadastroEnderecoView from "../views/CadastroEnderecoView"
+import ProdutosOferecidosView from "../views/ProdutosOferecidosView"
 
 const routes = [
   {
@@ -94,6 +95,11 @@ const routes = [
     path: "/PreviewTrocaView",
     name: "PreviewTrocaView",
     component: PreviewTrocaView,
+  },
+  {
+    path: "/ProdutosOferecidosView",
+    name: "ProdutosOferecidosView",
+    component: ProdutosOferecidosView
   },
   {
     path: "/postagem/:id",
