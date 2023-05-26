@@ -31,9 +31,7 @@ public class PostagemController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Postagem> encontrarPorId(@PathVariable Long id) {
-
         Postagem obj = this.postagemService.encontrarPorId(id);
-
         return ResponseEntity.ok().body(obj);
     }
 
@@ -71,9 +69,7 @@ public class PostagemController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarPorId(@PathVariable Long id) {
-
         this.postagemService.deletarPorId(id);
-
         return ResponseEntity.noContent().build();
     }
 

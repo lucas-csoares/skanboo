@@ -102,7 +102,7 @@ public class PostagemService {
         try {
             this.postagemRepository.deleteById(id);
         } catch (Exception e) {
-            throw new RuntimeException("Nao e possivel excluir usuario pois ele possui entidades relacionadas!");
+            throw new RuntimeException("Nao e possivel excluir a postagem pois ela possui entidades relacionadas!");
 
         }
     }
