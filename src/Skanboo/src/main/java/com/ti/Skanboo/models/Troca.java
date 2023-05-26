@@ -39,13 +39,13 @@ public class Troca {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_oferta", referencedColumnName = "id", nullable = true)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private Oferta id_oferta;
+    private Oferta oferta;
     
     
     @Column(name = "confirmacao_usuario01")
     private Boolean confirma_usuario01;
     
-    @Column(name = "confirmacao_usuario01")
+    @Column(name = "confirmacao_usuario02")
     private Boolean confirma_usuario02;
     
     
