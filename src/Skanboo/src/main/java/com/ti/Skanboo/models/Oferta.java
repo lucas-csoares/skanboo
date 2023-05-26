@@ -1,6 +1,10 @@
 package com.ti.Skanboo.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ti.Skanboo.models.enums.OfertaEnum;
 
 import jakarta.persistence.Column;
@@ -36,6 +40,8 @@ public class Oferta {
         this.postagemOrigem = postagemOrigem;
         this.postagemOfertada = postagemOfertada;
         this.status = OfertaEnum.EM_ANDAMENTO;
+        this.hora = LocalTime.now();
+        this.data = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
 
     @Id
@@ -53,5 +59,12 @@ public class Oferta {
 
     @Enumerated(EnumType.STRING)
     private OfertaEnum status;
+
+    @Column(name = "hora", nullable = false)
+    @JsonFormat(pattern = "HH:mm:ss")
+    private LocalTime hora;
+
+    @Column(name = "data", nullable = false)
+    private String data;
 
 }
