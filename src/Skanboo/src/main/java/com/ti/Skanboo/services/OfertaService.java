@@ -92,8 +92,11 @@ public class OfertaService {
 
         this.postagemService.encontrarPorId(obj.getPostagemOrigem().getId());
         this.postagemService.encontrarPorId(obj.getPostagemOfertada().getId());
-        
-        if (existeOfertaComPostagensTrocadas(obj.getPostagemOrigem(), obj.getPostagemOfertada()))
+
+        // Verifica se a oferta ja existe, considerando a possibilidade de
+        // ofertas com IDs invertidos
+        if (ofertaJaCadastrada(obj.getPostagemOrigem(), obj.getPostagemOfertada(), OfertaEnum.EM_ANDAMENTO)
+                || ofertaJaCadastrada(obj.getPostagemOfertada(), obj.getPostagemOrigem(), OfertaEnum.EM_ANDAMENTO))
             throw new DuplicateOfferCreationException("Esta oferta ja existe!");
 
         if (!postagemOrigemPertenceAoUsuario(userSpringSecurity, obj)
@@ -120,7 +123,7 @@ public class OfertaService {
 
         if (obj.getStatus().equals(OfertaEnum.ACEITA)) {
             if (postagemOrigemPertenceAoUsuario)
-                novaOferta.setStatus(OfertaEnum.ACEITA);
+                aceitarOferta(novaOferta);
             else
                 throw new OfferUpdateException("O usuario nao pode atualizar essa oferta!");
         } else if (obj.getStatus().equals(OfertaEnum.RECUSADA))
@@ -133,7 +136,8 @@ public class OfertaService {
 
         Oferta oferta = encontrarPorId(id);
 
-        // todo: verificacao se existe uma troca com a oferta referenciada antes de deletar
+        // todo: verificacao se existe uma troca com a oferta referenciada antes de
+        // deletar
         if (!oferta.getStatus().equals(OfertaEnum.RECUSADA))
             throw new RuntimeException("A oferta precisa ser recusada antes de ser deletada!");
 
@@ -141,7 +145,26 @@ public class OfertaService {
             this.ofertaRepository.deleteById(id);
         } catch (Exception e) {
             throw new RuntimeException("Nao e possivel excluir a oferta pois ela possui entidades relacionadas!");
+        }
+    }
 
+    private void aceitarOferta(Oferta novaOferta) {
+
+        novaOferta.setStatus(OfertaEnum.ACEITA);
+
+        Postagem postagemOrigem = novaOferta.getPostagemOrigem();
+        Postagem postaremOfertada = novaOferta.getPostagemOfertada();
+        List<Oferta> ofertasComMesmaOrigem = this.ofertaRepository.findBypostagemOrigem_Id(postagemOrigem.getId());
+        List<Oferta> ofertasComMesmaPostagemOfertada = this.ofertaRepository
+                .findByPostagemOfertada_Id(postaremOfertada.getId());
+        List<Oferta> ofertasRelacionadas = new ArrayList<Oferta>();
+
+        ofertasRelacionadas.addAll(ofertasComMesmaOrigem);
+        ofertasRelacionadas.addAll(ofertasComMesmaPostagemOfertada);
+
+        for (Oferta oferta : ofertasRelacionadas) {
+            if (oferta.getId() != novaOferta.getId())
+                oferta.setStatus(OfertaEnum.RECUSADA);
         }
     }
 
@@ -153,15 +176,19 @@ public class OfertaService {
         return oferta.getPostagemOfertada().getUsuario().getId().equals(userSpringSecurity.getId());
     }
 
-    /**
-     * Verifica se já existe uma oferta com as postagens trocadas.
-     * 
-     * @param postagemOrigem   a postagem de origem
-     * @param postagemOfertada a postagem ofertada
-     * @return true se existe uma oferta com as postagens trocadas, false caso contrário
-     */
-    private Boolean existeOfertaComPostagensTrocadas(Postagem postagemOrigem, Postagem postagemOfertada) {
-        return ofertaRepository.existsByPostagemOrigemAndPostagemOfertada(postagemOfertada, postagemOrigem);
+    // Verifica se ja existe uma oferta com as postagens trocadas
+    // Retorna true se existe uma oferta com as postagens trocadas, false caso
+    // contrario
+    private Boolean ofertaJaCadastrada(Postagem postagemOrigem, Postagem postagemOfertada, OfertaEnum status) {
+        return ofertaRepository.existsByPostagemOrigemAndPostagemOfertadaAndStatus(postagemOrigem, postagemOfertada,
+                status);
     }
+
+    // private Oferta encontrarOferta(Postagem postagemOrigem, Postagem
+    // postagemOfertada) {
+    // return
+    // ofertaRepository.findByPostagemOrigemAndPostagemOfertada(postagemOrigem,
+    // postagemOfertada);
+    // }
 
 }

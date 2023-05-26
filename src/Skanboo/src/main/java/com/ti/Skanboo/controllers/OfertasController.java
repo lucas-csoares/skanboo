@@ -54,6 +54,7 @@ public class OfertasController {
         return ResponseEntity.ok().body(obj);
     }
 
+    // (O endpoint significa: "em qual postagem quero trocar/o que eu quero oferecer em troca")
     @PostMapping("/{id_postagem_origem}/{id_postagem_ofertada}")
     public ResponseEntity<Void> criar(@PathVariable Long id_postagem_origem, @PathVariable Long id_postagem_ofertada) {
 

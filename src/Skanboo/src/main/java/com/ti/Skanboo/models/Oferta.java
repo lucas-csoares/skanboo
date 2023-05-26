@@ -18,13 +18,13 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import lombok.Getter;
 import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Setter;
 
-@Table(name = Oferta.NOME_TABELA, uniqueConstraints = @UniqueConstraint(columnNames = { "id_postagem_origem", "id_postagem_ofertada" }))
+@Table(name = Oferta.NOME_TABELA)
+
 @Entity
 @Getter
 @Setter
