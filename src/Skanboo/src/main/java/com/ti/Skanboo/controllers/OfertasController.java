@@ -47,7 +47,7 @@ public class OfertasController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> atualizarRecusada(@Valid @RequestBody Oferta obj, @PathVariable Long id) {
+    public ResponseEntity<Void> atualizarPorId(@Valid @RequestBody Oferta obj, @PathVariable Long id) {
 
         obj.setId(id);
         obj = this.ofertaService.atualizarPorId(obj);

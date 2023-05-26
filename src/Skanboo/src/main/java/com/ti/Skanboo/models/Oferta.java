@@ -1,6 +1,7 @@
 package com.ti.Skanboo.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.ti.Skanboo.models.enums.OfertaEnum;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GenerationType;
@@ -8,6 +9,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import lombok.Getter;
 import jakarta.persistence.Table;
@@ -32,7 +35,7 @@ public class Oferta {
 
         this.postagemOrigem = postagemOrigem;
         this.postagemOfertada = postagemOfertada;
-        this.status = "Em andamento";
+        this.status = OfertaEnum.EM_ANDAMENTO;
     }
 
     @Id
@@ -50,8 +53,7 @@ public class Oferta {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Postagem postagemOfertada;
 
-    @Column(name = "status", length = 15, nullable = false, updatable = true)
-    @NotBlank
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private OfertaEnum status;
 
 }

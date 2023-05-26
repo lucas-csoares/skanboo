@@ -11,6 +11,7 @@ import com.ti.Skanboo.exceptions.AuthorizationException;
 import com.ti.Skanboo.models.Oferta;
 import com.ti.Skanboo.models.Postagem;
 import com.ti.Skanboo.models.Usuario;
+import com.ti.Skanboo.models.enums.OfertaEnum;
 import com.ti.Skanboo.models.enums.UsuarioEnum;
 import com.ti.Skanboo.repositories.OfertaRepository;
 import com.ti.Skanboo.security.UserSpringSecurity;
@@ -36,9 +37,8 @@ public class OfertaService {
 
         UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
 
-        if (Objects.isNull(userSpringSecurity) ||
-                !userSpringSecurity.hasRole(UsuarioEnum.ADMIN)
-                        && !OfertaPertenceAoUsuario(userSpringSecurity, oferta))
+        if (Objects.isNull(userSpringSecurity) || !PostagemOrigemPertenceAoUsuario(userSpringSecurity, oferta)
+                && !PostagemOfertadaPertenceAoUsuario(userSpringSecurity, oferta))
             throw new AuthorizationException("Acesso negado!");
 
         return oferta;
@@ -67,13 +67,14 @@ public class OfertaService {
 
         UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
 
+        this.postagemService.encontrarPorId(obj.getPostagemOrigem().getId());
+        this.postagemService.encontrarPorId(obj.getPostagemOfertada().getId());
+
         if (Objects.isNull(userSpringSecurity))
             throw new AuthorizationException("Acesso negado!");
 
-        Boolean postagemOrigemPertenceAoUsuario = this.postagemService.postagemPertenceAoUsuario(userSpringSecurity,
-                obj.getPostagemOrigem());
-        Boolean postagemOfertadaPertenceAoUsuario = this.postagemService.postagemPertenceAoUsuario(userSpringSecurity,
-                obj.getPostagemOfertada());
+        Boolean postagemOrigemPertenceAoUsuario = this.PostagemOrigemPertenceAoUsuario(userSpringSecurity, obj);
+        Boolean postagemOfertadaPertenceAoUsuario = this.PostagemOfertadaPertenceAoUsuario(userSpringSecurity, obj);
 
         if (!postagemOrigemPertenceAoUsuario && postagemOfertadaPertenceAoUsuario)
             obj.setId(null);
@@ -86,20 +87,27 @@ public class OfertaService {
     @Transactional
     public Oferta atualizarPorId(Oferta obj) {
 
+        UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
         Oferta novaOferta = encontrarPorId(obj.getId());
+        Boolean postagemOrigemPertenceAoUsuario = this.PostagemOrigemPertenceAoUsuario(userSpringSecurity, novaOferta);
 
-        novaOferta.setStatus(obj.getStatus());
+        if (obj.getStatus().equals(OfertaEnum.ACEITA)) {
+            if (postagemOrigemPertenceAoUsuario)
+                novaOferta.setStatus(OfertaEnum.ACEITA);
+            else
+                throw new RuntimeException("O usuario nao pode atualizar essa oferta!");
+        } else if (obj.getStatus().equals(OfertaEnum.RECUSADA))
+            novaOferta.setStatus(OfertaEnum.RECUSADA);
 
         return this.ofertaRepository.save(novaOferta);
     }
 
-    private Boolean OfertaPertenceAoUsuario(UserSpringSecurity userSpringSecurity, Oferta oferta) {
+    private Boolean PostagemOrigemPertenceAoUsuario(UserSpringSecurity userSpringSecurity, Oferta oferta) {
+        return oferta.getPostagemOrigem().getUsuario().getId().equals(userSpringSecurity.getId());
+    }
 
-        Postagem postagemOrigem = oferta.getPostagemOrigem();
-        Postagem postagemOfertada = oferta.getPostagemOfertada();
-
-        return postagemOrigem.getUsuario().getId().equals(userSpringSecurity.getId())
-                || postagemOfertada.getUsuario().getId().equals(userSpringSecurity.getId());
+    private Boolean PostagemOfertadaPertenceAoUsuario(UserSpringSecurity userSpringSecurity, Oferta oferta) {
+        return oferta.getPostagemOfertada().getUsuario().getId().equals(userSpringSecurity.getId());
     }
 
 }
