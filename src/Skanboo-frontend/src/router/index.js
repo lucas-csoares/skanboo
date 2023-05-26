@@ -11,6 +11,8 @@ import PostsDoUsuarioView from "../views/PostsDoUsuarioView";
 import PaginaAdmView from "../views/PaginaAdmView";
 import CooptarParceirosView from "../views/CooptarParceirosView";
 import PaginaProdutoUsuarioView from "../views/PaginaProdutoUsuarioView";
+import EditarEnderecoView from "../views/EditarEnderecoView";
+import PreviewTrocaView from "../views/PreviewTrocaView";
 import TheProductPage from "../components/TheProductPage";
 import TheEditProduct from "../components/TheEditProduct";
 import TheParceiros from "../components/TheParceiros";
@@ -82,6 +84,16 @@ const routes = [
     path: "/CadastroEnderecoView",
     name: "CadastroEnderecoView",
     component: CadastroEnderecoView,
+  },
+  {
+    path: "/EditarEnderecoView",
+    name: "EditarEnderecoView",
+    component: EditarEnderecoView,
+  },
+  {
+    path: "/PreviewTrocaView",
+    name: "PreviewTrocaView",
+    component: PreviewTrocaView,
   },
   {
     path: "/postagem/:id",
