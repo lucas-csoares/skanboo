@@ -2,6 +2,8 @@ package com.ti.Skanboo.services;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import com.ti.Skanboo.exceptions.AuthorizationException;
 import com.ti.Skanboo.exceptions.OfferUpdateException;
@@ -12,6 +14,7 @@ import com.ti.Skanboo.models.enums.TrocaEnum;
 import com.ti.Skanboo.repositories.TrocaRepository;
 
 
+@Service
 public class TrocaService {
     
     @Autowired
