@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ti.Skanboo.exceptions.AuthorizationException;
+import com.ti.Skanboo.exceptions.EntityNotFoundException;
 import com.ti.Skanboo.models.EnderecoUsuario;
 import com.ti.Skanboo.models.Usuario;
 import com.ti.Skanboo.models.enums.UsuarioEnum;
@@ -27,7 +28,7 @@ public class EnderecoUsuarioService {
     public EnderecoUsuario encontrarPorId(Long id) {
 
         EnderecoUsuario endereco = this.enderecoUsuarioRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Endereco nao encontrado!"));
+                .orElseThrow(() -> new EntityNotFoundException("Endereco nao encontrado!"));
 
         // Verifica se usuario esta logado e se o endereco que ele busca pertence a ele
         UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();

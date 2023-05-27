@@ -8,6 +8,7 @@ import java.util.Objects;
 import com.ti.Skanboo.repositories.PostagemRepository;
 import com.ti.Skanboo.security.UserSpringSecurity;
 import com.ti.Skanboo.exceptions.AuthorizationException;
+import com.ti.Skanboo.exceptions.EntityNotFoundException;
 import com.ti.Skanboo.exceptions.PostCreationException;
 
 import jakarta.transaction.Transactional;
@@ -28,13 +29,13 @@ public class PostagemService {
     public Postagem encontrarPorId(Long id) {
 
         Postagem postagem = this.postagemRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Postagem nao encontrada!"));
+                .orElseThrow(() -> new EntityNotFoundException("Postagem nao encontrada!"));
 
         // Verifica se usuario esta logado e se o endereco que ele busca pertence a ele
         // UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
 
         // if (Objects.isNull(userSpringSecurity) || !userSpringSecurity.hasRole(UsuarioEnum.ADMIN)
-        //         && !PostagemPertenceAoUsuario(userSpringSecurity, postagem))
+        //         && !postagemPertenceAoUsuario(userSpringSecurity, postagem))
         //     throw new AuthorizationException("Acesso negado!");
 
         return postagem;
@@ -43,10 +44,12 @@ public class PostagemService {
     public List<Postagem> listarPostagensUsuarioAtivo() {
 
         UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
+
         if (Objects.isNull(userSpringSecurity))
             throw new AuthorizationException("Acesso negado!");
 
         List<Postagem> postagem = this.postagemRepository.findByUsuario_Id(userSpringSecurity.getId());
+        
         return postagem;
     }
 
@@ -62,11 +65,8 @@ public class PostagemService {
         if (Objects.isNull(userSpringSecurity))
             throw new AuthorizationException("Acesso negado!");
 
-        if (obj.getDescricao() == null || obj.getTitulo() == null)
-            throw new PostCreationException("A postagem deve possuir um titulo e descricao!");
-
-        if (obj.getCategoriaProduto() == null || obj.getCategoriaProdutoDesejado() == null)
-            throw new PostCreationException("A postagem deve ter uma categoria e a categoria do produto desejado!");
+        if (obj.getDescricao() == null || obj.getTitulo() == null || obj.getCategoriaProduto() == null || obj.getCategoriaProdutoDesejado() == null)
+            throw new PostCreationException("Todos os campos da postagem devem ser preenchidos");
 
         Usuario usuario = this.usuarioService.encontrarPorId(userSpringSecurity.getId());
 
@@ -103,12 +103,12 @@ public class PostagemService {
         try {
             this.postagemRepository.deleteById(id);
         } catch (Exception e) {
-            throw new RuntimeException("Nao e possivel excluir usuario pois ele possui entidades relacionadas!");
+            throw new RuntimeException("Nao e possivel excluir a postagem pois ela possui entidades relacionadas!");
 
         }
     }
 
-    private Boolean PostagemPertenceAoUsuario(UserSpringSecurity userSpringSecurity, Postagem postagem) {
+    public Boolean postagemPertenceAoUsuario(UserSpringSecurity userSpringSecurity, Postagem postagem) {
         return postagem.getUsuario().getId().equals(userSpringSecurity.getId());
     }
 }

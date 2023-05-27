@@ -16,41 +16,53 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.ti.Skanboo.models.Oferta;
 import com.ti.Skanboo.models.Postagem;
+import com.ti.Skanboo.services.OfertaService;
 import com.ti.Skanboo.services.PostagemService;
 
 import jakarta.validation.Valid;
 
 @RestController
 @Validated
-@RequestMapping("/postagem")
-public class PostagemController {
+@RequestMapping("/oferta")
+public class OfertasController {
+
+    @Autowired
+    private OfertaService ofertaService;
 
     @Autowired
     private PostagemService postagemService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Postagem> encontrarPorId(@PathVariable Long id) {
-        Postagem obj = this.postagemService.encontrarPorId(id);
+    public ResponseEntity<Oferta> encontrarPorId(@PathVariable Long id) {
+
+        Oferta obj = this.ofertaService.encontrarPorId(id);
+
         return ResponseEntity.ok().body(obj);
     }
 
-    @GetMapping("/usuario")
-    public ResponseEntity<List<Postagem>> listarPostagensUsuarioAtivo() {
-        List<Postagem> obj = this.postagemService.listarPostagensUsuarioAtivo();
+    @GetMapping("/feitas/me")
+    public ResponseEntity<List<List<Oferta>>> listarOfertasFeitasUsuarioAtivo() {
+        List<List<Oferta>> obj = this.ofertaService.listarOfertasFeitasUsuarioAtivo();
         return ResponseEntity.ok().body(obj);
     }
 
-    @GetMapping("/lista")
-    public ResponseEntity<List<Postagem>> listarPostagensCadastradas() {
-        List<Postagem> obj = postagemService.listarPostagensCadastradas();
+    @GetMapping("/recebidas/me")
+    public ResponseEntity<List<List<Oferta>>> listarOfertasRecebidasUsuarioAtivo() {
+        List<List<Oferta>> obj = this.ofertaService.listarOfertasRecebidasUsuarioAtivo();
         return ResponseEntity.ok().body(obj);
     }
 
-    @PostMapping
-    public ResponseEntity<Void> criar(@Valid @RequestBody Postagem obj) {
+    // (O endpoint significa: "em qual postagem quero trocar/o que eu quero oferecer em troca")
+    @PostMapping("/{id_postagem_origem}/{id_postagem_ofertada}")
+    public ResponseEntity<Void> criar(@PathVariable Long id_postagem_origem, @PathVariable Long id_postagem_ofertada) {
 
-        this.postagemService.criar(obj);
+        Postagem postagemOrigem = this.postagemService.encontrarPorId(id_postagem_origem);
+        Postagem postagemOfertada = this.postagemService.encontrarPorId(id_postagem_ofertada);
+        Oferta obj = new Oferta(postagemOrigem, postagemOfertada);
+
+        this.ofertaService.criar(obj);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}").buildAndExpand(obj.getId()).toUri();
@@ -59,17 +71,17 @@ public class PostagemController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> atualizarPorId(@Valid @RequestBody Postagem obj, @PathVariable Long id) {
+    public ResponseEntity<Void> atualizarPorId(@Valid @RequestBody Oferta obj, @PathVariable Long id) {
 
         obj.setId(id);
-        obj = this.postagemService.atualizarPorId(obj);
+        obj = this.ofertaService.atualizarPorId(obj);
 
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarPorId(@PathVariable Long id) {
-        this.postagemService.deletarPorId(id);
+        this.ofertaService.deletarPorId(id);
         return ResponseEntity.noContent().build();
     }
 

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ti.Skanboo.exceptions.AuthorizationException;
+import com.ti.Skanboo.exceptions.EntityNotFoundException;
 import com.ti.Skanboo.models.Usuario;
 import com.ti.Skanboo.models.enums.UsuarioEnum;
 import com.ti.Skanboo.repositories.UsuarioRepository;
@@ -37,7 +38,7 @@ public class UsuarioService {
 
         Optional<Usuario> usuario = this.usuarioRepository.findById(id);
 
-        return usuario.orElseThrow(() -> new RuntimeException("Usuario nao encontrado!"));
+        return usuario.orElseThrow(() -> new EntityNotFoundException("Usuario nao encontrado!"));
     }
 
     public Usuario listarInformacoesUsuarioAtivo() {
