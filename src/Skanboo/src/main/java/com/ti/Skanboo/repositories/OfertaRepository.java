@@ -27,6 +27,6 @@ public interface OfertaRepository extends JpaRepository<Oferta, Long> {
             @Param("postagemOrigem") Postagem postagemOrigem,
             @Param("postagemOfertada") Postagem postagemOfertada,
             @Param("status") OfertaEnum status);
-    // Oferta findByPostagemOrigemAndPostagemOfertada(Postagem postagemOrigem,
-    // Postagem postagemOfertada);
+            
+    // Oferta findByPostagemOrigemAndPostagemOfertada(Postagem postagemOrigem, Postagem postagemOfertada);
 }
