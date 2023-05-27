@@ -31,10 +31,11 @@
           <p class="senha">************</p>
           <p class="CPF">{{ usuario.cpf }}</p>
           <p class="cepRuaNumero">
-            {{ endereco.cep }} | Rua {{ endereco.rua }}, {{ endereco.numero }}
+            {{ endereco.cidade }}, Rua {{ endereco.rua }}, {{ endereco.numero }}
           </p>
         </div>
       </div>
+      <button class="editar-endereco"><a href="/editarEnderecoView">Editar endereço</a></button>
 
       <!-- DIV ENDEREÇO INICIAL
 
@@ -184,6 +185,22 @@ button {
   transition: 0.3s;
   margin-left: 30px;
   margin-top: 30px;
+}
+
+.editar-endereco {
+  box-sizing: border-box;
+  padding: 2px 6px 2px 8px;
+  gap: 4px;
+  width: 150px;
+  height: 28px;
+  background: #fcfcfc;
+  border: 1px solid #e2e2e2;
+  border-radius: 4px;
+  font-weight: 600;
+  color: #515864;
+  transition: 0.3s;
+  margin-left: 30px;
+  margin-top: 0px;
 }
 
 p {
