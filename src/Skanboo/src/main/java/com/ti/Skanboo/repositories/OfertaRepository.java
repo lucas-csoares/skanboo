@@ -15,7 +15,6 @@ import com.ti.Skanboo.models.enums.OfertaEnum;
 public interface OfertaRepository extends JpaRepository<Oferta, Long> {
 
     List<Oferta> findByPostagemOfertada_Id(Long id);
-
     List<Oferta> findBypostagemOrigem_Id(Long id);
 
     @Query("SELECT CASE WHEN COUNT(o) > 0 THEN true ELSE false END " +

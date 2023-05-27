@@ -82,6 +82,17 @@ public class OfertaService {
         return ofertasRecebidas;
     }
 
+    public List<Oferta> listarOfertasPostagem(Long id) {
+
+        Postagem postagem = this.postagemService.encontrarPorId(id);
+        List<Oferta> ofertas = new ArrayList<Oferta>();
+
+        ofertas.addAll(this.ofertaRepository.findBypostagemOrigem_Id(postagem.getId()));
+        ofertas.addAll(this.ofertaRepository.findByPostagemOfertada_Id(postagem.getId()));
+
+        return ofertas;
+    }
+
     @Transactional
     public Oferta criar(Oferta obj) {
 
@@ -90,15 +101,7 @@ public class OfertaService {
         if (Objects.isNull(userSpringSecurity))
             throw new AuthorizationException("Acesso negado!");
 
-        // Verifica se a oferta ja existe, considerando a possibilidade de
-        // ofertas com IDs invertidos
-        // ! revisar esse trecho---
-        if (ofertaJaCadastrada(obj.getPostagemOrigem(), obj.getPostagemOfertada(), OfertaEnum.EM_ANDAMENTO)
-                || ofertaJaCadastrada(obj.getPostagemOfertada(), obj.getPostagemOrigem(), OfertaEnum.EM_ANDAMENTO)
-                || ofertaJaCadastrada(obj.getPostagemOrigem(), obj.getPostagemOfertada(), OfertaEnum.ACEITA)
-                || ofertaJaCadastrada(obj.getPostagemOfertada(), obj.getPostagemOrigem(), OfertaEnum.ACEITA))
-            throw new DuplicateOfferCreationException("Esta oferta ja existe ou ja foi concluida");
-        // ! ----------------------
+        this.ofertaDisponivel(obj);
 
         if (!postagemOrigemPertenceAoUsuario(userSpringSecurity, obj)
                 && postagemOfertadaPertenceAoUsuario(userSpringSecurity, obj)) {
@@ -137,9 +140,7 @@ public class OfertaService {
 
         Oferta oferta = encontrarPorId(id);
 
-        // todo: verificacao se existe uma troca com a oferta referenciada antes de
-        // deletar
-        // todo: rever regra para deletar -> apenas ofertas recusadas?
+        // todo: verificar se existe troca com a oferta referenciada antes de deletar
         if (!oferta.getStatus().equals(OfertaEnum.RECUSADA))
             throw new RuntimeException("A oferta precisa ser recusada antes de ser deletada!");
 
@@ -150,24 +151,31 @@ public class OfertaService {
         }
     }
 
-    private void aceitarOferta(Oferta novaOferta) {
+    private void aceitarOferta(Oferta obj) {
 
-        novaOferta.setStatus(OfertaEnum.ACEITA);
+        obj.setStatus(OfertaEnum.ACEITA);
+        List<Oferta> ofertasRelacionadas = this.listarOfertasRelacionadas(obj);
 
-        Postagem postagemOrigem = novaOferta.getPostagemOrigem();
-        Postagem postaremOfertada = novaOferta.getPostagemOfertada();
-        List<Oferta> ofertasComMesmaOrigem = this.ofertaRepository.findBypostagemOrigem_Id(postagemOrigem.getId());
-        List<Oferta> ofertasComMesmaPostagemOfertada = this.ofertaRepository
-                .findByPostagemOfertada_Id(postaremOfertada.getId());
-        List<Oferta> ofertasRelacionadas = new ArrayList<Oferta>();
-
-        ofertasRelacionadas.addAll(ofertasComMesmaOrigem);
-        ofertasRelacionadas.addAll(ofertasComMesmaPostagemOfertada);
-
-        for (Oferta oferta : ofertasRelacionadas) {
-            if (oferta.getId() != novaOferta.getId())
+        for (Oferta oferta : ofertasRelacionadas)
+            if (oferta.getId() != obj.getId())
                 oferta.setStatus(OfertaEnum.RECUSADA);
-        }
+
+    }
+
+    private void ofertaDisponivel(Oferta obj) {
+
+        OfertaEnum[] statusNaoPermitidos = { OfertaEnum.EM_ANDAMENTO, OfertaEnum.ACEITA };
+        List<Oferta> ofertasRelacionadas = this.listarOfertasRelacionadas(obj);
+
+        // Verifica se existe oferta com essas postagens e status EM_ANDAMENTO ou ACEITA
+        for (OfertaEnum status : statusNaoPermitidos)
+            if (ofertaJaCadastrada(obj.getPostagemOrigem(), obj.getPostagemOfertada(), status)
+                    || ofertaJaCadastrada(obj.getPostagemOfertada(), obj.getPostagemOrigem(), status))
+                throw new DuplicateOfferCreationException("Esta oferta ja existe ou ja foi concluida!");
+
+        // Verifica se a postagem ofertada ou origem ja foi aceita em outra oferta
+        if (ofertasRelacionadas.stream().anyMatch(oferta -> oferta.getStatus().equals(OfertaEnum.ACEITA)))
+            throw new OfferCreationException("A postagem ofertada ou origem ja foi aceita em outra oferta!");
     }
 
     private Boolean postagemOrigemPertenceAoUsuario(UserSpringSecurity userSpringSecurity, Oferta oferta) {
@@ -185,4 +193,15 @@ public class OfertaService {
                 status);
     }
 
+    private List<Oferta> listarOfertasRelacionadas(Oferta obj) {
+
+        Long postagemOrigemId = obj.getPostagemOrigem().getId();
+        Long postagemOfertadaId = obj.getPostagemOfertada().getId();
+        List<Oferta> ofertasRelacionadas = new ArrayList<Oferta>();
+
+        ofertasRelacionadas.addAll(this.listarOfertasPostagem(postagemOrigemId));
+        ofertasRelacionadas.addAll(this.listarOfertasPostagem(postagemOfertadaId));
+
+        return ofertasRelacionadas;
+    }
 }
