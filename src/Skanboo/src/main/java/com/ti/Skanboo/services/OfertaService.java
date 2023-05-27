@@ -90,14 +90,15 @@ public class OfertaService {
         if (Objects.isNull(userSpringSecurity))
             throw new AuthorizationException("Acesso negado!");
 
-        this.postagemService.encontrarPorId(obj.getPostagemOrigem().getId());
-        this.postagemService.encontrarPorId(obj.getPostagemOfertada().getId());
-
         // Verifica se a oferta ja existe, considerando a possibilidade de
         // ofertas com IDs invertidos
+        // ! revisar esse trecho---
         if (ofertaJaCadastrada(obj.getPostagemOrigem(), obj.getPostagemOfertada(), OfertaEnum.EM_ANDAMENTO)
-                || ofertaJaCadastrada(obj.getPostagemOfertada(), obj.getPostagemOrigem(), OfertaEnum.EM_ANDAMENTO))
-            throw new DuplicateOfferCreationException("Esta oferta ja existe!");
+                || ofertaJaCadastrada(obj.getPostagemOfertada(), obj.getPostagemOrigem(), OfertaEnum.EM_ANDAMENTO)
+                || ofertaJaCadastrada(obj.getPostagemOrigem(), obj.getPostagemOfertada(), OfertaEnum.ACEITA)
+                || ofertaJaCadastrada(obj.getPostagemOfertada(), obj.getPostagemOrigem(), OfertaEnum.ACEITA))
+            throw new DuplicateOfferCreationException("Esta oferta ja existe ou ja foi concluida");
+        // ! ----------------------
 
         if (!postagemOrigemPertenceAoUsuario(userSpringSecurity, obj)
                 && postagemOfertadaPertenceAoUsuario(userSpringSecurity, obj)) {
@@ -137,6 +138,7 @@ public class OfertaService {
         Oferta oferta = encontrarPorId(id);
 
         // todo: verificacao se existe uma troca com a oferta referenciada antes de
+        // deletar
         // todo: rever regra para deletar -> apenas ofertas recusadas?
         if (!oferta.getStatus().equals(OfertaEnum.RECUSADA))
             throw new RuntimeException("A oferta precisa ser recusada antes de ser deletada!");
@@ -177,18 +179,10 @@ public class OfertaService {
     }
 
     // Verifica se ja existe uma oferta com as postagens trocadas
-    // Retorna true se existe uma oferta com as postagens trocadas, false caso
-    // contrario
+    // Retorna true se existe postagem com as postagens e status indicado
     private Boolean ofertaJaCadastrada(Postagem postagemOrigem, Postagem postagemOfertada, OfertaEnum status) {
         return ofertaRepository.existsByPostagemOrigemAndPostagemOfertadaAndStatus(postagemOrigem, postagemOfertada,
                 status);
     }
-
-    // private Oferta encontrarOferta(Postagem postagemOrigem, Postagem
-    // postagemOfertada) {
-    // return
-    // ofertaRepository.findByPostagemOrigemAndPostagemOfertada(postagemOrigem,
-    // postagemOfertada);
-    // }
 
 }

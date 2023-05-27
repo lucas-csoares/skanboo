@@ -117,8 +117,6 @@ img {
   margin-right: auto;
 }
 
-.products {
-}
 
 .card {
   display: block;

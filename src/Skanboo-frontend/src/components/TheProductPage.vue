@@ -1,22 +1,43 @@
 <template>
   <div v-if="postagem">
-    <section class="container">
-      <div class="imagem">
-        <img :src="postagem.foto" alt="Foto do Produto" />
+    <section>
+
+      <div class="container">
+
+
+        <div class="descricao">
+          <div class="imagem">
+            <img :src="postagem.foto" alt="Foto do Produto" />
+          </div>
+          <div class="categorias-produto">
+            <br />
+
+            <span><b>Categoria: </b></span>
+            <span class="categoria">{{ postagem.categoriaProduto }}</span>
+
+            <br />
+
+            <span><b>Interesse: </b></span>
+            <span class="oferta">{{ postagem.categoriaProdutoDesejado }}</span>
+
+            <br />
+            <br />
+
+            <span><b>Local: </b></span>
+            <span class="oferta">estado e cidade</span>
+          </div>
+          <div class="informacoes-produto">
+
+            <div class="titulo">
+              <h1>{{ postagem.titulo }}</h1>
+            </div>
+            <p>{{ postagem.descricao }}</p>
+          </div>
+
+        </div>
       </div>
-      <div class="informacoes-produto">
-        <h1>{{ postagem.titulo }}</h1>
-        <p>{{ postagem.descricao }}</p>
-
-        <span><b>Categoria do produto: </b></span>
-        <span class="categoria">{{ postagem.categoriaProduto }}</span>
-
-        <br />
-
-        <span><b>Categoria de interesse </b></span>
-        <span class="oferta">{{ postagem.categoriaProdutoDesejado }}</span>
-
-        <button>Negociar</button>
+      <div class="div-botao">
+        <button>Oferertar</button>
       </div>
     </section>
   </div>
@@ -48,37 +69,84 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  max-width: 800px;
+  max-width: 1000px;
   padding: 10px;
   text-align: left;
   margin: 0 auto;
 }
 
 .imagem {
-  width: 400px;
-  height: 500px;
-  background-color: grey;
+  display: flex;
+  width: 300px;
+  height: 300px;
+  background-color: rgba(128, 128, 128, 0);
+  border: 2px solid #515864;
+  justify-content: center;
 }
 
 img {
-  max-width: 400px;
-  max-height: 500px;
-  object-fit: cover;
+  max-width: 300px;
+  max-height: 300px;
+  object-fit: contain;
+}
+
+.titulo {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 100px;
+  margin-left: 10px;
+  margin-top: 10px;
+  padding: 10px;
+  padding-top: 0;
+  flex: 0;
 }
 
 .informacoes-produto {
-  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  height: 20;
+  width: 500px;
+  margin-left: 0px;
+  margin-top: 10px;
+  padding: 10px;
+  padding-top: 0;
+  flex: 1;
+  border: 2px solid #515864;
+}
+
+.categorias-produto {
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  margin-left: 10px;
+  margin-top: 0px;
+  padding: 10px;
+  padding-top: 0;
+  padding-bottom: 0;
+  flex: 1;
+  border: 2px solid #515864;
 }
 
 span {
   line-height: 1.5em;
 }
 
+.descricao {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 500px;
+  padding: 0px;
+  text-align: left;
+  margin: 0 auto;
+}
+
 button {
   box-sizing: border-box;
   padding: 2px 6px 2px 8px;
   gap: 4px;
-  width: 400px;
+  width: 500px;
   height: 32px;
   background: transparent;
   border: 1px solid #000;
@@ -86,7 +154,6 @@ button {
   font-weight: 600;
   color: #515864;
   transition: 0.3s;
-
   margin-top: 10px;
 }
 
@@ -94,7 +161,7 @@ button:hover {
   box-sizing: border-box;
   padding: 2px 6px 2px 8px;
   gap: 4px;
-  width: 400px;
+  width: 200px;
   height: 32px;
   background: #f9dc5c;
   border: 1px solid #f9dc5c;
@@ -111,9 +178,11 @@ p {
   padding: 20px 0px;
   font-size: 16px;
   text-align: justify;
+  word-break: break-all;
 }
 
 h1 {
   font-size: 2em;
 }
 </style>
+  
