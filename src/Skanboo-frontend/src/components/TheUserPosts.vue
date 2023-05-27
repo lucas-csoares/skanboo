@@ -193,6 +193,8 @@ img {
   font-weight: 600;
   color: #515864;
   margin-left: 15px;
+  margin-top: 8px;
+  margin-bottom: 0;
 }
 
 .editar:hover {
@@ -221,14 +223,15 @@ img {
   align-items: center;
   padding: 2px 6px 2px 8px;
   gap: 4px;
-  width: 240px;
-  height: 32px;
+  width: 80px;
+  height: 20px;
   background: #fcfcfc;
   border: 1px solid #e2e2e2;
   border-radius: 4px;
   font-weight: 600;
   color: #515864;
   margin-left: 15px;
+  margin-top: 6px;
 }
 
 .excluir:hover {
@@ -239,14 +242,15 @@ img {
   align-items: center;
   padding: 2px 6px 2px 8px;
   gap: 4px;
-  width: 240px;
-  height: 32px;
-  background: #f9dc5c;
-  border: 1px solid #f9dc5c;
+  width: 80px;
+  height: 20px;
+  background: #ff3939;
+  border: 1px solid #515864;
   border-radius: 4px;
   font-weight: 600;
   color: #515864;
   margin-left: 15px;
+  margin-top: 5px;
 }
 
 h2 {
