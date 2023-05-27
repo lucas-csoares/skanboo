@@ -66,7 +66,7 @@ public class TrocaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> atualizar(@PathVariable Long id, @Valid @RequestBody Troca obj) {
+    public ResponseEntity<Void> atualizarPorId(@PathVariable Long id, @Valid @RequestBody Troca obj) {
         
         obj.setId(id);
         obj = this.trocaService.atualizarPorId(obj);
