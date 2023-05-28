@@ -259,4 +259,21 @@ input {
     margin-right: 20px;
   }
 }
+@media (min-width: 601px) and (max-width: 960px) {
+  .menu-logo {
+    width: 150px;
+  }
+  .search-bar input {
+    width: 300px;
+    height: 40px;
+    background-color: #fcfcfc;
+    border: 1px solid #e2e2e2;
+    border-radius: 4px;
+    color: #9798b0;
+    font-size: 16px;
+    letter-spacing: -0.006em;
+    padding: 20px;
+    margin-top: -5px;
+  }
+}
 </style>
