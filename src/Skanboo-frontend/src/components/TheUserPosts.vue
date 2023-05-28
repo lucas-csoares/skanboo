@@ -3,8 +3,13 @@
     <div class="adicionar">
       <h1>Meus anúncios</h1>
 
-      <a href="/postarProdutoView"><img src="../assets/plus-icon.png" alt="Adicionar postagem" class="adicionar_postagem"
-          style="width: 20px; height: 20px" /></a>
+      <a href="/postarProdutoView"
+        ><img
+          src="../assets/plus-icon.png"
+          alt="Adicionar postagem"
+          class="adicionar_postagem"
+          style="width: 20px; height: 20px"
+      /></a>
     </div>
     <div class="container">
       <div v-for="postagem in postagens" :key="postagem.id" class="card">
@@ -16,33 +21,30 @@
         </router-link>
 
         <div class="editar-div">
-          <button class="editar">
-            <router-link :to="{ name: 'TheEditProduct', params: { id: postagem.id } }">Editar</router-link>
-          </button>
+          <router-link :to="{ name: 'TheEditProduct', params: { id: postagem.id } }">
+            <button class="editar">Editar</button>
+          </router-link>
         </div>
 
-        <button class="excluir" @click="excluirPostagem(postagem.id)">
-          Excluir
-        </button>
+        <button class="excluir" @click="excluirPostagem(postagem.id)">Excluir</button>
       </div>
-
     </div>
   </section>
 </template>
 
 <script>
-import Postagem from "../services/PostagemService";
+import Postagem from '../services/PostagemService';
 
 export default {
   data() {
     return {
       postagem: {
-        id: "",
-        titulo: "",
-        descricao: "",
-        categoriaProduto: "",
-        categoriaProdutoDesejado: "",
-        status: "",
+        id: '',
+        titulo: '',
+        descricao: '',
+        categoriaProduto: '',
+        categoriaProdutoDesejado: '',
+        status: '',
       },
       postagens: [],
     };
@@ -65,7 +67,7 @@ export default {
           this.carregarPostagens();
         })
         .catch((error) => {
-          console.error("Erro ao excluir a postagem", error);
+          console.error('Erro ao excluir a postagem', error);
         });
     },
 
@@ -127,8 +129,6 @@ img {
   margin-bottom: 30px;
 }
 
-.products {}
-
 .adicionar {
   display: flex;
   flex-wrap: wrap;
@@ -142,19 +142,35 @@ img {
   background: #ffffff;
   border: 1px solid #e5e9eb;
   border-radius: 4px;
+  transition: all 300ms;
   flex: none;
-  justify-content: center;
 }
 
-.card img {
+.card:hover {
+  transform: scale(1.02);
+}
+
+button {
+  cursor: pointer;
+}
+
+.card img,
+.carrossel-item img {
   margin-top: 10px;
+  border-radius: 4px;
+  min-height: 250px;
 }
 
 .card h2 {
+  text-align: center;
+  font-weight: bold;
   padding: 8px;
   box-sizing: border-box;
   margin-left: 5px;
   margin-top: 5px;
+  font-size: 15px;
+  color: #252c32;
+  kerning: -0.6%;
 }
 
 .card-img-produto img {
@@ -194,22 +210,7 @@ img {
 }
 
 .editar:hover {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 2px 6px 2px 8px;
-  gap: 4px;
-  width: 230px;
-  height: 32px;
   background: #f9dc5c;
-  border: 1px solid #f9dc5c;
-  border-radius: 20px;
-  font-weight: 600;
-  color: #515864;
-  margin-left: 15px;
-  transition: 0.2s;
 }
 
 .excluir {
