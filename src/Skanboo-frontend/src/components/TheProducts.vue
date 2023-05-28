@@ -1,84 +1,94 @@
 <template>
   <section class="products">
-    <h1>Produtos</h1>
+    <h1>**Mexer nessa frase**</h1>
     <div class="container">
-      <div v-for="postagem in postagens" :key="postagem.id" class="card">
-        <router-link
-          :to="{ name: 'TheProductPage', params: { id: postagem.id } }"
-        >
+      <div v-for="postagem in postagensPaginadas" :key="postagem.id" class="card">
+        <router-link :to="{ name: 'TheProductPage', params: { id: postagem.id } }">
           <h2>{{ postagem.titulo }}</h2>
-          <div class="card-img-produto">
-            <img :src="postagem.foto" alt="" class="card-img" />
-          </div>
-          <button class="negociar">Ver produto</button>
+          <div class="card-img-produto"><img :src="postagem.foto" alt="" class="card-img" /></div>
+          <button class="ver-produto">Ver produto</button>
         </router-link>
       </div>
+    </div>
 
-      <!-- DIVS DE TESTE
-      <div class="card">
-        <h2>Blusa top</h2>
-        <div class="card-img-produto">
-          <img src="../assets/imagem-produto.avif" class="card-img" />
+    <div class="pagination">
+      <div class="center">
+        <div class="left-arrow">
+          <a href="#" @click="paginaAnterior"><img src="../assets/left-arrow.png" alt="" /></a>
         </div>
-        <button class="negociar">NEGOCIAR</button>
+        <div class="pagination">
+          <a
+            v-for="pagina in numeroPaginas"
+            :key="pagina"
+            :class="{ active: pagina === paginaAtual }"
+            @click="irParaPagina(pagina)"
+            >{{ pagina }}</a
+          >
+        </div>
+        <div class="left-arrow">
+          <a href="#" @click="proximaPagina"><img src="../assets/right-arrow.png" alt="" /></a>
+        </div>
       </div>
-
-      <div class="card">
-        <h2>Blusa top</h2>
-        <div class="card-img-produto">
-          <img src="../assets/imagem-produto.avif" class="card-img" />
-        </div>
-        <button class="negociar">NEGOCIAR</button>
-      </div>
-
-      <div class="card">
-        <h2>Blusa top</h2>
-        <div class="card-img-produto">
-          <img src="../assets/imagem-produto.avif" class="card-img" />
-        </div>
-        <button class="negociar">NEGOCIAR</button>
-      </div>
-
-      <div class="card">
-        <h2>Blusa top</h2>
-        <div class="card-img-produto">
-          <img src="../assets/imagem-produto.avif" class="card-img" />
-        </div>
-        <button class="negociar">NEGOCIAR</button>
-      </div>
-
-      <div class="card">
-        <h2>Blusa top</h2>
-        <div class="card-img-produto">
-          <img src="../assets/imagem-produto.avif" class="card-img" />
-        </div>
-        <button class="negociar">NEGOCIAR</button>
-      </div>-->
     </div>
   </section>
 </template>
 
 <script>
-import Postagem from "../services/PostagemService";
+import Postagem from '../services/PostagemService';
 
 export default {
   data() {
     return {
       postagem: {
-        id: "",
-        titulo: "",
-        imagem: "",
+        id: '',
+        titulo: '',
+        imagem: '',
       },
       postagens: [],
+      paginaAtual: 1,
+      postagensPorPagina: 4,
     };
   },
 
+  computed: {
+    postagensPaginadas() {
+      const indiceInicial = (this.paginaAtual - 1) * this.postagensPorPagina;
+      const indiceFinal = indiceInicial + this.postagensPorPagina;
+      return this.postagens.slice(indiceInicial, indiceFinal);
+    },
+
+    numeroPaginas() {
+      return Math.ceil(this.postagens.length / this.postagensPorPagina);
+    },
+  },
+
+  methods: {
+    exibirTodasPostagens() {
+      Postagem.exibirTodasPostagens().then((resposta) => {
+        this.postagens = resposta.data;
+        console.log(this.postagens);
+      });
+    },
+
+    irParaPagina(pagina) {
+      this.paginaAtual = pagina;
+    },
+
+    paginaAnterior() {
+      if (this.paginaAtual > 1) {
+        this.paginaAtual--;
+      }
+    },
+
+    proximaPagina() {
+      if (this.paginaAtual < this.numeroPaginas) {
+        this.paginaAtual++;
+      }
+    },
+  },
+
   mounted() {
-    Postagem.exibirTodasPostagens().then((resposta) => {
-      const postagens = resposta.data;
-      this.postagens = postagens;
-      console.log(postagens);
-    });
+    this.exibirTodasPostagens();
   },
 };
 </script>
@@ -86,7 +96,9 @@ export default {
 <style scoped>
 * {
   box-sizing: border-box;
+  text-decoration: none;
 }
+
 body,
 h1,
 h2,
@@ -116,7 +128,6 @@ img {
   margin-right: auto;
 }
 
-
 .card {
   display: block;
   width: 274px;
@@ -124,14 +135,27 @@ img {
   background: #ffffff;
   border: 1px solid #e5e9eb;
   border-radius: 4px;
+  transition: all 300ms;
   flex: none;
+}
+
+.card:hover {
+  border: 2px solid #e5e9eb;
+  transform: scale(1.02);
+}
+.card:hover h2 {
+  color: #eb5b54;
 }
 
 .card img {
   margin-top: 10px;
+  border-radius: 4px;
+  min-height: 250px;
 }
 
 .card h2 {
+  text-align: center;
+  font-weight: bold;
   padding: 8px;
   box-sizing: border-box;
   margin-left: 5px;
@@ -148,7 +172,8 @@ img {
   margin-right: auto;
 }
 
-.negociar {
+.ver-produto {
+  cursor: pointer;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -167,7 +192,7 @@ img {
   margin-left: 15px;
 }
 
-.negociar:hover {
+.ver-produto:hover {
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -207,5 +232,48 @@ h1 {
   width: 20px;
   margin-left: 212px;
   margin-top: -20px;
+}
+
+.center {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.pagination {
+  display: inline-block;
+  font-size: 14px;
+}
+
+.pagination a {
+  cursor: pointer;
+  color: rgba(102, 112, 133, 1);
+  float: left;
+  padding: 10px 16px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  border: 0px solid #ddd;
+  border-radius: 100%;
+  margin: 0 4px;
+}
+
+.pagination a.active {
+  background-color: #f9dc5c;
+  color: rgba(102, 112, 133, 1);
+  border: 0px solid #f9dc5c;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #f5f5f5;
+  padding: 11px 16px;
+}
+.left-arrow img {
+  width: 24px;
+}
+
+.left-arrow img::hover {
+  background-color: transparent;
 }
 </style>
