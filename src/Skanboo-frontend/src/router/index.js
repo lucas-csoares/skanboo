@@ -17,8 +17,11 @@ import TheProductPage from "../components/TheProductPage";
 import TheEditProduct from "../components/TheEditProduct";
 import TheParceiros from "../components/TheParceiros";
 import TheEditPartner from "../components/TheEditPartner";
+import TheOfertaPreview from "../components/TheOfertaPreview";
+import ProdutosOferecidosView from "../views/ProdutosOferecidosView";
+import OfertasRecebidasView from "../views/OfertasRecebidasView"
 import CadastroEnderecoView from "../views/CadastroEnderecoView"
-import ProdutosOferecidosView from "../views/ProdutosOferecidosView"
+import OfertaView from "../views/OfertaView"
 import EscolherProdutoView from "../views/EscolherProdutoView"
 
 const routes = [
@@ -98,9 +101,24 @@ const routes = [
     component: PreviewTrocaView,
   },
   {
+    path: "/TheOfertaPreview",
+    name: "TheOfertaPreview",
+    component: TheOfertaPreview
+  },
+  {
     path: "/ProdutosOferecidosView",
     name: "ProdutosOferecidosView",
     component: ProdutosOferecidosView
+  },
+  {
+    path: "/OfertasRecebidasView",
+    name: "OfertasRecebidasView",
+    component: OfertasRecebidasView
+  },
+  {
+    path: "/OfertaView",
+    name: "OfertaView",
+    component: OfertaView
   },
   {
     path: "/EscolherProdutoView",

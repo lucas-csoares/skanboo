@@ -1,68 +1,62 @@
 <template>
     <section class="products">
-        <h1>Produtos oferecidos</h1>
-        <div class="container">
+        <h1>Ofertas recebidas</h1>
+        <div v-for="oferta in ofertas" :key="oferta[0].id" class="container">
+
             <div class="card">
-                <h2>Meu produto</h2>
+                <h2>{{ oferta[0].postagemOrigem.titulo }}</h2>
                 <div class="card-img">
-                    <img src="" alt="Foto do produto" class="card-img-produto" />
-                </div>
-            </div>
-            <img src="../assets/flecha.png" class="flecha-img">
-            <div class="card">
-                <h2>Produto desejado</h2>
-                <div class="card-img">
-                    <img src="" alt="Foto do produto" class="card-img-produto" />
+                    <img :src="oferta[0].postagemOrigem.foto" class="card-img-produto" />
                 </div>
                 <div class="div-botao">
-                    <button @click="criarOferta"><router-link
-                            :to="{ name: 'EscolherProdutoView' }">Negociar</router-link></button>
+                    <button><router-link :to="{ name: 'TheProductPage', params: { id: oferta[0].postagemOrigem.id } }">Ver produto</router-link></button>
                 </div>
+            </div>
+
+            <img src="../assets/setaEsquerda.png" class="flecha-img">
+
+            <div class="card">
+                <h2>{{ oferta[0].postagemOfertada.titulo }}</h2>
+                <div class="card-img">
+                    <img :src="oferta[0].postagemOfertada.foto" class="card-img-produto" />
+                </div>
+                <div class="div-botao">
+                    <button><router-link :to="{ name: 'TheProductPage', params: { id: oferta[0].postagemOfertada.id } }">Ver produto</router-link></button>
+                </div>
+            </div>
+
+            <div class="div-botao">
+                <button><router-link :to="{ name: 'UsuarioView' }">Recusar</router-link></button>
+            </div>
+            <div class="div-botao">
+                <button><router-link :to="{ name: 'UsuarioView' }">Aceitar</router-link></button>
             </div>
         </div>
     </section>
 </template>
 
-
-  
 <script>
-import Postagem from "../services/PostagemService";
 import Oferta from '../services/OfertaService';
 
 export default {
     data() {
         return {
-            postagem: {
-                id: "",
-                titulo: "",
-                descricao: "",
-                categoriaProduto: "",
-                categoriaProdutoDesejado: "",
-                status: "",
-            },
-            postagens: [],
+            ofertas: [],
         };
     },
 
     mounted() {
-
-        Postagem.exibirPostagensUsuarioLogado()
+        Oferta.exibirOfertasRecebidas()
             .then((resposta) => {
-                const postagens = resposta.data;
-                this.postagens = postagens;
+                console.log("resposta.data", resposta.data);
+                const ofertas = resposta.data;
+                this.ofertas = ofertas;
+                console.log("ofertas: ", ofertas);
             })
             .catch((e) => console.log(e.message));
     },
 
     methods: {
-        carregarPostagens() {
-            Postagem.exibirPostagensUsuarioLogado()
-                .then((resposta) => {
-                    const postagens = resposta.data;
-                    this.postagens = postagens;
-                })
-                .catch((e) => console.log(e.message));
-        },
         criarOferta() {
 
             const idOfertada = sessionStorage.getItem('idOfertada');
@@ -80,6 +74,7 @@ export default {
         },
     },
 };
+
 </script>
   
 <style scoped>
@@ -112,8 +107,8 @@ img {
 }
 
 .flecha-img {
-    width: 100px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
     margin-top: 150px;
     margin-left: 10px;
     margin-right: 10px;
@@ -134,8 +129,7 @@ img {
 }
 
 .products {
-    margin-left: 200px;
-    margin-right: 200px;
+    justify-content: center;
 }
 
 .card {
@@ -193,7 +187,7 @@ h2 {
 }
 
 h1 {
-    text-align: left;
+    text-align: center;
 }
 </style>
   

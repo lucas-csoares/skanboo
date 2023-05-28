@@ -18,7 +18,7 @@ export default {
   },
 
   exibirOfertasFeitas: () => {
-    return http.get(`oferta/feitas/me}`, {
+    return http.get(`oferta/listar-feitas/me`, {
       headers: {
         Authorization: localStorage.getItem('token')
       }
@@ -26,7 +26,7 @@ export default {
   },
 
   exibirOfertasRecebidas: () => {
-    return http.get(`oferta/recebidas/me}`, {
+    return http.get(`oferta/listar-recebidas/me`, {
       headers: {
         Authorization: localStorage.getItem('token')
       }

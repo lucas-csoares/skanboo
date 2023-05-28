@@ -1,54 +1,99 @@
 <template>
     <section class="products">
         <h1>Produtos oferecidos</h1>
-        <div v-for="oferta in ofertas" :key="oferta[0].id" class="container">
+        <div class="container">
             <div class="card">
-                <h2>{{ oferta[0].postagemOfertada.titulo }}</h2>
+                <h2>{{ postagemOrigem.titulo }}</h2>
                 <div class="card-img">
-                    <img :src="oferta[0].postagemOfertada.foto" class="card-img-produto" />
+                    <img :src="postagemOrigem.foto" class="card-img-produto" />
                 </div>
-                <div class="div-botao">
-                    <button><router-link :to="{ name: 'TheProductPage', params: { id: oferta[0].postagemOfertada.id } }">Ver produto</router-link></button>
-                </div>
+                
             </div>
 
-            <img src="../assets/setaDireita.png" class="flecha-img">
+            <img src="../assets/flecha.png" class="flecha-img">
 
             <div class="card">
-                <h2>{{ oferta[0].postagemOrigem.titulo }}</h2>
+                <h2>{{ postagemOfertada.titulo }}</h2>
                 <div class="card-img">
-                    <img :src="oferta[0].postagemOrigem.foto" class="card-img-produto" />
+                    <img :src="postagemOfertada.foto" class="card-img-produto" />
                 </div>
                 <div class="div-botao">
-                    <button><router-link :to="{ name: 'TheProductPage', params: { id: oferta[0].postagemOrigem.id } }">Ver produto</router-link></button>
+                    <button @click="criarOferta"><router-link :to="{ name: 'UsuarioView' }">Negociar</router-link></button>
                 </div>
             </div>
-            <div class="div-botao">
-                <button><router-link :to="{ name: 'UsuarioView' }">Cancelar oferta</router-link></button>
-            </div>
+            
         </div>
     </section>
 </template>
 
+
+  
 <script>
+import Postagem from "../services/PostagemService";
 import Oferta from '../services/OfertaService';
 
 export default {
     data() {
         return {
-            ofertas: [],
+            oferta: {
+                id: "",
+                id_postagem_ofertada: "",
+                id_postagem_origem: "",
+                status: "",
+            },
+            postagemOfertada: {
+                id: "",
+                titulo: "",
+                descricao: "",
+                categoriaProduto: "",
+                categoriaProdutoDesejado: "",
+                status: "",
+            },
+            postagemOrigem: {
+                id: "",
+                titulo: "",
+                descricao: "",
+                categoriaProduto: "",
+                categoriaProdutoDesejado: "",
+                status: "",
+            },
+            postagens: [],
+            ofertas: null,
         };
     },
 
     mounted() {
-        Oferta.exibirOfertasFeitas()
+
+        if (!window.location.hash) {
+            window.location = window.location + '#loaded';
+            window.location.reload();
+        }
+
+
+        Postagem.exibirPostagensUsuarioLogado()
             .then((resposta) => {
-                console.log("resposta.data", resposta.data);
-                const ofertas = resposta.data;
-                this.ofertas = ofertas;
-                console.log("ofertas: ", ofertas);
+                const postagens = resposta.data;
+                this.postagens = postagens;
             })
             .catch((e) => console.log(e.message));
+
+        const idOfertada = sessionStorage.getItem('idOfertada');
+        Postagem.exibirInfoPostagem(idOfertada).then((resposta) => {
+            const postagem = resposta.data;
+            this.postagemOfertada = postagem;
+        })
+            .catch((e) => console.log(e.message));
+
+
+
+        const idOrigem = sessionStorage.getItem('idOrigem');
+        Postagem.exibirInfoPostagem(idOrigem).then((resposta) => {
+            const postagem = resposta.data;
+            this.postagemOrigem = postagem;
+        })
+            .catch((e) => console.log(e.message));
+
+
     },
 
     methods: {
@@ -102,8 +147,8 @@ img {
 }
 
 .flecha-img {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 50px;
     margin-top: 150px;
     margin-left: 10px;
     margin-right: 10px;

@@ -1,6 +1,8 @@
 <template>
     <section class="products">
-        <h1>Selecione um produto para oferecer em troca</h1>
+        <div>
+            <h1>Selecione um produto para oferecer em troca</h1>
+        </div>   
         <!-- Revisar, icone provisório -->
 
         <div class="container">
@@ -11,7 +13,7 @@
                 </div>
 
                 <button class="editar" @click="saveIdOrigem(postagem.id)">
-                    <router-link :to="{ name: 'ProdutosOferecidosView' }">Negociar</router-link>
+                    <router-link :to="{ name: 'OfertaView' }">Negociar</router-link>
                 </button>
             </div>
 
@@ -119,10 +121,9 @@ img {
     margin-bottom: 30px;
 }
 
-.products {
-    margin-left: 200px;
-    margin-right: 200px;
-}
+    .products {
+    justify-content: center;
+} 
 
 .card {
     display: block;
@@ -240,7 +241,7 @@ h2 {
 }
 
 h1 {
-    text-align: left;
+    text-align: center;
 }
 </style>
   

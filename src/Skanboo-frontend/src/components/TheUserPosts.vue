@@ -2,32 +2,25 @@
   <section class="products">
     <div class="adicionar">
       <h1>Meus anúncios</h1>
-    <!-- Revisar, icone provisório -->
-    <a href="/postarProdutoView"
-      ><img
-        src="../assets/plus-icon.png"
-        alt="Adicionar postagem"
-        class="adicionar_postagem"
-        style="width: 20px; height: 20px"
-    /></a>
+      <!-- Revisar, icone provisório -->
+      <a href="/postarProdutoView"><img src="../assets/plus-icon.png" alt="Adicionar postagem" class="adicionar_postagem"
+          style="width: 20px; height: 20px" /></a>
     </div>
     <div class="container">
       <div v-for="postagem in postagens" :key="postagem.id" class="card">
-        <router-link
-          :to="{ name: 'TheProductPage', params: { id: postagem.id } }"
-        >
+        <router-link :to="{ name: 'TheProductPage', params: { id: postagem.id } }">
           <h2>{{ postagem.titulo }}</h2>
           <div class="card-img-produto">
             <img :src="postagem.foto" alt="" class="card-img" />
           </div>
         </router-link>
 
-        <button class="editar">
-          <router-link
-            :to="{ name: 'TheEditProduct', params: { id: postagem.id } }"
-            >Editar</router-link
-          >
-        </button>
+        <div class="editar-div">
+          <button class="editar">
+            <router-link :to="{ name: 'TheEditProduct', params: { id: postagem.id } }">Editar</router-link>
+          </button>
+        </div>
+
         <button class="excluir" @click="excluirPostagem(postagem.id)">
           Excluir
         </button>
@@ -142,9 +135,7 @@ img {
   margin-bottom: 30px;
 }
 
- .products {
-
-} 
+.products {}
 
 .adicionar {
   display: flex;
@@ -184,6 +175,11 @@ img {
   margin-right: auto;
 }
 
+.editar-div {
+  display: flex;
+  justify-content: center;
+}
+
 .editar {
   box-sizing: border-box;
   display: flex;
@@ -213,7 +209,7 @@ img {
   align-items: center;
   padding: 2px 6px 2px 8px;
   gap: 4px;
-  width: 220px;
+  width: 230px;
   height: 32px;
   background: #f9dc5c;
   border: 1px solid #f9dc5c;
@@ -252,13 +248,13 @@ img {
   align-items: center;
   padding: 2px 6px 2px 8px;
   gap: 4px;
-  width: 70px;
+  width: 75px;
   height: 20px;
   background: #ff3939;
   border: 1px solid #515864;
   border-radius: 4px;
   font-weight: 600;
-  color: #515864;
+  color: #e2e2e2;
   margin-left: 15px;
   margin-top: 5px;
   transition: 0.3s;

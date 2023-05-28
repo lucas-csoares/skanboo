@@ -25,12 +25,6 @@
                   ><img src="../assets/user.png" alt="Usuário" class="user"
                 /></a>
               </li>
-
-              <li>
-                <a href="carrinho.html"
-                  ><img src="../assets/cart.png" alt="Carrinho" class="cart"
-                /></a>
-              </li>
             </ul>
           </nav>
         </div>
