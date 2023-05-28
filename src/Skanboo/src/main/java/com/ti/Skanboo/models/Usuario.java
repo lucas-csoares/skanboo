@@ -72,10 +72,6 @@ public class Usuario {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private EnderecoUsuario endereco;
 
-    @Column(name = "uf", length = 2, nullable = false)
-    @NotBlank
-    private String uf;
-
     @Column(name = "data_nascimento", length = 8, nullable = false)
     private LocalDate dataNascimento; // formato yyyy-mm-dd
 
