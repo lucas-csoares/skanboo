@@ -31,6 +31,14 @@ public class Troca {
     
     public static final String NOME_TABELA = "troca";
 
+    public Troca(Oferta oferta) {
+
+        this.oferta = oferta;
+        this.status = TrocaEnum.EM_ANDAMENTO;
+        this.confirma_usuario01 = false;
+        this.confirma_usuario02 = false;
+    }
+
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,8 +47,8 @@ public class Troca {
     
     
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_oferta", referencedColumnName = "id", nullable = true)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JoinColumn(name = "id_oferta", referencedColumnName = "id", nullable = false)
+    //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Oferta oferta;
     
     
