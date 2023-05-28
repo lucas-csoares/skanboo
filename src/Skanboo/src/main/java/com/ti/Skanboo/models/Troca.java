@@ -47,8 +47,8 @@ public class Troca {
     
     
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_oferta", referencedColumnName = "id", nullable = true)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JoinColumn(name = "id_oferta", referencedColumnName = "id", nullable = false)
+    //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Oferta oferta;
     
     

@@ -43,33 +43,28 @@ public class TrocaController {
     }
 
 
-    @GetMapping("/me")
+    @GetMapping("/lista")
     public ResponseEntity<List<Troca>> listarTrocasUsuarioAtivo() {
         List<Troca> trocas = this.trocaService.listarTrocasUsuarioAtivo();
         return ResponseEntity.ok().body(trocas);
     }
 
-    @PostMapping("/id_oferta")
+    @PostMapping("/{id_oferta}")
     public ResponseEntity<Void> criar(@PathVariable Long id_oferta) {
-        
-        
-        Oferta oferta = this.ofertaService.encontrarPorId(id_oferta);
-        Troca obj = new Troca(oferta);
 
-        this.trocaService.criar(obj);
+        this.trocaService.criar(id_oferta);
         
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}").buildAndExpand(obj.getId()).toUri();
+                .path("/{id}").buildAndExpand(id_oferta).toUri();
 
         return ResponseEntity.created(uri).build();
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Void> atualizarPorId(@PathVariable Long id, @Valid @RequestBody Troca obj) {
+    @PutMapping("/{id}") //id da troca
+    public ResponseEntity<Void> atualizarPorId(@PathVariable Long id) {
         
-        obj.setId(id);
-        obj = this.trocaService.atualizarPorId(obj);
+        this.trocaService.atualizarPorId(id);
         return ResponseEntity.noContent().build();
 
     }
