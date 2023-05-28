@@ -10,9 +10,8 @@
           <div class="card-img-produto">
             <img :src="postagem.foto" alt="" class="card-img" />
           </div>
+          <button class="negociar">Ver produto</button>
         </router-link>
-
-        <button class="negociar">NEGOCIAR</button>
       </div>
 
       <!-- DIVS DE TESTE

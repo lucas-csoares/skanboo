@@ -1,6 +1,7 @@
 <template>
   <section class="products">
-    <h1>Meus anúncios</h1>
+    <div class="adicionar">
+      <h1>Meus anúncios</h1>
     <!-- Revisar, icone provisório -->
     <a href="/postarProdutoView"
       ><img
@@ -9,7 +10,7 @@
         class="adicionar_postagem"
         style="width: 20px; height: 20px"
     /></a>
-
+    </div>
     <div class="container">
       <div v-for="postagem in postagens" :key="postagem.id" class="card">
         <router-link
@@ -141,9 +142,14 @@ img {
   margin-bottom: 30px;
 }
 
-.products {
-  margin-left: 200px;
-  margin-right: 200px;
+ .products {
+
+} 
+
+.adicionar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card {
@@ -154,6 +160,7 @@ img {
   border: 1px solid #e5e9eb;
   border-radius: 4px;
   flex: none;
+  justify-content: center;
 }
 
 .card img {
@@ -189,12 +196,13 @@ img {
   height: 32px;
   background: #fcfcfc;
   border: 1px solid #e2e2e2;
-  border-radius: 4px;
+  border-radius: 20px;
   font-weight: 600;
   color: #515864;
   margin-left: 15px;
   margin-top: 8px;
   margin-bottom: 0;
+  transition: 0.3s;
 }
 
 .editar:hover {
@@ -205,14 +213,15 @@ img {
   align-items: center;
   padding: 2px 6px 2px 8px;
   gap: 4px;
-  width: 240px;
+  width: 220px;
   height: 32px;
   background: #f9dc5c;
   border: 1px solid #f9dc5c;
-  border-radius: 4px;
+  border-radius: 20px;
   font-weight: 600;
   color: #515864;
   margin-left: 15px;
+  transition: 0.2s;
 }
 
 .excluir {
@@ -232,6 +241,7 @@ img {
   color: #515864;
   margin-left: 15px;
   margin-top: 6px;
+  transition: 0.2s;
 }
 
 .excluir:hover {
@@ -242,7 +252,7 @@ img {
   align-items: center;
   padding: 2px 6px 2px 8px;
   gap: 4px;
-  width: 80px;
+  width: 70px;
   height: 20px;
   background: #ff3939;
   border: 1px solid #515864;
@@ -251,6 +261,12 @@ img {
   color: #515864;
   margin-left: 15px;
   margin-top: 5px;
+  transition: 0.3s;
+}
+
+.adicionar_postagem {
+  display: block;
+  margin-left: 20px;
 }
 
 h2 {
@@ -262,6 +278,7 @@ h2 {
 }
 
 h1 {
+  display: block;
   text-align: left;
 }
 </style>
