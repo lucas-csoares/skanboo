@@ -187,7 +187,37 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler imple
         log.error("Falha ao criar a oferta", offerCreationException);
         return buildErrorResponse(offerCreationException, HttpStatus.METHOD_NOT_ALLOWED, request);
     }
+    
+    //Erros da troca - INÍCIO
+    @ExceptionHandler(ExchangeCreationException.class)
+    @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
+    public ResponseEntity<Object> handleExchangeCreationException(ExchangeCreationException exchangeCreationException,
+            WebRequest request) {
 
+        log.error("Falha ao criar troca", exchangeCreationException);
+        return buildErrorResponse(exchangeCreationException, HttpStatus.METHOD_NOT_ALLOWED, request);
+    }
+    
+    @ExceptionHandler(ExchangeUpdateException.class)
+    @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
+    public ResponseEntity<Object> handleExchangeUpdateException(ExchangeUpdateException exchangeUpdateException,
+            WebRequest request) {
+
+        log.error("Falha ao atualizar a troca", exchangeUpdateException);
+        return buildErrorResponse(exchangeUpdateException, HttpStatus.METHOD_NOT_ALLOWED, request);
+    }
+    
+    @ExceptionHandler(ExchangeNotFound.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<Object> handleExchangeNotFound(ExchangeNotFound exchangeNotFound,
+            WebRequest request) {
+
+        log.error("Falha ao encontrar troca", exchangeNotFound);
+        return buildErrorResponse(exchangeNotFound, HttpStatus.NOT_FOUND, request);
+    }
+    //Erros da troca - FIM
+
+    
     @ExceptionHandler(OfferUpdateException.class)
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     public ResponseEntity<Object> handleOfferCreationException(OfferUpdateException offerUpdateException,

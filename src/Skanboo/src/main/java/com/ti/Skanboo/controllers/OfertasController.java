@@ -42,21 +42,27 @@ public class OfertasController {
         return ResponseEntity.ok().body(obj);
     }
 
-    @GetMapping("/feitas/me")
+    @GetMapping("/listar-feitas/me")
     public ResponseEntity<List<List<Oferta>>> listarOfertasFeitasUsuarioAtivo() {
         List<List<Oferta>> obj = this.ofertaService.listarOfertasFeitasUsuarioAtivo();
         return ResponseEntity.ok().body(obj);
     }
 
-    @GetMapping("/recebidas/me")
+    @GetMapping("/listar-recebidas/me")
     public ResponseEntity<List<List<Oferta>>> listarOfertasRecebidasUsuarioAtivo() {
         List<List<Oferta>> obj = this.ofertaService.listarOfertasRecebidasUsuarioAtivo();
         return ResponseEntity.ok().body(obj);
     }
 
+    @GetMapping("/listar-ofertas-postagem/{id}")
+    public ResponseEntity<List<Oferta>> listarOfertasPostagem(@PathVariable Long id) {
+        List<Oferta> obj = this.ofertaService.listarOfertasPostagem(id);
+        return ResponseEntity.ok().body(obj);
+    }
+
     // (O endpoint significa: "em qual postagem quero trocar/o que eu quero oferecer em troca")
-    @PostMapping("/{id_postagem_origem}/{id_postagem_ofertada}")
-    public ResponseEntity<Void> criar(@PathVariable Long id_postagem_origem, @PathVariable Long id_postagem_ofertada) {
+    @PostMapping("/{id-postagem-origem}/{id-postagem-ofertada}")
+    public ResponseEntity<Void> criar(@PathVariable("id-postagem-origem") Long id_postagem_origem, @PathVariable("id-postagem-ofertada") Long id_postagem_ofertada) {
 
         Postagem postagemOrigem = this.postagemService.encontrarPorId(id_postagem_origem);
         Postagem postagemOfertada = this.postagemService.encontrarPorId(id_postagem_ofertada);
