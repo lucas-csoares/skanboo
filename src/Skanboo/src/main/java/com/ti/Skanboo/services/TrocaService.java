@@ -1,16 +1,13 @@
 package com.ti.Skanboo.services;
 
 import java.util.List;
-
-import javax.swing.text.html.parser.Entity;
-
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import com.ti.Skanboo.exceptions.AuthorizationException;
 import com.ti.Skanboo.exceptions.EntityNotFoundException;
-import com.ti.Skanboo.exceptions.OfferUpdateException;
+import com.ti.Skanboo.exceptions.ExchangeCreationException;
+import com.ti.Skanboo.exceptions.ExchangeNotFound;
+import com.ti.Skanboo.exceptions.ExchangeUpdateException;
 import com.ti.Skanboo.models.Oferta;
 import com.ti.Skanboo.models.Postagem;
 import com.ti.Skanboo.models.Troca;
@@ -49,41 +46,26 @@ public class TrocaService {
     // Usuario usuarioPostagemOrigem = postagemOrigem.getUsuario();
     // Usuario usuarioPostagemOfertada = postagemOfertada.getUsuario();
     
-    //*Método listarTroca - Precisa de revisão 
+                   
     public List<Troca> listarTrocasUsuarioAtivo() {
-        List<List<Oferta>> ofertasFeitas = this.ofertaService.listarOfertasFeitasUsuarioAtivo(); //já verifica o usuário logado
-        List<List<Oferta>> ofertasRecebidas = this.ofertaService.listarOfertasRecebidasUsuarioAtivo();
-        List<Troca> trocasRealizadas = new ArrayList<>();
-               
-        for (List<Oferta> oferta : ofertasFeitas) {
-            for (Oferta of : oferta) {
-                
-                List<Troca> trocas = this.trocaRepository.findByOfertaId(of.getId());
-                
-                if (!trocas.isEmpty()) {
-                    trocasRealizadas.addAll(trocas);
-                }
-            }
-        }
-
-        for (List<Oferta> oferta : ofertasRecebidas) {
-            for (Oferta of : oferta) {
-                List<Troca> trocas = this.trocaRepository.findByOfertaId(of.getId());
-
-                if (!trocas.isEmpty()) {
-                    trocasRealizadas.addAll(trocas);
-                }
-            }
-        }
         
-        if (trocasRealizadas.isEmpty())
-            throw new RuntimeException("Usuario nao realizou nenhuma troca!");
+        
+        UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
+        Long usuarioId = userSpringSecurity.getId();
+        List<Troca> todasTrocas = trocaRepository.findAll();
+
+        List<Troca> trocasDoUsuarioLogado = todasTrocas.stream()
+        .filter(troca -> troca.getOferta().getPostagemOrigem().getUsuario().getId().equals(usuarioId)
+            || troca.getOferta().getPostagemOfertada().getUsuario().getId().equals(usuarioId))
+        .collect(Collectors.toList());
+
+        if (trocasDoUsuarioLogado.isEmpty()) {
+            throw new ExchangeNotFound("Usuário não possui trocas!");
+        }
+
+        return trocasDoUsuarioLogado;
     
-        return trocasRealizadas;
-            
     }
-                
-    
     
 
 
@@ -102,7 +84,7 @@ public class TrocaService {
         if (statusOferta == OfertaEnum.ACEITA) {
            troca = new Troca(obj);          
         } else {
-            throw new RuntimeException("Não é possível criar troca: oferta não aceita");
+            throw new ExchangeCreationException("Não é possível criar troca: oferta não aceita");
         }
         
         return this.trocaRepository.save(troca);
@@ -115,11 +97,10 @@ public class TrocaService {
         
         Troca novaTroca = encontrarPorId(id_troca); 
 
-        if (novaTroca.getStatus().equals(TrocaEnum.FINALIZADA)) //verifica a troca original
-            throw new RuntimeException("A Troca já foi finalizada, seu status nao pode ser atualizado!");
+        if (novaTroca.getStatus().equals(TrocaEnum.FINALIZADA)) 
+            throw new ExchangeUpdateException("A Troca já foi finalizada, seu status nao pode ser atualizado!");
 
-        //UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
-        //List<Postagem> postagem = new ArrayList<Postagem>();
+
         
         List<Postagem> postagensUsuarioLogado = this.postagemService.listarPostagensUsuarioAtivo();
         
@@ -139,17 +120,7 @@ public class TrocaService {
         
         return this.trocaRepository.save(novaTroca);
     }
-        
-        //verifica a troca atualizada               
-        //List<Postagem> postagemUsuarioLogado = userSpringSecurity.PostagemRepository.findByUsuario_Id(userSpringSecurity.getId());
-        //novaTroca.getOferta().getPostagemOrigem().getUsuario().getId();
-        //postagem.addAll();
-        //List<Oferta> ofertasRelacionadas = new ArrayList<Oferta>();
-        //Postagem postagemOrigem = oferta.getPostagemOrigem();
-        //userSpringSecurity.getId()
-                    
-        
-    
+         
     
     
     public void deletarPorId(Long id) {
