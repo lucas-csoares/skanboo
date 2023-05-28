@@ -97,6 +97,7 @@ export default {
         .then(() => {
           alert("Endereço salvo com sucesso");
           this.errors = [];
+          return this.$router.push({ name: 'UsuarioView' });
         })
         .catch((e) => {
           console.log(this.errors);

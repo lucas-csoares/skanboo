@@ -109,7 +109,7 @@ export default {
                     this.$router.push({ name: 'UsuarioView' });
                 })
                 .catch((e) => {
-                    alert('Todos os campos da endereco devem ser preenchidos!');
+                    alert('Todos os campos do endereco devem ser preenchidos!');
                     this.errors = e.response.data.errors;
                     console.log(this.errors);
                 });

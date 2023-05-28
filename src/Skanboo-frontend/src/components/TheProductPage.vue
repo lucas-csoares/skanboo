@@ -1,9 +1,7 @@
 <template>
   <div v-if="postagem">
     <section>
-
       <div class="container">
-
 
         <div class="descricao">
           <div class="imagem">
@@ -37,30 +35,48 @@
         </div>
       </div>
       <div class="div-botao">
-        <button>Oferertar</button>
+        <button @click="saveIdOfertada"><router-link :to="{ name: 'EscolherProdutoView' }">Negociar</router-link></button>
       </div>
     </section>
+    <!-- <EscolherProdutoView idOfertada="kljfdlkjf" /> -->
   </div>
 </template>
 
 <script>
 import Postagem from '../services/PostagemService';
+import Oferta from '../services/OfertaService';
+// import EscolherProdutoView from '@/views/EscolherProdutoView.vue';
 
 export default {
-  props: ['id'],
+  props: ["id"],
   data() {
     return {
       postagem: null,
+      Oferta: null,
     };
   },
-
   mounted() {
     Postagem.exibirInfoPostagem(this.id).then((resposta) => {
       this.postagem = resposta.data;
       console.log(resposta.data);
+      console.log(this.id);
       return this.postagem;
     });
   },
+  methods: {
+    criarOferta() {
+      Oferta.criar()
+        .then((resposta) => {
+          const oferta = resposta.data;
+          this.oferta = oferta;
+        })
+        .catch((e) => console.log(e.message));
+    },
+    saveIdOfertada() {
+      sessionStorage.setItem('idOfertada', this.postagem.id);
+    },
+  },
+  // components: { EscolherProdutoView }
 };
 </script>
 
@@ -87,7 +103,7 @@ export default {
 img {
   max-width: 300px;
   max-height: 300px;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .titulo {

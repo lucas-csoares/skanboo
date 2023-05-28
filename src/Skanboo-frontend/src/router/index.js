@@ -19,6 +19,7 @@ import TheParceiros from "../components/TheParceiros";
 import TheEditPartner from "../components/TheEditPartner";
 import CadastroEnderecoView from "../views/CadastroEnderecoView"
 import ProdutosOferecidosView from "../views/ProdutosOferecidosView"
+import EscolherProdutoView from "../views/EscolherProdutoView"
 
 const routes = [
   {
@@ -100,6 +101,12 @@ const routes = [
     path: "/ProdutosOferecidosView",
     name: "ProdutosOferecidosView",
     component: ProdutosOferecidosView
+  },
+  {
+    path: "/EscolherProdutoView",
+    name: "EscolherProdutoView",
+    component: EscolherProdutoView,
+    props: true
   },
   {
     path: "/postagem/:id",

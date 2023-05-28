@@ -7,9 +7,6 @@
                 <div class="card-img">
                     <img src="" alt="Foto do produto" class="card-img-produto" />
                 </div>
-                <button class="categoria-produto">
-                    Categoria produto
-                </button>
             </div>
             <img src="../assets/flecha.png" class="flecha-img">
             <div class="card">
@@ -17,17 +14,72 @@
                 <div class="card-img">
                     <img src="" alt="Foto do produto" class="card-img-produto" />
                 </div>
-                <button class="categoria-produto">
-                    Categoria produto
-                </button>
+                <div class="div-botao">
+                    <button @click="criarOferta"><router-link
+                            :to="{ name: 'EscolherProdutoView' }">Negociar</router-link></button>
+                </div>
             </div>
         </div>
     </section>
 </template>
+
+
   
 <script>
+import Postagem from "../services/PostagemService";
+import Oferta from '../services/OfertaService';
 
+export default {
+    data() {
+        return {
+            postagem: {
+                id: "",
+                titulo: "",
+                descricao: "",
+                categoriaProduto: "",
+                categoriaProdutoDesejado: "",
+                status: "",
+            },
+            postagens: [],
+        };
+    },
 
+    mounted() {
+
+        Postagem.exibirPostagensUsuarioLogado()
+            .then((resposta) => {
+                const postagens = resposta.data;
+                this.postagens = postagens;
+            })
+            .catch((e) => console.log(e.message));
+    },
+
+    methods: {
+        carregarPostagens() {
+            Postagem.exibirPostagensUsuarioLogado()
+                .then((resposta) => {
+                    const postagens = resposta.data;
+                    this.postagens = postagens;
+                })
+                .catch((e) => console.log(e.message));
+        },
+        criarOferta() {
+
+            const idOfertada = sessionStorage.getItem('idOfertada');
+            const idOrigem = sessionStorage.getItem('idOrigem');
+
+            console.log('Origem Id:', idOfertada);
+            console.log('Origem Id:', idOrigem);
+
+            Oferta.criar(idOfertada, idOrigem)
+                .then(() => {
+                    alert('Oferta realizada com sucesso!');
+                    this.errors = [];
+                })
+                .catch((e) => console.log(e.message));
+        },
+    },
+};
 </script>
   
 <style scoped>
