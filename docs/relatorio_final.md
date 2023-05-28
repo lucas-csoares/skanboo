@@ -154,14 +154,49 @@ O usuário deve acessar o status de negociações e selecionar a negociação qu
 
 #### Processo 1 – Gerenciar usuário
 
+**Cadastro de usuário**
+
 | **Campo**          | **Tipo**       | **Restrições**                                                                  | **Valor default** |
 | ------------------ | -------------- | ------------------------------------------------------------------------------- | ----------------- |
+| Nome               | Caixa de texto | Texto com no máximo 100 caracteres                                              | -                 |
 | E-mail             | Caixa de texto | Formato de e-mail                                                               | -                 |
 | Senha              | Caixa de texto | Mínimo 12 caracteres com no mínimo uma letra, um número e um caractere especial | -                 |
 | Data de Nascimento | Data           | Formato dd/mm/aaaa e anterior a data corrente                                   | -                 |
 | CPF                | Número         | 11 números                                                                      | -                 |
 | Foto               | Arquivo        | Máximo de 1 foto                                                                | -                 |
 | Telefone           | Caixa de texto | Telefones seguindo plano de numeração brasileiro                                | -                 |
+
+**Cadastro de endereço**
+
+| **Campo**   | **Tipo**       | **Restrições**                    | **Valor default** |
+| ----------- | -------------- | --------------------------------- | ----------------- |
+| Bairro      | Caixa de texto | Texto com no máximo 45 caracteres | -                 |
+| CEP         | Caixa de texto | Texto com no máximo 45 caracteres | -                 |
+| Cidade      | Caixa de texto | Texto com no máximo 45 caracteres | -                 |
+| Complemento | Caixa de texto | Texto com no máximo 45 caracteres | -                 |
+| Número      | Número         | -                                 | -                 |
+| Rua         | Caixa de texto | Texto com no máximo 45 caracteres | -                 |
+| UF          | Seleção única  | Lista de UFs do Brasil            | -                 |
+
+**Atualizar informações de usuário**
+
+| **Campo** | **Tipo**       | **Restrições**                                   | **Valor default** |
+| --------- | -------------- | ------------------------------------------------ | ----------------- |
+| Nome      | Caixa de texto | Texto com no máximo 100 caracteres               | Nome atual        |
+| Foto      | Arquivo        | Máximo de 1 foto                                 | Foto atual        |
+| Telefone  | Caixa de texto | Telefones seguindo plano de numeração brasileiro | Telefone atual    |
+
+**Atualizar informações de endereço**
+
+| **Campo**   | **Tipo**       | **Restrições**                    | **Valor default** |
+| ----------- | -------------- | --------------------------------- | ----------------- |
+| Bairro      | Caixa de texto | Texto com no máximo 45 caracteres | Bairro atual      |
+| CEP         | Caixa de texto | Texto com no máximo 45 caracteres | CEP atual         |
+| Cidade      | Caixa de texto | Texto com no máximo 45 caracteres | Cidade atual      |
+| Complemento | Caixa de texto | Texto com no máximo 45 caracteres | Complemento atual |
+| Número      | Número         | -                                 | Número atual      |
+| Rua         | Caixa de texto | Texto com no máximo 45 caracteres | Rua atual         |
+| UF          | Seleção única  | Lista de UFs do Brasil            | UF atual          |
 
 #### Processo 2 – Gerenciar produtos
 
@@ -172,37 +207,68 @@ O usuário deve acessar o status de negociações e selecionar a negociação qu
 | Editar            | Link     | Link único     | -                 |
 | Adicionar produto | Link     | Link único     | -                 |
 
-**Preencher informações de cadastro**
+**Cadastro de produto**
 
-| **Campo**          | **Tipo**       | **Restrições**                                                                          | **Valor default** |
-| ------------------ | -------------- | --------------------------------------------------------------------------------------- | ----------------- |
-| Título da postagem | Caixa de texto | Máximo de 30 caracteres                                                                 | -                 |
-| Descrição          | Caixa de texto | Máximo de 140 caracteres                                                                | -                 |
-| Adicionar fotos    | Arquivo        | Máximo de 5 fotos                                                                       | -                 |
-| Categoria produto  | Seleção única  | [Eletrônicos, Moda e beleza, Esportes, Música, Produtos de casa, Serviços, Video Games] | -                 |
+| **Campo**            | **Tipo**       | **Restrições**                                                                          | **Valor default** |
+| -------------------- | -------------- | --------------------------------------------------------------------------------------- | ----------------- |
+| Título da postagem   | Caixa de texto | Máximo de 30 caracteres                                                                 | -                 |
+| Descrição            | Caixa de texto | Máximo de 140 caracteres                                                                | -                 |
+| Adicionar foto       | Arquivo        | Máximo de 1 fotos                                                                       | -                 |
+| Categoria do produto | Seleção única  | [Eletrônicos, Moda e beleza, Esportes, Música, Produtos de casa, Serviços, Video Games] | -                 |
+| Categoria desejada   | Seleção única  | [Eletrônicos, Moda e beleza, Esportes, Música, Produtos de casa, Serviços, Video Games] | -                 |
 
-**Atualizar informações**
+**Atualizar informações do produto**
 
-| **Campo**          | **Tipo**       | **Restrições**                                                                          | **Valor default** |
-| ------------------ | -------------- | --------------------------------------------------------------------------------------- | ----------------- |
-| Título da postagem | Caixa de texto | Máximo de 30 caracteres                                                                 | Informação atual  |
-| Descrição          | Caixa de texto | Máximo de 140 caracteres                                                                | Informação atual  |
-| Adicionar fotos    | Arquivo        | Máximo de 5 fotos                                                                       | Fotos atuais      |
-| Categoria produto  | Seleção única  | [Eletrônicos, Moda e beleza, Esportes, Música, Produtos de casa, Serviços, Video Games] | Categorias atuais |
+| **Campo**            | **Tipo**       | **Restrições**                                                                          | **Valor default**          |
+| -------------------- | -------------- | --------------------------------------------------------------------------------------- | -------------------------- |
+| Título da postagem   | Caixa de texto | Máximo de 30 caracteres                                                                 | Título atual               |
+| Descrição            | Caixa de texto | Máximo de 140 caracteres                                                                | Descrição atual            |
+| Adicionar foto       | Arquivo        | Máximo de 1 fotos                                                                       | Foto atual                 |
+| Categoria do produto | Seleção única  | [Eletrônicos, Moda e beleza, Esportes, Música, Produtos de casa, Serviços, Video Games] | Categoria do produto atual |
+| Categoria desejada   | Seleção única  | [Eletrônicos, Moda e beleza, Esportes, Música, Produtos de casa, Serviços, Video Games] | Categoria desejada atual   |
 
 #### Processo 3 – Cooptar parceiros
 
+**Cadastro de parceiro**
+
 | **Campo**         | **Tipo**       | **Restrições**             | **Valor default** |
 | ----------------- | -------------- | -------------------------- | ----------------- |
-| Nome da empresa   | Caixa de texto | -                          | -                 |
-| Logo da empresa   | Arquivo        | -                          | -                 |
+| Nome da empresa   | Caixa de texto | Máximo de 100 caracteres   | -                 |
+| Logo da empresa   | Arquivo        | Máximo 1 foto              | -                 |
 | CNPJ              | Número         | Máximo de 14 dígitos       | -                 |
-| Plano de parceria | Seleção única  | [Standard, Premium, Basic] | Standard          |
+| Plano de parceria | Seleção única  | [Basic, Standard, Premium] | -                 |
 | Contrato          | Arquivo        | No máximo 5 PDF            | -                 |
+
+**Atualizar informações do parceiro**
+
+| **Campo**       | **Tipo**       | **Restrições**           | **Valor default** |
+| --------------- | -------------- | ------------------------ | ----------------- |
+| Nome da empresa | Caixa de texto | Máximo de 100 caracteres | Nome atual        |
+| Logo da empresa | Arquivo        | Máximo 1 foto            | Logo atual        |
 
 #### Processo 4 – Troca de objetos entre usuários
 
-Os campos a serem preenchidos nesse processo são os apresentados no processo 2 - Gerenciar produtos. Não existem cadastros adicionais para essa etapa.
+**Realizar oferta**
+
+| **Campo**                                         | **Tipo** | **Restrições** | **Valor default** |
+| ------------------------------------------------- | -------- | -------------- | ----------------- |
+| Selecionar produto desejado                       | Link     | Link único     | -                 |
+| Selecionar produto que desejada oferecer em troca | Link     | Link único     | -                 |
+| Fazer oferta                                      | Link     | Link único     | -                 |
+
+**Atualizar status de uma oferta**
+
+| **Campo**                                                           | **Tipo** | **Restrições** | **Valor default** |
+| ------------------------------------------------------------------- | -------- | -------------- | ----------------- |
+| Aceitar oferta (apenas para usuário que recebeu a oferta)           | Link     | Link único     | -                 |
+| Recusar oferta (ambos usuários podem recusar a oferta em andamento) | Link     | Link único     | -                 |
+
+**Atualizar status de uma troca**
+
+| **Campo**                    | **Tipo** | **Restrições** | **Valor default** |
+| ---------------------------- | -------- | -------------- | ----------------- |
+| Confirmar troca (usuário 01) | Link     | Link único     | -                 |
+| Confirmar troca (usuário 02) | Link     | Link único     | -                 |
 
 #### Processo 5 – Avaliação do usuário
 
@@ -249,7 +315,7 @@ A seguir é apresentada a arquitetura de data flow da aplicação web.
 
 A seguir é apresentado o Diagrama de Entidade-Relacionamento (DER) do projeto desenvolvido.
 
-![Diagrama de Entidade Relacionamento](imagens/diagrama-entidade-relacionamento.png 'Diagrama de Entidade Relacionamento')
+![Diagrama de Entidade Relacionamento](imagens/diagrama-entidade-relacionamento-rev02.png 'Diagrama de Entidade Relacionamento')
 
 ## 6. Indicadores de desempenho
 
