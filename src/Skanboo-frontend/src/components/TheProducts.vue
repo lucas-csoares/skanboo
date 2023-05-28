@@ -1,6 +1,22 @@
 <template>
   <section class="products">
     <h1>**Mexer nessa frase**</h1>
+
+    <div class="carrossel">
+      <div class="carrossel-container" :style="{ transform: `translateX(-${currentSlideIndex * 100}%)` }">
+        <div class="carrossel-item" v-for="postagem in carrosselPostagens" :key="postagem.id">
+          <router-link :to="{ name: 'TheProductPage', params: { id: postagem.id } }">
+            <div class="card-img-carrossel"><img :src="postagem.foto" alt="" class="card-img" /></div>
+          </router-link>
+        </div>
+      </div>
+
+      <div class="carrossel-navigation">
+        <button class="arrow" @click="slideAnterior"><img src="../assets/left-arrow.png" alt="" /></button>
+        <button class="arrow" @click="proximoSlide"><img src="../assets/right-arrow.png" alt="" /></button>
+      </div>
+    </div>
+
     <div class="container">
       <div v-for="postagem in postagensPaginadas" :key="postagem.id" class="card">
         <router-link :to="{ name: 'TheProductPage', params: { id: postagem.id } }">
@@ -13,7 +29,7 @@
 
     <div class="pagination">
       <div class="center">
-        <div class="left-arrow">
+        <div class="arrow">
           <a href="#" @click="paginaAnterior"><img src="../assets/left-arrow.png" alt="" /></a>
         </div>
         <div class="pagination">
@@ -25,7 +41,7 @@
             >{{ pagina }}</a
           >
         </div>
-        <div class="left-arrow">
+        <div class="arrow">
           <a href="#" @click="proximaPagina"><img src="../assets/right-arrow.png" alt="" /></a>
         </div>
       </div>
@@ -47,6 +63,7 @@ export default {
       postagens: [],
       paginaAtual: 1,
       postagensPorPagina: 4,
+      currentSlideIndex: 0,
     };
   },
 
@@ -66,8 +83,24 @@ export default {
     exibirTodasPostagens() {
       Postagem.exibirTodasPostagens().then((resposta) => {
         this.postagens = resposta.data;
-        console.log(this.postagens);
+        this.carrosselPostagens = this.obterPostagensAleatorias();
       });
+    },
+
+    obterPostagensAleatorias() {
+      const postagensAleatorias = this.postagens.sort(() => 0.5 - Math.random());
+      return postagensAleatorias.slice(0, 4);
+    },
+
+    proximoSlide() {
+      if (this.currentSlideIndex < this.carrosselPostagens.length - 1) {
+        this.currentSlideIndex++;
+      }
+    },
+    slideAnterior() {
+      if (this.currentSlideIndex > 0) {
+        this.currentSlideIndex--;
+      }
     },
 
     irParaPagina(pagina) {
@@ -109,14 +142,15 @@ p,
 dd,
 dt,
 dl {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 
 img {
   display: block;
   max-width: 100%;
 }
+
 .container {
   width: 1156px;
   display: flex;
@@ -143,19 +177,26 @@ img {
   transform: scale(1.02);
 }
 
-.card img {
+.card img,
+.carrossel-item img {
   margin-top: 10px;
   border-radius: 4px;
   min-height: 250px;
 }
 
-.card h2 {
+.card h2,
+h2 {
   text-align: center;
   font-weight: bold;
   padding: 8px;
   box-sizing: border-box;
   margin-left: 5px;
   margin-top: 5px;
+  font-size: 15px;
+  color: #252c32;
+  kerning: -0.6%;
+  font-weight: 400;
+  text-align: left;
 }
 
 .card-img-produto img {
@@ -189,34 +230,8 @@ img {
 }
 
 .ver-produto:hover {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 2px 6px 2px 8px;
-  gap: 4px;
-  position: absolute;
-  width: 240px;
-  height: 32px;
   background: #f9dc5c;
   border: 1px solid #f9dc5c;
-  border-radius: 4px;
-  font-weight: 600;
-  color: #515864;
-  margin-left: 15px;
-}
-
-h2 {
-  font-size: 15px;
-  color: #252c32;
-  kerning: -0.6%;
-  font-weight: 400;
-  text-align: left;
-}
-
-h1 {
-  display: block;
 }
 
 .like {
@@ -250,7 +265,7 @@ h1 {
   padding: 10px 16px;
   text-decoration: none;
   transition: background-color 0.3s;
-  border: 0px solid #ddd;
+  border: 0 solid #ddd;
   border-radius: 100%;
   margin: 0 4px;
 }
@@ -258,18 +273,63 @@ h1 {
 .pagination a.active {
   background-color: #f9dc5c;
   color: rgba(102, 112, 133, 1);
-  border: 0px solid #f9dc5c;
+  border: 0 solid #f9dc5c;
 }
 
 .pagination a:hover:not(.active) {
   background-color: #f5f5f5;
   padding: 11px 16px;
 }
-.left-arrow img {
+
+.arrow img {
   width: 24px;
 }
 
-.left-arrow img::hover {
+.arrow img:hover {
   background-color: transparent;
+}
+
+.carrossel {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carrossel-container {
+  display: flex;
+  margin: 30px 0 15px 0;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carrossel-item {
+  flex: 0 0 100%;
+  padding: 0 10px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.card-img-carrossel {
+  width: 100%;
+  height: 300px;
+}
+
+.carrossel-item img {
+  width: 500px;
+  height: 300px;
+  border-radius: 10px;
+}
+
+.carrossel-navigation {
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.carrossel-navigation .arrow:hover {
+  background-color: #f5f5f5;
 }
 </style>

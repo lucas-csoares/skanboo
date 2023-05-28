@@ -2,7 +2,7 @@
   <section class="products">
     <div class="adicionar">
       <h1>Meus anúncios</h1>
-      <!-- Revisar, icone provisório -->
+
       <a href="/postarProdutoView"><img src="../assets/plus-icon.png" alt="Adicionar postagem" class="adicionar_postagem"
           style="width: 20px; height: 20px" /></a>
     </div>
@@ -26,14 +26,6 @@
         </button>
       </div>
 
-      <!-- DIV DE TESTE 
-      <div class="card">
-        <h2>Blusa top</h2>
-        <div class="card-img-produto">
-          <img src="../assets/imagem-produto.avif" class="card-img" />
-        </div>
-        <button class="negociar">NEGOCIAR</button>
-      </div> -->
     </div>
   </section>
 </template>
