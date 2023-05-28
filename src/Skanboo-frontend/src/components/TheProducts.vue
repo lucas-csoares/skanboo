@@ -140,11 +140,7 @@ img {
 }
 
 .card:hover {
-  border: 2px solid #e5e9eb;
   transform: scale(1.02);
-}
-.card:hover h2 {
-  color: #eb5b54;
 }
 
 .card img {
