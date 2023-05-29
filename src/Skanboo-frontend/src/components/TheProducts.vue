@@ -64,6 +64,7 @@ export default {
       paginaAtual: 1,
       postagensPorPagina: 4,
       currentSlideIndex: 0,
+      carrosselPostagens: 0,
     };
   },
 

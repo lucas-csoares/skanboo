@@ -193,6 +193,7 @@ li {
   background-color: lightgray;
   align-items: center;
   margin-left: 150px;
+  
 }
 
 button {
@@ -209,7 +210,7 @@ button {
   color: #515864;
   transition: 0.3s;
   margin-top: 10px;
-  margin-left: 0;
+  margin-left: 17px;
 }
 
 .info-usuario p {

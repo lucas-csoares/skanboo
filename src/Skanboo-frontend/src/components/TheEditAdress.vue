@@ -162,7 +162,7 @@ button {
     font-weight: 600;
     color: #515864;
     transition: 0.3s;
-    margin-left: 0;
+    margin-left: 18px;
     margin-top: 15px;
 }
 

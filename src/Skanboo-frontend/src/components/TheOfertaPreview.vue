@@ -7,7 +7,6 @@
                 <div class="card-img">
                     <img :src="postagemOrigem.foto" class="card-img-produto" />
                 </div>
-                
             </div>
 
             <img src="../assets/flecha.png" class="flecha-img">
@@ -17,11 +16,10 @@
                 <div class="card-img">
                     <img :src="postagemOfertada.foto" class="card-img-produto" />
                 </div>
-                <div class="div-botao">
-                    <button @click="criarOferta"><router-link :to="{ name: 'UsuarioView' }">Negociar</router-link></button>
-                </div>
             </div>
             
+            <button class="oferta-botao" @click="criarOferta"><router-link
+                        :to="{ name: 'UsuarioView' }">Negociar</router-link></button>
         </div>
     </section>
 </template>
@@ -200,24 +198,6 @@ img {
     margin-right: auto;
 }
 
-.categoria-produto {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 2px 6px 2px 8px;
-    gap: 4px;
-    width: 240px;
-    height: 32px;
-    background: #fdfcfc;
-    border: 1px solid #36435a;
-    border-radius: 4px;
-    font-weight: 600;
-    color: #36435a;
-    margin-left: 15px;
-}
-
 h2 {
     font-size: 18px;
     color: rgb(12, 23, 29);
@@ -228,6 +208,19 @@ h2 {
 
 h1 {
     text-align: center;
+}
+
+.oferta-botao {
+    width: 300px;
+    height: 32px;
+    background: #f9dc5c;
+    border: 1px solid #e2e2e2;
+    border-radius: 16px;
+    font-weight: 600;
+    color: #515864;
+    transition: 0.3s;
+    margin-right: 0px;
+    margin-left: 200px;
 }
 </style>
   
