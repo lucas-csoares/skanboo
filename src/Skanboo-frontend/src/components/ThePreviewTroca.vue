@@ -174,10 +174,10 @@ img {
 .categorias-produto {
   display: flex;
   flex-direction: column;
-  height: 150px;
+  height: 180px;
   margin-left: 10px;
   margin-top: 0px;
-  padding: 10px;
+  padding: 20px;
   padding-top: 0;
   padding-bottom: 0;
   flex: 1;
@@ -186,8 +186,8 @@ img {
 }
 
 span {
-  line-height: 1.5em;
   font-size: small;
+  margin-top: 5px;
 }
 
 .descricao {
