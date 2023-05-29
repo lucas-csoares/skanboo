@@ -56,10 +56,11 @@ footer {
   background-color: black;
   height: 300px;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
   max-width: 1340px;
+  margin: 0 auto;
 }
 
 .newsletter input {
@@ -138,7 +139,7 @@ ul {
 
 @media (max-width: 600px) {
   .info {
-    margin-left: 200px;
+    margin: 0 auto;
   }
   .info li {
     line-height: 30px;
