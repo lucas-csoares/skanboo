@@ -162,7 +162,7 @@ img {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 30px;
-    border: 1px solid #e5e9eb;
+    border: 1px solid #b2b4b6;
     border-radius: 4px;
 }
 

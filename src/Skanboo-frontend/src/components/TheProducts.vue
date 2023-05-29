@@ -1,6 +1,6 @@
 <template>
   <section class="products">
-    <h1>**Mexer nessa frase**</h1>
+    <h1>Anúncios para você</h1>
 
     <div class="carrossel">
       <div class="carrossel-container" :style="{ transform: `translateX(-${currentSlideIndex * 100}%)` }">
