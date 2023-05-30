@@ -1,12 +1,14 @@
 package com.ti.Skanboo.models;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ti.Skanboo.models.enums.UsuarioEnum;
 
@@ -92,6 +94,13 @@ public class Usuario {
     @CollectionTable(name = "perfis_usuario")
     @Column(name = "perfil", nullable = false)
     private Set<Integer> perfis = new HashSet<>();
+
+    @Column(name = "hora", nullable = false)
+    @JsonFormat(pattern = "HH:mm:ss")
+    private LocalTime hora;
+
+    @Column(name = "data", nullable = false)
+    private String data;
 
     /*-----Codigos para autenticadao de usuario-----*/
 

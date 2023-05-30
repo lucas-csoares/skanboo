@@ -77,12 +77,12 @@ public class Postagem {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Oferta> ofertasFeitas = new ArrayList<Oferta>();
 
-    @Column(name = "hora_postagem", nullable = false)
+    @Column(name = "hora", nullable = false)
     @JsonFormat(pattern = "HH:mm:ss")
-    private LocalTime horaPostagem;
+    private LocalTime hora;
 
-    @Column(name = "data_postagem", nullable = false)
-    private String dataPostagem;
+    @Column(name = "data", nullable = false)
+    private String data;
 
     public Postagem(String titulo, Usuario usuario, String descricao, String categoriaProduto,
             String categoriaProdutoDesejado) {
@@ -91,8 +91,8 @@ public class Postagem {
         this.descricao = descricao;
         this.categoriaProduto = categoriaProduto;
         this.categoriaProdutoDesejado = categoriaProdutoDesejado;
-        this.horaPostagem = LocalTime.now();
-        this.dataPostagem = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        this.hora = LocalTime.now();
+        this.data = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
 
 }

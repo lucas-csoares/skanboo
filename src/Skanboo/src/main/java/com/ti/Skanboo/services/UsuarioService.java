@@ -1,5 +1,8 @@
 package com.ti.Skanboo.services;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -71,6 +74,8 @@ public class UsuarioService {
         /* Usuario padrao e salvo como USER - num 2 */
         obj.setPerfis(Stream.of(UsuarioEnum.USER.getCode()).collect(Collectors.toSet()));
         obj.setEndereco(null);
+        obj.setData(DateTimeFormatter.ofPattern("dd/MM/yyyy").format(LocalDate.now()));
+        obj.setHora(LocalTime.now());
 
         return this.usuarioRepository.save(obj);
     }
@@ -86,6 +91,8 @@ public class UsuarioService {
         usuario.setSenha(obj.getSenha());
         usuario.setSenha(this.bCryptPasswordEncoder.encode(obj.getSenha()));
         usuario.setTelefone(obj.getTelefone());
+        usuario.setData(DateTimeFormatter.ofPattern("dd/MM/yyyy").format(LocalDate.now()));
+        usuario.setHora(LocalTime.now());
 
         if (obj.getFoto() != null)
             usuario.setFoto(obj.getFoto());
@@ -108,7 +115,7 @@ public class UsuarioService {
         usuario.setDataNascimento(obj.getDataNascimento());
         usuario.setFoto(obj.getFoto());
         usuario.setTelefone(obj.getTelefone());
-        usuario.setFoto(obj.getFoto());
+
 
         return this.usuarioRepository.save(usuario);
     }
