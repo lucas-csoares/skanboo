@@ -19,10 +19,16 @@
             <span class="oferta">{{ postagem.categoriaProdutoDesejado }}</span>
 
             <br />
-            <br />
 
             <span><b>Local: </b></span>
             <span class="oferta">estado e cidade</span>
+
+            <br />
+
+            <span><b>Postador por: </b></span>
+            <span class="usuario-postagem">{{ postagem.usuario }}</span>
+            <span>nota do usuario ****a ser editada****</span>
+      
           </div>
           <div class="informacoes-produto">
 
