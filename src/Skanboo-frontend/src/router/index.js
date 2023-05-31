@@ -19,10 +19,11 @@ import TheParceiros from "../components/TheParceiros";
 import TheEditPartner from "../components/TheEditPartner";
 import TheOfertaPreview from "../components/TheOfertaPreview";
 import ProdutosOferecidosView from "../views/ProdutosOferecidosView";
-import OfertasRecebidasView from "../views/OfertasRecebidasView"
-import CadastroEnderecoView from "../views/CadastroEnderecoView"
-import OfertaView from "../views/OfertaView"
-import EscolherProdutoView from "../views/EscolherProdutoView"
+import OfertasRecebidasView from "../views/OfertasRecebidasView";
+import CadastroEnderecoView from "../views/CadastroEnderecoView";
+import OfertaView from "../views/OfertaView";
+import EscolherProdutoView from "../views/EscolherProdutoView";
+import PaginaAvaliacaoView from "../views/PaginaAvaliacaoView";
 
 const routes = [
   {
@@ -103,52 +104,57 @@ const routes = [
   {
     path: "/TheOfertaPreview",
     name: "TheOfertaPreview",
-    component: TheOfertaPreview
+    component: TheOfertaPreview,
   },
   {
     path: "/ProdutosOferecidosView",
     name: "ProdutosOferecidosView",
-    component: ProdutosOferecidosView
+    component: ProdutosOferecidosView,
   },
   {
     path: "/OfertasRecebidasView",
     name: "OfertasRecebidasView",
-    component: OfertasRecebidasView
+    component: OfertasRecebidasView,
   },
   {
     path: "/OfertaView",
     name: "OfertaView",
-    component: OfertaView
+    component: OfertaView,
   },
   {
     path: "/EscolherProdutoView",
     name: "EscolherProdutoView",
     component: EscolherProdutoView,
-    props: true
+    props: true,
   },
   {
     path: "/postagem/:id",
     name: "TheProductPage",
     component: TheProductPage,
-    props: true
+    props: true,
   },
   {
     path: "/postagem/:id",
     name: "TheEditProduct",
     component: TheEditProduct,
-    props: true
+    props: true,
   },
   {
     path: "/exibirParceirosView",
     name: "ExibirParceirosView",
-    component: TheParceiros
+    component: TheParceiros,
   },
   {
     path: "/parceiro/:id",
     name: "TheEditPartner",
     component: TheEditPartner,
-    props: true
-  }
+    props: true,
+  },
+  {
+    path: "/paginaAvaliacaoView",
+    name: "paginaAvaliacaoView",
+    component: PaginaAvaliacaoView,
+  },
 ];
 
 const router = createRouter({
