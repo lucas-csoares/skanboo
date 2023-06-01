@@ -217,6 +217,29 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler imple
     }
     //Erros da troca - FIM
 
+
+    //Erros da Avaliação - INÍCIO
+    @ExceptionHandler(RatingNotFound.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<Object> handleRatingNotFound(RatingNotFound ratingNotFound,
+            WebRequest request) {
+
+        log.error("Falha ao encontrar avaliacao", ratingNotFound);
+        return buildErrorResponse(ratingNotFound, HttpStatus.NOT_FOUND, request);
+    }
+
+    @ExceptionHandler(RatingCreationException.class)
+    @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
+    public ResponseEntity<Object> handleRatingCreationException(RatingCreationException ratingCreationException,
+            WebRequest request) {
+
+        log.error("Falha ao criar avaliacao", ratingCreationException);
+        return buildErrorResponse(ratingCreationException, HttpStatus.METHOD_NOT_ALLOWED, request);
+    }
+
+
+    //Erros da Avaliação - FIM
+
     
     @ExceptionHandler(OfferUpdateException.class)
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
