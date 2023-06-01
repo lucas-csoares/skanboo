@@ -11,11 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import com.ti.Skanboo.models.Avaliacao;
-//import com.ti.Skanboo.models.Troca;
 import com.ti.Skanboo.services.AvaliacaoService;
-import com.ti.Skanboo.services.TrocaService;
 
 import jakarta.validation.Valid;
 
@@ -33,8 +30,6 @@ public class AvaliacaoController {
 
     @PostMapping("/{id_troca}")
     public ResponseEntity<Void> criar(@PathVariable Long id_troca, @Valid @RequestBody Avaliacao obj) {
-
-        //Troca troca = this.trocaService.encontrarPorId(id_troca);
 
         this.avaliacaoService.criar(id_troca, obj);
 

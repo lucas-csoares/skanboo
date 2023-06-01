@@ -18,11 +18,11 @@ import java.time.LocalTime;
 @Service
 public class AvaliacaoService {
     
-    @Autowired
-    private AvaliacaoRepository avaliacao;
+    // @Autowired
+    // private AvaliacaoRepository avaliacao;
 
-    @Autowired
-    private UsuarioRepository usuarioRepository;
+    // @Autowired
+    // private UsuarioRepository usuarioRepository;
 
     @Autowired
     private TrocaService trocaService;
@@ -33,19 +33,17 @@ public class AvaliacaoService {
     @Autowired
     private AvaliacaoRepository avaliacaoRepository;
 
-    // Encontrar avaliacão por id
+    //# Encontrar avaliacão por id
+
+
+
+    //# Listar avaliações 
 
 
 
 
 
-   
 
-    // Listar avaliações 
-
-
-
-    // Criar avaliação
     public Avaliacao criar(Long id_troca, Avaliacao obj) {
 
 
@@ -83,15 +81,13 @@ public class AvaliacaoService {
     }
         
 
-
-
-    //Atualizar por id não faz sentido em um contexto da atualização.
-
-    
-    
-    
-    
     //Deletar avaliação por id
+
+
+    
+    
+    
+    
 
 
 
@@ -127,5 +123,7 @@ public class AvaliacaoService {
     //     }
     // }
     
+
+
 
 }
