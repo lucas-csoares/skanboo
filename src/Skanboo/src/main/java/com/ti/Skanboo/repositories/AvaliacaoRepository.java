@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import com.ti.Skanboo.models.Avaliacao;
 
 @Repository
-public class AvaliacaoRepository extends JpaRepository<Avaliacao, Long> {
+public interface AvaliacaoRepository extends JpaRepository<Avaliacao, Long> {
+    
     
 }

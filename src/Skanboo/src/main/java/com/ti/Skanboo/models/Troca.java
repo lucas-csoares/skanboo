@@ -1,5 +1,8 @@
 package com.ti.Skanboo.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ti.Skanboo.models.enums.TrocaEnum;
 
@@ -12,6 +15,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -51,6 +55,9 @@ public class Troca {
     //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Oferta oferta;
     
+     //Avaliacao
+    @OneToMany(mappedBy = "troca", cascade = CascadeType.ALL)
+    private List<Avaliacao> avaliacoes = new ArrayList<>();
     
     @Column(name = "confirmacao_usuario01")
     private Boolean confirma_usuario01;
@@ -61,6 +68,7 @@ public class Troca {
     
     @Enumerated(EnumType.STRING)
     private TrocaEnum status;
+
 
     // @Column(name = "descricao", length = 255, nullable = false)
     // @Size(min = 1, max = 255)
