@@ -83,8 +83,12 @@ public class Usuario {
     @NotBlank
     private String telefone;
 
-    @Column(name = "nota_final", nullable = true, updatable = true)
+    @Column(name = "nota_final", nullable = false, updatable = true)
     private Double notaFinal;
+
+    {
+        notaFinal = 0.0;
+    }
 
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
