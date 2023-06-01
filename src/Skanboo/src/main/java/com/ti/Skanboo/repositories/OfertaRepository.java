@@ -14,18 +14,20 @@ import com.ti.Skanboo.models.enums.OfertaEnum;
 @Repository
 public interface OfertaRepository extends JpaRepository<Oferta, Long> {
 
-    List<Oferta> findByPostagemOfertada_Id(Long id);
-    List<Oferta> findBypostagemOrigem_Id(Long id);
+        List<Oferta> findByPostagemOfertada_Id(Long id);
 
-    @Query("SELECT CASE WHEN COUNT(o) > 0 THEN true ELSE false END " +
-            "FROM Oferta o " +
-            "WHERE o.postagemOrigem = :postagemOrigem " +
-            "AND o.postagemOfertada = :postagemOfertada " +
-            "AND o.status = :status")
-    boolean existsByPostagemOrigemAndPostagemOfertadaAndStatus(
-            @Param("postagemOrigem") Postagem postagemOrigem,
-            @Param("postagemOfertada") Postagem postagemOfertada,
-            @Param("status") OfertaEnum status);
-            
-    // Oferta findByPostagemOrigemAndPostagemOfertada(Postagem postagemOrigem, Postagem postagemOfertada);
+        List<Oferta> findBypostagemOrigem_Id(Long id);
+
+        @Query("SELECT CASE WHEN COUNT(o) > 0 THEN true ELSE false END " +
+                        "FROM Oferta o " +
+                        "WHERE o.postagemOrigem = :postagemOrigem " +
+                        "AND o.postagemOfertada = :postagemOfertada " +
+                        "AND o.status = :status")
+        boolean existsByPostagemOrigemAndPostagemOfertadaAndStatus(
+                        @Param("postagemOrigem") Postagem postagemOrigem,
+                        @Param("postagemOfertada") Postagem postagemOfertada,
+                        @Param("status") OfertaEnum status);
+
+        // Oferta findByPostagemOrigemAndPostagemOfertada(Postagem postagemOrigem,
+        // Postagem postagemOfertada);
 }

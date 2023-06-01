@@ -100,9 +100,7 @@ public class Usuario {
     private LocalTime hora;
 
     @Column(name = "data", nullable = false)
-    private String data;
-
-    /*-----Codigos para autenticadao de usuario-----*/
+    private LocalDate data;
 
     public Set<UsuarioEnum> getPerfil() {
         return this.perfis.stream().map(x -> UsuarioEnum.toEnum(x)).collect(Collectors.toSet());
