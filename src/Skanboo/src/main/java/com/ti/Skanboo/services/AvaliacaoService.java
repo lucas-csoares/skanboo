@@ -100,32 +100,32 @@ public class AvaliacaoService {
     
     
     
-    private Boolean trocaPertenceAoUsuarioPostagemOrigem(UserSpringSecurity userSpringSecurity, Avaliacao avaliacao) {
-        return avaliacao.getTroca().getOferta().getPostagemOrigem().getUsuario().getId().equals(userSpringSecurity.getId());
-    }
+    // private Boolean trocaPertenceAoUsuarioPostagemOrigem(UserSpringSecurity userSpringSecurity, Avaliacao avaliacao) {
+    //     return avaliacao.getTroca().getOferta().getPostagemOrigem().getUsuario().getId().equals(userSpringSecurity.getId());
+    // }
 
-    private Boolean trocaPertenceAoUsuarioPostagemOfertada(UserSpringSecurity userSpringSecurity, Avaliacao avaliacao) {
-        return avaliacao.getTroca().getOferta().getPostagemOfertada().getUsuario().getId().equals(userSpringSecurity.getId());
-    }
+    // private Boolean trocaPertenceAoUsuarioPostagemOfertada(UserSpringSecurity userSpringSecurity, Avaliacao avaliacao) {
+    //     return avaliacao.getTroca().getOferta().getPostagemOfertada().getUsuario().getId().equals(userSpringSecurity.getId());
+    // }
     
 
 
 
 
-    public void atualizarNotaFinal(Avaliacao avaliacao) {
-        UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
+    // public void atualizarNotaFinal(Avaliacao avaliacao) {
+    //     UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
         
-        if (trocaPertenceAoUsuarioPostagemOrigem(userSpringSecurity, avaliacao)
-                || trocaPertenceAoUsuarioPostagemOfertada(userSpringSecurity, avaliacao)) {
-            Usuario usuario = avaliacao.getTroca().getOferta().getPostagemOfertada().getUsuario();
-            List<Avaliacao> avaliacoes = avaliacaoRepository.findByUsuarioAndMes(usuario, LocalDate.now().getMonthValue());
-            int somaNotas = avaliacoes.stream().mapToInt(Avaliacao::getNota).sum();
-            int quantidadeAvaliacoes = avaliacoes.size();
-            double mediaNotas = quantidadeAvaliacoes > 0 ? (double) somaNotas / quantidadeAvaliacoes : 0;
-            usuario.setNotaFinal(mediaNotas);
-            usuarioRepository.save(usuario);
-        }
-    }
+    //     if (trocaPertenceAoUsuarioPostagemOrigem(userSpringSecurity, avaliacao)
+    //             || trocaPertenceAoUsuarioPostagemOfertada(userSpringSecurity, avaliacao)) {
+    //         Usuario usuario = avaliacao.getTroca().getOferta().getPostagemOfertada().getUsuario();
+    //         List<Avaliacao> avaliacoes = avaliacaoRepository.findByUsuarioAndMes(usuario, LocalDate.now().getMonthValue());
+    //         int somaNotas = avaliacoes.stream().mapToInt(Avaliacao::getNota).sum();
+    //         int quantidadeAvaliacoes = avaliacoes.size();
+    //         double mediaNotas = quantidadeAvaliacoes > 0 ? (double) somaNotas / quantidadeAvaliacoes : 0;
+    //         usuario.setNotaFinal(mediaNotas);
+    //         usuarioRepository.save(usuario);
+    //     }
+    // }
     
 
 }

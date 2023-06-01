@@ -11,6 +11,6 @@ import com.ti.Skanboo.models.Usuario;
 @Repository
 public interface AvaliacaoRepository extends JpaRepository<Avaliacao, Long> {
     
-    @Query("SELECT a FROM Avaliacao a WHERE a.usuario = :usuario AND MONTH(a.data) = :mes")
-    List<Avaliacao> findByUsuarioAndMes(Usuario usuario, int mes);
+   // @Query("SELECT a FROM Avaliacao a WHERE a.usuario = :usuario AND MONTH(a.data) = :mes")
+    //List<Avaliacao> findByUsuarioAndMes(Usuario usuario, int mes);
 }
