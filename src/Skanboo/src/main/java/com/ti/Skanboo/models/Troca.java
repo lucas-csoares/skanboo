@@ -1,6 +1,9 @@
 package com.ti.Skanboo.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ti.Skanboo.models.enums.TrocaEnum;
 
 import jakarta.persistence.CascadeType;
@@ -37,20 +40,18 @@ public class Troca {
         this.status = TrocaEnum.EM_ANDAMENTO;
         this.confirma_usuario01 = false;
         this.confirma_usuario02 = false;
+        this.data = LocalDate.now();
+        this.hora = LocalTime.now();
     }
-
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true)
     private Long id;
     
-    
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_oferta", referencedColumnName = "id", nullable = false)
-    //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Oferta oferta;
-    
     
     @Column(name = "confirmacao_usuario01")
     private Boolean confirma_usuario01;
@@ -58,22 +59,15 @@ public class Troca {
     @Column(name = "confirmacao_usuario02")
     private Boolean confirma_usuario02;
     
-    
     @Enumerated(EnumType.STRING)
-    private TrocaEnum status;
+    private TrocaEnum status;    
 
-    // @Column(name = "descricao", length = 255, nullable = false)
-    // @Size(min = 1, max = 255)
-    // private String descricao;
-    
-    
-    
-    // @ManyToOne
-    // @JoinColumn(name = "id_usuario", referencedColumnName = "id", nullable = false)
-    // @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    // private Usuario usuario;
+    @Column(name = "hora", nullable = false)
+    @JsonFormat(pattern = "HH:mm:ss")
+    private LocalTime hora;
 
-    
+    @Column(name = "data", nullable = false)
+    private LocalDate data;
 }
 
     

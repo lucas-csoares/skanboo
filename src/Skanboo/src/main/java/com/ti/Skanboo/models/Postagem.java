@@ -82,7 +82,7 @@ public class Postagem {
     private LocalTime hora;
 
     @Column(name = "data", nullable = false)
-    private String data;
+    private LocalDate data;
 
     public Postagem(String titulo, Usuario usuario, String descricao, String categoriaProduto,
             String categoriaProdutoDesejado) {
@@ -92,7 +92,7 @@ public class Postagem {
         this.categoriaProduto = categoriaProduto;
         this.categoriaProdutoDesejado = categoriaProdutoDesejado;
         this.hora = LocalTime.now();
-        this.data = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        this.data = LocalDate.now();
     }
 
 }

@@ -72,7 +72,7 @@ public class PostagemService {
 
         obj.setId(null);
         obj.setUsuario(usuario);
-        obj.setData(DateTimeFormatter.ofPattern("dd/MM/yyyy").format(LocalDate.now()));
+        obj.setData(LocalDate.now());
         obj.setHora(LocalTime.now());
 
         return this.postagemRepository.save(obj);
@@ -87,8 +87,6 @@ public class PostagemService {
         novaPostagem.setDescricao(obj.getDescricao());
         novaPostagem.setCategoriaProduto(obj.getCategoriaProduto());
         novaPostagem.setCategoriaProdutoDesejado(obj.getCategoriaProdutoDesejado());
-        novaPostagem.setData(DateTimeFormatter.ofPattern("dd/MM/yyyy").format(LocalDate.now()));
-        novaPostagem.setHora(LocalTime.now());
 
         if (obj.getFoto() != null)
             novaPostagem.setFoto(obj.getFoto());
