@@ -4,6 +4,7 @@ import java.time.LocalTime;
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
@@ -20,6 +22,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+@Table(name = Avaliacao.NOME_TABELA)
 @Entity
 @Getter
 @Setter
@@ -39,10 +42,12 @@ public class Avaliacao {
 
     @ManyToOne //id Troca
     @JoinColumn(name = "id_troca", referencedColumnName = "id", nullable = false, updatable = false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Troca troca;
 
     @ManyToOne //id Usuario
     @JoinColumn(name = "id_usuario", referencedColumnName = "id", nullable = false, updatable = false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Usuario usuario;
 
     @Min(value = 0)
