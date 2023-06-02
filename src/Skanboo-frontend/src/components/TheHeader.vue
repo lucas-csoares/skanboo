@@ -7,23 +7,14 @@
             <a href="/"><img src="../assets/logo.png" alt="sKanboo" /></a>
           </div>
 
-          <div class="search-bar">
-            <input
-              type="text"
-              name="search"
-              id="search"
-              placeholder="O que você está procurando?"
-            />
-            <button type="submit" class="search-button">
-              <img src="../assets/lupa.png" />
-            </button>
-          </div>
           <nav class="menu-nav">
             <ul>
               <li>
-                <a href="/loginView"
-                  ><img src="../assets/user.png" alt="Usuário" class="user"
-                /></a>
+                <a href="/cadastroview">Criar conta</a>
+              </li>
+              <span> | </span>
+              <li>
+                <a href="/loginView">Login</a>
               </li>
             </ul>
           </nav>
@@ -73,8 +64,25 @@ ul {
 }
 
 a {
+  font-weight: 400;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: 0.3s;
+  letter-spacing: 2px;
+  transition-timing-function: linear;
+}
+
+a:hover {
+  font-weight: 400;
+  padding-left: 10px;
+  padding-right: 20px;
+  font-size: 14px;
+  letter-spacing: 0px;
   text-decoration: none;
 }
+
 body {
   font-size: 1rem;
   background: #fff;
