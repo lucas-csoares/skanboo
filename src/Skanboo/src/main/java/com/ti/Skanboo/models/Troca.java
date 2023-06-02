@@ -2,6 +2,8 @@ package com.ti.Skanboo.models;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ti.Skanboo.models.enums.TrocaEnum;
@@ -54,9 +56,8 @@ public class Troca {
     @JoinColumn(name = "id_oferta", referencedColumnName = "id", nullable = false)
     private Oferta oferta;
     
-     //Avaliacao
     @OneToMany(mappedBy = "troca", cascade = CascadeType.ALL)
-    private List<Avaliacao> avaliacoes = new ArrayList<>();
+    private List<Avaliacao> avaliacoes = new ArrayList<Avaliacao>();
     
     @Column(name = "confirmacao_usuario01")
     private Boolean confirma_usuario01;

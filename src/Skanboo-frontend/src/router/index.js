@@ -24,6 +24,7 @@ import CadastroEnderecoView from "../views/CadastroEnderecoView";
 import OfertaView from "../views/OfertaView";
 import EscolherProdutoView from "../views/EscolherProdutoView";
 import PaginaAvaliacaoView from "../views/PaginaAvaliacaoView";
+import IndicadoresView from "../views/IndicadoresView";
 
 const routes = [
   {
@@ -154,6 +155,11 @@ const routes = [
     path: "/paginaAvaliacaoView",
     name: "paginaAvaliacaoView",
     component: PaginaAvaliacaoView,
+  },
+  {
+    path: "/indicadoresView",
+    name: "IndicadoresView",
+    component: IndicadoresView,
   },
 ];
 
