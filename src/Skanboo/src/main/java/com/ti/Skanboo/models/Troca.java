@@ -15,6 +15,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -52,6 +53,10 @@ public class Troca {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_oferta", referencedColumnName = "id", nullable = false)
     private Oferta oferta;
+    
+     //Avaliacao
+    @OneToMany(mappedBy = "troca", cascade = CascadeType.ALL)
+    private List<Avaliacao> avaliacoes = new ArrayList<>();
     
     @Column(name = "confirmacao_usuario01")
     private Boolean confirma_usuario01;

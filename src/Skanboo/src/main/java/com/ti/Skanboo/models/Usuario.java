@@ -85,9 +85,17 @@ public class Usuario {
     @NotBlank
     private String telefone;
 
+    @Column(name = "nota_final", nullable = true, updatable = true)
+    private Double notaFinal;
+
+
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Postagem> postagem = new ArrayList<Postagem>();
+
+    //Avaliacao
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private List<Avaliacao> avaliacoes = new ArrayList<>();
 
     @ElementCollection(fetch = FetchType.EAGER)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
