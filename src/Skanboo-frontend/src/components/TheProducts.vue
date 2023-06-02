@@ -96,12 +96,13 @@ export default {
     proximoSlide() {
       if (this.currentSlideIndex < this.carrosselPostagens.length - 1) {
         this.currentSlideIndex++;
-      }
+      } else if (this.currentSlideIndex == this.carrosselPostagens.length - 1) this.currentSlideIndex = 0;
     },
+
     slideAnterior() {
       if (this.currentSlideIndex > 0) {
         this.currentSlideIndex--;
-      }
+      } else if (this.currentSlideIndex == 0) this.currentSlideIndex = this.carrosselPostagens.length - 1;
     },
 
     irParaPagina(pagina) {
