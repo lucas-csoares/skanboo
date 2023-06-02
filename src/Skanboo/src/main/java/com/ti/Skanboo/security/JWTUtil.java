@@ -15,7 +15,7 @@ import io.jsonwebtoken.security.Keys;
 @Component
 public class JWTUtil {
 
-    @Value("${jwt.secret}") // pega o valor da application.proprieties
+    @Value("${jwt.secret}")
     private String secret;
 
     @Value("${jwt.expiration}")
@@ -25,11 +25,8 @@ public class JWTUtil {
         SecretKey key = getKeyBySecret();
         return Jwts.builder().setSubject(email).setExpiration(new Date(System.currentTimeMillis() + this.expiration))
                 .signWith(key).compact();
-
-                //conferir se o setSubject pode ser 'email'
     }
 
-    // Key para geracao do Token
     private SecretKey getKeyBySecret() {
         return Keys.hmacShaKeyFor(this.secret.getBytes());
     }
