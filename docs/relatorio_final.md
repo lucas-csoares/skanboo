@@ -276,12 +276,8 @@ O usuário deve acessar o status de negociações e selecionar a negociação qu
 | **Campo**       | **Tipo**      | **Restrições** | **Valor default** |
 | --------------- | ------------- | -------------- | ----------------- |
 | Avaliar serviço | Seleção única | Obrigatório    | -                 |
+| Avaliação escrita | Caixa de Texto | Máximo de 140 caracteres | -    | 
 
-**Enviar comentário**
-
-| **Campo**  | **Tipo**       | **Restrições**           | **Valor default** |
-| ---------- | -------------- | ------------------------ | ----------------- |
-| Comentário | Caixa de texto | Máximo de 140 caracteres | -                 |
 
 ### 4.2. Tecnologias
 
