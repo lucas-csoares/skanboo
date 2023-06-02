@@ -22,11 +22,16 @@
                 <a href="/ofertaview">Ofertas feitas | </a>
               </li>
               <li>
-                <a href="/">Trocas | </a>
+                <a href="/">Trocas </a>
               </li>
               <li></li>
               <li>
-                <a href="/usuarioview" class="config">Configurações da conta</a>
+                <a href="/usuarioview"
+                  ><img
+                    src="../assets/engrenagem.svg"
+                    alt="Usuário"
+                    class="user"
+                /></a>
               </li>
             </ul>
           </nav>
@@ -102,7 +107,7 @@ body {
 }
 
 .menu-bg {
-  background-color: #fff;
+  background-color: transparent;
   border-bottom: 1px solid #e2e2e2;
   height: 80px;
   max-width: 100%;
@@ -111,7 +116,7 @@ body {
 
 nav {
   margin: 0px !important;
-  background-color: #fff;
+  background-color: transparent;
 }
 
 .menu {
@@ -190,7 +195,7 @@ nav {
 }
 
 .user {
-  width: 20px !important;
+  width: 28px !important;
   padding-left: 6px;
 }
 
