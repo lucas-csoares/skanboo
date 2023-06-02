@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import TheHeader from "@/components/TheHeader.vue";
+import TheHeader from "@/components/TheUserHeader.vue";
 import TheFooter from "@/components/TheFooter.vue";
 
 export default {
