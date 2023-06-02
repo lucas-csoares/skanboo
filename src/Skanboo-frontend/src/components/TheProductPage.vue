@@ -64,8 +64,6 @@ export default {
   mounted() {
     Postagem.exibirInfoPostagem(this.id).then((resposta) => {
       this.postagem = resposta.data;
-      console.log(resposta.data);
-      console.log(this.id);
       return this.postagem;
     });
   },

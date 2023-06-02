@@ -9,7 +9,8 @@
                     <img :src="oferta[0].postagemOrigem.foto" class="card-img-produto" />
                 </div>
                 <div class="div-botao">
-                    <button><router-link :to="{ name: 'TheProductPage', params: { id: oferta[0].postagemOrigem.id } }">Ver produto</router-link></button>
+                    <button><router-link :to="{ name: 'TheProductPage', params: { id: oferta[0].postagemOrigem.id } }">Ver
+                            produto</router-link></button>
                 </div>
             </div>
 
@@ -21,15 +22,22 @@
                     <img :src="oferta[0].postagemOfertada.foto" class="card-img-produto" />
                 </div>
                 <div class="div-botao">
-                    <button><router-link :to="{ name: 'TheProductPage', params: { id: oferta[0].postagemOfertada.id } }">Ver produto</router-link></button>
+                    <button><router-link :to="{ name: 'TheProductPage', params: { id: oferta[0].postagemOfertada.id } }">Ver
+                            produto</router-link></button>
                 </div>
             </div>
 
             <div class="div-botao">
-                <button><router-link :to="{ name: 'UsuarioView' }">Recusar</router-link></button>
+                <button id="recusar" value="RECUSADA"><router-link
+                        :to="{ name: 'UsuarioView' }">Recusar</router-link></button>
             </div>
+            <!-- <div class="div-botao">
+                <button id="aceitar" @click="criarTroca(oferta[0].id, 'ACEITA')"><router-link
+                        :to="{ name: 'PreviewTrocaView', params: { id: oferta.id } }">Aceitar</router-link></button>
+            </div> -->
             <div class="div-botao">
-                <button><router-link :to="{ name: 'UsuarioView' }">Aceitar</router-link></button>
+                <button id="aceitar" ><router-link
+                        :to="{ name: 'ThePreviewTroca', params: { id: oferta[0].id } }">Aceitar</router-link></button>
             </div>
         </div>
     </section>
@@ -37,42 +45,72 @@
 
 <script>
 import Oferta from '../services/OfertaService';
+// import Troca from '../services/TrocaService';
 
 export default {
     data() {
         return {
             ofertas: [],
+            troca: [],
+            oferta: null
         };
     },
 
     mounted() {
         Oferta.exibirOfertasRecebidas()
             .then((resposta) => {
-                console.log("resposta.data", resposta.data);
                 const ofertas = resposta.data;
                 this.ofertas = ofertas;
-                console.log("ofertas: ", ofertas);
+                // console.log("ofertas: ", ofertas);
             })
             .catch((e) => console.log(e.message));
     },
 
     methods: {
-        criarOferta() {
+        // criarTroca(id_oferta, aceitarOferta) {
 
-            const idOfertada = sessionStorage.getItem('idOfertada');
-            const idOrigem = sessionStorage.getItem('idOrigem');
+        //     this.oferta = { status: aceitarOferta };
 
-            console.log('Origem Id:', idOfertada);
-            console.log('Origem Id:', idOrigem);
 
-            Oferta.criar(idOfertada, idOrigem)
-                .then(() => {
-                    alert('Oferta realizada com sucesso!');
-                    this.errors = [];
-                })
-                .catch((e) => console.log(e.message));
-        },
+        //     Oferta.atualizar(id_oferta, this.oferta)
+        //         .then(() => {
+        //             console.log(id_oferta);
+        //             alert('Oferta aceita!');
+        //             this.errors = [];
+        //         })
+        //         .catch((e) => console.log(e.message));
+
+        //     Troca.criar(id_oferta)
+        //         .then(() => {
+        //             alert('Troca criada com sucesso!');
+        //             this.errors = [];
+        //         })
+        //         .catch((e) => console.log(e.message));
+
+        // },
     },
+
+    //     methods: {
+    //   async criarTroca(id_oferta, aceitarOferta) {
+    //     this.oferta = { status: aceitarOferta };
+
+    //     try {
+    //       await Oferta.atualizar(id_oferta, this.oferta);
+    //       console.log(id_oferta);
+    //       alert('Oferta aceita!');
+    //       this.errors = [];
+
+    //       await Troca.criar(id_oferta);
+    //       console.log(id_oferta);
+    //       alert('Troca criada com sucesso!');
+    //       this.errors = [];
+    //     } catch (e) {
+    //       console.log(e.message);
+    //     }
+    //   },
+    // },
+
+
 };
 
 </script>

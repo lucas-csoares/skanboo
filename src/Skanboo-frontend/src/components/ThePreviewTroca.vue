@@ -1,38 +1,34 @@
 <template>
   <section>
     <div>
-      <h1>Conferir Envio de Oferta</h1>
+      <h1>Resumo da troca</h1>
     </div>
 
-    <div class="container">
+    <div v-if="oferta" class="container">
       <div class="descricao">
         <div class="imagem">
-          <img src="" alt="Foto do Produto" />
+          <img :src="oferta.postagemOrigem.foto" alt="Foto do Produto" />
         </div>
         <div class="categorias-produto">
           <span><b>Categoria: </b></span>
-          <span class="categoria">categoria</span>
+          <span class="categoria">{{ oferta.postagemOrigem.categoriaProduto }}</span>
 
           <br />
 
           <span><b>Interesse: </b></span>
-          <span class="oferta">categoria desejada</span>
+          <span class="oferta">{{ oferta.postagemOrigem.categoriaProdutoDesejado }}</span>
 
           <br />
 
-          <span><b>Local: </b></span>
-          <span class="oferta">estado e cidade</span>
+          <span><b>Contato: </b></span>
+          <span class="oferta">telefone</span>
         </div>
         <div class="informacoes-produto">
           <div class="titulo">
-            <h2>Meu produto</h2>
+            <h2>{{ oferta.postagemOrigem.titulo }}</h2>
           </div>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quasi
-            veritatis fugiat reprehenderit, labore corporis quo eveniet hic,
-            voluptates, voluptas id libero explicabo adipisci inventore
-            consequatur quod officiis porro placeat molestias fugit incidunt
-            numquam? Rem facilis esse ad quisquam ipsa!
+            {{ oferta.postagemOrigem.descricao }}
           </p>
         </div>
       </div>
@@ -44,28 +40,28 @@
 
       <div class="descricao">
         <div class="imagem">
-          <img src="" alt="Foto do Produto" />
+          <img :src="oferta.postagemOfertada.foto" alt="Foto do Produto" />
         </div>
         <div class="categorias-produto">
           <span><b>Categoria: </b></span>
-          <span class="categoria">categoria</span>
+          <span class="categoria">{{ oferta.postagemOfertada.categoriaProduto }}</span>
 
           <br />
 
           <span><b>Interesse: </b></span>
-          <span class="oferta">categoria desejada</span>
+          <span class="oferta">{{ oferta.postagemOfertada.categoriaProdutoDesejado }}</span>
 
           <br />
 
-          <span><b>Local: </b></span>
-          <span class="oferta">estado e cidade</span>
+          <span><b>Contato: </b></span>
+          <span class="oferta">telefone</span>
         </div>
         <div class="informacoes-produto">
           <div class="titulo">
-            <h2>Produto que quero receber em troca</h2>
+            <h2>{{ oferta.postagemOfertada.titulo }}</h2>
           </div>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, vero!
+            {{ oferta.postagemOfertada.descricao }}
           </p>
         </div>
       </div>
@@ -80,26 +76,41 @@
   </section>
 </template>
 
-<!-- <script>
-import Postagem from '../services/PostagemService';
+<script>
+import Oferta from '../services/OfertaService';
+import Endereco from '../services/EnderecoService';
+// import Troca from '../services/TrocaService';
 
 export default {
   props: ['id'],
   data() {
     return {
-      postagem: null,
+      oferta: null,
+      troca: null,
     };
   },
 
   mounted() {
-    Postagem.exibirInfoPostagem(this.id).then((resposta) => {
-      this.postagem = resposta.data;
-      console.log(resposta.data);
-      return this.postagem;
-    });
-  },
+        Oferta.exibirOferta(this.id)
+            .then((resposta) => {
+                const ofertas = resposta.data;
+                this.oferta = ofertas;
+                console.log(this.oferta)
+                return this.oferta;
+            })
+            .catch((e) => console.log(e.message));
+
+            Endereco.exibirInfo()
+            .then((resposta) => {
+                this.endereco = resposta.data;
+                return this.endereco;
+            })
+            .catch((e) => console.log(e.message));
+    },
+
+
 };
-</script> -->
+</script>
 
 <style scoped>
 .container {
@@ -121,7 +132,7 @@ export default {
   height: 150px;
   background-color: grey;
   border: 0px solid #515864;
-  border-radius: 100%;
+  border-radius: 4px;
 }
 
 img {

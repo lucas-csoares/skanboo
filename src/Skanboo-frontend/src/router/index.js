@@ -13,6 +13,7 @@ import CooptarParceirosView from "../views/CooptarParceirosView";
 import PaginaProdutoUsuarioView from "../views/PaginaProdutoUsuarioView";
 import EditarEnderecoView from "../views/EditarEnderecoView";
 import PreviewTrocaView from "../views/PreviewTrocaView";
+import ThePreviewTroca from "../components/ThePreviewTroca";
 import TheProductPage from "../components/TheProductPage";
 import TheEditProduct from "../components/TheEditProduct";
 import TheParceiros from "../components/TheParceiros";
@@ -101,6 +102,7 @@ const routes = [
     path: "/PreviewTrocaView",
     name: "PreviewTrocaView",
     component: PreviewTrocaView,
+    props: true,
   },
   {
     path: "/TheOfertaPreview",
@@ -149,6 +151,12 @@ const routes = [
     path: "/parceiro/:id",
     name: "TheEditPartner",
     component: TheEditPartner,
+    props: true,
+  },
+  {
+    path: "/oferta/:id",
+    name: "ThePreviewTroca",
+    component: ThePreviewTroca,
     props: true,
   },
   {
