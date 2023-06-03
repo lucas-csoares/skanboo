@@ -136,6 +136,12 @@ public class AvaliacaoService {
     
     public void calcMedia(Usuario usuario) {
         List<Avaliacao> avaliacoes = avaliacaoRepository.findByUsuarioAndMes(usuario, LocalDate.now().getMonthValue());
+        
+        // Filtrar as avaliações feitas pelo próprio usuário
+        avaliacoes = avaliacoes.stream()
+            .filter(avaliacao -> !avaliacao.getUsuario().equals(usuario))
+            .collect(Collectors.toList());
+        
         int somaNotas = avaliacoes.stream().mapToInt(Avaliacao::getNota).sum();
         int quantidadeAvaliacoes = avaliacoes.size();
         double mediaNotas = quantidadeAvaliacoes > 0 ? (double) somaNotas / quantidadeAvaliacoes : 0;
