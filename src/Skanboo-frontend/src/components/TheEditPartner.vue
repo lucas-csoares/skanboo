@@ -9,7 +9,7 @@
             <label for="titulo">Nome fantasia</label>
             <input type="text" id="nome" maxlength="30" v-model="parceiro.nome" />
 
-            <label for="logo">Foto</label>
+            <label for="logo">Logo da empresa</label>
             <input type="file" id="foto" name="foto" />
 
             <button class="editar">Editar</button>

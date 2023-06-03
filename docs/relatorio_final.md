@@ -79,7 +79,7 @@ Todo o processo de negociação e eventual troca é realizado entre **usuários*
 **Usuário 2**
 
     * Oferece um objeto seu em troca de outro publicado no site;
-    * Caso sua oferta seja aceita ele pode entrar em contato com o usuário 1;
+    * Caso sua oferta seja aceita, realizar a troca;
     * Avaliar negociação com outro usuário.
 
 **Setor de Marketing**
@@ -107,11 +107,10 @@ Atualmente, o processo de escambo pode ser realizado das seguintes formas:
 
 A proposta do **sKanboo** consiste em ampliar as maneiras de se realizar trocas, uma vez que buscar eliminar a limitação imposta pelo modelo clássico de trocas, na qual uma pessoa, de modo geral, só consegue trocar um objeto por outro com pessoas dentro do seu círculo social. Além disso, o usuário poderá avaliar diversas possibilidades diferentes, ao passo que consegue negociar e fazer ofertas com vários outros usuários simultaneamente. Neste sentido, o fluxo da aplicação seguirá as seguintes etapas:
 
-- O usuário acessa a plataforma e se cadastra, fornecendo dados básicos como nome, email, senha, cpf, endereço, telefone e data de nascimento;
+- O usuário acessa a plataforma e se cadastra, fornecendo dados básicos como nome, email, senha, cpf, telefone e data de nascimento;
 - Feito o cadastro, o usuário estará apto para cadastrar uma postagem que deseja publicar para trocar ou procurar por produtos que deseja;
 - Caso o usuário queira cadastrar um novo produto, ele deve preencher o formulário de cadastro com as informações desejadas e solicitar a sua publicação;
 - Caso o usuário se interesse por um produto de outro usuário, ele pode fazer uma oferta no produto, que pode ser aceita ou recusada pelo usuário que o publicou;
-- Caso a oferta seja aceita, os usuários podem entrar em contato entre si, para discutirem melhor os detalhes da troca e como ela vai ser realizada;
 - Após conclusão da troca, ambas as partes se avaliam no site, de modo que os bons usuários sejam reconhecidos.
 
 A avaliação entre usuários é importante, pois fornece maior segurança à outra parte, uma vez que um usuário com boa nota indica que ele já realizou trocas bem sucedidas. Além disso, a aplicação busca se beneficiar com isso, de um crescimento de seus usuários de maneira orgânica, na base do "boca a boca", na qual um usuário que teve uma boa experiência pode indicar a aplicação para um conhecido, por exemplo.
@@ -163,7 +162,6 @@ O usuário deve acessar o status de negociações e selecionar a negociação qu
 | Senha              | Caixa de texto | Mínimo 12 caracteres com no mínimo uma letra, um número e um caractere especial | -                 |
 | Data de Nascimento | Data           | Formato dd/mm/aaaa e anterior a data corrente                                   | -                 |
 | CPF                | Número         | 11 números                                                                      | -                 |
-| Foto               | Arquivo        | Máximo de 1 foto                                                                | -                 |
 | Telefone           | Caixa de texto | Telefones seguindo plano de numeração brasileiro                                | -                 |
 
 **Cadastro de endereço**
@@ -185,6 +183,7 @@ O usuário deve acessar o status de negociações e selecionar a negociação qu
 | Nome      | Caixa de texto | Texto com no máximo 100 caracteres               | Nome atual        |
 | Foto      | Arquivo        | Máximo de 1 foto                                 | Foto atual        |
 | Telefone  | Caixa de texto | Telefones seguindo plano de numeração brasileiro | Telefone atual    |
+| UF        | Seleção única  | Lista de UFs do Brasil                           | -                 |
 
 **Atualizar informações de endereço**
 
@@ -211,21 +210,21 @@ O usuário deve acessar o status de negociações e selecionar a negociação qu
 
 | **Campo**            | **Tipo**       | **Restrições**                                                                          | **Valor default** |
 | -------------------- | -------------- | --------------------------------------------------------------------------------------- | ----------------- |
-| Título da postagem   | Caixa de texto | Máximo de 30 caracteres                                                                 | -                 |
-| Descrição            | Caixa de texto | Máximo de 140 caracteres                                                                | -                 |
+| Título   | Caixa de texto | Máximo de 30 caracteres                                   | -                 |
+| Descrição            | Caixa de texto | Máximo de 140 caracteres                      | -                 |
 | Adicionar foto       | Arquivo        | Máximo de 1 fotos                                                                       | -                 |
-| Categoria do produto | Seleção única  | [Eletrônicos, Moda e beleza, Esportes, Música, Produtos de casa, Serviços, Video Games] | -                 |
-| Categoria desejada   | Seleção única  | [Eletrônicos, Moda e beleza, Esportes, Música, Produtos de casa, Serviços, Video Games] | -                 |
+| Categoria do produto | Seleção única  | [Eletrônicos, Moda e beleza, Música, Casa, Serviços] | -                 |
+| Categoria de interesse   | Seleção única  | [Eletrônicos, Moda e beleza, Música, Casa, Serviços] | -                 |
 
 **Atualizar informações do produto**
 
 | **Campo**            | **Tipo**       | **Restrições**                                                                          | **Valor default**          |
 | -------------------- | -------------- | --------------------------------------------------------------------------------------- | -------------------------- |
-| Título da postagem   | Caixa de texto | Máximo de 30 caracteres                                                                 | Título atual               |
+| Título  | Caixa de texto | Máximo de 30 caracteres                                    | Título atual               |
 | Descrição            | Caixa de texto | Máximo de 140 caracteres                                                                | Descrição atual            |
 | Adicionar foto       | Arquivo        | Máximo de 1 fotos                                                                       | Foto atual                 |
-| Categoria do produto | Seleção única  | [Eletrônicos, Moda e beleza, Esportes, Música, Produtos de casa, Serviços, Video Games] | Categoria do produto atual |
-| Categoria desejada   | Seleção única  | [Eletrônicos, Moda e beleza, Esportes, Música, Produtos de casa, Serviços, Video Games] | Categoria desejada atual   |
+| Categoria do produto | Seleção única  | [Eletrônicos, Moda e beleza, Música, Casa, Serviços] | Categoria do produto atual |
+| Categoria de interesse   | Seleção única  | [Eletrônicos, Moda e beleza, Música, Casa, Serviços] | Categoria desejada atual   |
 
 #### Processo 3 – Cooptar parceiros
 
@@ -233,7 +232,7 @@ O usuário deve acessar o status de negociações e selecionar a negociação qu
 
 | **Campo**         | **Tipo**       | **Restrições**             | **Valor default** |
 | ----------------- | -------------- | -------------------------- | ----------------- |
-| Nome da empresa   | Caixa de texto | Máximo de 100 caracteres   | -                 |
+| Nome fantasia   | Caixa de texto | Máximo de 100 caracteres   | -                 |
 | Logo da empresa   | Arquivo        | Máximo 1 foto              | -                 |
 | CNPJ              | Número         | Máximo de 14 dígitos       | -                 |
 | Plano de parceria | Seleção única  | [Basic, Standard, Premium] | -                 |
@@ -277,12 +276,8 @@ O usuário deve acessar o status de negociações e selecionar a negociação qu
 | **Campo**       | **Tipo**      | **Restrições** | **Valor default** |
 | --------------- | ------------- | -------------- | ----------------- |
 | Avaliar serviço | Seleção única | Obrigatório    | -                 |
+| Avaliação escrita | Caixa de Texto | Máximo de 140 caracteres | -    | 
 
-**Enviar comentário**
-
-| **Campo**  | **Tipo**       | **Restrições**           | **Valor default** |
-| ---------- | -------------- | ------------------------ | ----------------- |
-| Comentário | Caixa de texto | Máximo de 140 caracteres | -                 |
 
 ### 4.2. Tecnologias
 
