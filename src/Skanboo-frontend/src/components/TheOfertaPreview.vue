@@ -170,7 +170,7 @@ img {
 
 .container {
   width: 720px;
-  height: 500px !important;
+  height: 500px;
   display: flex;
   justify-content: center;
   margin-top: 20px;

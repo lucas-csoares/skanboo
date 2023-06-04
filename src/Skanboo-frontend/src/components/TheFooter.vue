@@ -30,12 +30,10 @@ dl {
 
 footer {
   background-color: black;
-  margin-top: auto;
-  position: relative;
+  position: absolute;
   bottom: 0;
-  height: 100px;
   width: 100%;
-  margin-top: 100px;
+  height: 100px;
 }
 
 p {

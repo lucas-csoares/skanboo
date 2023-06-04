@@ -82,7 +82,7 @@
       <button class="enviar">Enviar</button>
     </div>
 
-    <!--DIV DE TESTE
+    DIV DE TESTE
     <div class="container">
       <div class="descricao">
         <div class="imagem">
@@ -145,9 +145,8 @@
       <button class="voltar">Voltar</button>
     </div>
     <div class="container-botoes">
-
-      <button class="enviar">Enviar</button> 
-    </div> -->
+      <button class="enviar">Enviar</button>
+    </div>
   </section>
 </template>
 
