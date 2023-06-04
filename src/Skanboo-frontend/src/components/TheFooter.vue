@@ -1,26 +1,6 @@
 <template>
   <footer>
-    <div class="newsletter">
-      <div class="input-news">
-        <input
-          type="text"
-          name="newsletter"
-          id="newsletter"
-          placeholder="Digite o seu email"
-        /><br />
-        <button class="btn-newsletter">RECEBA NOVIDADES</button>
-      </div>
-
-      <div class="info">
-        <ul>
-          <li>SOBRE</li>
-          <li>FAQ</li>
-          <li>POLÍTCA DE PRIVACIDADE</li>
-          <li>TERMOS DE USO</li>
-          <li>TROCAS E DEVOLUÇÕES</li>
-        </ul>
-      </div>
-    </div>
+    <p>Todos os direitos reservados.</p>
   </footer>
 </template>
 
@@ -47,22 +27,22 @@ dl {
   margin: 0px;
   padding: 0px;
 }
+
 footer {
   background-color: black;
-  margin: 0px !important;
-  padding: 0px;
-}
-.newsletter {
-  background-color: black;
-  height: 300px;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1340px;
-  margin: 0 auto;
+  margin-top: auto;
+  position: relative;
+  bottom: 0;
+  height: 100px;
+  width: 100%;
+  margin-top: 100px;
 }
 
+p {
+  margin-top: 40px !important;
+  color: white;
+  display: inline-block;
+}
 .newsletter input {
   background-color: transparent;
   border: none;
