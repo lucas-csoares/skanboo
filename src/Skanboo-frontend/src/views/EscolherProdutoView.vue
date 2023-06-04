@@ -15,6 +15,7 @@
         </button>
       </div>
 
+      <!--DIV DE TESTE
       <div class="container">
         <div class="card">
           <h2>Blusa top</h2>
@@ -63,7 +64,7 @@
           </div>
           <button class="negociar">NEGOCIAR</button>
         </div>
-      </div>
+      </div> -->
     </div>
   </section>
 </template>
