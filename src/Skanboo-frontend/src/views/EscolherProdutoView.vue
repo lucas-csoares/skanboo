@@ -138,6 +138,11 @@ a {
   color: #515864;
 }
 
+.negociar {
+  width: 100px;
+  text-transform: capitalize;
+}
+
 .negociar:hover {
   background: #f9dc5c;
   transition: 0.3s;
