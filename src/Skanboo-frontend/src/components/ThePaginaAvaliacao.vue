@@ -4,9 +4,9 @@
     <div class="produto">
       <div class="card">
         <div class="card-img-produto">
-          <img src="../assets/ex1.jpg" alt="" class="card-img" />
+          <img :src="avaliacao.foto" class="card-img-produto" />
         </div>
-        <h2>Air Fryer</h2>
+        <h2>{{ avaliacao.titulo }}</h2>
       </div>
     </div>
 
@@ -19,33 +19,59 @@
           rows="10"
           cols="50"
           maxlength="140"
+          v-model="avaliacao.comentario"
         ></textarea>
 
         <form action="rating">
           <label>
-            <input type="radio" name="stars" value="1" />
+            <input
+              type="radio"
+              name="stars"
+              value="1"
+              v-model="avaliacao.nota"
+            />
             <span class="icon">★</span>
           </label>
           <label>
-            <input type="radio" name="stars" value="2" />
-            <span class="icon">★</span>
-            <span class="icon">★</span>
-          </label>
-          <label>
-            <input type="radio" name="stars" value="3" />
-            <span class="icon">★</span>
-            <span class="icon">★</span>
-            <span class="icon">★</span>
-          </label>
-          <label>
-            <input type="radio" name="stars" value="4" />
-            <span class="icon">★</span>
-            <span class="icon">★</span>
+            <input
+              type="radio"
+              name="stars"
+              value="2"
+              v-model="avaliacao.nota"
+            />
             <span class="icon">★</span>
             <span class="icon">★</span>
           </label>
           <label>
-            <input type="radio" name="stars" value="5" />
+            <input
+              type="radio"
+              name="stars"
+              value="3"
+              v-model="avaliacao.nota"
+            />
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="stars"
+              value="4"
+              v-model="avaliacao.nota"
+            />
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="stars"
+              value="5"
+              v-model="avaliacao.nota"
+            />
             <span class="icon">★</span>
             <span class="icon">★</span>
             <span class="icon">★</span>
@@ -60,7 +86,18 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      avaliacao: {
+        id: "",
+        titulo: "",
+        comentario: "",
+        nota: "",
+      },
+    };
+  },
+};
 </script>
 
 <style scoped>
