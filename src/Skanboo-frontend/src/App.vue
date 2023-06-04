@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import TheHeader from "@/components/TheUserHeader.vue";
+import TheHeader from "@/components/TheHeader.vue";
 import TheFooter from "@/components/TheFooter.vue";
 
 export default {
@@ -19,6 +19,17 @@ export default {
 </script>
 
 <style>
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+}
+
+section {
+  min-height: 100vh;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
