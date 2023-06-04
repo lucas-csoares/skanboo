@@ -2,11 +2,26 @@
   <div>
     <h1>Graficos</h1>
     <div class="grid">
+      <div class="grid-indicador-mensal">
+        <h1>Usuários criados no mês</h1>
+        <p class="indicador indicador-qtde-usuario"></p>
+      </div>
+
+      <div class="grid-indicador-mensal">
+        <h1>Postagens criadas no mês</h1>
+        <p class="indicador indicador-qtde-postagem"></p>
+      </div>
+
+      <div class="grid-indicador-mensal">
+        <h1>Trocas criadas no mês</h1>
+        <p class="indicador indicador-qtde-troca"></p>
+      </div>
+
       <div class="grid-medio gf-usuarios-mes"><canvas id="usuarios-mes"></canvas></div>
 
       <div class="grid-pequeno gf-categorias-desejadas">
         <h1>Categorias mais desejadas</h1>
-        <canvas id="categorias-desejadas"> </canvas>
+        <canvas id="categorias-desejadas"></canvas>
       </div>
 
       <div class="grid-medio gf-postagens-mes"><canvas id="postagens-mes"></canvas></div>
@@ -28,22 +43,51 @@ import Indicadores from '../services/IndicadoresService';
 export default {
   data() {
     return {
-      quantidadeUsuariosCriadosMes: [{ mes: '', quantidade: '' }],
-      quantidadePostagensCriadasMes: [{ mes: '', quantidade: '' }],
-      categoriasMaisDesejadas: [{ categoria: '', quantidade: '' }],
-      categoriasMaisOfertadas: [{ categoria: '', quantidade: '' }],
+      quantidadeUsuariosCriadosMes: [],
+      quantidadePostagensCriadasMes: [],
+      categoriasMaisDesejadas: [],
+      categoriasMaisOfertadas: [],
     };
   },
 
   mounted() {
     this.carregarGraficos();
-
-    let canvas = document.getElementById('categorias-relacao');
-
-    this.gerarGraficoRADAR(this.categoriasMaisDesejadas, this.categoriasMaisOfertadas, canvas, 'Categorias');
+    this.gerarGraficoRADAR(
+      this.categoriasMaisDesejadas,
+      this.categoriasMaisOfertadas,
+      'categorias-relacao',
+      'Categorias'
+    );
+    this.quantidadeUsuariosCriadosMesAtual();
+    this.quantidadePostagensCriadasMesAtual();
+    this.quantidadeTrocasCriadasMesAtual();
   },
 
   methods: {
+    quantidadeUsuariosCriadosMesAtual() {
+      Indicadores.quantidadeUsuariosCriadosMesAtual()
+        .then((resposta) => {
+          document.querySelector('.indicador-qtde-usuario').innerHTML = resposta.data;
+        })
+        .catch((e) => console.log(e));
+    },
+
+    quantidadePostagensCriadasMesAtual() {
+      Indicadores.quantidadePostagensCriadasMesAtual()
+        .then((resposta) => {
+          document.querySelector('.indicador-qtde-postagem').innerHTML = resposta.data;
+        })
+        .catch((e) => console.log(e));
+    },
+
+    quantidadeTrocasCriadasMesAtual() {
+      Indicadores.quantidadeTrocasCriadasMesAtual()
+        .then((resposta) => {
+          document.querySelector('.indicador-qtde-troca').innerHTML = resposta.data;
+        })
+        .catch((e) => console.log(e));
+    },
+
     carregarGraficos() {
       const graficos = [
         {
@@ -100,14 +144,13 @@ export default {
               grafico.eixo02
             );
           })
-          .catch((e) => {
-            console.log(e);
-          });
+          .catch((e) => console.log(e));
       });
     },
 
     // -----------------------------------------------------------------
     // Fucoes auxiliares para a geracao de graficos
+    // Eixos01 e 02 se referem aos eixos do grafico (X e Y, respectivamente)
     // -----------------------------------------------------------------
     carregarDados(dados, indicador, eixo01, eixo02) {
       for (let i = 0; i < dados.length; i++) {
@@ -174,33 +217,46 @@ export default {
     gerarGraficoRADAR(indicador01, indicador02, canvas, titulo) {
       const categorias = ['Eletrônicos', 'Moda e beleza', 'Música', 'Casa', 'Serviços'];
 
+      (async () => {
+        const resposta = await this.formatarDadosCategorias(indicador01, indicador02, categorias);
 
-      new Chart(canvas, {
-        type: 'radar',
-        data: {
-          labels: categorias,
-          datasets: [
-            {
-              label: titulo,
-              data: this.formatarDadosCategorias(indicador01, categorias),
-            },
-            {
-              label: titulo,
-              // data: this.formatarDadosGraficoRADAR(indicador02, categorias),
-            },
-          ],
-        },
+        new Chart(canvas, {
+          type: 'radar',
+          data: {
+            labels: categorias,
+            datasets: [
+              {
+                label: titulo,
+                data: resposta[0],
+              },
+              {
+                label: titulo,
+                data: resposta[1],
+              },
+            ],
+          },
+        });
+      })();
+    },
+
+    async formatarDadosCategorias(indicador01, indicador02, categorias) {
+      const resposta01 = await Indicadores.categoriasMaisDesejadas().then((resposta) => {
+        this.carregarDados(resposta.data, indicador01, 'categoria', 'quantidade');
+        return categorias.map((categoria) => {
+          const item = indicador01.find((obj) => obj.categoria === categoria);
+          return item ? item.quantidade : 0;
+        });
       });
-    },
 
-    formatarDadosCategorias(indicador, categorias) {
-      let obj = indicador;
+      const resposta02 = await Indicadores.categoriasMaisOfertadas().then((resposta) => {
+        this.carregarDados(resposta.data, indicador02, 'categoria', 'quantidade');
+        return categorias.map((categoria) => {
+          const item = indicador02.find((obj) => obj.categoria === categoria);
+          return item ? item.quantidade : 0;
+        });
+      });
 
-      console.log(obj);
-    },
-
-    ehCategoria(obj) {
-      return obj.categoria === 'Música';
+      return [resposta01, resposta02];
     },
   },
 };
@@ -217,34 +273,34 @@ export default {
 }
 
 .grid-grande {
+  background-color: lightgoldenrodyellow;
   grid-column: 1 / span 4;
   height: 500px;
 }
 
 .grid-medio {
+  background-color: lightpink;
   grid-column: 1 / span 3;
   height: 500px;
 }
 
 .grid-pequeno {
-  background-color: lightcoral;
+  background-color: lightgray;
   grid-column: 4 / span 1;
   height: 500px;
 }
 
 .gf-usuarios-mes,
 .gf-categorias-desejadas {
-  grid-row: 1;
-  background-color: lightpink;
+  grid-row: 2;
 }
 
 .gf-postagens-mes,
 .gf-categorias-ofertadas {
-  grid-row: 2;
-  background-color: lightgray;
+  grid-row: 3;
 }
 
 .gf-categorias-relacao {
-  grid-row: 3;
+  grid-row: 1;
 }
 </style>
