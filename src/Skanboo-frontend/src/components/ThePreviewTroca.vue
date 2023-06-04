@@ -76,13 +76,11 @@
     </div>
     <div class="container-botoes">
       <button class="voltar">Voltar</button>
-    </div>
-    <div class="container-botoes">
       <!-- <button class="invisivel"></button> -->
       <button class="enviar">Enviar</button>
     </div>
 
-    DIV DE TESTE
+    <!-- DIV DE TESTE 
     <div class="container">
       <div class="descricao">
         <div class="imagem">
@@ -143,10 +141,8 @@
     </div>
     <div class="container-botoes">
       <button class="voltar">Voltar</button>
-    </div>
-    <div class="container-botoes">
       <button class="enviar">Enviar</button>
-    </div>
+    </div> -->
   </section>
 </template>
 
@@ -205,6 +201,13 @@ export default {
   background-color: grey;
   border: 0px solid #515864;
   border-radius: 4px;
+  border-radius: 100%;
+}
+
+.card-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
   border-radius: 100%;
 }
 
@@ -298,7 +301,6 @@ span {
   color: #515864;
   transition: 0.3s;
   margin-top: 10px;
-  position: fixed;
   left: 60px;
 }
 
@@ -306,7 +308,7 @@ span {
   box-sizing: border-box;
   padding: 2px 6px 2px 8px;
   gap: 4px;
-  width: 100px;
+  width: 90px;
   height: 32px;
   background: #f9dc5c;
   border: 1px solid #f9dc5c;
@@ -315,7 +317,6 @@ span {
   color: #515864;
   transition: 0.3s;
   margin-top: 10px;
-  position: fixed;
   left: 60px;
 }
 
