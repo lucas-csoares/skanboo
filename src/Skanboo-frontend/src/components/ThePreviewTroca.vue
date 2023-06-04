@@ -11,12 +11,16 @@
         </div>
         <div class="categorias-produto">
           <span><b>Categoria: </b></span>
-          <span class="categoria">{{ oferta.postagemOrigem.categoriaProduto }}</span>
+          <span class="categoria">{{
+            oferta.postagemOrigem.categoriaProduto
+          }}</span>
 
           <br />
 
           <span><b>Interesse: </b></span>
-          <span class="oferta">{{ oferta.postagemOrigem.categoriaProdutoDesejado }}</span>
+          <span class="oferta">{{
+            oferta.postagemOrigem.categoriaProdutoDesejado
+          }}</span>
 
           <br />
 
@@ -44,12 +48,16 @@
         </div>
         <div class="categorias-produto">
           <span><b>Categoria: </b></span>
-          <span class="categoria">{{ oferta.postagemOfertada.categoriaProduto }}</span>
+          <span class="categoria">{{
+            oferta.postagemOfertada.categoriaProduto
+          }}</span>
 
           <br />
 
           <span><b>Interesse: </b></span>
-          <span class="oferta">{{ oferta.postagemOfertada.categoriaProdutoDesejado }}</span>
+          <span class="oferta">{{
+            oferta.postagemOfertada.categoriaProdutoDesejado
+          }}</span>
 
           <br />
 
@@ -73,16 +81,82 @@
       <!-- <button class="invisivel"></button> -->
       <button class="enviar">Enviar</button>
     </div>
+
+    DIV DE TESTE
+    <div class="container">
+      <div class="descricao">
+        <div class="imagem">
+          <img src="../assets/imagem-produto.avif" class="card-img" />
+        </div>
+        <div class="categorias-produto">
+          <span><b>Categoria: </b></span>
+          <span class="categoria">cASA</span>
+
+          <br />
+
+          <span><b>Interesse: </b></span>
+          <span class="oferta">Video game</span>
+
+          <br />
+
+          <span><b>Contato: </b></span>
+          <span class="oferta">Telefone</span>
+        </div>
+        <div class="informacoes-produto">
+          <div class="titulo">
+            <h2>Coisa daora</h2>
+          </div>
+          <p>Coisa daora.com.br adquira já!</p>
+        </div>
+      </div>
+
+      <div class="seta-div">
+        <img class="seta" src="../assets/setaDireita.png" alt="seta" />
+        <img class="seta" src="../assets/setaEsquerda.png" alt="seta" />
+      </div>
+
+      <div class="descricao">
+        <div class="imagem">
+          <img src="../assets/imagem-produto.avif" class="card-img" />
+        </div>
+        <div class="categorias-produto">
+          <span><b>Categoria: </b></span>
+          <span class="categoria">Lalalala</span>
+
+          <br />
+
+          <span><b>Interesse: </b></span>
+          <span class="oferta">Soneca</span>
+
+          <br />
+
+          <span><b>Contato: </b></span>
+          <span class="oferta">Telefone</span>
+        </div>
+        <div class="informacoes-produto">
+          <div class="titulo">
+            <h2>Coisa suprema daora</h2>
+          </div>
+          <p>Nhdenhenhe bla bla bla</p>
+        </div>
+      </div>
+    </div>
+    <div class="container-botoes">
+      <button class="voltar">Voltar</button>
+    </div>
+    <div class="container-botoes">
+      <button class="enviar">Enviar</button>
+    </div>
   </section>
 </template>
 
 <script>
-import Oferta from '../services/OfertaService';
-import Endereco from '../services/EnderecoService';
+import Oferta from "../services/OfertaService";
+import Endereco from "../services/EnderecoService";
 // import Troca from '../services/TrocaService';
 
 export default {
-  props: ['id'],
+  props: ["id"],
   data() {
     return {
       oferta: null,
@@ -91,24 +165,22 @@ export default {
   },
 
   mounted() {
-        Oferta.exibirOferta(this.id)
-            .then((resposta) => {
-                const ofertas = resposta.data;
-                this.oferta = ofertas;
-                console.log(this.oferta)
-                return this.oferta;
-            })
-            .catch((e) => console.log(e.message));
+    Oferta.exibirOferta(this.id)
+      .then((resposta) => {
+        const ofertas = resposta.data;
+        this.oferta = ofertas;
+        console.log(this.oferta);
+        return this.oferta;
+      })
+      .catch((e) => console.log(e.message));
 
-            Endereco.exibirInfo()
-            .then((resposta) => {
-                this.endereco = resposta.data;
-                return this.endereco;
-            })
-            .catch((e) => console.log(e.message));
-    },
-
-
+    Endereco.exibirInfo()
+      .then((resposta) => {
+        this.endereco = resposta.data;
+        return this.endereco;
+      })
+      .catch((e) => console.log(e.message));
+  },
 };
 </script>
 
@@ -133,12 +205,14 @@ export default {
   background-color: grey;
   border: 0px solid #515864;
   border-radius: 4px;
+  border-radius: 100%;
 }
 
 img {
-  max-width: 150px;
-  max-height: 150px;
+  max-width: 200px;
+  max-height: 200px;
   object-fit: cover;
+  border-radius: 100%;
 }
 
 .seta-div {

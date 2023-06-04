@@ -24,21 +24,25 @@
         <canvas id="categorias-desejadas"></canvas>
       </div>
 
-      <div class="grid-medio gf-postagens-mes"><canvas id="postagens-mes"></canvas></div>
+      <div class="grid-medio gf-postagens-mes">
+        <canvas id="postagens-mes"></canvas>
+      </div>
 
       <div class="grid-pequeno gf-categorias-ofertadas">
         <h1>Categorias mais ofertadas</h1>
         <canvas id="categorias-ofertadas"></canvas>
       </div>
 
-      <div class="grid-pequeno gf-categorias-relacao"><canvas id="categorias-relacao"></canvas></div>
+      <div class="grid-pequeno gf-categorias-relacao">
+        <canvas id="categorias-relacao"></canvas>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import Chart from 'chart.js/auto';
-import Indicadores from '../services/IndicadoresService';
+import Chart from "chart.js/auto";
+import Indicadores from "../services/IndicadoresService";
 
 export default {
   data() {
@@ -93,38 +97,38 @@ export default {
         {
           indicador: this.quantidadeUsuariosCriadosMes,
           parametro: Indicadores.quantidadeUsuariosCriadosMes,
-          canvasId: 'usuarios-mes',
-          titulo: 'Usuários criados por mês',
-          tipo: 'bar',
-          eixo01: 'mes',
-          eixo02: 'quantidade',
+          canvasId: "usuarios-mes",
+          titulo: "Usuários criados por mês",
+          tipo: "bar",
+          eixo01: "mes",
+          eixo02: "quantidade",
         },
         {
           indicador: this.quantidadePostagensCriadasMes,
           parametro: Indicadores.quantidadePostagensCriadosMes,
-          canvasId: 'postagens-mes',
-          titulo: 'Postagens criados por mês',
-          tipo: 'bar',
-          eixo01: 'mes',
-          eixo02: 'quantidade',
+          canvasId: "postagens-mes",
+          titulo: "Postagens criados por mês",
+          tipo: "bar",
+          eixo01: "mes",
+          eixo02: "quantidade",
         },
         {
           indicador: this.categoriasMaisDesejadas,
           parametro: Indicadores.categoriasMaisDesejadas,
-          canvasId: 'categorias-desejadas',
-          titulo: 'Categorias mais desejadas',
-          tipo: 'doughnut',
-          eixo01: 'categoria',
-          eixo02: 'quantidade',
+          canvasId: "categorias-desejadas",
+          titulo: "Categorias mais desejadas",
+          tipo: "doughnut",
+          eixo01: "categoria",
+          eixo02: "quantidade",
         },
         {
           indicador: this.categoriasMaisOfertadas,
           parametro: Indicadores.categoriasMaisOfertadas,
-          canvasId: 'categorias-ofertadas',
-          titulo: 'Categorias mais ofertadas',
-          tipo: 'doughnut',
-          eixo01: 'categoria',
-          eixo02: 'quantidade',
+          canvasId: "categorias-ofertadas",
+          titulo: "Categorias mais ofertadas",
+          tipo: "doughnut",
+          eixo01: "categoria",
+          eixo02: "quantidade",
         },
       ];
 
@@ -132,7 +136,12 @@ export default {
         grafico
           .parametro()
           .then((resposta) => {
-            this.carregarDados(resposta.data, grafico.indicador, grafico.eixo01, grafico.eixo02);
+            this.carregarDados(
+              resposta.data,
+              grafico.indicador,
+              grafico.eixo01,
+              grafico.eixo02
+            );
           })
           .then(() => {
             this.gerarGrafico(
@@ -155,7 +164,8 @@ export default {
     carregarDados(dados, indicador, eixo01, eixo02) {
       for (let i = 0; i < dados.length; i++) {
         indicador[i] = {
-          [eixo01]: eixo01 == 'mes' ? this.converterMes(dados[i][0]) : dados[i][0],
+          [eixo01]:
+            eixo01 == "mes" ? this.converterMes(dados[i][0]) : dados[i][0],
           [eixo02]: dados[i][1],
         };
       }
@@ -163,29 +173,35 @@ export default {
 
     converterMes(indice) {
       const meses = [
-        'Janeiro',
-        'Fevereiro',
-        'Março',
-        'Abril',
-        'Maio',
-        'Junho',
-        'Julho',
-        'Agosto',
-        'Setembro',
-        'Outubro',
-        'Novembro',
-        'Dezembro',
+        "Janeiro",
+        "Fevereiro",
+        "Março",
+        "Abril",
+        "Maio",
+        "Junho",
+        "Julho",
+        "Agosto",
+        "Setembro",
+        "Outubro",
+        "Novembro",
+        "Dezembro",
       ];
       return meses[indice - 1];
     },
 
     gerarGrafico(indicador, canvas, titulo, tipo, eixo01, eixo02) {
-      this[`gerarGrafico${tipo.toUpperCase()}`](indicador, canvas, titulo, eixo01, eixo02);
+      this[`gerarGrafico${tipo.toUpperCase()}`](
+        indicador,
+        canvas,
+        titulo,
+        eixo01,
+        eixo02
+      );
     },
 
     gerarGraficoBAR(indicador, canvas, titulo, eixo01, eixo02) {
       new Chart(canvas, {
-        type: 'bar',
+        type: "bar",
         data: {
           labels: indicador.map((obj) => obj[eixo01]),
           datasets: [
@@ -200,7 +216,7 @@ export default {
 
     gerarGraficoDOUGHNUT(indicador, canvas, titulo, eixo01, eixo02) {
       new Chart(canvas, {
-        type: 'doughnut',
+        type: "doughnut",
         data: {
           labels: indicador.map((obj) => obj[eixo01]),
           datasets: [
@@ -215,7 +231,13 @@ export default {
     },
 
     gerarGraficoRADAR(indicador01, indicador02, canvas, titulo) {
-      const categorias = ['Eletrônicos', 'Moda e beleza', 'Música', 'Casa', 'Serviços'];
+      const categorias = [
+        "Eletrônicos",
+        "Moda e beleza",
+        "Música",
+        "Casa",
+        "Serviços",
+      ];
 
       (async () => {
         const resposta = await this.formatarDadosCategorias(indicador01, indicador02, categorias);

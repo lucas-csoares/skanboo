@@ -208,23 +208,23 @@ O usuário deve acessar o status de negociações e selecionar a negociação qu
 
 **Cadastro de produto**
 
-| **Campo**            | **Tipo**       | **Restrições**                                                                          | **Valor default** |
-| -------------------- | -------------- | --------------------------------------------------------------------------------------- | ----------------- |
-| Título   | Caixa de texto | Máximo de 30 caracteres                                   | -                 |
-| Descrição            | Caixa de texto | Máximo de 140 caracteres                      | -                 |
-| Adicionar foto       | Arquivo        | Máximo de 1 fotos                                                                       | -                 |
-| Categoria do produto | Seleção única  | [Eletrônicos, Moda e beleza, Música, Casa, Serviços] | -                 |
-| Categoria de interesse   | Seleção única  | [Eletrônicos, Moda e beleza, Música, Casa, Serviços] | -                 |
+| **Campo**              | **Tipo**       | **Restrições**                                       | **Valor default** |
+| ---------------------- | -------------- | ---------------------------------------------------- | ----------------- |
+| Título                 | Caixa de texto | Máximo de 30 caracteres                              | -                 |
+| Descrição              | Caixa de texto | Máximo de 140 caracteres                             | -                 |
+| Adicionar foto         | Arquivo        | Máximo de 1 fotos                                    | -                 |
+| Categoria do produto   | Seleção única  | [Eletrônicos, Moda e beleza, Música, Casa, Serviços] | -                 |
+| Categoria de interesse | Seleção única  | [Eletrônicos, Moda e beleza, Música, Casa, Serviços] | -                 |
 
 **Atualizar informações do produto**
 
-| **Campo**            | **Tipo**       | **Restrições**                                                                          | **Valor default**          |
-| -------------------- | -------------- | --------------------------------------------------------------------------------------- | -------------------------- |
-| Título  | Caixa de texto | Máximo de 30 caracteres                                    | Título atual               |
-| Descrição            | Caixa de texto | Máximo de 140 caracteres                                                                | Descrição atual            |
-| Adicionar foto       | Arquivo        | Máximo de 1 fotos                                                                       | Foto atual                 |
-| Categoria do produto | Seleção única  | [Eletrônicos, Moda e beleza, Música, Casa, Serviços] | Categoria do produto atual |
-| Categoria de interesse   | Seleção única  | [Eletrônicos, Moda e beleza, Música, Casa, Serviços] | Categoria desejada atual   |
+| **Campo**              | **Tipo**       | **Restrições**                                       | **Valor default**          |
+| ---------------------- | -------------- | ---------------------------------------------------- | -------------------------- |
+| Título                 | Caixa de texto | Máximo de 30 caracteres                              | Título atual               |
+| Descrição              | Caixa de texto | Máximo de 140 caracteres                             | Descrição atual            |
+| Adicionar foto         | Arquivo        | Máximo de 1 fotos                                    | Foto atual                 |
+| Categoria do produto   | Seleção única  | [Eletrônicos, Moda e beleza, Música, Casa, Serviços] | Categoria do produto atual |
+| Categoria de interesse | Seleção única  | [Eletrônicos, Moda e beleza, Música, Casa, Serviços] | Categoria desejada atual   |
 
 #### Processo 3 – Cooptar parceiros
 
@@ -232,7 +232,7 @@ O usuário deve acessar o status de negociações e selecionar a negociação qu
 
 | **Campo**         | **Tipo**       | **Restrições**             | **Valor default** |
 | ----------------- | -------------- | -------------------------- | ----------------- |
-| Nome fantasia   | Caixa de texto | Máximo de 100 caracteres   | -                 |
+| Nome fantasia     | Caixa de texto | Máximo de 100 caracteres   | -                 |
 | Logo da empresa   | Arquivo        | Máximo 1 foto              | -                 |
 | CNPJ              | Número         | Máximo de 14 dígitos       | -                 |
 | Plano de parceria | Seleção única  | [Basic, Standard, Premium] | -                 |
@@ -273,11 +273,10 @@ O usuário deve acessar o status de negociações e selecionar a negociação qu
 
 **Avaliar negociação**
 
-| **Campo**       | **Tipo**      | **Restrições** | **Valor default** |
-| --------------- | ------------- | -------------- | ----------------- |
-| Avaliar serviço | Seleção única | Obrigatório    | -                 |
-| Avaliação escrita | Caixa de Texto | Máximo de 140 caracteres | -    | 
-
+| **Campo**         | **Tipo**       | **Restrições**           | **Valor default** |
+| ----------------- | -------------- | ------------------------ | ----------------- |
+| Avaliar serviço   | Seleção única  | Obrigatório              | -                 |
+| Avaliação escrita | Caixa de Texto | Máximo de 140 caracteres | -                 |
 
 ### 4.2. Tecnologias
 
@@ -289,7 +288,7 @@ As tecnologias que serão utilizadas para resolução do problema são:
 | Git                      | Gerenciamento das versões dos arquivos                                                      |
 | Figma                    | Plataforma para design gráfico, usada para criar a estilização do site                      |
 | Photoshop                | Utilizado para o design do Style Guide                                                      |
-| Whatsapp                 | Usado para facilitar a comunicação entre os participantes do grupo                          |
+| WhatsApp                 | Usado para facilitar a comunicação entre os participantes do grupo                          |
 | Discord                  | Utilizado para realizar reuniões com os participantes do trabalho para organizar as tarefas |
 | Visual Studio Code       | Editor de código                                                                            |
 | HTML                     | Linguagem de marcação utilizada                                                             |
@@ -297,6 +296,7 @@ As tecnologias que serão utilizadas para resolução do problema são:
 | Javascript               | Linguagem de programação utilizada para manipular elementos da pagina da aplicação          |
 | Java                     | Linguagem de programação utilizada para codificar o back-end                                |
 | Vue JS                   | Framework front-end para fazer requisições da API e apresenta-las no navegador              |
+| Chart JS                 | Biblioteca para geração de gráficos dinâmicos                                               |
 | SpringBoot               | Framework back-end utilizado para criar e gerenciar as entidades em um banco de dados       |
 | MySQL Workbench          | Ferramenta de design de banco de dados                                                      |
 | Postman                  | Plataforma de teste dos endpoints da API                                                    |
@@ -314,17 +314,15 @@ A seguir é apresentado o Diagrama de Entidade-Relacionamento (DER) do projeto d
 
 ## 6. Indicadores de desempenho
 
-Apresente aqui os principais indicadores de desempenho e algumas metas para o processo. Atenção: as informações necessárias para gerar os indicadores devem estar contempladas no diagrama de classe. Colocar no mínimo 5 indicadores.
+A seguir são apresentados os indicadores utilizados no projeto.
 
-Usar o seguinte modelo:
-
-| **Indicador**               | **Objetivos**                                                         | **Descrição**                                             | **Cálculo**                                                                                                                        | **Fonte dados**     | **Perspectiva**           |
-| --------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ------------------- | ------------------------- |
-| Percentual reclamações      | Avaliar quantitativamente as reclamações                              | Percentual de reclamações em relação ao total atendimento |                                                                                                                                    | Tabela reclamações  | Aprendizado e Crescimento |
-| Taxa de Requisições abertas | Melhorar a prestação de serviços medindo a porcentagem de requisições | Mede % de requisições atendidas na semana                 | ![\frac{\sum{atendidas}}{\sum{requisicoes}}100](https://latex.codecogs.com/svg.latex?\frac{\sum{atendidas}}{\sum{requisicoes}}100) | Tabela solicitações | Processos internos        |
-| Taxa de entrega de material | Manter controle sobre os materiais que estão sendo entregues          | Mede % de material entregue dentro do mês                 |                                                                                                                                    | Tabela Pedidos      | Clientes                  |
-
-Obs.: todas as informações para gerar os indicadores devem estar no diagrama de classe **a ser proposto**
+| **Indicador**                           | **Objetivos**                                                               | **Descrição**                                                | **Cálculo**                                                           | **Fonte dados**            | **Perspectiva** |
+| --------------------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------ | --------------------------------------------------------------------- | -------------------------- | --------------- |
+| Número de contas criadas mensalmente    | Avaliar quantidade de novas contas criadas                                  | Acompanha o número de usuários criados mensalmente           | Número de contas criadas                                              | Tabela de usuários         | Crescimento     |
+| Número de postagens criadas mensalmente | Avaliar quantidade de novas postagens criadas                               | Acompanha o número de postagens criadas mensalmente          | Número de postagens criadas                                           | Tabela de postagem         | Crescimento     |
+| Categorias mais ofertadas e buscadas    | Medir a relação entre as categorias mais ofertadas e as mais desejadas      | Compara quais categorias são mais requisitadas               | Quantidade de postagem/categoria ofertada vs desejada                 | Tabela de postagem         | Desempenho      |
+| Taxa de criação de trocas               | Avaliar o número de trocas criadas em relação ao número de postagens no mês | Verifica quantas postagens foram envolvidas em trocas no mês | Quantidade de trocas no mês / Quantidade de postagens no mês          | Tabela de troca e postagem | Desempenho      |
+| Taxa de conclusão de trocas             | Avaliar quantas trocas são efetivamente finalizadas no mês                  | Acompanhar quantas trocas foram finalizadas no mês           | Quantidade de trocas finalizadas no mês / Quantidade de trocas no mês | Tabela de troca            | Desempenho      |
 
 ## 7.Sistema desenvolvido
 
