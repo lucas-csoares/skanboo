@@ -268,7 +268,7 @@ export default {
     },
 
     calcularSpanGrid() {
-      const quantidadeLinhasGrid = 4;
+      const quantidadeLinhasGrid = 2;
       const quantidadeColunasGrid = 4;
 
       for (let i = 1; i <= quantidadeLinhasGrid; i++) {
@@ -297,7 +297,7 @@ export default {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   gap: 10px;
   padding: 15px;
 }
@@ -332,5 +332,10 @@ export default {
 
 .card-indicador p:nth-of-type(1) {
   font-weight: bold;
+}
+
+.card-indicador p:nth-of-type(2) {
+  font-weight: bold;
+  font-size: 2em;
 }
 </style>
