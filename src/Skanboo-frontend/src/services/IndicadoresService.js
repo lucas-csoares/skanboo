@@ -56,4 +56,20 @@ export default {
       },
     });
   },
+
+  taxaCriacaoTrocas: () => {
+    return http.get('/indicador/taxa-criacao-trocas', {
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+    });
+  },
+
+  taxaConclusaoTrocas: () => {
+    return http.get('/indicador/taxa-conclusao-trocas', {
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+    });
+  },
 };

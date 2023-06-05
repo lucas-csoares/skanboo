@@ -1,41 +1,42 @@
 <template>
   <div>
-    <h1>Graficos</h1>
+    <h1>Indicadores de desempenho</h1>
     <div class="grid">
-      <div class="grid-indicador-mensal">
-        <h1>Usuários criados no mês</h1>
-        <p class="indicador indicador-qtde-usuario"></p>
-      </div>
-
-      <div class="grid-indicador-mensal">
-        <h1>Postagens criadas no mês</h1>
-        <p class="indicador indicador-qtde-postagem"></p>
-      </div>
-
-      <div class="grid-indicador-mensal">
-        <h1>Trocas criadas no mês</h1>
-        <p class="indicador indicador-qtde-troca"></p>
-      </div>
-
-      <div class="grid-medio gf-usuarios-mes"><canvas id="usuarios-mes"></canvas></div>
-
-      <div class="grid-pequeno gf-categorias-desejadas">
-        <h1>Categorias mais desejadas</h1>
+      <div class="gf-categorias-desejadas linha-01 item">
+        <h4>Categorias mais desejadas</h4>
         <canvas id="categorias-desejadas"></canvas>
       </div>
 
-      <div class="grid-medio gf-postagens-mes">
-        <canvas id="postagens-mes"></canvas>
-      </div>
-
-      <div class="grid-pequeno gf-categorias-ofertadas">
-        <h1>Categorias mais ofertadas</h1>
+      <div class="gf-categorias-ofertadas linha-01 item">
+        <h4>Categorias mais ofertadas</h4>
         <canvas id="categorias-ofertadas"></canvas>
       </div>
 
-      <div class="grid-pequeno gf-categorias-relacao">
+      <div class="gf-categorias-relacao linha-01 item">
+        <h4>Métricas de postagem</h4>
         <canvas id="categorias-relacao"></canvas>
       </div>
+
+      <div class="grid-indicadores-mensais">
+        <div class="linha-01 card-indicador item">
+          <p>Novos usuários</p>
+          <p class="indicador indicador-qtde-usuario"></p>
+        </div>
+
+        <div class="linha-01 card-indicador item">
+          <p>Taxa criação de trocas</p>
+          <p class="indicador indicador-taxa-criacao-trocas"></p>
+        </div>
+
+        <div class="linha-01 card-indicador item">
+          <p>Taxa conclusão trocas</p>
+          <p class="indicador indicador-taxa-conclusao-trocas"></p>
+        </div>
+      </div>
+
+      <div class="gf-usuarios-mes linha-02 item"><canvas id="usuarios-mes"></canvas></div>
+
+      <div class="gf-postagens-mes linha-02 item"><canvas id="postagens-mes"></canvas></div>
     </div>
   </div>
 </template>
@@ -59,12 +60,14 @@ export default {
     this.gerarGraficoRADAR(
       this.categoriasMaisDesejadas,
       this.categoriasMaisOfertadas,
-      'categorias-relacao',
-      'Categorias'
+      'Categorias mais desejadas',
+      'Categorias mais ofertadas',
+      'categorias-relacao'
     );
     this.quantidadeUsuariosCriadosMesAtual();
-    this.quantidadePostagensCriadasMesAtual();
-    this.quantidadeTrocasCriadasMesAtual();
+    this.taxaCriacaoTrocas();
+    this.taxaConclusaoTrocas();
+    this.calcularSpanGrid();
   },
 
   methods: {
@@ -76,18 +79,18 @@ export default {
         .catch((e) => console.log(e));
     },
 
-    quantidadePostagensCriadasMesAtual() {
-      Indicadores.quantidadePostagensCriadasMesAtual()
+    taxaCriacaoTrocas() {
+      Indicadores.taxaCriacaoTrocas()
         .then((resposta) => {
-          document.querySelector('.indicador-qtde-postagem').innerHTML = resposta.data;
+          document.querySelector('.indicador-taxa-criacao-trocas').innerHTML = `${Math.round(resposta.data * 100)}%`;
         })
         .catch((e) => console.log(e));
     },
 
-    quantidadeTrocasCriadasMesAtual() {
-      Indicadores.quantidadeTrocasCriadasMesAtual()
+    taxaConclusaoTrocas() {
+      Indicadores.taxaConclusaoTrocas()
         .then((resposta) => {
-          document.querySelector('.indicador-qtde-troca').innerHTML = resposta.data;
+          document.querySelector('.indicador-taxa-conclusao-trocas').innerHTML = `${Math.round(resposta.data * 100)}%`;
         })
         .catch((e) => console.log(e));
     },
@@ -218,8 +221,7 @@ export default {
       });
     },
 
-    //todo: finalizar sessao de categorias (titulo -> titulo01 e titulo02)
-    gerarGraficoRADAR(indicador01, indicador02, canvas, titulo) {
+    gerarGraficoRADAR(indicador01, indicador02, titulo01, titulo02, canvas) {
       const categorias = ['Eletrônicos', 'Moda e beleza', 'Música', 'Casa', 'Serviços'];
 
       (async () => {
@@ -232,11 +234,11 @@ export default {
             fill: true,
             datasets: [
               {
-                label: 'Categorias mais desejadas',
+                label: titulo01,
                 data: resposta[0],
               },
               {
-                label: 'Categorias mais ofertadas',
+                label: titulo02,
                 data: resposta[1],
               },
             ],
@@ -264,48 +266,71 @@ export default {
 
       return [resposta01, resposta02];
     },
+
+    calcularSpanGrid() {
+      const quantidadeLinhasGrid = 4;
+      const quantidadeColunasGrid = 4;
+
+      for (let i = 1; i <= quantidadeLinhasGrid; i++) {
+        let itemLinha = document.querySelectorAll(`.linha-0${i}`);
+        this.setGridColumnRow(itemLinha, quantidadeColunasGrid);
+      }
+    },
+
+    setGridColumnRow(itemLinha, quantidadeColunasGrid) {
+      const qtdeItens = itemLinha.length;
+
+      for (let i = 0; i < itemLinha.length; i++) 
+         itemLinha[i].style.setProperty('grid-column', `span ${quantidadeColunasGrid / qtdeItens}`);
+      
+    },
   },
 };
 </script>
 
 <style scoped>
+* {
+  box-sizing: border-box;
+}
+
 .grid {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
   gap: 10px;
+  padding: 15px;
 }
 
-.grid-grande {
-  background-color: lightgray;
-  grid-column: 1 / span 4;
-  height: 500px;
+.linha-01 {
+  grid-row: 1;
 }
 
-.grid-medio {
-  background-color: lightgray;
-  grid-column: 1 / span 3;
-  height: 500px;
-}
-
-.grid-pequeno {
-  background-color: lightgray;
-  grid-column: 4 / span 1;
-  height: 500px;
-}
-
-.gf-usuarios-mes,
-.gf-categorias-desejadas {
+.linha-02 {
   grid-row: 2;
 }
 
-.gf-postagens-mes,
-.gf-categorias-ofertadas {
+.linha-03 {
   grid-row: 3;
 }
 
-.gf-categorias-relacao {
-  grid-row: 1;
+.item {
+  background-color: #fafafa;
+  border: 1px solid #e5e9eb;
+  border-radius: 5px;
+}
+
+.grid-indicadores-mensais {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-indicador {
+  width: 100%;
+  margin: 5px 0 0 0;
+}
+
+.card-indicador p:nth-of-type(1) {
+  font-weight: bold;
 }
 </style>
