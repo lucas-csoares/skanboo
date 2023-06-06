@@ -39,6 +39,15 @@ public class SecurityConfig {
     private static final String[] PUBLIC_MATCHERS = { "/", "/postagem/lista", "parceiro/lista" };
 
     private static final String[] PUBLIC_MATCHERS_POST = { "/usuario", "/login" };
+    private static final String[] AUTH_WHITELIST = {
+        "/api/v1/auth/**",
+        "/v3/api-docs/**",
+        "/swagger-ui/**",
+        "/v3/api-docs/**",
+        "v3/api-docs.yaml",
+        "swagger-ui.html"
+        // other public endpoints of your API may be appended to this array
+};
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -53,6 +62,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests()
                 .requestMatchers(HttpMethod.POST).permitAll()
                 .requestMatchers(PUBLIC_MATCHERS).permitAll()
+                .requestMatchers(AUTH_WHITELIST).permitAll()
                 .anyRequest().authenticated().and()
                 .authenticationManager(authenticationManager);
 
