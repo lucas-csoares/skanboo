@@ -14,7 +14,6 @@ import com.ti.Skanboo.exceptions.PostCreationException;
 import jakarta.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -30,13 +29,6 @@ public class PostagemService {
 
         Postagem postagem = this.postagemRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Postagem nao encontrada!"));
-
-        // Verifica se usuario esta logado e se o endereco que ele busca pertence a ele
-        // UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
-
-        // if (Objects.isNull(userSpringSecurity) || !userSpringSecurity.hasRole(UsuarioEnum.ADMIN)
-        //         && !postagemPertenceAoUsuario(userSpringSecurity, postagem))
-        //     throw new AuthorizationException("Acesso negado!");
 
         return postagem;
     }

@@ -72,6 +72,7 @@ public class UsuarioService {
 
         /* Usuario padrao e salvo como USER - num 2 */
         obj.setPerfis(Stream.of(UsuarioEnum.USER.getCode()).collect(Collectors.toSet()));
+        obj.setNotaFinal(0.0);
         obj.setEndereco(null);
         obj.setData(LocalDate.now());
         obj.setHora(LocalTime.now());

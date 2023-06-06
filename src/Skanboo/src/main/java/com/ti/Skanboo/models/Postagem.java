@@ -2,13 +2,10 @@ package com.ti.Skanboo.models;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -39,6 +36,17 @@ public class Postagem {
 
     public static final String NOME_TABELA = "postagem";
 
+    public Postagem(String titulo, Usuario usuario, String descricao, String categoriaProduto,
+            String categoriaProdutoDesejado) {
+        this.titulo = titulo;
+        this.usuario = usuario;
+        this.descricao = descricao;
+        this.categoriaProduto = categoriaProduto;
+        this.categoriaProdutoDesejado = categoriaProdutoDesejado;
+        this.hora = LocalTime.now();
+        this.data = LocalDate.now();
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true)
@@ -66,7 +74,7 @@ public class Postagem {
     private String categoriaProdutoDesejado;
 
     @Column(name = "foto", length = 100000, nullable = true, updatable = true)
-    @Lob 
+    @Lob
     private String foto;
 
     @OneToMany(mappedBy = "postagemOrigem", cascade = CascadeType.REMOVE)
@@ -83,16 +91,4 @@ public class Postagem {
 
     @Column(name = "data", nullable = false)
     private LocalDate data;
-
-    public Postagem(String titulo, Usuario usuario, String descricao, String categoriaProduto,
-            String categoriaProdutoDesejado) {
-        this.titulo = titulo;
-        this.usuario = usuario;
-        this.descricao = descricao;
-        this.categoriaProduto = categoriaProduto;
-        this.categoriaProdutoDesejado = categoriaProdutoDesejado;
-        this.hora = LocalTime.now();
-        this.data = LocalDate.now();
-    }
-
 }

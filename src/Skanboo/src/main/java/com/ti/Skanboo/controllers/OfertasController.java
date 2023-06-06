@@ -2,7 +2,6 @@ package com.ti.Skanboo.controllers;
 
 import java.net.URI;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -15,12 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import com.ti.Skanboo.models.Oferta;
 import com.ti.Skanboo.models.Postagem;
 import com.ti.Skanboo.services.OfertaService;
 import com.ti.Skanboo.services.PostagemService;
-
 import jakarta.validation.Valid;
 
 @RestController
@@ -60,7 +57,6 @@ public class OfertasController {
         return ResponseEntity.ok().body(obj);
     }
 
-    // (O endpoint significa: "em qual postagem quero trocar/o que eu quero oferecer em troca")
     @PostMapping("/{id-postagem-origem}/{id-postagem-ofertada}")
     public ResponseEntity<Void> criar(@PathVariable("id-postagem-origem") Long id_postagem_origem, @PathVariable("id-postagem-ofertada") Long id_postagem_ofertada) {
 

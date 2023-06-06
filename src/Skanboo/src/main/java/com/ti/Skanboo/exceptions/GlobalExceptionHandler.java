@@ -22,9 +22,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import org.springframework.security.access.AccessDeniedException;
-
 import lombok.extern.slf4j.Slf4j;
-
 import java.io.IOException;
 
 @Slf4j(topic = "GLOBAL_EXCEPTION_HANDLER")
@@ -187,8 +185,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler imple
         log.error("Falha ao criar a oferta", offerCreationException);
         return buildErrorResponse(offerCreationException, HttpStatus.METHOD_NOT_ALLOWED, request);
     }
-    
-    //Erros da troca - INÍCIO
+
     @ExceptionHandler(ExchangeCreationException.class)
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     public ResponseEntity<Object> handleExchangeCreationException(ExchangeCreationException exchangeCreationException,
@@ -197,7 +194,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler imple
         log.error("Falha ao criar troca", exchangeCreationException);
         return buildErrorResponse(exchangeCreationException, HttpStatus.METHOD_NOT_ALLOWED, request);
     }
-    
+
     @ExceptionHandler(ExchangeUpdateException.class)
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     public ResponseEntity<Object> handleExchangeUpdateException(ExchangeUpdateException exchangeUpdateException,
@@ -206,7 +203,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler imple
         log.error("Falha ao atualizar a troca", exchangeUpdateException);
         return buildErrorResponse(exchangeUpdateException, HttpStatus.METHOD_NOT_ALLOWED, request);
     }
-    
+
     @ExceptionHandler(ExchangeNotFound.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<Object> handleExchangeNotFound(ExchangeNotFound exchangeNotFound,
@@ -215,10 +212,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler imple
         log.error("Falha ao encontrar troca", exchangeNotFound);
         return buildErrorResponse(exchangeNotFound, HttpStatus.NOT_FOUND, request);
     }
-    //Erros da troca - FIM
 
-
-    //Erros da Avaliação - INÍCIO
     @ExceptionHandler(RatingNotFound.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<Object> handleRatingNotFound(RatingNotFound ratingNotFound,
@@ -237,10 +231,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler imple
         return buildErrorResponse(ratingCreationException, HttpStatus.METHOD_NOT_ALLOWED, request);
     }
 
-
-    //Erros da Avaliação - FIM
-
-    
     @ExceptionHandler(OfferUpdateException.class)
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     public ResponseEntity<Object> handleOfferCreationException(OfferUpdateException offerUpdateException,

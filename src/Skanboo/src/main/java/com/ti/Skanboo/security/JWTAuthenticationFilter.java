@@ -3,7 +3,6 @@ package com.ti.Skanboo.security;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ti.Skanboo.exceptions.GlobalExceptionHandler;
 import com.ti.Skanboo.models.Usuario;
-
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,11 +12,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
 import java.io.IOException;
 import java.util.ArrayList;
 
-//  /login
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private final AuthenticationManager authenticationManager;
@@ -32,12 +29,12 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request,
-                                                HttpServletResponse response) throws AuthenticationException {
+            HttpServletResponse response) throws AuthenticationException {
         try {
             Usuario credenciaisUsuario = new ObjectMapper().readValue(request.getInputStream(), Usuario.class);
 
             UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-                credenciaisUsuario.getEmail(), credenciaisUsuario.getSenha(), new ArrayList<>());
+                    credenciaisUsuario.getEmail(), credenciaisUsuario.getSenha(), new ArrayList<>());
 
             return this.authenticationManager.authenticate(authToken);
         } catch (IOException e) {
@@ -46,7 +43,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     }
 
     @Override
-    protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain, Authentication authentication) throws IOException, ServletException {
+    protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response,
+            FilterChain filterChain, Authentication authentication) throws IOException, ServletException {
         UserSpringSecurity userSpringSecurity = (UserSpringSecurity) authentication.getPrincipal();
         String username = userSpringSecurity.getUsername();
         String token = this.jwtUtil.generateToken(username);

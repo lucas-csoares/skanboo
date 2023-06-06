@@ -3,10 +3,8 @@ package com.ti.Skanboo.services;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.ti.Skanboo.exceptions.AuthorizationException;
 import com.ti.Skanboo.models.enums.UsuarioEnum;
 import com.ti.Skanboo.repositories.PostagemRepository;

@@ -39,7 +39,7 @@ public class SecurityConfig {
     private static final String[] PUBLIC_MATCHERS = { "/", "/postagem/lista", "parceiro/lista" };
 
     private static final String[] PUBLIC_MATCHERS_POST = { "/usuario", "/login" };
-    private static final String[] AUTH_WHITELIST = {
+    private static final String[] SWAGGER_MATCHERS = {
         "/api/v1/auth/**",
         "/v3/api-docs/**",
         "/swagger-ui/**",
@@ -62,7 +62,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests()
                 .requestMatchers(HttpMethod.POST).permitAll()
                 .requestMatchers(PUBLIC_MATCHERS).permitAll()
-                .requestMatchers(AUTH_WHITELIST).permitAll()
+                .requestMatchers(SWAGGER_MATCHERS).permitAll()
                 .anyRequest().authenticated().and()
                 .authenticationManager(authenticationManager);
 

@@ -2,10 +2,8 @@ package com.ti.Skanboo.models;
 
 import java.time.LocalTime;
 import java.time.LocalDate;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -33,19 +31,17 @@ public class Avaliacao {
     
     public static final String NOME_TABELA = "avaliacao";
 
-
-    @Id //id Avaliacao
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true)
     private Long id;
 
-
-    @ManyToOne //id Troca
+    @ManyToOne
     @JoinColumn(name = "id_troca", referencedColumnName = "id", nullable = false, updatable = false)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Troca troca;
 
-    @ManyToOne //id Usuario
+    @ManyToOne
     @JoinColumn(name = "id_usuario", referencedColumnName = "id", nullable = false, updatable = false)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Usuario usuario;
@@ -60,6 +56,4 @@ public class Avaliacao {
 
     @Column(name = "data", nullable = false)
     private LocalDate data;
-
-
 }

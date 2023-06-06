@@ -7,7 +7,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
 import com.ti.Skanboo.models.Usuario;
 import com.ti.Skanboo.repositories.UsuarioRepository;
 import com.ti.Skanboo.security.UserSpringSecurity;
@@ -28,5 +27,4 @@ public class UserDetailsServiceImpl implements UserDetailsService{
         
         return new UserSpringSecurity(usuario.getId(), usuario.getEmail(), usuario.getSenha(), usuario.getPerfil());
     }
-    
 }

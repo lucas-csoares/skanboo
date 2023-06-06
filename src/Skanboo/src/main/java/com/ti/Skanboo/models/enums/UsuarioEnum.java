@@ -26,5 +26,4 @@ public enum UsuarioEnum {
 
         throw new IllegalArgumentException("Codigo invalido: " + code);
     }
-
 }

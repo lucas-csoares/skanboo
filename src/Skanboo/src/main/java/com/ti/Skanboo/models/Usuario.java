@@ -7,11 +7,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ti.Skanboo.models.enums.UsuarioEnum;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
@@ -88,16 +86,10 @@ public class Usuario {
     @Column(name = "nota_final", nullable = false, updatable = true)
     private Double notaFinal;
 
-    {
-        notaFinal = 0.0;
-    }
-
-
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Postagem> postagem = new ArrayList<Postagem>();
 
-    //Avaliacao
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<Avaliacao> avaliacoes = new ArrayList<>();
 

@@ -2,10 +2,8 @@ package com.ti.Skanboo.services;
 
 import java.util.List;
 import java.util.Objects;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.ti.Skanboo.exceptions.AuthorizationException;
 import com.ti.Skanboo.exceptions.EntityNotFoundException;
 import com.ti.Skanboo.models.Parceiro;
@@ -35,9 +33,7 @@ public class ParceiroService {
     }
 
     public List<Parceiro> listarParceirosCadastrados() {
-
         List<Parceiro> parceiro = this.parceiroRepository.findAll();
-
         return parceiro;
     }
 

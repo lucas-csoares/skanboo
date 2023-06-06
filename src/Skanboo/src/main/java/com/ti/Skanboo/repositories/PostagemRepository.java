@@ -1,13 +1,11 @@
 package com.ti.Skanboo.repositories;
 
 import org.springframework.stereotype.Repository;
-
 import java.time.LocalDate;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-
 import com.ti.Skanboo.models.Postagem;
 
 @Repository
@@ -36,5 +34,4 @@ public interface PostagemRepository extends JpaRepository<Postagem, Long> {
                         "FROM Postagem p " +
                         "GROUP BY categoriaProduto")
         List<Object[]> categoriasMaisOfertadas();
-
 }

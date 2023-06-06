@@ -2,10 +2,8 @@ package com.ti.Skanboo.services;
 
 import java.util.List;
 import java.util.Objects;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.ti.Skanboo.exceptions.AuthorizationException;
 import com.ti.Skanboo.exceptions.EntityNotFoundException;
 import com.ti.Skanboo.models.EnderecoUsuario;
@@ -13,7 +11,6 @@ import com.ti.Skanboo.models.Usuario;
 import com.ti.Skanboo.models.enums.UsuarioEnum;
 import com.ti.Skanboo.repositories.EnderecoUsuarioRepository;
 import com.ti.Skanboo.security.UserSpringSecurity;
-
 import jakarta.transaction.Transactional;
 
 @Service

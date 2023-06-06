@@ -6,10 +6,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.ti.Skanboo.exceptions.AuthorizationException;
 import com.ti.Skanboo.exceptions.EntityNotFoundException;
 import com.ti.Skanboo.exceptions.OfferCreationException;
@@ -140,7 +138,6 @@ public class OfertaService {
 
         Oferta oferta = encontrarPorId(id);
 
-        // todo: verificar se existe troca com a oferta referenciada antes de deletar
         if (!oferta.getStatus().equals(OfertaEnum.RECUSADA))
             throw new RuntimeException("A oferta precisa ser recusada antes de ser deletada!");
 
@@ -154,6 +151,7 @@ public class OfertaService {
     private void aceitarOferta(Oferta obj) {
 
         obj.setStatus(OfertaEnum.ACEITA);
+
         List<Oferta> ofertasRelacionadas = this.listarOfertasRelacionadas(obj);
 
         for (Oferta oferta : ofertasRelacionadas)
@@ -186,8 +184,6 @@ public class OfertaService {
         return oferta.getPostagemOfertada().getUsuario().getId().equals(userSpringSecurity.getId());
     }
 
-    // Verifica se ja existe uma oferta com as postagens trocadas
-    // Retorna true se existe postagem com as postagens e status indicado
     private Boolean ofertaJaCadastrada(Postagem postagemOrigem, Postagem postagemOfertada, OfertaEnum status) {
         return ofertaRepository.existsByPostagemOrigemAndPostagemOfertadaAndStatus(postagemOrigem, postagemOfertada,
                 status);

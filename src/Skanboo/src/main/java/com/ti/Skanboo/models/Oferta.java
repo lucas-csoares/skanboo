@@ -3,10 +3,8 @@ package com.ti.Skanboo.models;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ti.Skanboo.models.enums.OfertaEnum;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,7 +22,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Setter;
 
 @Table(name = Oferta.NOME_TABELA)
-
 @Entity
 @Getter
 @Setter
@@ -66,5 +63,4 @@ public class Oferta {
 
     @Column(name = "data", nullable = false)
     private String data;
-
 }

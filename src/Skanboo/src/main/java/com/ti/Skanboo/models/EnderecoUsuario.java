@@ -1,7 +1,6 @@
 package com.ti.Skanboo.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,6 +24,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EnderecoUsuario {
+
         public static final String NOME_TABELA = "endereco_usuario";
 
         @Id
@@ -62,5 +62,4 @@ public class EnderecoUsuario {
         @Column(name = "cep", length = 45, nullable = false)
         @NotBlank
         private String cep;
-
 }

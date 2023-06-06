@@ -10,5 +10,4 @@ public class DataBindingViolationException extends DataIntegrityViolationExcepti
     public DataBindingViolationException(String message) {
         super(message);
     }
-
 }

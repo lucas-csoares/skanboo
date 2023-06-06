@@ -16,7 +16,6 @@ import com.ti.Skanboo.models.enums.TrocaEnum;
 import com.ti.Skanboo.repositories.TrocaRepository;
 import com.ti.Skanboo.security.UserSpringSecurity;
 
-
 @Service
 public class TrocaService {
     
@@ -29,8 +28,6 @@ public class TrocaService {
     @Autowired
     private PostagemService postagemService;
 
-
-    //*Método encontrarPorId
     public Troca encontrarPorId(Long id) {
 
         Troca troca = this.trocaRepository.findById(id)
@@ -40,15 +37,8 @@ public class TrocaService {
         
         return troca;
     }
-    
-    // Postagem postagemOrigem = oferta.getPostagemOrigem();
-    // Postagem postagemOfertada = oferta.getPostagemOfertada();
-    // Usuario usuarioPostagemOrigem = postagemOrigem.getUsuario();
-    // Usuario usuarioPostagemOfertada = postagemOfertada.getUsuario();
-    
                    
     public List<Troca> listarTrocasUsuarioAtivo() {
-        
         
         UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
         Long usuarioId = userSpringSecurity.getId();
@@ -64,21 +54,13 @@ public class TrocaService {
         }
 
         return trocasDoUsuarioLogado;
-    
+
     }
     
-
-
-
-    //* Método criar troca
     public Troca criar(Long id_oferta) {
 
-        //Verificando se oferta existe
         Oferta obj = this.ofertaService.encontrarPorId(id_oferta);
-
-        //Verificar status da oferta
         OfertaEnum statusOferta = obj.getStatus();
-        
         Troca troca;
         
         if (statusOferta == OfertaEnum.ACEITA) {
@@ -88,20 +70,15 @@ public class TrocaService {
         }
         
         return this.trocaRepository.save(troca);
-    
     }
 
-
     public Troca atualizarPorId(Long id_troca) {
-        
         
         Troca novaTroca = encontrarPorId(id_troca); 
 
         if (novaTroca.getStatus().equals(TrocaEnum.FINALIZADA)) 
             throw new ExchangeUpdateException("A Troca já foi finalizada, seu status nao pode ser atualizado!");
 
-
-        
         List<Postagem> postagensUsuarioLogado = this.postagemService.listarPostagensUsuarioAtivo();
         
         for(Postagem postagem : postagensUsuarioLogado) {
@@ -121,8 +98,6 @@ public class TrocaService {
         return this.trocaRepository.save(novaTroca);
     }
          
-    
-    
     public void deletarPorId(Long id) {
         
         Troca troca = encontrarPorId(id);
@@ -135,10 +110,7 @@ public class TrocaService {
         } catch (Exception e) {
             throw new RuntimeException("Nao e possivel excluir a troca pois ela possui entidades relacionadas!");
         }
-
     }
-
-
 } 
 
 

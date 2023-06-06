@@ -2,7 +2,6 @@ package com.ti.Skanboo.security;
 
 import java.io.IOException;
 import java.util.Objects;
-
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -21,7 +20,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
     private final UserDetailsService userDetailsService;
 
     public JWTAuthorizationFilter(AuthenticationManager authenticationManager, JWTUtil jwtUtil,
-                                  UserDetailsService userDetailsService) {
+            UserDetailsService userDetailsService) {
         super(authenticationManager);
         this.jwtUtil = jwtUtil;
         this.userDetailsService = userDetailsService;
@@ -50,5 +49,4 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
         }
         return null;
     }
-
 }

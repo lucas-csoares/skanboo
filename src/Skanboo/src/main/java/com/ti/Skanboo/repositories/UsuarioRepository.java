@@ -2,14 +2,11 @@ package com.ti.Skanboo.repositories;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.time.LocalDate;
 import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-
 import com.ti.Skanboo.models.Usuario;
 
 @Repository
@@ -29,5 +26,4 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
                         "WHERE EXTRACT(YEAR FROM u.data) = :ano " +
                         "GROUP BY EXTRACT(MONTH FROM u.data)")
         List<Object[]> quantidadeUsuariosCriadosPorMes(@Param("ano") int ano);
-
 }

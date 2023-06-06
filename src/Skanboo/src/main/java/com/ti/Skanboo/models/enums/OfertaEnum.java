@@ -5,5 +5,4 @@ public enum OfertaEnum {
     ACEITA,
     RECUSADA,
     EM_ANDAMENTO;
-
 }
