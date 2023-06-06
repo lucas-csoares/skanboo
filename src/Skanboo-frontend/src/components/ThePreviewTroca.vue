@@ -76,80 +76,17 @@
     </div>
     <div class="container-botoes">
       <button class="voltar">Voltar</button>
-      <!-- <button class="invisivel"></button> -->
-      <button class="enviar">Enviar</button>
+      <button id="aceitar" @click="confirmacaoTroca">Produto recebido</button>
     </div>
 
-    <!-- DIV DE TESTE 
-    <div class="container">
-      <div class="descricao">
-        <div class="imagem">
-          <img src="../assets/imagem-produto.avif" class="card-img" />
-        </div>
-        <div class="categorias-produto">
-          <span><b>Categoria: </b></span>
-          <span class="categoria">cASA</span>
-
-          <br />
-
-          <span><b>Interesse: </b></span>
-          <span class="oferta">Video game</span>
-
-          <br />
-
-          <span><b>Contato: </b></span>
-          <span class="oferta">Telefone</span>
-        </div>
-        <div class="informacoes-produto">
-          <div class="titulo">
-            <h2>Coisa daora</h2>
-          </div>
-          <p>Coisa daora.com.br adquira já!</p>
-        </div>
-      </div>
-
-      <div class="seta-div">
-        <img class="seta" src="../assets/setaDireita.png" alt="seta" />
-        <img class="seta" src="../assets/setaEsquerda.png" alt="seta" />
-      </div>
-
-      <div class="descricao">
-        <div class="imagem">
-          <img src="../assets/imagem-produto.avif" class="card-img" />
-        </div>
-        <div class="categorias-produto">
-          <span><b>Categoria: </b></span>
-          <span class="categoria">Lalalala</span>
-
-          <br />
-
-          <span><b>Interesse: </b></span>
-          <span class="oferta">Soneca</span>
-
-          <br />
-
-          <span><b>Contato: </b></span>
-          <span class="oferta">Telefone</span>
-        </div>
-        <div class="informacoes-produto">
-          <div class="titulo">
-            <h2>Coisa suprema daora</h2>
-          </div>
-          <p>Nhdenhenhe bla bla bla</p>
-        </div>
-      </div>
-    </div>
-    <div class="container-botoes">
-      <button class="voltar">Voltar</button>
-      <button class="enviar">Enviar</button>
-    </div> -->
   </section>
 </template>
 
 <script>
-import Oferta from "../services/OfertaService";
-import Endereco from "../services/EnderecoService";
-// import Troca from '../services/TrocaService';
+import Oferta from '../services/OfertaService';
+import Endereco from '../services/EnderecoService';
+import Troca from '../services/TrocaService';
+import Usuario from '../services/UsuarioService';
 
 export default {
   props: ["id"],
@@ -157,15 +94,18 @@ export default {
     return {
       oferta: null,
       troca: null,
+      usuario: null,
+      id_usuario: null,
     };
   },
-
   mounted() {
-    Oferta.exibirOferta(this.id)
+    const ofertaId = this.$route.params.idOferta;
+    console.log(ofertaId);
+    Oferta.exibirOferta(ofertaId)
       .then((resposta) => {
         const ofertas = resposta.data;
         this.oferta = ofertas;
-        console.log(this.oferta);
+        console.log(this.oferta)
         return this.oferta;
       })
       .catch((e) => console.log(e.message));
@@ -176,6 +116,27 @@ export default {
         return this.endereco;
       })
       .catch((e) => console.log(e.message));
+
+      Usuario.exibirInfo()
+      .then((resposta) => {
+        this.usuario = resposta.data;
+        this.id_usuario = this.usuario.id; // Assign the value to id_usuario
+        return this.id_usuario;
+      })
+      .catch((e) => console.log(e.message));
+  },
+  methods: {
+    confirmacaoTroca() {
+      const ofertaId = this.$route.params.idOferta;
+
+      Troca.atualizar(ofertaId)
+        .then(() => {
+          console.log(this.id_usuario);
+          alert('Confirmação enviada!');
+          this.errors = [];
+        })
+        .catch((e) => console.log(e.message));
+    },
   },
 };
 </script>
@@ -201,21 +162,21 @@ export default {
   background-color: grey;
   border: 0px solid #515864;
   border-radius: 4px;
-  border-radius: 100%;
+
 }
 
 .card-img {
   width: 150px;
   height: 150px;
   object-fit: cover;
-  border-radius: 100%;
+
 }
 
 img {
-  max-width: 200px;
-  max-height: 200px;
+  max-width: 150px;
+  max-height: 150px;
   object-fit: cover;
-  border-radius: 100%;
+  border-radius: 4px;
 }
 
 .seta-div {
@@ -250,6 +211,7 @@ img {
   flex-direction: column;
   height: 300px;
   width: 300px;
+  min-width: 300px;
   margin-left: 0px;
   margin-top: 10px;
   padding: 10px;

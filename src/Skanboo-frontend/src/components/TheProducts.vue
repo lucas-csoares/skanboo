@@ -82,12 +82,12 @@ export default {
 
   methods: {
     exibirTodasPostagens() {
-      if(Postagem.usuario != this.usuario){
+      // if(Postagem.usuario != this.usuario){
         Postagem.exibirTodasPostagens().then((resposta) => {
         this.postagens = resposta.data;
         this.carrosselPostagens = this.obterPostagensAleatorias();
       });
-      }
+      // }
     },
 
     obterPostagensAleatorias() {

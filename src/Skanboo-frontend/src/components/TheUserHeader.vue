@@ -19,7 +19,7 @@
                 <a href="/ofertasrecebidasview">Ofertas recebidas | </a>
               </li>
               <li>
-                <a href="/ofertaview">Ofertas feitas | </a>
+                <a href="/produtosoferecidosview">Ofertas feitas | </a>
               </li>
               <li>
                 <a href="/">Trocas </a>
@@ -93,8 +93,6 @@ a {
 a:hover {
   font-weight: 400;
   text-decoration: none;
-  letter-spacing: 1px;
-  font-size: 12px;
 }
 
 body {

@@ -31,21 +31,20 @@
                 <button id="recusar" value="RECUSADA"><router-link
                         :to="{ name: 'UsuarioView' }">Recusar</router-link></button>
             </div>
-            <!-- <div class="div-botao">
-                <button id="aceitar" @click="criarTroca(oferta[0].id, 'ACEITA')"><router-link
-                        :to="{ name: 'PreviewTrocaView', params: { id: oferta.id } }">Aceitar</router-link></button>
-            </div> -->
             <div class="div-botao">
-                <button id="aceitar" ><router-link
-                        :to="{ name: 'ThePreviewTroca', params: { id: oferta[0].id } }">Aceitar</router-link></button>
+                <button id="aceitar" @click="criarTroca(oferta[0].id, 'ACEITA')">Aceitar</button>
             </div>
+            <!-- <div class="div-botao">
+                <button id="aceitar"><router-link
+                        :to="{ name: 'ThePreviewTroca', params: { id: oferta[0].id } }">Aceitar</router-link></button>
+            </div> -->
         </div>
     </section>
 </template>
 
 <script>
 import Oferta from '../services/OfertaService';
-// import Troca from '../services/TrocaService';
+import Troca from '../services/TrocaService';
 
 export default {
     data() {
@@ -66,49 +65,45 @@ export default {
             .catch((e) => console.log(e.message));
     },
 
+    //    methods: {
+    //        criarTroca(id_oferta, aceitarOferta) {
+    //
+    //            this.oferta = { status: aceitarOferta };
+    //
+    //            Oferta.atualizar(id_oferta, this.oferta)
+    //                .then(() => {
+    //                    console.log(id_oferta);
+    //                    alert('Oferta aceita!');
+    //                    this.errors = [];
+    //                })
+    //                .catch((e) => console.log(e.message));
+    //            Troca.criar(id_oferta)
+    //                .then(() => {
+    //                    alert('Troca criada com sucesso!');
+    //                    this.errors = [];
+    //                })
+    //                .catch((e) => console.log(e.message));
+    //        },
+    //    },
+
     methods: {
-        // criarTroca(id_oferta, aceitarOferta) {
-
-        //     this.oferta = { status: aceitarOferta };
-
-
-        //     Oferta.atualizar(id_oferta, this.oferta)
-        //         .then(() => {
-        //             console.log(id_oferta);
-        //             alert('Oferta aceita!');
-        //             this.errors = [];
-        //         })
-        //         .catch((e) => console.log(e.message));
-
-        //     Troca.criar(id_oferta)
-        //         .then(() => {
-        //             alert('Troca criada com sucesso!');
-        //             this.errors = [];
-        //         })
-        //         .catch((e) => console.log(e.message));
-
-        // },
+        async criarTroca(id_oferta, aceitarOferta) {
+            this.oferta = { status: aceitarOferta };
+            try {
+                await Oferta.atualizar(id_oferta, this.oferta);
+                console.log(id_oferta);
+                alert('Oferta aceita!');
+                this.errors = [];
+                await Troca.criar(id_oferta);
+                console.log(id_oferta);
+                alert('Troca criada com sucesso!');
+                this.$router.push({ name: 'ThePreviewTroca', params: { idOferta: id_oferta } });
+                this.errors = [];
+            } catch (e) {
+                console.log(e.message);
+            }
+        },
     },
-
-    //     methods: {
-    //   async criarTroca(id_oferta, aceitarOferta) {
-    //     this.oferta = { status: aceitarOferta };
-
-    //     try {
-    //       await Oferta.atualizar(id_oferta, this.oferta);
-    //       console.log(id_oferta);
-    //       alert('Oferta aceita!');
-    //       this.errors = [];
-
-    //       await Troca.criar(id_oferta);
-    //       console.log(id_oferta);
-    //       alert('Troca criada com sucesso!');
-    //       this.errors = [];
-    //     } catch (e) {
-    //       console.log(e.message);
-    //     }
-    //   },
-    // },
 
 
 };

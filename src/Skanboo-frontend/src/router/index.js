@@ -154,7 +154,7 @@ const routes = [
     props: true,
   },
   {
-    path: "/oferta/:id",
+    path: "/oferta/:idOferta",
     name: "ThePreviewTroca",
     component: ThePreviewTroca,
     props: true,
