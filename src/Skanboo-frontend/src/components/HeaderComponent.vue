@@ -112,6 +112,7 @@ a:hover {
   top: 50%;
   transform: translateY(-50%);
   margin-left: 50px;
+  margin-top: -10px;
 }
 
 .menu-nav ul {
