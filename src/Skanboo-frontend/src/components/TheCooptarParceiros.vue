@@ -3,6 +3,9 @@
     <h1>Cadastrar parceiro</h1>
 
     <div class="parceiro">
+      <div class="foto-parceiro">
+        <img :src="parceiro.foto" alt=""/>
+      </div>
       <div class="dados-parceiro">
         <form @submit.prevent="criar">
           <label for="titulo">Nome fantasia</label>
@@ -12,7 +15,7 @@
           <input type="text" id="cnpj" v-mask="['##.###.###/####-##']" v-model="parceiro.cnpj" />
 
           <fieldset>
-            <legend>Plano de parceria</legend>
+            <legend>Plano</legend>
 
             <input
               type="radio"
@@ -165,13 +168,19 @@ li {
   list-style: none;
 }
 
-.foto-Parceiro {
+.foto-parceiro {
   width: 120px;
   height: 120px;
   border-radius: 100%;
   background-color: lightgray;
   align-items: center;
-  margin-left: 150px;
+  margin-left: 270px;
+}
+
+img {
+  border-radius: 50% 50% 50% 50%;
+  width: 120px;
+  height: 120px;
 }
 
 button {
