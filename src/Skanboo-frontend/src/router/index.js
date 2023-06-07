@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import CadastroView from "../views/CadastroView";
 import LoginView from "../views/LoginView";
 import ProductsView from "../views/ProductsView";
-import UsuarioView from "../views/UsuarioView";
+import PerfilUsuarioView from "../views/PerfilUsuarioView";
 import EditarUsuarioView from "../views/EditarUsuarioView";
 import PostarProdutoView from "../views/PostarProdutoView";
 import EditarProdutoView from "../views/EditarProdutoView";
@@ -46,9 +46,9 @@ const routes = [
     component: ProductsView,
   },
   {
-    path: "/UsuarioView",
-    name: "UsuarioView",
-    component: UsuarioView,
+    path: "/PerfilUsuarioView",
+    name: "PerfilUsuarioView",
+    component: PerfilUsuarioView,
   },
   {
     path: "/editarUsuarioView",

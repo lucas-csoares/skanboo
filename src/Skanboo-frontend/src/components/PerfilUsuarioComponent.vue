@@ -35,30 +35,8 @@
       </div>
       <button class="editar-endereco"><a href="/editarEnderecoView">Editar endereço</a></button>
 
-      <!-- DIV ENDEREÇO INICIAL
-
-      <div class="informacoes-endereco">
-        <div class="dados-endereco">
-          <p class="cep">Endereço</p>
-        </div>
-
-        <div class="info-endereco">
-          <p class="cepRuaNumero">
-            {{ endereco.cep }} | Rua {{ endereco.rua }}, {{ endereco.numero }}
-          </p>
-        </div> 
-      </div>-->
-
       <button class="editar"><a href="/editarUsuarioView">Editar</a></button>
       <button class="sair" @click="logout">Sair</button>
-    </div>
-
-    <h1>Gerenciar produtos</h1>
-    <div class="gerenciar-produtos container usuario">
-      <a href="/paginaProdutoUsuarioView">Minha página</a><br />
-      <a href="/postsdousuarioview">Gerenciar meus produtos</a><br />
-      <a href="/postarprodutoview">Postar produto</a><br />
-      <a href="/CadastroEnderecoView">Cadastrar endereço</a><br />
     </div>
   </section>
 </template>
@@ -92,33 +70,38 @@ export default {
     };
   },
 
+  beforeRouteEnter(to, from, next) {
+    next((vm) => {
+      vm.atualizarPagina();
+    });
+  },
+
   mounted() {
-    Usuario.exibirInfo()
-      .then((resposta) => {
-        if (resposta.data && resposta.data.dataNascimento) {
+    this.carregarInformacoesUsuario();
+  },
+
+  methods: {
+    carregarInformacoesUsuario() {
+      Usuario.exibirInfo()
+        .then((resposta) => {
           this.usuario = resposta.data;
-        } else {
-          // Handle the case when dataNascimento is missing or undefined
-          console.error('Invalid API response');
-        }
-      })
-      .catch((error) => {
-        // Handle any error that occurs during the API request
-        console.error(error);
-      }),
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+
       Endereco.exibirInfo()
         .then((resposta) => {
           this.endereco = resposta.data[0];
         })
         .catch((error) => {
-          // Handle any error that occurs during the API request
           console.error(error);
         });
-  },
-  methods: {
+    },
+
     logout() {
       localStorage.removeItem('token');
-      return this.$router.push({ name: 'loginView' });
+      this.$router.push({ name: 'loginView' });
     },
   },
 };
