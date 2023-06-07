@@ -50,16 +50,6 @@
       </div>
     </div>
 
-    <div class="container">
-      <div class="card">
-        <h2>teste</h2>
-        <div class="card-img-produto">
-          <img src="../assets/ex1.jpg" alt="" class="card-img" />
-        </div>
-        <button class="ver-produto">Ver produto</button>
-      </div>
-    </div>
-
     <div class="pagination">
       <div class="center">
         <div class="arrow">
