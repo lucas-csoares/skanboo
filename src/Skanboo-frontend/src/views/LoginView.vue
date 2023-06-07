@@ -27,6 +27,13 @@ export default {
     };
   },
 
+  mounted() {
+    if (!window.location.hash) {
+      window.location = window.location + '#loaded';
+      window.location.reload();
+    }
+  },
+
   methods: {
     logar() {
       Usuario.logar(this.usuario)
@@ -42,6 +49,8 @@ export default {
         });
     },
   },
+
+  atualizarPagina() {},
 };
 </script>
 
