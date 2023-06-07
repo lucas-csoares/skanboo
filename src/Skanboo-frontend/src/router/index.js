@@ -19,7 +19,7 @@ import TheEditProduct from "../components/TheEditProduct";
 import TheParceiros from "../components/TheParceiros";
 import TheEditPartner from "../components/TheEditPartner";
 import TheOfertaPreview from "../components/TheOfertaPreview";
-import ProdutosOferecidosView from "../views/ProdutosOferecidosView";
+import OfertasFeitasView from "../views/OfertasFeitasView";
 import OfertasRecebidasView from "../views/OfertasRecebidasView";
 import CadastroEnderecoView from "../views/CadastroEnderecoView";
 import OfertaView from "../views/OfertaView";
@@ -110,9 +110,9 @@ const routes = [
     component: TheOfertaPreview,
   },
   {
-    path: "/ProdutosOferecidosView",
-    name: "ProdutosOferecidosView",
-    component: ProdutosOferecidosView,
+    path: "/OfertasFeitasView",
+    name: "OfertasFeitasView",
+    component: OfertasFeitasView,
   },
   {
     path: "/OfertasRecebidasView",

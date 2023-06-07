@@ -19,7 +19,7 @@
                 <a href="/ofertasrecebidasview">Ofertas recebidas | </a>
               </li>
               <li>
-                <a href="/produtosoferecidosview">Ofertas feitas | </a>
+                <a href="/ofertasfeitasView">Ofertas feitas | </a>
               </li>
               <li>
                 <a href="/">Trocas </a>
