@@ -50,6 +50,16 @@
       </div>
     </div>
 
+    <div class="container">
+      <div class="card">
+        <h2>teste</h2>
+        <div class="card-img-produto">
+          <img src="../assets/ex1.jpg" alt="" class="card-img" />
+        </div>
+        <button class="ver-produto">Ver produto</button>
+      </div>
+    </div>
+
     <div class="pagination">
       <div class="center">
         <div class="arrow">
@@ -89,7 +99,7 @@ export default {
       },
       postagens: [],
       paginaAtual: 1,
-      postagensPorPagina: 4,
+      postagensPorPagina: 16,
       currentSlideIndex: 0,
       carrosselPostagens: 0,
     };
@@ -109,12 +119,10 @@ export default {
 
   methods: {
     exibirTodasPostagens() {
-      // if(Postagem.usuario != this.usuario){
       Postagem.exibirTodasPostagens().then((resposta) => {
         this.postagens = resposta.data;
         this.carrosselPostagens = this.obterPostagensAleatorias();
       });
-      // }
     },
 
     obterPostagensAleatorias() {

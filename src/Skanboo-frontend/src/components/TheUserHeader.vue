@@ -1,55 +1,31 @@
 <template>
-  <header>
-    <nav>
-      <header class="menu-bg">
-        <div class="menu">
-          <div class="menu-logo">
-            <a href="/"><img src="../assets/logo.png" alt="sKanboo" /></a>
-          </div>
-
-          <nav class="menu-nav">
-            <ul>
-              <li>
-                <a href="/">Home | </a>
-              </li>
-              <li>
-                <a href="/postsdousuarioview">Meus produtos | </a>
-              </li>
-              <li>
-                <a href="/ofertasrecebidasview">Ofertas recebidas | </a>
-              </li>
-              <li>
-                <a href="/ofertasfeitasView">Ofertas feitas | </a>
-              </li>
-              <li>
-                <a href="/paginatrocasview">Trocas </a>
-              </li>
-              <li></li>
-              <li>
-                <a href="/usuarioview"
-                  ><img
-                    src="../assets/user.png"
-                    alt="Usuário"
-                    class="user"
-                /></a>
-              </li>
-            </ul>
-          </nav>
+  <nav>
+    <header class="menu-bg" id="main-header">
+      <div class="menu">
+        <div class="menu-logo">
+          <a href="/"><img src="../assets/logo.png" alt="sKanboo" /></a>
         </div>
-      </header>
-    </nav>
-  </header>
-  <!--
-  <a href="/UsuarioView">Tela do usuário | </a>
-  <a href="/EditarUsuarioView">Tela editar usuário | </a>
-  <a href="/PostarProdutoView">Tela postar produto | </a>
-  <a href="/EditarProdutoView">Tela editar produto | </a>
-  <a href="/PaginaAdmView">Tela admin </a> -->
+
+        <nav class="menu-nav">
+          <ul>
+            <li><a href="/">Home |</a></li>
+            <li><a href="/postsdousuarioview">Meus produtos |</a></li>
+            <li><a href="/ofertasrecebidasview">Ofertas recebidas | </a></li>
+            <li><a href="/ofertasfeitasView">Ofertas feitas | </a></li>
+            <li><a href="/paginatrocasview">Trocas </a></li>
+            <li>
+              <a href="/usuarioview"><img src="../assets/user.png" alt="Usuário" class="user" /></a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  </nav>
 </template>
 
 <script>
 export default {
-  name: "TheHeader",
+  name: 'TheHeader',
 };
 </script>
 
@@ -100,7 +76,7 @@ body {
   background: #fff;
   color: #222;
   -webkit-font-smoothing: antialiased;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #000;
 }
 

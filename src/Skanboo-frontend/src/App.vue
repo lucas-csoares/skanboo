@@ -1,19 +1,34 @@
 <template>
   <div id="app">
-    <TheHeader />
+    <TheUserHeader v-if="usuarioLogado" :atualizarPagina="atualizarPagina" />
+    <TheHeader v-else :atualizarPagina="atualizarPagina" />
     <router-view />
     <TheFooter />
   </div>
 </template>
 
 <script>
-import TheHeader from "@/components/TheUserHeader.vue";
-import TheFooter from "@/components/TheFooter.vue";
+import TheHeader from '@/components/TheHeader.vue';
+import TheFooter from '@/components/TheFooter.vue';
+import TheUserHeader from '@/components/TheUserHeader.vue';
 
 export default {
   components: {
     TheHeader,
+    TheUserHeader,
     TheFooter,
+  },
+
+  computed: {
+    usuarioLogado() {
+      return localStorage.getItem('token') != null;
+    },
+  },
+
+  methods: {
+    atualizarPagina() {
+      window.location.reload();
+    },
   },
 };
 </script>
