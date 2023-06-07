@@ -13,6 +13,7 @@ import CooptarParceirosView from "../views/CooptarParceirosView";
 import PaginaProdutoUsuarioView from "../views/PaginaProdutoUsuarioView";
 import EditarEnderecoView from "../views/EditarEnderecoView";
 import PreviewTrocaView from "../views/PreviewTrocaView";
+import PaginaTrocasView from "../views/PaginaTrocasView";
 import ThePreviewTroca from "../components/ThePreviewTroca";
 import TheProductPage from "../components/TheProductPage";
 import TheEditProduct from "../components/TheEditProduct";
@@ -20,6 +21,7 @@ import TheParceiros from "../components/TheParceiros";
 import TheEditPartner from "../components/TheEditPartner";
 import TheOfertaPreview from "../components/TheOfertaPreview";
 import OfertasFeitasView from "../views/OfertasFeitasView";
+import ThePaginaTrocas from "../components/ThePaginaTrocas";
 import OfertasRecebidasView from "../views/OfertasRecebidasView";
 import CadastroEnderecoView from "../views/CadastroEnderecoView";
 import OfertaView from "../views/OfertaView";
@@ -131,6 +133,12 @@ const routes = [
     props: true,
   },
   {
+    path: "/PaginaTrocasView",
+    name: "PaginaTrocasView",
+    component: PaginaTrocasView,
+    props: true,
+  },
+  {
     path: "/postagem/:id",
     name: "TheProductPage",
     component: TheProductPage,
@@ -157,6 +165,12 @@ const routes = [
     path: "/oferta/:idOferta",
     name: "ThePreviewTroca",
     component: ThePreviewTroca,
+    props: true,
+  },
+  {
+    path: "/oferta/:idOferta",
+    name: "ThePaginaTrocas",
+    component: ThePaginaTrocas,
     props: true,
   },
   {

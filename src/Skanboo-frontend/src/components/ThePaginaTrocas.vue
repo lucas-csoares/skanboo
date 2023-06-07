@@ -1,6 +1,6 @@
 <template>
     <section class="products">
-        <h1>Ofertas recebidas</h1>
+        <h1>Minhas Trocas</h1>
         <div v-for="oferta in ofertas" :key="oferta[0].id" class="container">
 
             <div class="card">
@@ -13,8 +13,10 @@
                             produto</router-link></button>
                 </div>
             </div>
-
-            <img src="../assets/setaEsquerda.png" class="flecha-img">
+            <div class="div-flecha">
+                <img src="../assets/setaDireita.png" class="flecha-img">
+                <img src="../assets/setaEsquerda.png" class="flecha-img">
+            </div>
 
             <div class="card">
                 <h2>{{ oferta[0].postagemOfertada.titulo }}</h2>
@@ -28,11 +30,7 @@
             </div>
 
             <div class="div-botao">
-                <button id="recusar" value="RECUSADA"><router-link
-                        :to="{ name: 'UsuarioView' }">Recusar</router-link></button>
-            </div>
-            <div class="div-botao">
-                <button id="aceitar" @click="criarTroca(oferta[0].id, 'ACEITA')">Aceitar</button>
+                <button id="detalhes">Detalhes</button>
             </div>
             <!-- <div class="div-botao">
                 <button id="aceitar"><router-link
@@ -50,41 +48,28 @@ export default {
     data() {
         return {
             ofertas: [],
+            ofertasAceitas: [],
             troca: [],
             oferta: null
         };
     },
 
     mounted() {
-        Oferta.exibirOfertasRecebidas()
-            .then((resposta) => {
-                const ofertas = resposta.data;
-                this.ofertas = ofertas;
-                console.log("ofertas: ", ofertas);
+        const exibirOfertasRecebidas = Oferta.exibirOfertasRecebidas();
+        const exibirOfertasFeitas = Oferta.exibirOfertasFeitas();
+
+        Promise.all([exibirOfertasRecebidas, exibirOfertasFeitas])
+            .then((respostas) => {
+                const ofertasRecebidas = respostas[0].data;
+                const ofertasFeitas = respostas[1].data;
+
+                const mergedOfertas = [...ofertasRecebidas, ...ofertasFeitas];
+                this.ofertas = mergedOfertas.filter((oferta) => oferta[0].status === 'ACEITA');
+
+                console.log("Ofertas aceitas: ", this.ofertas);
             })
             .catch((e) => console.log(e.message));
     },
-
-    //    methods: {
-    //        criarTroca(id_oferta, aceitarOferta) {
-    //
-    //            this.oferta = { status: aceitarOferta };
-    //
-    //            Oferta.atualizar(id_oferta, this.oferta)
-    //                .then(() => {
-    //                    console.log(id_oferta);
-    //                    alert('Oferta aceita!');
-    //                    this.errors = [];
-    //                })
-    //                .catch((e) => console.log(e.message));
-    //            Troca.criar(id_oferta)
-    //                .then(() => {
-    //                    alert('Troca criada com sucesso!');
-    //                    this.errors = [];
-    //                })
-    //                .catch((e) => console.log(e.message));
-    //        },
-    //    },
 
     methods: {
         async criarTroca(id_oferta, aceitarOferta) {
@@ -137,20 +122,31 @@ a {
 img {
     display: block;
     max-width: 100%;
+    border-radius: 6px;
 }
 
 .flecha-img {
-    width: 80px;
-    height: 80px;
-    margin-top: 150px;
-    margin-left: 10px;
-    margin-right: 10px;
+    width: 60px;
+    height: 60px;
+}
+
+.div-flecha {
+    margin: 10px;
+}
+
+.div-botao {
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+#detalhes {
+    margin: 0;
 }
 
 .container {
     width: 720px;
     display: flex;
-    justify-content: left;
+    justify-content: center;
     margin-top: 20px;
     gap: 20px;
     flex-wrap: wrap;
@@ -159,6 +155,7 @@ img {
     margin-bottom: 30px;
     border: 1px solid #e5e9eb;
     border-radius: 4px;
+    align-items: center;
 }
 
 .products {

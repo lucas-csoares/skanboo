@@ -22,13 +22,13 @@
                 <a href="/ofertasfeitasView">Ofertas feitas | </a>
               </li>
               <li>
-                <a href="/">Trocas </a>
+                <a href="/paginatrocasview">Trocas </a>
               </li>
               <li></li>
               <li>
                 <a href="/usuarioview"
                   ><img
-                    src="../assets/engrenagem.svg"
+                    src="../assets/user.png"
                     alt="Usuário"
                     class="user"
                 /></a>
