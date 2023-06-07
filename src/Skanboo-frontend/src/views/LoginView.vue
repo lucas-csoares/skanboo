@@ -31,13 +31,10 @@ export default {
     logar() {
       Usuario.logar(this.usuario)
         .then((resposta) => {
-          alert('Usuario logado com sucesso');
-
           const token = resposta.headers.getAuthorization();
-
-          if (!token) throw new Error('Ocorreu um erro ao tentar logar usuário!');
           localStorage.setItem('token', token);
-          return this.$router.push({ name: 'UsuarioView' });
+          alert('Usuario logado com sucesso');
+          this.$router.push({ name: 'PerfilUsuarioView' });
         })
         .catch((e) => {
           this.errors = e.response.data.errors;

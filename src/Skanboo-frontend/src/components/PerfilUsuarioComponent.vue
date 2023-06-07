@@ -70,12 +70,6 @@ export default {
     };
   },
 
-  beforeRouteEnter(to, from, next) {
-    next((vm) => {
-      vm.atualizarPagina();
-    });
-  },
-
   mounted() {
     this.carregarInformacoesUsuario();
   },
