@@ -62,7 +62,7 @@ export default {
       },
       postagens: [],
       paginaAtual: 1,
-      postagensPorPagina: 4,
+      postagensPorPagina: 16,
       currentSlideIndex: 0,
       carrosselPostagens: 0,
     };
@@ -82,12 +82,10 @@ export default {
 
   methods: {
     exibirTodasPostagens() {
-      // if(Postagem.usuario != this.usuario){
-        Postagem.exibirTodasPostagens().then((resposta) => {
+      Postagem.exibirTodasPostagens().then((resposta) => {
         this.postagens = resposta.data;
         this.carrosselPostagens = this.obterPostagensAleatorias();
       });
-      // }
     },
 
     obterPostagensAleatorias() {

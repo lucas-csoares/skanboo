@@ -27,28 +27,17 @@ export default {
     };
   },
 
-  //redireciona o usuario para a tela do usuario caso esteja logado, caso contrario, permanece na pagina de login
-  beforeRouteEnter(to, from, next) {
-    const token = localStorage.getItem('token');
-
-    if (token) next({ name: 'UsuarioView' });
-    else next();
-  },
-
   methods: {
     logar() {
       Usuario.logar(this.usuario)
         .then((resposta) => {
           alert('Usuario logado com sucesso');
 
-          console.log(resposta);
           const token = resposta.headers.getAuthorization();
 
           if (!token) throw new Error('Ocorreu um erro ao tentar logar usuário!');
           localStorage.setItem('token', token);
-          //aqui redireciona pagina
           return this.$router.push({ name: 'UsuarioView' });
-          // this.errors = [];
         })
         .catch((e) => {
           this.errors = e.response.data.errors;

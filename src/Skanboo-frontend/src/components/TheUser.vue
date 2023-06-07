@@ -23,16 +23,14 @@
             {{
               usuario.dataNascimento
                 ? `${usuario.dataNascimento[2]}/${usuario.dataNascimento[1]}/${usuario.dataNascimento[0]}`
-                : ""
+                : ''
             }}
           </p>
           <p class="email">{{ usuario.email }}</p>
           <p class="telefone">{{ usuario.telefone }}</p>
           <p class="senha">************</p>
           <p class="CPF">{{ usuario.cpf }}</p>
-          <p class="cepRuaNumero">
-            {{ endereco.cidade }}, Rua {{ endereco.rua }}, {{ endereco.numero }}
-          </p>
+          <p class="cepRuaNumero">{{ endereco.cidade }}, Rua {{ endereco.rua }}, {{ endereco.numero }}</p>
         </div>
       </div>
       <button class="editar-endereco"><a href="/editarEnderecoView">Editar endereço</a></button>
@@ -66,30 +64,31 @@
 </template>
 
 <script>
-import Usuario from "../services/UsuarioService";
-import Endereco from "../services/EnderecoService";
+import Usuario from '../services/UsuarioService';
+import Endereco from '../services/EnderecoService';
 
 export default {
   data() {
     return {
       usuario: {
-        nome: "",
-        nascimento: "",
-        email: "",
-        telefone: "",
-        senha: "",
-        cpf: "",
+        nome: '',
+        nascimento: '',
+        email: '',
+        telefone: '',
+        senha: '',
+        cpf: '',
         foto: null,
       },
       endereco: {
-        uf: "",
-        cep: "",
-        cidade: "",
-        bairro: "",
-        rua: "",
+        uf: '',
+        cep: '',
+        cidade: '',
+        bairro: '',
+        rua: '',
         numero: null,
-        complemento: "",
+        complemento: '',
       },
+      loaded: false,
     };
   },
 
@@ -100,7 +99,7 @@ export default {
           this.usuario = resposta.data;
         } else {
           // Handle the case when dataNascimento is missing or undefined
-          console.error("Invalid API response");
+          console.error('Invalid API response');
         }
       })
       .catch((error) => {
@@ -110,8 +109,6 @@ export default {
       Endereco.exibirInfo()
         .then((resposta) => {
           this.endereco = resposta.data[0];
-          console.log(this.endereco);
-          console.log(this.endereco.cep);
         })
         .catch((error) => {
           // Handle any error that occurs during the API request
@@ -120,8 +117,8 @@ export default {
   },
   methods: {
     logout() {
-      localStorage.removeItem("token");
-      return this.$router.push({ name: "loginView" });
+      localStorage.removeItem('token');
+      return this.$router.push({ name: 'loginView' });
     },
   },
 };
