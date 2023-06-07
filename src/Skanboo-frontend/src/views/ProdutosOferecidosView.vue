@@ -7,7 +7,7 @@
     <!-- -------------------------------------------------- -->
     <div class="grid">
       <div v-for="oferta in ofertas" :key="oferta[0].id" class="grid-card">
-        <h2 class="status-oferta">Status: {{ oferta[0].status }}</h2>
+        <h2 class="status-oferta">Status: {{ oferta[0].status.toLowerCase() }}</h2>
         <div class="card postagem-ofertada">
           <h2 class="titulo-postagem">{{ oferta[0].postagemOfertada.titulo }}</h2>
 
@@ -15,11 +15,9 @@
             <img :src="oferta[0].postagemOfertada.foto" class="card-img-produto" />
           </div>
 
-          <div class="">
+          <div>
             <button>
-              <router-link :to="{ name: 'TheProductPage', params: { id: oferta[0].postagemOfertada.id } }"
-                >Ver produto</router-link
-              >
+              <router-link :to="{ name: 'TheProductPage', params: { id: oferta[0].postagemOfertada.id } }">Ver produto</router-link>
             </button>
           </div>
         </div>
@@ -38,11 +36,9 @@
             <img :src="oferta[0].postagemOrigem.foto" class="card-img-produto" />
           </div>
 
-          <div class="">
+          <div>
             <button>
-              <router-link :to="{ name: 'TheProductPage', params: { id: oferta[0].postagemOrigem.id } }"
-                >Ver produto</router-link
-              >
+              <router-link :to="{ name: 'TheProductPage', params: { id: oferta[0].postagemOrigem.id } }">Ver produto</router-link>
             </button>
           </div>
         </div>
