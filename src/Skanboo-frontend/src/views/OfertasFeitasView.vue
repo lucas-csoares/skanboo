@@ -7,7 +7,11 @@
       <button class="btn-filtro" :class="{ 'btn-filtro-ativo': filtrarRecusada }" @click="filtrarOfertas('RECUSADA')">
         Recusada
       </button>
-      <button class="btn-filtro" :class="{ 'btn-filtro-ativo': filtrarEmAndamento }" @click="filtrarOfertas('EM_ANDAMENTO')" >
+      <button
+        class="btn-filtro"
+        :class="{ 'btn-filtro-ativo': filtrarEmAndamento }"
+        @click="filtrarOfertas('EM_ANDAMENTO')"
+      >
         Em andamento
       </button>
     </div>
@@ -256,7 +260,8 @@ dl {
   color: #515864;
 }
 
-.grid button:hover, .btn-filtro-ativo {
+.grid button:hover,
+.btn-filtro-ativo {
   background: #f9dc5c;
 }
 
