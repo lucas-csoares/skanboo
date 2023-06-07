@@ -94,6 +94,7 @@ nav {
 
 a {
   transition: 0.3s;
+  padding-bottom: 40px;
 }
 
 a:hover {
