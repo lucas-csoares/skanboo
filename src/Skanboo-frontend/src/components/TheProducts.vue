@@ -3,25 +3,48 @@
     <h1>Anúncios para você</h1>
 
     <div class="carrossel">
-      <div class="carrossel-container" :style="{ transform: `translateX(-${currentSlideIndex * 100}%)` }">
-        <div class="carrossel-item" v-for="postagem in carrosselPostagens" :key="postagem.id">
-          <router-link :to="{ name: 'TheProductPage', params: { id: postagem.id } }">
-            <div class="card-img-carrossel"><img :src="postagem.foto" alt="" class="card-img" /></div>
+      <div
+        class="carrossel-container"
+        :style="{ transform: `translateX(-${currentSlideIndex * 100}%)` }"
+      >
+        <div
+          class="carrossel-item"
+          v-for="postagem in carrosselPostagens"
+          :key="postagem.id"
+        >
+          <router-link
+            :to="{ name: 'TheProductPage', params: { id: postagem.id } }"
+          >
+            <div class="card-img-carrossel">
+              <img :src="postagem.foto" alt="" class="card-img" />
+            </div>
           </router-link>
         </div>
       </div>
 
       <div class="carrossel-navigation">
-        <button class="arrow" @click="slideAnterior"><img src="../assets/left-arrow.png" alt="" /></button>
-        <button class="arrow" @click="proximoSlide"><img src="../assets/right-arrow.png" alt="" /></button>
+        <button class="arrow" @click="slideAnterior">
+          <img src="../assets/left-arrow.png" alt="" />
+        </button>
+        <button class="arrow" @click="proximoSlide">
+          <img src="../assets/right-arrow.png" alt="" />
+        </button>
       </div>
     </div>
 
     <div class="container">
-      <div v-for="postagem in postagensPaginadas" :key="postagem.id" class="card">
-        <router-link :to="{ name: 'TheProductPage', params: { id: postagem.id } }">
+      <div
+        v-for="postagem in postagensPaginadas"
+        :key="postagem.id"
+        class="card"
+      >
+        <router-link
+          :to="{ name: 'TheProductPage', params: { id: postagem.id } }"
+        >
           <h2>{{ postagem.titulo }}</h2>
-          <div class="card-img-produto"><img :src="postagem.foto" alt="" class="card-img" /></div>
+          <div class="card-img-produto">
+            <img :src="postagem.foto" alt="" class="card-img" />
+          </div>
           <button class="ver-produto">Ver produto</button>
         </router-link>
       </div>
@@ -30,7 +53,9 @@
     <div class="pagination">
       <div class="center">
         <div class="arrow">
-          <a href="#" @click="paginaAnterior"><img src="../assets/left-arrow.png" alt="" /></a>
+          <a href="#" @click="paginaAnterior"
+            ><img src="../assets/left-arrow.png" alt=""
+          /></a>
         </div>
         <div class="pagination">
           <a
@@ -42,7 +67,9 @@
           >
         </div>
         <div class="arrow">
-          <a href="#" @click="proximaPagina"><img src="../assets/right-arrow.png" alt="" /></a>
+          <a href="#" @click="proximaPagina"
+            ><img src="../assets/right-arrow.png" alt=""
+          /></a>
         </div>
       </div>
     </div>
@@ -50,15 +77,15 @@
 </template>
 
 <script>
-import Postagem from '../services/PostagemService';
+import Postagem from "../services/PostagemService";
 
 export default {
   data() {
     return {
       postagem: {
-        id: '',
-        titulo: '',
-        imagem: '',
+        id: "",
+        titulo: "",
+        imagem: "",
       },
       postagens: [],
       paginaAtual: 1,
@@ -89,20 +116,24 @@ export default {
     },
 
     obterPostagensAleatorias() {
-      const postagensAleatorias = this.postagens.sort(() => 0.5 - Math.random());
+      const postagensAleatorias = this.postagens.sort(
+        () => 0.5 - Math.random()
+      );
       return postagensAleatorias.slice(0, 4);
     },
 
     proximoSlide() {
       if (this.currentSlideIndex < this.carrosselPostagens.length - 1) {
         this.currentSlideIndex++;
-      } else if (this.currentSlideIndex == this.carrosselPostagens.length - 1) this.currentSlideIndex = 0;
+      } else if (this.currentSlideIndex == this.carrosselPostagens.length - 1)
+        this.currentSlideIndex = 0;
     },
 
     slideAnterior() {
       if (this.currentSlideIndex > 0) {
         this.currentSlideIndex--;
-      } else if (this.currentSlideIndex == 0) this.currentSlideIndex = this.carrosselPostagens.length - 1;
+      } else if (this.currentSlideIndex == 0)
+        this.currentSlideIndex = this.carrosselPostagens.length - 1;
     },
 
     irParaPagina(pagina) {
@@ -223,17 +254,20 @@ h2 {
   position: absolute;
   width: 240px;
   height: 32px;
-  background: #fcfcfc;
-  border: 1px solid #e2e2e2;
-  border-radius: 4px;
-  font-weight: 600;
-  color: #515864;
+  background: #f9dc5c;
+  border: 1px solid #f9dc5c;
+  border-radius: 16px;
+  font-weight: 400;
+  color: #252c32;
   margin-left: 15px;
+  transition: 0.3s;
+  text-transform: none;
 }
 
 .ver-produto:hover {
-  background: #f9dc5c;
-  border: 1px solid #f9dc5c;
+  background: #64ab23;
+  border: 1px solid #64ab23;
+  color: white;
 }
 
 .like {
