@@ -15,7 +15,7 @@
               <li><a href="/paginatrocasview">Trocas</a></li>
               <li><a href="/cooptarparceirosview">Parceiro</a></li>
               <li class="icone-usuario">
-                <a href="/usuarioview"><img src="../assets/user-icon.svg" alt="Usuário" class="user" /></a>
+                <a href="/perfilusuarioview"><img src="../assets/user-icon.svg" alt="Usuário" class="user" /></a>
               </li>
             </ul>
           </nav>
