@@ -1,6 +1,6 @@
 <template>
   <section class="products">
-    <h1>Ofertas feitas</h1>
+    <h1>Ofertas recebidas</h1>
 
     <div class="div-filtros">
       <h2>Filtros aplicados:</h2>

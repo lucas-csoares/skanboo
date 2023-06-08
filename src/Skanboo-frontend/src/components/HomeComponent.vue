@@ -217,8 +217,7 @@ img {
   min-height: 250px;
 }
 
-.card h2,
-h2 {
+.card h2 {
   text-align: center;
   font-weight: bold;
   padding: 8px;
@@ -228,8 +227,6 @@ h2 {
   font-size: 15px;
   color: #252c32;
   kerning: -0.6%;
-  font-weight: 400;
-  text-align: left;
 }
 
 .card-img-produto img {
