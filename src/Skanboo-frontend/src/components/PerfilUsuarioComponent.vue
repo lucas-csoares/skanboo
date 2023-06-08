@@ -23,17 +23,21 @@
             {{
               usuario.dataNascimento
                 ? `${usuario.dataNascimento[2]}/${usuario.dataNascimento[1]}/${usuario.dataNascimento[0]}`
-                : ''
+                : ""
             }}
           </p>
           <p class="email">{{ usuario.email }}</p>
           <p class="telefone">{{ usuario.telefone }}</p>
           <p class="senha">************</p>
           <p class="CPF">{{ usuario.cpf }}</p>
-          <p class="cepRuaNumero">{{ endereco.cidade }}, Rua {{ endereco.rua }}, {{ endereco.numero }}</p>
+          <p class="cepRuaNumero">
+            {{ endereco.cidade }}, Rua {{ endereco.rua }}, {{ endereco.numero }}
+          </p>
         </div>
       </div>
-      <button class="editar-endereco"><a href="/editarEnderecoView">Editar endereço</a></button>
+      <button class="editar-endereco">
+        <a href="/editarEnderecoView">Editar endereço</a>
+      </button>
 
       <button class="editar"><a href="/editarUsuarioView">Editar</a></button>
       <button class="sair" @click="logout">Sair</button>
@@ -42,29 +46,29 @@
 </template>
 
 <script>
-import Usuario from '../services/UsuarioService';
-import Endereco from '../services/EnderecoService';
+import Usuario from "../services/UsuarioService";
+import Endereco from "../services/EnderecoService";
 
 export default {
   data() {
     return {
       usuario: {
-        nome: '',
-        nascimento: '',
-        email: '',
-        telefone: '',
-        senha: '',
-        cpf: '',
+        nome: "",
+        nascimento: "",
+        email: "",
+        telefone: "",
+        senha: "",
+        cpf: "",
         foto: null,
       },
       endereco: {
-        uf: '',
-        cep: '',
-        cidade: '',
-        bairro: '',
-        rua: '',
+        uf: "",
+        cep: "",
+        cidade: "",
+        bairro: "",
+        rua: "",
         numero: null,
-        complemento: '',
+        complemento: "",
       },
       loaded: false,
     };
@@ -72,7 +76,7 @@ export default {
 
   mounted() {
     if (!window.location.hash) {
-      window.location = window.location + '#loaded';
+      window.location = window.location + "#loaded";
       window.location.reload();
     }
 
@@ -99,8 +103,8 @@ export default {
     },
 
     logout() {
-      localStorage.removeItem('token');
-      this.$router.push({ name: 'loginView' });
+      localStorage.removeItem("token");
+      this.$router.push({ name: "loginView" });
     },
   },
 };
@@ -157,13 +161,17 @@ button {
   width: 300px;
   height: 32px;
   background: #f9dc5c;
-  border: 1px solid #e2e2e2;
-  border-radius: 4px;
+  border: 1px solid #f9dc5c;
+  border-radius: 32px;
   font-weight: 600;
-  color: #515864;
   transition: 0.3s;
   margin-left: 30px;
   margin-top: 30px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ffe574;
 }
 
 .editar-endereco {
@@ -174,12 +182,17 @@ button {
   height: 28px;
   background: #fcfcfc;
   border: 1px solid #e2e2e2;
-  border-radius: 4px;
-  font-weight: 600;
-  color: #515864;
+  border-radius: 16px;
+  font-weight: 400;
+  color: #515864 !important;
   transition: 0.3s;
   margin-left: 30px;
   margin-top: 0px;
+  transition: 0.3s;
+}
+
+.editar-endereco:hover {
+  background: white;
 }
 
 p {
@@ -223,12 +236,17 @@ h2 {
   height: 32px;
   background: #fcfcfc;
   border: 1px solid #e2e2e2;
-  border-radius: 4px;
+  border-radius: 32px;
   font-weight: 600;
   color: #515864;
   transition: 0.3s;
   margin-left: 30px;
   margin-top: 0px;
+  transition: 0.3s;
+}
+
+.sair:hover {
+  background: white;
 }
 
 .gerenciar-produtos a {
