@@ -1,7 +1,16 @@
 <template>
   <section class="partners">
-    <h1>Os parceiros</h1>
-
+    <div  class="title-wrapper">
+      <h1>Os parceiros</h1>
+      <a href="/cooptarParceirosView" class="cadastrar-parceiro"
+        ><abbr title="Adicionar novo parceiro"
+          ><img
+            src="../assets/plus.svg"
+            alt="cadastrarParceiro"
+            class="cadastrar_parceiro plus add-icon"
+            /></abbr
+      ></a>
+    </div>
     <div class="container">
       <div v-for="parceiro in parceiros" :key="parceiro.id" class="card">
         <h2>{{ parceiro.nome }}</h2>
@@ -97,10 +106,28 @@ img {
   gap: 20px;
 }
 
-.partners {
-  margin-left: 200px;
-  margin-right: 200px;
+
+.add-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
 }
+  
+  .partners {
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+  
+.title-wrapper h1 {
+  margin-right: 10px;
+}
+
 
 .card {
   width: 274.5px;
