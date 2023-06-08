@@ -3,18 +3,9 @@
     <h1>Anúncios para você</h1>
 
     <div class="carrossel">
-      <div
-        class="carrossel-container"
-        :style="{ transform: `translateX(-${currentSlideIndex * 100}%)` }"
-      >
-        <div
-          class="carrossel-item"
-          v-for="postagem in carrosselPostagens"
-          :key="postagem.id"
-        >
-          <router-link
-            :to="{ name: 'TheProductPage', params: { id: postagem.id } }"
-          >
+      <div class="carrossel-container" :style="{ transform: `translateX(-${currentSlideIndex * 100}%)` }">
+        <div class="carrossel-item" v-for="postagem in carrosselPostagens" :key="postagem.id">
+          <router-link :to="{ name: 'TheProductPage', params: { id: postagem.id } }">
             <div class="card-img-carrossel">
               <img :src="postagem.foto" alt="" class="card-img" />
             </div>
@@ -33,14 +24,8 @@
     </div>
 
     <div class="container">
-      <div
-        v-for="postagem in postagensPaginadas"
-        :key="postagem.id"
-        class="card"
-      >
-        <router-link
-          :to="{ name: 'TheProductPage', params: { id: postagem.id } }"
-        >
+      <div v-for="postagem in postagensPaginadas" :key="postagem.id" class="card">
+        <router-link :to="{ name: 'TheProductPage', params: { id: postagem.id } }">
           <h2>{{ postagem.titulo }}</h2>
           <div class="card-img-produto">
             <img :src="postagem.foto" alt="" class="card-img" />
@@ -53,42 +38,24 @@
     <div class="pagination">
       <div class="center">
         <div class="arrow">
-          <a href="#" @click="paginaAnterior"
-            ><img src="../assets/left-arrow.png" alt=""
-          /></a>
+          <a href="#" @click="paginaAnterior"><img src="../assets/left-arrow.png" alt="" /></a>
         </div>
         <div class="pagination">
-          <a
-            v-for="pagina in numeroPaginas"
-            :key="pagina"
-            :class="{ active: pagina === paginaAtual }"
-            @click="irParaPagina(pagina)"
-            >{{ pagina }}</a
-          >
+          <a v-for="pagina in numeroPaginas" :key="pagina" :class="{ active: pagina === paginaAtual }"
+            @click="irParaPagina(pagina)">{{ pagina }}</a>
         </div>
         <div class="arrow">
-          <a href="#" @click="proximaPagina"
-            ><img src="../assets/right-arrow.png" alt=""
-          /></a>
+          <a href="#" @click="proximaPagina"><img src="../assets/right-arrow.png" alt="" /></a>
         </div>
       </div>
     </div>
-  </section>
-  <section>
+
     <div class="carrossel-parceiros">
-  <h1>Apoios e Parcerias:</h1>
-      <div
-        class="carrosel-container-parceiros"
-        :style="{ transform: `translateX(-${currentSlideIndexParceiro * 100}%)` }"
-      >
-        <div
-          class="carrosel-item-parceiro"
-          v-for="parceiro in carrosselParceiros"
-          :key="parceiro.id"
-        >
-          <router-link
-            :to="{ name: 'TheEditPartner', params: { id: parceiro.id } }"
-          >
+      <h1>Apoios e Parcerias:</h1>
+      <div class="carrosel-container-parceiros"
+        :style="{ transform: `translateX(-${currentSlideIndexParceiro * 100}%)` }">
+        <div class="carrosel-item-parceiro" v-for="parceiro in carrosselParceiros" :key="parceiro.id">
+          <router-link :to="{ name: 'TheEditPartner', params: { id: parceiro.id } }">
             <div class="card-img-carrosel-parceiro">
               <img :src="parceiro.foto" alt="" class="card-img" />
             </div>
@@ -97,13 +64,13 @@
       </div>
 
       <div class="carrosel-navigation-parceiro">
-      <button class="arrow" @click="slideAnteriorParceiro">
-        <img src="../assets/left-arrow.png" alt="" />
-      </button>
-      <button class="arrow" @click="proximoSlideParceiro">
-        <img src="../assets/right-arrow.png" alt="" />
-      </button>
-    </div>
+        <button class="arrow" @click="slideAnteriorParceiro">
+          <img src="../assets/left-arrow.png" alt="" />
+        </button>
+        <button class="arrow" @click="proximoSlideParceiro">
+          <img src="../assets/right-arrow.png" alt="" />
+        </button>
+      </div>
     </div>
   </section>
 </template>
@@ -193,7 +160,7 @@ export default {
         this.paginaAtual++;
       }
     },
-    
+
     exibirTodosParceiros() {
       Parceiro.exibirTodosParceiros().then((resposta) => {
         this.parceiros = resposta.data;
@@ -208,27 +175,27 @@ export default {
       return parceirosAleatorios.slice(0, 4);
     },
 
-  proximoSlideParceiro() {
-    if (this.currentSlideIndexParceiro < this.carrosselParceiros.length - 1) {
-      this.currentSlideIndexParceiro++;
-    } else {
-      this.currentSlideIndexParceiro = 0;
-    }
-  },
+    proximoSlideParceiro() {
+      if (this.currentSlideIndexParceiro < this.carrosselParceiros.length - 1) {
+        this.currentSlideIndexParceiro++;
+      } else {
+        this.currentSlideIndexParceiro = 0;
+      }
+    },
 
-  slideAnteriorParceiro() {
-    if (this.currentSlideIndexParceiro > 0) {
-      this.currentSlideIndexParceiro--;
-    } else {
-      this.currentSlideIndexParceiro = this.carrosselParceiros.length - 1;
-    }
-  },
-    
+    slideAnteriorParceiro() {
+      if (this.currentSlideIndexParceiro > 0) {
+        this.currentSlideIndexParceiro--;
+      } else {
+        this.currentSlideIndexParceiro = this.carrosselParceiros.length - 1;
+      }
+    },
+
   },
 
   mounted() {
     this.exibirTodasPostagens(),
-    this.exibirTodosParceiros();
+      this.exibirTodosParceiros();
   },
 };
 </script>
@@ -255,6 +222,10 @@ dl {
 img {
   display: block;
   max-width: 100%;
+}
+
+.products {
+
 }
 
 .container {
