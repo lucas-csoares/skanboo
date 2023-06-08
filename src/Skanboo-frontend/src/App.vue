@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <HeaderUsuarioLogadoComponent v-if="usuarioLogado" :atualizarPagina="atualizarPagina" />
+    <HeaderUsuarioLogadoComponent
+      v-if="usuarioLogado"
+      :atualizarPagina="atualizarPagina"
+    />
     <HeaderComponent v-else :atualizarPagina="atualizarPagina" />
     <router-view />
     <TheFooter />
@@ -8,9 +11,9 @@
 </template>
 
 <script>
-import HeaderComponent from '@/components/HeaderComponent.vue';
-import HeaderUsuarioLogadoComponent from '@/components/HeaderUsuarioLogadoComponent.vue';
-import TheFooter from '@/components/TheFooter.vue';
+import HeaderComponent from "@/components/HeaderComponent.vue";
+import HeaderUsuarioLogadoComponent from "@/components/HeaderUsuarioLogadoComponent.vue";
+import TheFooter from "@/components/TheFooter.vue";
 
 export default {
   components: {
@@ -21,7 +24,7 @@ export default {
 
   computed: {
     usuarioLogado() {
-      return localStorage.getItem('token') != null;
+      return localStorage.getItem("token") != null;
     },
   },
 };
@@ -52,12 +55,6 @@ section {
 nav {
   padding: 30px;
   margin: 0px !important;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-  text-decoration: none;
 }
 
 nav a.router-link-exact-active {

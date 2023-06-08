@@ -83,62 +83,59 @@ export default {
   },
 
   methods: {
-  criar() {
-    Usuario.criar(this.usuario)
-      .then(() => {
-        alert("Usuário salvo com sucesso");
-        this.errors = [];
-        this.usuarioLogin.email = this.usuario.email;
-        this.usuarioLogin.senha = this.usuario.senha;
-        console.log(this.usuarioLogin);
-        this.logar();
-      })
-      .catch((e) => {
-            console.log(this.errors);
+    criar() {
+      Usuario.criar(this.usuario)
+        .then(() => {
+          alert("Usuário salvo com sucesso");
+          this.errors = [];
+          this.usuarioLogin.email = this.usuario.email;
+          this.usuarioLogin.senha = this.usuario.senha;
+          console.log(this.usuarioLogin);
+          this.logar();
+        })
+        .catch((e) => {
+          console.log(this.errors);
 
-            if (e.response && e.response.status === 400) {
-              this.errorMessage = 'Por favor, preencha todos os campos corretamente.';
+          if (e.response && e.response.status === 400) {
+            this.errorMessage =
+              "Por favor, preencha todos os campos corretamente.";
+          } else if (e.response && e.response.status === 401) {
+            this.errorMessage = "Favor realizar o Login para continuar.";
+          } else if (e.response && e.response.status === 500) {
+            this.errorMessage = "Por favor, tente novamente mais tarde.";
+          }
 
-            } else if (e.response && e.response.status === 401) {
-              this.errorMessage = 'Favor realizar o Login para continuar.';
+          //   else if (e.response && e.response.status === 409) {
+          //   this.errorMessage = 'Já existe um usuário com este emai, nome, telefone ou CPF!';
+          // }
+          else {
+            this.errorMessage = "Houve um erro. Por favor, tente novamente.";
+          }
 
-            } else if (e.response && e.response.status === 500) {
-              this.errorMessage = 'Por favor, tente novamente mais tarde.';
+          console.log(this.errorMessage);
+          alert(this.errorMessage);
+        });
+    },
 
-            }
-            
-            //   else if (e.response && e.response.status === 409) {
-            //   this.errorMessage = 'Já existe um usuário com este emai, nome, telefone ou CPF!';
-            // } 
-            
-            else {
-              this.errorMessage = 'Houve um erro. Por favor, tente novamente.';
-            }
-
-            console.log(this.errorMessage);
-            alert(this.errorMessage);
-          });
+    logar() {
+      Usuario.logar(this.usuarioLogin)
+        .then((resposta) => {
+          alert("Usuário logado com sucesso");
+          console.log(resposta);
+          const token = resposta.headers.getAuthorization();
+          if (!token)
+            throw new Error("Ocorreu um erro ao tentar logar usuário!");
+          localStorage.setItem("token", token);
+          // aqui redireciona pagina
+          return this.$router.push({ name: "CadastroEnderecoView" });
+          // this.errors = [];
+        })
+        .catch((e) => {
+          this.errors = e.response.data.errors;
+          console.log(this.errors);
+        });
+    },
   },
-  
-  logar() {
-    Usuario.logar(this.usuarioLogin)
-      .then((resposta) => {
-        alert('Usuário logado com sucesso');
-        console.log(resposta);
-        const token = resposta.headers.getAuthorization();
-        if (!token) throw new Error('Ocorreu um erro ao tentar logar usuário!');
-        localStorage.setItem('token', token);
-        // aqui redireciona pagina
-        return this.$router.push({ name: 'CadastroEnderecoView' });
-        // this.errors = [];
-      })
-      .catch((e) => {
-        this.errors = e.response.data.errors;
-        console.log(this.errors);
-      });
-  },
-},
-
 };
 </script>
 
@@ -168,16 +165,23 @@ input {
 
 .btn {
   width: 300px;
-  height: 32px;
+  height: 38px;
   background: #f9dc5c;
-  border: 1px solid #e2e2e2;
-  border-radius: 16px;
+  border: 1px solid #f9dc5c;
+  border-radius: 32px;
   font-weight: 600;
-  color: #515864;
+  color: #23272f;
   transition: 0.3s;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 20px;
+  margin-top: 30px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #569e15;
+  border: 1px solid #569e15;
+  color: white;
 }
 
 label {

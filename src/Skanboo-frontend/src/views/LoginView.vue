@@ -15,21 +15,21 @@
 </template>
 
 <script>
-import Usuario from '../services/UsuarioService';
+import Usuario from "../services/UsuarioService";
 
 export default {
   data() {
     return {
       usuario: {
-        email: '',
-        senha: '',
+        email: "",
+        senha: "",
       },
     };
   },
 
   mounted() {
     if (!window.location.hash) {
-      window.location = window.location + '#loaded';
+      window.location = window.location + "#loaded";
       window.location.reload();
     }
   },
@@ -39,9 +39,9 @@ export default {
       Usuario.logar(this.usuario)
         .then((resposta) => {
           const token = resposta.headers.getAuthorization();
-          localStorage.setItem('token', token);
-          alert('Usuario logado com sucesso');
-          this.$router.push({ name: 'PerfilUsuarioView' });
+          localStorage.setItem("token", token);
+          alert("Usuario logado com sucesso");
+          this.$router.push({ name: "PerfilUsuarioView" });
         })
         .catch((e) => {
           this.errors = e.response.data.errors;
@@ -79,16 +79,23 @@ input {
 
 .btn {
   width: 300px;
-  height: 32px;
+  height: 38px;
   background: #f9dc5c;
-  border: 1px solid #e2e2e2;
-  border-radius: 16px;
+  border: 1px solid #f9dc5c;
+  border-radius: 32px;
   font-weight: 600;
-  color: #515864;
+  color: #23272f;
   transition: 0.3s;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 20px;
+  margin-top: 30px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #569e15;
+  border: 1px solid #569e15;
+  color: white;
 }
 
 label {
