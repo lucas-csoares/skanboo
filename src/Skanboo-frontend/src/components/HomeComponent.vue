@@ -100,6 +100,7 @@ export default {
       parceirosPorPagina: 3,
       currentSlideIndexParceiro: 0,
       carrosselParceiros: [],
+      timer: null,
     };
 
   },
@@ -175,27 +176,38 @@ export default {
       return parceirosAleatorios.slice(0, 4);
     },
 
+    iniciarTemporizador() {
+      this.timer = setInterval(() => {
+        this.proximoSlideParceiro();
+      }, 2000);
+    },
+
     proximoSlideParceiro() {
+      clearInterval(this.timer); // Cancela o temporizador atual
       if (this.currentSlideIndexParceiro < this.carrosselParceiros.length - 1) {
         this.currentSlideIndexParceiro++;
       } else {
         this.currentSlideIndexParceiro = 0;
       }
+      this.iniciarTemporizador(); // Reinicia o temporizador
     },
 
     slideAnteriorParceiro() {
+      clearInterval(this.timer); // Cancela o temporizador atual
       if (this.currentSlideIndexParceiro > 0) {
         this.currentSlideIndexParceiro--;
       } else {
         this.currentSlideIndexParceiro = this.carrosselParceiros.length - 1;
       }
+      this.iniciarTemporizador(); // Reinicia o temporizador
     },
 
   },
 
   mounted() {
     this.exibirTodasPostagens(),
-      this.exibirTodosParceiros();
+    this.exibirTodosParceiros();
+    this.iniciarTemporizador();
   },
 };
 </script>
