@@ -15,7 +15,12 @@
               <li><a href="/paginatrocasview">Trocas</a></li>
               <li><a href="/cooptarparceirosview">Parceiro</a></li>
               <li class="icone-usuario">
-                <a href="/perfilusuarioview"><img src="../assets/user-icon.svg" alt="Usuário" class="user" /></a>
+                <a href="/perfilusuarioview"
+                  ><img
+                    src="../assets/user-icon.svg"
+                    alt="Usuário"
+                    class="user"
+                /></a>
               </li>
             </ul>
           </nav>
@@ -27,7 +32,7 @@
 
 <script>
 export default {
-  name: 'TheHeader',
+  name: "TheHeader",
 };
 </script>
 
@@ -74,14 +79,13 @@ body {
   background: #fff;
   color: #222;
   -webkit-font-smoothing: antialiased;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   color: #000;
 }
 
 .header {
   background-color: #fff;
-  border-bottom: 1px solid #e2e2e2;
-  height: 80px;
+  height: 60px;
 }
 
 .menu {
@@ -93,6 +97,20 @@ body {
   justify-content: space-between;
 }
 
+nav {
+  border-bottom: 1px solid #e2e2e2;
+}
+
+a {
+  transition: 0.3s;
+  padding-bottom: 40px;
+}
+
+a:hover {
+  padding-bottom: 40px;
+  border-bottom: 4px solid #f9dc5c;
+}
+
 .menu-logo {
   height: 80px;
 }
@@ -102,6 +120,12 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  margin-left: 50px;
+  margin-top: -10px;
+}
+
+.menu-nav {
+  border-bottom: none;
 }
 
 .menu-nav ul {
@@ -120,7 +144,8 @@ body {
 }
 
 .icone-usuario img:hover {
-  filter: invert(29%) sepia(76%) saturate(4063%) hue-rotate(348deg) brightness(96%) contrast(97%);
+  filter: invert(29%) sepia(76%) saturate(4063%) hue-rotate(348deg)
+    brightness(96%) contrast(97%);
 }
 
 @media (max-width: 600px) {
