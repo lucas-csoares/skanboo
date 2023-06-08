@@ -4,7 +4,11 @@
 
     <div class="div-filtros">
       <h2>Filtros aplicados:</h2>
-      <button class="btn-filtro" :class="{ 'btn-filtro-ativo': filtrarRecusada }" @click="filtrarOfertas('RECUSADA')">
+      <button
+        class="btn-filtro"
+        :class="{ 'btn-filtro-ativo': filtrarRecusada }"
+        @click="filtrarOfertas('RECUSADA')"
+      >
         Recusada
       </button>
       <button
@@ -21,17 +25,28 @@
     <!-- -------------------------------------------------- -->
     <div class="grid">
       <div v-for="oferta in ofertas" :key="oferta[0].id" class="grid-card">
-        <h2 class="status-oferta">Status: {{ oferta[0].status.toLowerCase() }}</h2>
+        <h2 class="status-oferta">
+          Status: {{ oferta[0].status.toLowerCase() }}
+        </h2>
         <div class="card postagem-ofertada">
-          <h2 class="titulo-postagem">{{ oferta[0].postagemOfertada.titulo }}</h2>
+          <h2 class="titulo-postagem">
+            {{ oferta[0].postagemOfertada.titulo }}
+          </h2>
 
           <div class="card-img">
-            <img :src="oferta[0].postagemOfertada.foto" class="card-img-produto" />
+            <img
+              :src="oferta[0].postagemOfertada.foto"
+              class="card-img-produto"
+            />
           </div>
 
           <div>
             <button>
-              <router-link :to="{ name: 'TheProductPage', params: { id: oferta[0].postagemOfertada.id } }"
+              <router-link
+                :to="{
+                  name: 'TheProductPage',
+                  params: { id: oferta[0].postagemOfertada.id },
+                }"
                 >Ver produto</router-link
               >
             </button>
@@ -49,12 +64,19 @@
           <h2 class="titulo-postagem">{{ oferta[0].postagemOrigem.titulo }}</h2>
 
           <div class="card-img">
-            <img :src="oferta[0].postagemOrigem.foto" class="card-img-produto" />
+            <img
+              :src="oferta[0].postagemOrigem.foto"
+              class="card-img-produto"
+            />
           </div>
 
           <div>
             <button>
-              <router-link :to="{ name: 'TheProductPage', params: { id: oferta[0].postagemOrigem.id } }"
+              <router-link
+                :to="{
+                  name: 'TheProductPage',
+                  params: { id: oferta[0].postagemOrigem.id },
+                }"
                 >Ver produto</router-link
               >
             </button>
@@ -62,7 +84,9 @@
         </div>
 
         <div class="grid-botao">
-          <button @click="cancelarOferta(oferta[0].id)">Cancelar oferta</button>
+          <button @click="cancelarOferta(oferta[0].id)" class="cancelar">
+            Cancelar oferta
+          </button>
         </div>
       </div>
     </div>
@@ -70,15 +94,15 @@
 </template>
 
 <script>
-import Oferta from '../services/OfertaService';
+import Oferta from "../services/OfertaService";
 
 export default {
   data() {
     return {
       ofertas: [],
       oferta: {
-        id: '',
-        status: '',
+        id: "",
+        status: "",
       },
       filtrarRecusada: false,
       filtrarEmAndamento: false,
@@ -94,10 +118,13 @@ export default {
       Oferta.exibirOfertasFeitas()
         .then((resposta) => {
           this.ofertas = resposta.data.filter((oferta) => {
-            if (this.filtrarRecusada && oferta[0].status === 'RECUSADA') {
+            if (this.filtrarRecusada && oferta[0].status === "RECUSADA") {
               return false;
             }
-            if (this.filtrarEmAndamento && oferta[0].status === 'EM_ANDAMENTO') {
+            if (
+              this.filtrarEmAndamento &&
+              oferta[0].status === "EM_ANDAMENTO"
+            ) {
               return false;
             }
             return true;
@@ -107,9 +134,9 @@ export default {
     },
 
     filtrarOfertas(filtro) {
-      if (filtro === 'RECUSADA') {
+      if (filtro === "RECUSADA") {
         this.filtrarRecusada = !this.filtrarRecusada;
-      } else if (filtro === 'EM_ANDAMENTO') {
+      } else if (filtro === "EM_ANDAMENTO") {
         this.filtrarEmAndamento = !this.filtrarEmAndamento;
       }
 
@@ -117,23 +144,23 @@ export default {
     },
 
     criarOferta() {
-      const idOfertada = sessionStorage.getItem('idOfertada');
-      const idOrigem = sessionStorage.getItem('idOrigem');
+      const idOfertada = sessionStorage.getItem("idOfertada");
+      const idOrigem = sessionStorage.getItem("idOrigem");
 
       Oferta.criar(idOfertada, idOrigem)
         .then(() => {
-          alert('Oferta realizada com sucesso!');
+          alert("Oferta realizada com sucesso!");
           this.errors = [];
         })
         .catch((e) => console.log(e.message));
     },
 
     cancelarOferta(id) {
-      this.oferta.status = 'RECUSADA';
+      this.oferta.status = "RECUSADA";
 
       Oferta.atualizar(id, this.oferta)
         .then(() => {
-          alert('Oferta recusada com sucesso!');
+          alert("Oferta recusada com sucesso!");
           this.carregarOfertas();
         })
         .catch((e) => console.log(e));
@@ -167,6 +194,12 @@ dl {
   padding: 0px;
 }
 
+.card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
 .grid {
   width: 100%;
   display: grid;
@@ -191,7 +224,7 @@ dl {
   width: 200px;
   height: 250px;
   background: #ffffff;
-  border: 1px solid #e5e9eb;
+  border: 0px solid #e5e9eb;
   border-radius: 4px;
   transition: all 300ms;
 }
@@ -201,9 +234,9 @@ dl {
 }
 
 .card img {
-  width: 130px;
+  width: 150px;
   height: 150px;
-  border-radius: 4px;
+  border-radius: 100%;
 }
 
 .status-oferta {
@@ -257,7 +290,7 @@ dl {
   border-radius: 4px;
   font-weight: bold;
   width: 130px;
-  color: #515864;
+  transition: 0.3s;
 }
 
 .grid button:hover,
