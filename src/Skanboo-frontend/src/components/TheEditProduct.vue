@@ -88,7 +88,7 @@
                   <label for="servicos">Serviços</label>
                 </div>
               </fieldset>
-
+              <br />
               <fieldset>
                 <legend>Selecione a categoria de interesse:</legend>
 
@@ -158,10 +158,10 @@
 </template>
 
 <script>
-import Postagem from '../services/PostagemService';
+import Postagem from "../services/PostagemService";
 
 export default {
-  props: ['id'],
+  props: ["id"],
   data() {
     return {
       postagem: null,
@@ -182,13 +182,13 @@ export default {
 
         Postagem.atualizar(this.postagem.id, this.postagem)
           .then(() => {
-            alert('Postagem editada com sucesso!');
+            alert("Postagem editada com sucesso!");
             this.errors = [];
 
-            this.$router.push({ name: 'PostsDoUsuarioView' });
+            this.$router.push({ name: "PostsDoUsuarioView" });
           })
           .catch((e) => {
-            alert('Todos os campos da postagem devem ser preenchidos!');
+            alert("Todos os campos da postagem devem ser preenchidos!");
             this.errors = e.response.data.errors;
             console.log(this.errors);
           });
@@ -197,19 +197,19 @@ export default {
 
     uploadFoto() {
       return new Promise((resolve, reject) => {
-        const fileInput = document.querySelector('input[type=file]');
+        const fileInput = document.querySelector("input[type=file]");
         const file = fileInput.files[0];
 
         const reader = new FileReader();
         reader.addEventListener(
-          'load',
+          "load",
           () => {
             resolve(reader.result);
           },
           false
         );
 
-        reader.addEventListener('error', reject);
+        reader.addEventListener("error", reject);
 
         if (file) {
           reader.readAsDataURL(file);
@@ -261,13 +261,18 @@ button {
   width: 300px;
   height: 32px;
   background: #f9dc5c;
-  border: 1px solid #e2e2e2;
-  border-radius: 4px;
+  border: 1px solid #f9dc5c;
+  border-radius: 32px;
   font-weight: 600;
   color: #515864;
   transition: 0.3s;
   margin-left: 0;
   margin-top: 15px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ffe574;
 }
 
 .info-usuario p {
@@ -320,7 +325,7 @@ h2 {
   padding-left: 0;
 }
 
-input[type='radio'] {
+input[type="radio"] {
   display: inline-block;
   width: auto;
   height: auto;
