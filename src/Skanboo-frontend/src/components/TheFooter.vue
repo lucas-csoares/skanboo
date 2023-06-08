@@ -29,7 +29,7 @@ dl {
 }
 
 footer {
-  background-color: black;
+  background-color: #e9eced;
   position: relative;
   bottom: 0;
   width: 100%;
@@ -38,7 +38,7 @@ footer {
 
 p {
   margin-top: 40px !important;
-  color: white;
+  color: #515864;
   display: inline-block;
 }
 .newsletter input {
