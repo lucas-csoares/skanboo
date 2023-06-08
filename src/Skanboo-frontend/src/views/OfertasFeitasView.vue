@@ -263,6 +263,7 @@ dl {
 .grid button:hover,
 .btn-filtro-ativo {
   background: #f9dc5c;
+  border: 1px solid #f9dc5c;
 }
 
 .div-filtros {
@@ -273,5 +274,9 @@ dl {
 
 .div-filtros h2 {
   line-height: 80px;
+}
+
+button {
+  border-radius: 60px !important;
 }
 </style>

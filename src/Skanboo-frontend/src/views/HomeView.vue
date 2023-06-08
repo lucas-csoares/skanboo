@@ -1,15 +1,15 @@
 <template>
   <section>
-    <TheProducts />
+    <HomeComponent />
   </section>
 </template>
 
 <script>
-import TheProducts from "@/components/TheProducts.vue";
+import HomeComponent from "@/components/HomeComponent.vue";
 
 export default {
   components: {
-    TheProducts,
+    HomeComponent,
   },
 };
 </script>

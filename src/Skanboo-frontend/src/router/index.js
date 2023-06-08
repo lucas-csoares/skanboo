@@ -1,13 +1,13 @@
 import { createRouter, createWebHistory } from "vue-router";
 import CadastroView from "../views/CadastroView";
 import LoginView from "../views/LoginView";
-import ProductsView from "../views/ProductsView";
+import HomeView from "../views/HomeView";
 import PerfilUsuarioView from "../views/PerfilUsuarioView";
 import EditarUsuarioView from "../views/EditarUsuarioView";
 import PostarProdutoView from "../views/PostarProdutoView";
 import EditarProdutoView from "../views/EditarProdutoView";
 import PaginaProdutoView from "../views/PaginaProdutoView";
-import PostsDoUsuarioView from "../views/PostsDoUsuarioView";
+import PostagemUsuarioView from "../views/PostagemUsuarioView";
 import PaginaAdmView from "../views/PaginaAdmView";
 import CooptarParceirosView from "../views/CooptarParceirosView";
 import PaginaProdutoUsuarioView from "../views/PaginaProdutoUsuarioView";
@@ -43,7 +43,7 @@ const routes = [
   {
     path: "/",
     name: "products",
-    component: ProductsView,
+    component: HomeView,
   },
   {
     path: "/PerfilUsuarioView",
@@ -71,9 +71,9 @@ const routes = [
     component: PaginaProdutoView,
   },
   {
-    path: "/postsDoUsuarioView",
-    name: "PostsDoUsuarioView",
-    component: PostsDoUsuarioView,
+    path: "/PostagemUsuarioView",
+    name: "PostagemUsuarioView",
+    component: PostagemUsuarioView,
   },
   {
     path: "/paginaAdmView",
