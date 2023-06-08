@@ -144,8 +144,8 @@ a:hover {
 }
 
 .icone-usuario img:hover {
-  filter: invert(29%) sepia(76%) saturate(4063%) hue-rotate(348deg)
-    brightness(96%) contrast(97%);
+  filter: invert(98%) sepia(91%) saturate(1210%) hue-rotate(321deg)
+    brightness(106%) contrast(95%);
 }
 
 @media (max-width: 600px) {
