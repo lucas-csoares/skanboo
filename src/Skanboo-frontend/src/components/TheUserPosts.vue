@@ -3,17 +3,20 @@
     <div class="adicionar">
       <h1>Meus anúncios</h1>
 
-      <a href="/postarProdutoView"
-        ><img
-          src="../assets/plus-icon.png"
-          alt="Adicionar postagem"
-          class="adicionar_postagem"
-          style="width: 20px; height: 20px"
-      /></a>
+      <a href="/postarProdutoView" class="postar-produto"
+        ><abbr title="Adicionar nova postagem"
+          ><img
+            src="../assets/icon-plus.png"
+            alt="Adicionar postagem"
+            class="adicionar_postagem"
+            style="width: 24px; height: 24px" /></abbr
+      ></a>
     </div>
     <div class="container">
       <div v-for="postagem in postagens" :key="postagem.id" class="card">
-        <router-link :to="{ name: 'TheProductPage', params: { id: postagem.id } }">
+        <router-link
+          :to="{ name: 'TheProductPage', params: { id: postagem.id } }"
+        >
           <h2>{{ postagem.titulo }}</h2>
           <div class="card-img-produto">
             <img :src="postagem.foto" alt="" class="card-img" />
@@ -21,30 +24,34 @@
         </router-link>
 
         <div class="editar-div">
-          <router-link :to="{ name: 'TheEditProduct', params: { id: postagem.id } }">
+          <router-link
+            :to="{ name: 'TheEditProduct', params: { id: postagem.id } }"
+          >
             <button class="editar">Editar</button>
           </router-link>
         </div>
 
-        <button class="excluir" @click="excluirPostagem(postagem.id)">Excluir</button>
+        <button class="excluir" @click="excluirPostagem(postagem.id)">
+          Excluir
+        </button>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import Postagem from '../services/PostagemService';
+import Postagem from "../services/PostagemService";
 
 export default {
   data() {
     return {
       postagem: {
-        id: '',
-        titulo: '',
-        descricao: '',
-        categoriaProduto: '',
-        categoriaProdutoDesejado: '',
-        status: '',
+        id: "",
+        titulo: "",
+        descricao: "",
+        categoriaProduto: "",
+        categoriaProdutoDesejado: "",
+        status: "",
       },
       postagens: [],
     };
@@ -67,7 +74,7 @@ export default {
           this.carregarPostagens();
         })
         .catch((error) => {
-          console.error('Erro ao excluir a postagem', error);
+          console.error("Erro ao excluir a postagem", error);
         });
     },
 
@@ -138,7 +145,7 @@ img {
 .card {
   display: block;
   width: 274px;
-  height: 370px;
+  height: 400px;
   background: #ffffff;
   border: 1px solid #e5e9eb;
   border-radius: 4px;
@@ -159,6 +166,15 @@ button {
   margin-top: 10px;
   border-radius: 4px;
   min-height: 250px;
+}
+
+.adicionar_postagem {
+  transition: 0.6s;
+  transition-timing-function: ease;
+}
+.adicionar_postagem:hover {
+  width: 26px !important;
+  height: 26px !important;
 }
 
 .card h2 {
@@ -204,7 +220,7 @@ button {
   font-weight: 600;
   color: #515864;
   margin-left: 15px;
-  margin-top: 8px;
+  margin-top: 12px;
   margin-bottom: 0;
   transition: 0.3s;
 }
@@ -221,36 +237,21 @@ button {
   align-items: center;
   padding: 2px 6px 2px 8px;
   gap: 4px;
-  width: 80px;
-  height: 20px;
-  background: #fcfcfc;
-  border: 1px solid #e2e2e2;
-  border-radius: 4px;
+  width: 240px;
+  height: 32px;
+  background: #ff3939;
+  border: 1px solid #ff3939;
+  border-radius: 20px;
   font-weight: 600;
   color: #515864;
   margin-left: 15px;
-  margin-top: 6px;
-  transition: 0.2s;
+  margin-top: 8px;
+  margin-bottom: 0;
+  transition: 0.3s;
 }
 
 .excluir:hover {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 2px 6px 2px 8px;
-  gap: 4px;
-  width: 75px;
-  height: 20px;
-  background: #ff3939;
-  border: 1px solid #515864;
-  border-radius: 4px;
-  font-weight: 600;
-  color: #e2e2e2;
-  margin-left: 15px;
-  margin-top: 5px;
-  transition: 0.3s;
+  background: #f12121;
 }
 
 .adicionar_postagem {
@@ -267,7 +268,28 @@ h2 {
 }
 
 h1 {
+  display: inline-block;
+  font-size: 1.3em;
+  margin-bottom: 20px;
+}
+
+abbr {
+  position: relative;
+  transition: 0.2s;
+  transition-timing-function: linear;
+  font-size: 12px;
+}
+abbr:hover::after {
+  width: 150px;
+  height: 15px;
+  border-radius: 34px;
+  position: absolute;
+  bottom: 100%;
+  left: 100%;
   display: block;
-  text-align: left;
+  padding: 1em;
+  background: #fff;
+  border: 1px solid #e9eced;
+  content: attr(title);
 }
 </style>
