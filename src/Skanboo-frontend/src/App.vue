@@ -1,9 +1,7 @@
 <template>
   <div id="app">
-    <HeaderUsuarioLogadoComponent
-      v-if="usuarioLogado"
-      :atualizarPagina="atualizarPagina"
-    />
+    <HeaderUsuarioLogadoComponent v-if="usuarioLogado === 'USER'" :atualizarPagina="atualizarPagina" />
+    <HeaderAdmLogadoComponent v-else-if="usuarioLogado === 'ADMIN'" :atualizarPagina="atualizarPagina" />
     <HeaderComponent v-else :atualizarPagina="atualizarPagina" />
     <router-view />
     <TheFooter />
@@ -13,19 +11,45 @@
 <script>
 import HeaderComponent from "@/components/HeaderComponent.vue";
 import HeaderUsuarioLogadoComponent from "@/components/HeaderUsuarioLogadoComponent.vue";
+import HeaderAdmLogadoComponent from "@/components/HeaderAdmLogadoComponent.vue";
 import TheFooter from "@/components/TheFooter.vue";
+import Usuario from "./services/UsuarioService";
 
 export default {
+  data() {
+    return {
+      usuario: {},
+    };
+  },
+
   components: {
     HeaderComponent,
     HeaderUsuarioLogadoComponent,
+    HeaderAdmLogadoComponent,
     TheFooter,
   },
 
   computed: {
     usuarioLogado() {
-      return localStorage.getItem("token") != null;
+      if (this.usuario && this.usuario.perfil && this.usuario.perfil.length > 0) {
+        const perfil = this.usuario.perfil[0];
+        console.log(perfil);
+        return perfil;
+      } else {
+        console.log("perfil is undefined or empty");
+        return false;
+      }
     },
+  },
+
+  mounted() {
+    Usuario.exibirInfo()
+      .then((resposta) => {
+        const usuario = resposta.data;
+        this.usuario = usuario;
+        console.log(this.usuario);
+      })
+      .catch((e) => console.log(e.message));
   },
 };
 </script>
@@ -76,6 +100,7 @@ input::placeholder {
 label {
   color: #515864;
 }
+
 select {
   background-color: transparent;
   border: 1px solid #e2e2e2;
