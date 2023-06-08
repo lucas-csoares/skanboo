@@ -1,4 +1,34 @@
 <template>
+<div class="carrossel">
+      <div
+        class="carrossel-container"
+        :style="{ transform: `translateX(-${currentSlideIndex * 100}%)` }"
+      >
+        <div
+          class="carrossel-item"
+          v-for="parceiro in carrosselParceiros"
+          :key="parceiro.id"
+        >
+          <router-link
+            :to="{ name: 'TheEditPartner', params: { id: parceiro.id } }"
+          >
+            <div class="card-img-carrossel">
+              <img :src="parceiro.foto" alt="" class="card-img" />
+            </div>
+          </router-link>
+        </div>
+      </div>
+
+      <div class="carrossel-navigation">
+        <button class="arrow" @click="slideAnterior">
+          <img src="../assets/left-arrow.png" alt="" />
+        </button>
+        <button class="arrow" @click="proximoSlide">
+          <img src="../assets/right-arrow.png" alt="" />
+        </button>
+      </div>
+    </div>
+
   <footer>
     <p>Todos os direitos reservados.</p>
   </footer>
