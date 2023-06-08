@@ -2,7 +2,7 @@
   <section class="partners">
     <div  class="title-wrapper">
       <h1>Os parceiros</h1>
-      <a href="/cooptarParceirosView" class="cadastrar-parceiro"
+      <a href="/cooptarParceirosView" class="cadastrar-parceiro" target="_blank"
         ><abbr title="Adicionar novo parceiro"
           ><img
             src="../assets/plus.svg"
@@ -16,8 +16,10 @@
         <h2>{{ parceiro.nome }}</h2>
         <div class="card-img-parceiro"><img :src="parceiro.foto" alt="" class="card-img" /></div>
 
-        <button class="editar"><router-link :to="{ name: 'TheEditPartner', params: { id: parceiro.id } }">Editar</router-link></button>
-        <button class="excluir" @click="excluir(parceiro.id)">Excluir</button>
+        <div class="button-wrapper">
+          <button class="editar"><router-link :to="{ name: 'TheEditPartner', params: { id: parceiro.id } }">Editar</router-link></button>
+          <button class="excluir" @click="excluir(parceiro.id)">Excluir</button>
+        </div>
       </div>
     </div>
   </section>
@@ -106,6 +108,13 @@ img {
   gap: 20px;
 }
 
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
 
 .add-icon {
   display: inline-block;
@@ -117,6 +126,10 @@ img {
     margin-left: 200px;
     margin-right: 200px;
   }
+  .card-img {
+  width: 100%;
+}
+
 
 .title-wrapper {
   display: flex;
