@@ -6,9 +6,9 @@
       <a href="/postarProdutoView" class="postar-produto"
         ><abbr title="Adicionar nova postagem"
           ><img
-            src="../assets/icon-plus.png"
+            src="../assets/plus.svg"
             alt="Adicionar postagem"
-            class="adicionar_postagem"
+            class="adicionar_postagem plus"
             style="width: 24px; height: 24px" /></abbr
       ></a>
     </div>
@@ -291,5 +291,16 @@ abbr:hover::after {
   background: #fff;
   border: 1px solid #e9eced;
   content: attr(title);
+}
+
+.postar-produto img {
+  filter: invert(89%) sepia(4%) saturate(95%) hue-rotate(155deg) brightness(86%)
+    contrast(89%);
+  transition: all 400ms;
+}
+
+.postar-produto img:hover {
+  filter: invert(50%) sepia(27%) saturate(1426%) hue-rotate(48deg)
+    brightness(99%) contrast(84%);
 }
 </style>
