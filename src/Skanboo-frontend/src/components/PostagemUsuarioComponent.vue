@@ -215,7 +215,7 @@ button {
   width: 240px;
   height: 32px;
   background: #fcfcfc;
-  border: 1px solid #e2e2e2;
+  border: 1px solid #464646;
   border-radius: 20px;
   font-weight: 600;
   color: #515864;
@@ -227,6 +227,7 @@ button {
 
 .editar:hover {
   background: #f9dc5c;
+  border: 1px solid #f9dc5c;
 }
 
 .excluir {
@@ -239,7 +240,7 @@ button {
   gap: 4px;
   width: 240px;
   height: 32px;
-  background: #ff3939;
+  background: #fcfcfc;
   border: 1px solid #ff3939;
   border-radius: 20px;
   font-weight: 600;

@@ -173,13 +173,13 @@ export default {
       const parceirosAleatorios = this.parceiros.sort(
         () => 0.5 - Math.random()
       );
-      return parceirosAleatorios.slice(0, 4);
+      return parceirosAleatorios.slice(0, 20);
     },
 
     iniciarTemporizador() {
       this.timer = setInterval(() => {
         this.proximoSlideParceiro();
-      }, 2000);
+      }, 3000);
     },
 
     proximoSlideParceiro() {
@@ -318,8 +318,8 @@ img {
 }
 
 .ver-produto:hover {
-  background: #64ab23;
-  border: 1px solid #64ab23;
+  background: #fafafa;
+  border: 1px solid #4d4d4d;
   color: white;
 }
 

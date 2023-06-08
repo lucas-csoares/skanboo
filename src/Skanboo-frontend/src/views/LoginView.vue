@@ -93,8 +93,8 @@ input {
 }
 
 .btn:hover {
-  background: #569e15;
-  border: 1px solid #569e15;
+  background: #fcfcfc;
+  border: 1px solid #9798b0;
   color: white;
 }
 

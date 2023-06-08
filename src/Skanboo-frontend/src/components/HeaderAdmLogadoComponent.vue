@@ -9,10 +9,6 @@
 
           <nav class="menu-nav">
             <ul>
-              <li><a href="/postsdousuarioview">Meus produtos</a></li>
-              <li><a href="/ofertasrecebidasview">Ofertas recebidas</a></li>
-              <li><a href="/ofertasfeitasView">Ofertas feitas</a></li>
-              <li><a href="/paginatrocasview">Trocas</a></li>
               <li><a href="/exibirparceirosview">Parceiros</a></li>            
               <li><a href="/IndicadoresView">Indicadores</a></li>
               <li class="icone-usuario">
