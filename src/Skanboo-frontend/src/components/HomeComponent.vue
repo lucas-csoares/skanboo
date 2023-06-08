@@ -74,11 +74,43 @@
       </div>
     </div>
   </section>
+  <section>
+    <div class="carrossel-parceiros">
+  <h1>Apoios e Parcerias:</h1>
+      <div
+        class="carrosel-container-parceiros"
+        :style="{ transform: `translateX(-${currentSlideIndexParceiro * 100}%)` }"
+      >
+        <div
+          class="carrosel-item-parceiro"
+          v-for="parceiro in carrosselParceiros"
+          :key="parceiro.id"
+        >
+          <router-link
+            :to="{ name: 'TheEditPartner', params: { id: parceiro.id } }"
+          >
+            <div class="card-img-carrosel-parceiro">
+              <img :src="parceiro.foto" alt="" class="card-img" />
+            </div>
+          </router-link>
+        </div>
+      </div>
+
+      <div class="carrosel-navigation-parceiro">
+      <button class="arrow" @click="slideAnteriorParceiro">
+        <img src="../assets/left-arrow.png" alt="" />
+      </button>
+      <button class="arrow" @click="proximoSlideParceiro">
+        <img src="../assets/right-arrow.png" alt="" />
+      </button>
+    </div>
+    </div>
+  </section>
 </template>
 
 <script>
 import Postagem from "../services/PostagemService";
-
+import Parceiro from '@/services/ParceiroService';
 export default {
   data() {
     return {
@@ -92,7 +124,17 @@ export default {
       postagensPorPagina: 16,
       currentSlideIndex: 0,
       carrosselPostagens: 0,
+      parceiro: {
+        id: "",
+        imagem: "",
+      },
+      parceiros: [],
+      paginaAtualParceiro: 1,
+      parceirosPorPagina: 3,
+      currentSlideIndexParceiro: 0,
+      carrosselParceiros: [],
     };
+
   },
 
   computed: {
@@ -151,14 +193,45 @@ export default {
         this.paginaAtual++;
       }
     },
+    
+    exibirTodosParceiros() {
+      Parceiro.exibirTodosParceiros().then((resposta) => {
+        this.parceiros = resposta.data;
+        this.carrosselParceiros = this.obterParceirosAleatorios();
+      });
+    },
+
+    obterParceirosAleatorios() {
+      const parceirosAleatorios = this.parceiros.sort(
+        () => 0.5 - Math.random()
+      );
+      return parceirosAleatorios.slice(0, 4);
+    },
+
+  proximoSlideParceiro() {
+    if (this.currentSlideIndexParceiro < this.carrosselParceiros.length - 1) {
+      this.currentSlideIndexParceiro++;
+    } else {
+      this.currentSlideIndexParceiro = 0;
+    }
+  },
+
+  slideAnteriorParceiro() {
+    if (this.currentSlideIndexParceiro > 0) {
+      this.currentSlideIndexParceiro--;
+    } else {
+      this.currentSlideIndexParceiro = this.carrosselParceiros.length - 1;
+    }
+  },
+    
   },
 
   mounted() {
-    this.exibirTodasPostagens();
+    this.exibirTodasPostagens(),
+    this.exibirTodosParceiros();
   },
 };
 </script>
-
 <style scoped>
 * {
   box-sizing: border-box;
@@ -363,6 +436,54 @@ img {
 }
 
 .carrossel-navigation .arrow:hover {
+  background-color: #f5f5f5;
+}
+
+/* CARROUSEL PARCEIROS */
+
+.carrossel-parceiros {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carrosel-item-parceiro {
+  flex: 0 0 100%;
+  padding: 0 10px;
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.carrosel-item-parceiro img {
+  margin-top: 10px;
+  border-radius: 4px;
+  max-height: 250px;
+}
+
+.carrosel-container-parceiros {
+  display: flex;
+  margin: 30px 0 15px 0;
+  transition: transform 0.5s ease-in-out;
+}
+
+.card-img-carrosel-parceiro {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 0px;
+}
+
+.carrosel-navigation-parceiro {
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.carrosel-navigation-parceiro .arrow:hover {
   background-color: #f5f5f5;
 }
 </style>
