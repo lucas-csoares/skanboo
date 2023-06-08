@@ -14,56 +14,6 @@
           <router-link :to="{ name: 'OfertaView' }">Negociar</router-link>
         </button>
       </div>
-
-      <div class="container">
-        <div class="card">
-          <h2>Blusa top</h2>
-          <div class="card-img-produto">
-            <img src="../assets/imagem-produto.avif" class="card-img" />
-          </div>
-          <button class="negociar">NEGOCIAR</button>
-        </div>
-
-        <div class="card">
-          <h2>Blusa top</h2>
-          <div class="card-img-produto">
-            <img src="../assets/imagem-produto.avif" class="card-img" />
-          </div>
-          <button class="negociar">NEGOCIAR</button>
-        </div>
-
-        <div class="card">
-          <h2>Blusa top</h2>
-          <div class="card-img-produto">
-            <img src="../assets/imagem-produto.avif" class="card-img" />
-          </div>
-          <button class="negociar">NEGOCIAR</button>
-        </div>
-
-        <div class="card">
-          <h2>Blusa top</h2>
-          <div class="card-img-produto">
-            <img src="../assets/imagem-produto.avif" class="card-img" />
-          </div>
-          <button class="negociar">NEGOCIAR</button>
-        </div>
-
-        <div class="card">
-          <h2>Blusa top</h2>
-          <div class="card-img-produto">
-            <img src="../assets/imagem-produto.avif" class="card-img" />
-          </div>
-          <button class="negociar">NEGOCIAR</button>
-        </div>
-
-        <div class="card">
-          <h2>Blusa top</h2>
-          <div class="card-img-produto">
-            <img src="../assets/imagem-produto.avif" class="card-img" />
-          </div>
-          <button class="negociar">NEGOCIAR</button>
-        </div>
-      </div>
     </div>
   </section>
 </template>
@@ -191,7 +141,7 @@ img {
 }
 
 .card-img-produto img {
-  max-height: 250px;
+  height: 250px;
   width: 250px;
   background-color: grey;
   object-fit: cover;
@@ -209,15 +159,16 @@ img {
   padding: 2px 6px 2px 8px;
   gap: 4px;
   width: 240px;
-  height: 32px;
+  height: 36px;
   background: #fcfcfc;
   border: 1px solid #e2e2e2;
-  border-radius: 4px;
+  border-radius: 32px;
   font-weight: 600;
   color: #515864;
   margin-left: 15px;
-  margin-top: 8px;
+  margin-top: 18px;
   margin-bottom: 0;
+  transition: 0.3s;
 }
 
 .editar:hover {
@@ -229,12 +180,11 @@ img {
   padding: 2px 6px 2px 8px;
   gap: 4px;
   width: 240px;
-  height: 32px;
+  height: 36px;
   background: #f9dc5c;
   border: 1px solid #f9dc5c;
-  border-radius: 4px;
+  border-radius: 32px;
   font-weight: 600;
-  color: #515864;
   margin-left: 15px;
 }
 
