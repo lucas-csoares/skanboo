@@ -13,7 +13,7 @@
               <li><a href="/ofertasrecebidasview">Ofertas recebidas</a></li>
               <li><a href="/ofertasfeitasView">Ofertas feitas</a></li>
               <li><a href="/paginatrocasview">Trocas</a></li>
-              <li><a href="/cooptarparceirosview">Parceiro</a></li>
+              <!-- <li><a href="/cooptarparceirosview">Parceiro</a></li> -->
               <li class="icone-usuario">
                 <a href="/perfilusuarioview"
                   ><img
