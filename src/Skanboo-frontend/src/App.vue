@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import HeaderComponent from "@/components/HeaderAdmLogadoComponent.vue";
+import HeaderComponent from "@/components/HeaderComponent.vue";
 import HeaderUsuarioLogadoComponent from "@/components/HeaderUsuarioLogadoComponent.vue";
 import HeaderAdmLogadoComponent from "@/components/HeaderAdmLogadoComponent.vue";
 import TheFooter from "@/components/TheFooter.vue";
