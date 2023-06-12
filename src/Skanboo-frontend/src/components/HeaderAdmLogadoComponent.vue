@@ -8,18 +8,22 @@
           </div>
 
           <nav class="menu-nav">
-            <ul>
-              <li><a href="/exibirparceirosview">Parceiros</a></li>            
-              <li><a href="/IndicadoresView">Indicadores</a></li>
-              <li class="icone-usuario">
-                <a href="/perfilusuarioview"
-                  ><img
-                    src="../assets/user-icon.svg"
-                    alt="Usuário"
-                    class="user"
-                /></a>
-              </li>
-            </ul>
+            <div class="dropdown">
+              <button class="dropbtn"><b>Menu</b></button>
+              <div class="dropdown-content">
+                <a href="/postagemusuarioview">Meus produtos</a>
+                <a href="/ofertasrecebidasview">Ofertas recebidas</a>
+                <a href="/ofertasrecebidasview">Ofertas feitas</a>
+                <a href="/paginatrocasview">Trocas</a>
+                <a href="/exibirparceirosview">Parceiros</a>
+                <a href="/IndicadoresView">Indicadores</a>
+              </div>
+            </div>
+            <div class="icone-usuario">
+              <a href="/perfilusuarioview"
+                ><img src="../assets/user-icon.svg" alt="Usuário" class="user"
+              /></a>
+            </div>
           </nav>
         </div>
       </header>
@@ -136,8 +140,55 @@ a:hover {
 .icone-usuario img {
   position: absolute;
   width: 30px;
-  bottom: 28px;
+  margin-top: -60px;
+  margin-left: 200px;
   transition: all 200ms;
+}
+
+.dropbtn {
+  background-color: #f9dc5c;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  width: 150px;
+  height: 50px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-top: -50px;
+  margin-right: 60px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+  border-bottom: 0px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #ffe677;
 }
 
 .icone-usuario img:hover {

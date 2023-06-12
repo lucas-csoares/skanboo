@@ -1,7 +1,13 @@
 <template>
   <div id="app">
-    <HeaderUsuarioLogadoComponent v-if="usuarioLogado === 'USER'" :atualizarPagina="atualizarPagina" />
-    <HeaderAdmLogadoComponent v-else-if="usuarioLogado === 'ADMIN'" :atualizarPagina="atualizarPagina" />
+    <HeaderUsuarioLogadoComponent
+      v-if="usuarioLogado === 'USER'"
+      :atualizarPagina="atualizarPagina"
+    />
+    <HeaderAdmLogadoComponent
+      v-else-if="usuarioLogado === 'ADMIN'"
+      :atualizarPagina="atualizarPagina"
+    />
     <HeaderComponent v-else :atualizarPagina="atualizarPagina" />
     <router-view />
     <TheFooter />
@@ -9,7 +15,7 @@
 </template>
 
 <script>
-import HeaderComponent from "@/components/HeaderComponent.vue";
+import HeaderComponent from "@/components/HeaderAdmLogadoComponent.vue";
 import HeaderUsuarioLogadoComponent from "@/components/HeaderUsuarioLogadoComponent.vue";
 import HeaderAdmLogadoComponent from "@/components/HeaderAdmLogadoComponent.vue";
 import TheFooter from "@/components/TheFooter.vue";
@@ -31,7 +37,11 @@ export default {
 
   computed: {
     usuarioLogado() {
-      if (this.usuario && this.usuario.perfil && this.usuario.perfil.length > 0) {
+      if (
+        this.usuario &&
+        this.usuario.perfil &&
+        this.usuario.perfil.length > 0
+      ) {
         const perfil = this.usuario.perfil[0];
         console.log(perfil);
         return perfil;
