@@ -153,6 +153,14 @@ O usuário deve acessar o status de negociações e selecionar a negociação qu
 
 #### Processo 1 – Gerenciar usuário
 
+**Login de usuário**
+
+| **Campo**          | **Tipo**       | **Restrições**                                                                  | **Valor default** |
+| ------------------ | -------------- | ------------------------------------------------------------------------------- | ----------------- |
+| E-mail             | Caixa de texto | Formato de e-mail                                                               | -                 |
+| Senha              | Caixa de texto | Mínimo 12 caracteres com no mínimo uma letra, um número e um caractere especial | -                 |
+| Criar conta        | Link           | Link único                                                                      | -                 |
+
 **Cadastro de usuário**
 
 | **Campo**          | **Tipo**       | **Restrições**                                                                  | **Valor default** |
@@ -205,6 +213,7 @@ O usuário deve acessar o status de negociações e selecionar a negociação qu
 | ----------------- | -------- | -------------- | ----------------- |
 | Editar            | Link     | Link único     | -                 |
 | Adicionar produto | Link     | Link único     | -                 |
+| Excluir produto   | Link     | Link único     | -                 |
 
 **Cadastro de produto**
 
@@ -226,6 +235,13 @@ O usuário deve acessar o status de negociações e selecionar a negociação qu
 | Categoria do produto   | Seleção única  | [Eletrônicos, Moda e beleza, Música, Casa, Serviços] | Categoria do produto atual |
 | Categoria de interesse | Seleção única  | [Eletrônicos, Moda e beleza, Música, Casa, Serviços] | Categoria desejada atual   |
 
+**Página do produto**
+
+| **Campo**         | **Tipo** | **Restrições** | **Valor default** |
+| ----------------- | -------- | -------------- | ----------------- |
+| Negociar          | Link     | Link único     | -                 |
+
+
 #### Processo 3 – Cooptar parceiros
 
 **Cadastro de parceiro**
@@ -242,32 +258,32 @@ O usuário deve acessar o status de negociações e selecionar a negociação qu
 
 | **Campo**       | **Tipo**       | **Restrições**           | **Valor default** |
 | --------------- | -------------- | ------------------------ | ----------------- |
-| Nome da empresa | Caixa de texto | Máximo de 100 caracteres | Nome atual        |
+| Nome fantasia   | Caixa de texto | Máximo de 100 caracteres | Nome atual        |
 | Logo da empresa | Arquivo        | Máximo 1 foto            | Logo atual        |
+
 
 #### Processo 4 – Troca de objetos entre usuários
 
-**Realizar oferta**
+**Escolher produto**
 
 | **Campo**                                         | **Tipo** | **Restrições** | **Valor default** |
 | ------------------------------------------------- | -------- | -------------- | ----------------- |
-| Selecionar produto desejado                       | Link     | Link único     | -                 |
-| Selecionar produto que desejada oferecer em troca | Link     | Link único     | -                 |
-| Fazer oferta                                      | Link     | Link único     | -                 |
+| Selecionar produto que desejada oferecer em troca | Seleção única  | Obrigatório     | -                 |
+| Negociar                                          | Link     | Link único     | -                 |
 
-**Atualizar status de uma oferta**
+**Minhas trocas**
 
-| **Campo**                                                           | **Tipo** | **Restrições** | **Valor default** |
-| ------------------------------------------------------------------- | -------- | -------------- | ----------------- |
-| Aceitar oferta (apenas para usuário que recebeu a oferta)           | Link     | Link único     | -                 |
-| Recusar oferta (ambos usuários podem recusar a oferta em andamento) | Link     | Link único     | -                 |
+| **Campo**                                         | **Tipo** | **Restrições** | **Valor default** |
+| ------------------------------------------------- | -------- | -------------- | ----------------- |
+| Ver produto ofertado                              | Link     | Link único     | -                 |
+| Ver produto que deseja                            | Link     | Link único     | -                 |
+| Cancelar oferta                                   | Link     | Link único     | -                 |
 
-**Atualizar status de uma troca**
+**Preview da oferta**
 
-| **Campo**                    | **Tipo** | **Restrições** | **Valor default** |
-| ---------------------------- | -------- | -------------- | ----------------- |
-| Confirmar troca (usuário 01) | Link     | Link único     | -                 |
-| Confirmar troca (usuário 02) | Link     | Link único     | -                 |
+| **Campo**                                         | **Tipo** | **Restrições** | **Valor default** |
+| ------------------------------------------------- | -------- | -------------- | ----------------- |
+| Negociar                                          | Link     | Link único     | -                 |
 
 #### Processo 5 – Avaliação do usuário
 
