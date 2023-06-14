@@ -59,7 +59,7 @@
 
               <button class="salvar">Salvar alterações</button>
               <button class="cancelar">
-                <router-link :to="{ name: 'UsuarioView' }">Cancelar</router-link>
+                <router-link :to="{ name: 'PerfilUsuarioView' }">Cancelar</router-link>
               </button>
             </form>
           </div>
@@ -103,7 +103,7 @@ export default {
 
         Usuario.atualizar(this.usuario)
           .then(() => {
-            this.$router.push({ name: 'UsuarioView' });
+            this.$router.push({ name: 'PerfilUsuarioView' });
             alert('Usuario editado com sucesso!');
             this.errors = [];
             

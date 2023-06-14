@@ -62,7 +62,7 @@
                         <button class="btn">Salvar alterações</button>
 
                         <button class="cancelar">
-                            <router-link :to="{ name: 'UsuarioView' }">Cancelar</router-link>
+                            <router-link :to="{ name: 'PerfilUsuarioView' }">Cancelar</router-link>
                         </button>
                     </form>
                 </div>
@@ -106,7 +106,7 @@ export default {
                     alert('Endereco editado com sucesso!');
                     this.errors = [];
 
-                    this.$router.push({ name: 'UsuarioView' });
+                    this.$router.push({ name: 'PerfilUsuarioView' });
                 })
                 .catch((e) => {
                     alert('Todos os campos do endereco devem ser preenchidos!');

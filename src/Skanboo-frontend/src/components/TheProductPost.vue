@@ -178,7 +178,7 @@ export default {
             alert('Postagem criada com sucesso!');
             this.errors = [];
 
-            this.$router.push({ name: 'PostsDoUsuarioView' });
+            this.$router.push({ name: 'PostagemUsuarioView' });
           })
           .catch((e) => {
             alert('Todos os campos devem ser preenchidos!');

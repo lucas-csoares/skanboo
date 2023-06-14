@@ -43,10 +43,8 @@ export default {
         this.usuario.perfil.length > 0
       ) {
         const perfil = this.usuario.perfil[0];
-        console.log(perfil);
         return perfil;
       } else {
-        console.log("perfil is undefined or empty");
         return false;
       }
     },
