@@ -9,7 +9,8 @@ import EditarProdutoView from "../views/EditarProdutoView";
 import PaginaProdutoView from "../views/PaginaProdutoView";
 import PostagemUsuarioView from "../views/PostagemUsuarioView";
 import PaginaAdmView from "../views/PaginaAdmView";
-import CooptarParceirosView from "../views/CooptarParceirosView";
+import ParceirosCadastradosView from "../views/ParceirosCadastradosView";
+import CadastroParceiroComponent from "../components/CadastroParceiroComponent"
 import PaginaProdutoUsuarioView from "../views/PaginaProdutoUsuarioView";
 import EditarEnderecoView from "../views/EditarEnderecoView";
 import PreviewTrocaView from "../views/PreviewTrocaView";
@@ -17,7 +18,7 @@ import PaginaTrocasView from "../views/PaginaTrocasView";
 import ThePreviewTroca from "../components/ThePreviewTroca";
 import TheProductPage from "../components/TheProductPage";
 import TheEditProduct from "../components/TheEditProduct";
-import TheParceiros from "../components/TheParceiros";
+import ParceirosCadastradosComponent from "../components/ParceirosCadastradosComponent";
 import TheEditPartner from "../components/TheEditPartner";
 import TheOfertaPreview from "../components/TheOfertaPreview";
 import OfertasFeitasView from "../views/OfertasFeitasView";
@@ -81,9 +82,14 @@ const routes = [
     component: PaginaAdmView,
   },
   {
-    path: "/cooptarParceirosView",
-    name: "CooptarParceirosView",
-    component: CooptarParceirosView,
+    path: "/ParceirosCadastradosView",
+    name: "ParceirosCadastradosView",
+    component: ParceirosCadastradosView,
+  },
+  {
+    path: "/cadastroparceirocomponent",
+    name: "CadastroParceiroComponent",
+    component: CadastroParceiroComponent,
   },
   {
     path: "/paginaProdutoUsuarioView",
@@ -151,9 +157,9 @@ const routes = [
     props: true,
   },
   {
-    path: "/exibirParceirosView",
-    name: "ExibirParceirosView",
-    component: TheParceiros,
+    path: "/ParceirosCadastradosComponent",
+    name: "ParceirosCadastradosComponent",
+    component: ParceirosCadastradosComponent,
   },
   {
     path: "/parceiro/:id",
