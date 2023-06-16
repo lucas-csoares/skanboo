@@ -3,7 +3,6 @@
     <h1>Cadastrar parceiro</h1>
 
     <div class="parceiro">
-      
       <div class="dados-parceiro">
         <form @submit.prevent="criar">
           <label for="titulo">Nome fantasia</label>
@@ -15,22 +14,10 @@
           <fieldset>
             <legend>Plano</legend>
 
-            <input
-              type="radio"
-              id="basic"
-              name="plano"
-              value="basic"
-              v-model="parceiro.plano"
-            />
+            <input type="radio" id="basic" name="plano" value="basic" v-model="parceiro.plano" />
             <label for="sim">Basic</label>
 
-            <input
-              type="radio"
-              id="standard"
-              name="plano"
-              value="standard"
-              v-model="parceiro.plano"
-            />
+            <input type="radio" id="standard" name="plano" value="standard" v-model="parceiro.plano" />
             <label for="premium">Standard</label>
 
             <input type="radio" id="premium" name="plano" value="premium" v-model="parceiro.plano" />
@@ -80,7 +67,7 @@ export default {
           .then(() => {
             alert('Parceiro criada com sucesso!');
             this.errors = [];
-            //todo: adicionar router para pagina do administrador
+            this.$router.push({ name: 'ParceirosCadastradosView' });
           })
           .catch((e) => {
             alert('Todos os campos devem ser preenchidos!');
@@ -92,7 +79,6 @@ export default {
 
     uploadFoto() {
       return new Promise((resolve, reject) => {
-        
         const fileInput = document.querySelector('input[id=foto]');
         const file = fileInput.files[0];
 
@@ -117,7 +103,6 @@ export default {
 
     uploadContrato() {
       return new Promise((resolve, reject) => {
-        
         const fileInput = document.querySelector('input[id=contrato]');
         const file = fileInput.files[0];
 
@@ -165,7 +150,6 @@ export default {
 li {
   list-style: none;
 }
-
 
 button {
   box-sizing: border-box;

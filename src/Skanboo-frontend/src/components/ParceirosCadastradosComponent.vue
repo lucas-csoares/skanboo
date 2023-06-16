@@ -1,15 +1,16 @@
 <template>
-  <section class="partners">
-    <div  class="title-wrapper">
+  <section class="products">
+    <div class="adicionar">
       <h1>Os parceiros</h1>
-      <a href="/cooptarParceirosView" class="cadastrar-parceiro" target="_blank"
-        ><abbr title="Adicionar novo parceiro"
-          ><img
+      <a href="/cadastroparceirocomponent" class="postar-produto"
+        ><abbr title="Adicionar novo parceiro">
+          <img
             src="../assets/plus.svg"
-            alt="cadastrarParceiro"
-            class="cadastrar_parceiro plus add-icon"
-            /></abbr
-      ></a>
+            alt="Adicionar postagem"
+            class="adicionar_postagem plus"
+            style="width: 24px; height: 24px"
+        /></abbr>
+      </a>
     </div>
     <div class="container">
       <div v-for="parceiro in parceiros" :key="parceiro.id" class="card">
@@ -17,7 +18,9 @@
         <div class="card-img-parceiro"><img :src="parceiro.foto" alt="" class="card-img" /></div>
 
         <div class="button-wrapper">
-          <button class="editar"><router-link :to="{ name: 'TheEditPartner', params: { id: parceiro.id } }">Editar</router-link></button>
+          <button class="editar">
+            <router-link :to="{ name: 'TheEditPartner', params: { id: parceiro.id } }">Editar</router-link>
+          </button>
           <button class="excluir" @click="excluir(parceiro.id)">Excluir</button>
         </div>
       </div>
@@ -47,7 +50,6 @@ export default {
     Parceiro.exibirTodosParceiros().then((resposta) => {
       const parceiros = resposta.data;
       this.parceiros = parceiros;
-      console.log(parceiros)
     });
   },
 
@@ -96,78 +98,94 @@ a {
   color: #515864;
 }
 
+.negociar:hover {
+  background: #f9dc5c;
+  transition: 0.3s;
+}
+
 img {
   display: block;
   max-width: 100%;
 }
 
 .container {
+  width: 1156px;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   margin-top: 20px;
   gap: 20px;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
 }
 
-.button-wrapper {
+.adicionar {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  margin-top: 10px;
 }
-
-
-.add-icon {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-}
-  
-  .partners {
-    margin-left: 200px;
-    margin-right: 200px;
-  }
-  .card-img {
-  width: 100%;
-}
-
-
-.title-wrapper {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-  
-.title-wrapper h1 {
-  margin-right: 10px;
-}
-
 
 .card {
-  width: 274.5px;
+  display: block;
+  width: 274px;
   height: 400px;
   background: #ffffff;
   border: 1px solid #e5e9eb;
   border-radius: 4px;
+  transition: all 300ms;
   flex: none;
-  order: 0;
-  flex-grow: 1;
-  margin-bottom: 30px;
 }
 
-.card img {
-  margin-top: -20px;
+.card:hover {
+  transform: scale(1.02);
+}
+
+button {
+  cursor: pointer;
+}
+
+.card img,
+.carrossel-item img {
+  margin-top: 10px;
+  border-radius: 4px;
+  min-height: 250px;
+}
+
+.adicionar_postagem {
+  transition: 0.6s;
+  transition-timing-function: ease;
+}
+.adicionar_postagem:hover {
+  width: 26px !important;
+  height: 26px !important;
 }
 
 .card h2 {
-  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  padding: 8px;
   box-sizing: border-box;
   margin-left: 5px;
-  margin-top: 20px;
+  margin-top: 5px;
+  font-size: 15px;
+  color: #252c32;
+  kerning: -0.6%;
 }
 
-.card-img-parceiro img {
-  max-height: 200px;
-  margin-top: 20px;
+.card-img-produto img {
+  max-height: 250px;
+  width: 250px;
+  background-color: grey;
+  object-fit: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.editar-div {
+  display: flex;
+  justify-content: center;
 }
 
 .editar {
@@ -181,29 +199,19 @@ img {
   width: 240px;
   height: 32px;
   background: #fcfcfc;
-  border: 1px solid #e2e2e2;
-  border-radius: 4px;
+  border: 1px solid #464646;
+  border-radius: 20px;
   font-weight: 600;
   color: #515864;
   margin-left: 15px;
+  margin-top: 12px;
+  margin-bottom: 0;
+  transition: 0.3s;
 }
 
 .editar:hover {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 2px 6px 2px 8px;
-  gap: 4px;
-  width: 240px;
-  height: 32px;
   background: #f9dc5c;
   border: 1px solid #f9dc5c;
-  border-radius: 4px;
-  font-weight: 600;
-  color: #515864;
-  margin-left: 15px;
 }
 
 .excluir {
@@ -217,29 +225,23 @@ img {
   width: 240px;
   height: 32px;
   background: #fcfcfc;
-  border: 1px solid #e2e2e2;
-  border-radius: 4px;
+  border: 1px solid #ff3939;
+  border-radius: 20px;
   font-weight: 600;
   color: #515864;
   margin-left: 15px;
+  margin-top: 8px;
+  margin-bottom: 0;
+  transition: 0.3s;
 }
 
 .excluir:hover {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 2px 6px 2px 8px;
-  gap: 4px;
-  width: 240px;
-  height: 32px;
-  background: #f9dc5c;
-  border: 1px solid #f9dc5c;
-  border-radius: 4px;
-  font-weight: 600;
-  color: #515864;
-  margin-left: 15px;
+  background: #f12121;
+}
+
+.adicionar_postagem {
+  display: block;
+  margin-left: 20px;
 }
 
 h2 {
@@ -251,6 +253,37 @@ h2 {
 }
 
 h1 {
-  text-align: left;
+  display: inline-block;
+  font-size: 1.3em;
+  margin-bottom: 20px;
+}
+
+abbr {
+  position: relative;
+  transition: 0.2s;
+  transition-timing-function: linear;
+  font-size: 12px;
+}
+abbr:hover::after {
+  width: 150px;
+  height: 15px;
+  border-radius: 34px;
+  position: absolute;
+  bottom: 100%;
+  left: 100%;
+  display: block;
+  padding: 1em;
+  background: #fff;
+  border: 1px solid #e9eced;
+  content: attr(title);
+}
+
+.postar-produto img {
+  filter: invert(89%) sepia(4%) saturate(95%) hue-rotate(155deg) brightness(86%) contrast(89%);
+  transition: all 400ms;
+}
+
+.postar-produto img:hover {
+  filter: invert(50%) sepia(27%) saturate(1426%) hue-rotate(48deg) brightness(99%) contrast(84%);
 }
 </style>

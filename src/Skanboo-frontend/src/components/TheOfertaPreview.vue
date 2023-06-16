@@ -1,6 +1,6 @@
 <template>
   <section class="products">
-    <h1>Produtos oferecidos</h1>
+    <h1>Resumo da oferta</h1>
     <div class="container">
       <div class="card">
         <h2>{{ postagemOrigem.titulo }}</h2>
@@ -174,6 +174,7 @@ img {
 
 .card img {
   margin-top: 10px;
+  border-radius: 4px;
 }
 
 .card h2 {

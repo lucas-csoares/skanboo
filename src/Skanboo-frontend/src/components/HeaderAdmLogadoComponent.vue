@@ -13,9 +13,9 @@
               <div class="dropdown-content">
                 <a href="/postagemusuarioview">Meus produtos</a>
                 <a href="/ofertasrecebidasview">Ofertas recebidas</a>
-                <a href="/ofertasrecebidasview">Ofertas feitas</a>
+                <a href="/ofertasfeitasview">Ofertas feitas</a>
                 <a href="/paginatrocasview">Trocas</a>
-                <a href="/exibirparceirosview">Parceiros</a>
+                <a href="/parceiroscadastradosview">Parceiros</a>
                 <a href="/IndicadoresView">Indicadores</a>
               </div>
             </div>
