@@ -55,7 +55,6 @@ export default {
       .then((resposta) => {
         const usuario = resposta.data;
         this.usuario = usuario;
-        console.log(this.usuario);
       })
       .catch((e) => console.log(e.message));
   },

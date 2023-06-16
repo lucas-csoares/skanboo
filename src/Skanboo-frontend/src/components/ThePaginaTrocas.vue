@@ -1,95 +1,84 @@
 <template>
     <section class="products">
         <h1>Minhas Trocas</h1>
-        <div v-for="oferta in ofertas" :key="oferta[0].id" class="container">
+        <div v-for="troca in trocas" :key="troca.id" class="container">
+  <div class="card">
+    <h2>{{ troca.oferta.postagemOrigem.titulo }}</h2>
+    <div class="card-img">
+      <img :src="troca.oferta.postagemOrigem.foto" class="card-img-produto" />
+    </div>
+    <div class="div-botao">
+      <button>
+        <router-link :to="{ name: 'TheProductPage', params: { id: troca.oferta.postagemOrigem.id } }">
+          Ver produto
+        </router-link>
+      </button>
+    </div>
+  </div>
+  <div class="div-flecha">
+    <img src="../assets/setaDireita.png" class="flecha-img">
+    <img src="../assets/setaEsquerda.png" class="flecha-img">
+  </div>
+  <div class="card">
+    <h2>{{ troca.oferta.postagemOfertada.titulo }}</h2>
+    <div class="card-img">
+      <img :src="troca.oferta.postagemOfertada.foto" class="card-img-produto" />
+    </div>
+    <div class="div-botao">
+      <button>
+        <router-link :to="{ name: 'TheProductPage', params: { id: troca.oferta.postagemOfertada.id } }">
+          Ver produto
+        </router-link>
+      </button>
+    </div>
+  </div>
+  <div class="div-botao">
+    <button id="detalhes" @click="paginaDetalhes(troca.id)">Detalhes</button>
+  </div>
+  <!-- <div class="div-botao">
+    <button id="aceitar">
+      <router-link :to="{ name: 'ThePreviewTroca', params: { id: troca.id } }">
+        Aceitar
+      </router-link>
+    </button>
+  </div> -->
+</div>
 
-            <div class="card">
-                <h2>{{ oferta[0].postagemOrigem.titulo }}</h2>
-                <div class="card-img">
-                    <img :src="oferta[0].postagemOrigem.foto" class="card-img-produto" />
-                </div>
-                <div class="div-botao">
-                    <button><router-link :to="{ name: 'TheProductPage', params: { id: oferta[0].postagemOrigem.id } }">Ver
-                            produto</router-link></button>
-                </div>
-            </div>
-            <div class="div-flecha">
-                <img src="../assets/setaDireita.png" class="flecha-img">
-                <img src="../assets/setaEsquerda.png" class="flecha-img">
-            </div>
-
-            <div class="card">
-                <h2>{{ oferta[0].postagemOfertada.titulo }}</h2>
-                <div class="card-img">
-                    <img :src="oferta[0].postagemOfertada.foto" class="card-img-produto" />
-                </div>
-                <div class="div-botao">
-                    <button><router-link :to="{ name: 'TheProductPage', params: { id: oferta[0].postagemOfertada.id } }">Ver
-                            produto</router-link></button>
-                </div>
-            </div>
-
-            <div class="div-botao">
-                <button id="detalhes">Detalhes</button>
-            </div>
-            <!-- <div class="div-botao">
-                <button id="aceitar"><router-link
-                        :to="{ name: 'ThePreviewTroca', params: { id: oferta[0].id } }">Aceitar</router-link></button>
-            </div> -->
-        </div>
     </section>
 </template>
 
 <script>
-import Oferta from '../services/OfertaService';
+
 import Troca from '../services/TrocaService';
+
 
 export default {
     data() {
         return {
             ofertas: [],
             ofertasAceitas: [],
-            troca: [],
+            trocas: [],
             oferta: null
         };
     },
 
     mounted() {
-        const exibirOfertasRecebidas = Oferta.exibirOfertasRecebidas();
-        const exibirOfertasFeitas = Oferta.exibirOfertasFeitas();
 
-        Promise.all([exibirOfertasRecebidas, exibirOfertasFeitas])
-            .then((respostas) => {
-                const ofertasRecebidas = respostas[0].data;
-                const ofertasFeitas = respostas[1].data;
-
-                const mergedOfertas = [...ofertasRecebidas, ...ofertasFeitas];
-                this.ofertas = mergedOfertas.filter((oferta) => oferta[0].status === 'ACEITA');
-
-                console.log("Ofertas aceitas: ", this.ofertas);
-            })
-            .catch((e) => console.log(e.message));
+        Troca.exibirTrocas().then((resposta) => {
+            this.trocas = resposta.data;
+            console.log(resposta.data);
+            return this.trocas;
+        });
     },
 
     methods: {
-        async criarTroca(id_oferta, aceitarOferta) {
-            this.oferta = { status: aceitarOferta };
-            try {
-                await Oferta.atualizar(id_oferta, this.oferta);
-                console.log(id_oferta);
-                alert('Oferta aceita!');
-                this.errors = [];
-                await Troca.criar(id_oferta);
-                console.log(id_oferta);
-                alert('Troca criada com sucesso!');
-                this.$router.push({ name: 'ThePreviewTroca', params: { idOferta: id_oferta } });
-                this.errors = [];
-            } catch (e) {
-                console.log(e.message);
-            }
+        paginaDetalhes(id_troca) {
+            this.$router.push({
+                name: "ThePreviewTroca",
+                params: { idTroca: id_troca },
+            });
         },
     },
-
 
 };
 

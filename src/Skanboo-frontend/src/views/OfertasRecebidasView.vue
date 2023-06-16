@@ -4,18 +4,11 @@
 
     <div class="div-filtros">
       <h2>Filtros aplicados:</h2>
-      <button
-        class="btn-filtro"
-        :class="{ 'btn-filtro-ativo': filtrarRecusada }"
-        @click="filtrarOfertas('RECUSADA')"
-      >
+      <button class="btn-filtro" :class="{ 'btn-filtro-ativo': filtrarRecusada }" @click="filtrarOfertas('RECUSADA')">
         Recusada
       </button>
-      <button
-        class="btn-filtro"
-        :class="{ 'btn-filtro-ativo': filtrarEmAndamento }"
-        @click="filtrarOfertas('EM_ANDAMENTO')"
-      >
+      <button class="btn-filtro" :class="{ 'btn-filtro-ativo': filtrarEmAndamento }"
+        @click="filtrarOfertas('EM_ANDAMENTO')">
         Em andamento
       </button>
     </div>
@@ -28,27 +21,19 @@
         <h2 class="status-oferta">
           Status: {{ oferta[0].status.toLowerCase() }}
         </h2>
-        <div class="card postagem-ofertada">
-          <h2 class="titulo-postagem">
-            {{ oferta[0].postagemOfertada.titulo }}
-          </h2>
+        <div class="card postagem-origem">
+          <h2 class="titulo-postagem">{{ oferta[0].postagemOrigem.titulo }}</h2>
 
           <div class="card-img">
-            <img
-              :src="oferta[0].postagemOfertada.foto"
-              class="card-img-produto"
-            />
+            <img :src="oferta[0].postagemOrigem.foto" class="card-img-produto" />
           </div>
 
           <div>
             <button>
-              <router-link
-                :to="{
-                  name: 'TheProductPage',
-                  params: { id: oferta[0].postagemOfertada.id },
-                }"
-                >Ver produto</router-link
-              >
+              <router-link :to="{
+                name: 'TheProductPage',
+                params: { id: oferta[0].postagemOrigem.id },
+              }">Ver produto</router-link>
             </button>
           </div>
         </div>
@@ -60,25 +45,21 @@
         <!-- -------------------------------------------------- -->
         <!-- Postagem do outro usuario -->
         <!-- -------------------------------------------------- -->
-        <div class="card postagem-origem">
-          <h2 class="titulo-postagem">{{ oferta[0].postagemOrigem.titulo }}</h2>
+        <div class="card postagem-ofertada">
+          <h2 class="titulo-postagem">
+            {{ oferta[0].postagemOfertada.titulo }}
+          </h2>
 
           <div class="card-img">
-            <img
-              :src="oferta[0].postagemOrigem.foto"
-              class="card-img-produto"
-            />
+            <img :src="oferta[0].postagemOfertada.foto" class="card-img-produto" />
           </div>
 
           <div>
             <button>
-              <router-link
-                :to="{
-                  name: 'TheProductPage',
-                  params: { id: oferta[0].postagemOrigem.id },
-                }"
-                >Ver produto</router-link
-              >
+              <router-link :to="{
+                name: 'TheProductPage',
+                params: { id: oferta[0].postagemOfertada.id },
+              }">Ver produto</router-link>
             </button>
           </div>
         </div>
@@ -137,22 +118,28 @@ export default {
     },
 
     async criarTroca(id_oferta, aceitarOferta) {
-      this.oferta = { status: aceitarOferta };
-      try {
-        await Oferta.atualizar(id_oferta, this.oferta);
-        alert("Oferta aceita!");
-        this.errors = [];
-        await Troca.criar(id_oferta);
-        alert("Troca criada com sucesso!");
-        this.$router.push({
-          name: "ThePreviewTroca",
-          params: { idOferta: id_oferta },
-        });
-        this.errors = [];
-      } catch (e) {
-        console.log(e.message);
-      }
-    },
+  this.oferta = { status: aceitarOferta };
+  try {
+    await Oferta.atualizar(id_oferta, this.oferta);
+    alert("Oferta aceita!");
+    this.errors = [];
+    
+    // Create the troca and obtain the trocaId
+    const trocaResponse = await Troca.criar(id_oferta);
+    const id_troca = trocaResponse.data.id;
+    
+    alert("Troca criada com sucesso!");
+    
+    this.$router.push({
+      name: "ThePreviewTroca",
+      params: { idOferta: id_oferta, idTroca: id_troca },
+    });
+    this.errors = [];
+  } catch (e) {
+    console.log(e.message);
+  }
+},
+
 
     cancelarOferta(id) {
       this.oferta.status = "RECUSADA";
@@ -255,13 +242,13 @@ dl {
 }
 
 .postagem-ofertada {
-  grid-column: 1/2;
+  grid-column: 3/4;
   grid-row: 2;
   margin-left: 10px;
 }
 
 .postagem-origem {
-  grid-column: 3/4;
+  grid-column: 1/2;
   grid-row: 2;
   margin-right: 10px;
 }

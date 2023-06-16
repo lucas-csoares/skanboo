@@ -4,35 +4,27 @@
       <h1>Resumo da troca</h1>
     </div>
 
-    <div v-if="oferta" class="container">
+    <div v-if="troca" class="container">
       <div class="descricao">
         <div class="imagem">
-          <img :src="oferta.postagemOrigem.foto" alt="Foto do Produto" />
+          <img :src="troca.oferta.postagemOrigem.foto" alt="Foto do Produto" />
         </div>
         <div class="categorias-produto">
           <span><b>Categoria: </b></span>
-          <span class="categoria">{{
-            oferta.postagemOrigem.categoriaProduto
-          }}</span>
-
+          <span class="categoria">{{ troca.oferta.postagemOrigem.categoriaProduto }}</span>
           <br />
-
           <span><b>Interesse: </b></span>
-          <span class="oferta">{{
-            oferta.postagemOrigem.categoriaProdutoDesejado
-          }}</span>
-
+          <span class="oferta">{{ troca.oferta.postagemOrigem.categoriaProdutoDesejado }}</span>
           <br />
-
           <span><b>Contato: </b></span>
           <span class="oferta">telefone</span>
         </div>
         <div class="informacoes-produto">
           <div class="titulo">
-            <h2>{{ oferta.postagemOrigem.titulo }}</h2>
+            <h2>{{ troca.oferta.postagemOrigem.titulo }}</h2>
           </div>
           <p>
-            {{ oferta.postagemOrigem.descricao }}
+            {{ troca.oferta.postagemOrigem.descricao }}
           </p>
         </div>
       </div>
@@ -44,80 +36,74 @@
 
       <div class="descricao">
         <div class="imagem">
-          <img :src="oferta.postagemOfertada.foto" alt="Foto do Produto" />
+          <img :src="troca.oferta.postagemOfertada.foto" alt="Foto do Produto" />
         </div>
         <div class="categorias-produto">
           <span><b>Categoria: </b></span>
-          <span class="categoria">{{
-            oferta.postagemOfertada.categoriaProduto
-          }}</span>
-
+          <span class="categoria">{{ troca.oferta.postagemOfertada.categoriaProduto }}</span>
           <br />
-
           <span><b>Interesse: </b></span>
-          <span class="oferta">{{
-            oferta.postagemOfertada.categoriaProdutoDesejado
-          }}</span>
-
+          <span class="oferta">{{ troca.oferta.postagemOfertada.categoriaProdutoDesejado }}</span>
           <br />
-
           <span><b>Contato: </b></span>
           <span class="oferta">telefone</span>
         </div>
         <div class="informacoes-produto">
           <div class="titulo">
-            <h2>{{ oferta.postagemOfertada.titulo }}</h2>
+            <h2>{{ troca.oferta.postagemOfertada.titulo }}</h2>
           </div>
           <p>
-            {{ oferta.postagemOfertada.descricao }}
+            {{ troca.oferta.postagemOfertada.descricao }}
           </p>
         </div>
       </div>
     </div>
     <div class="container-botoes">
-      <button class="voltar">Voltar</button>
+      <button class="voltar" @click="paginaTrocas()">Voltar</button>
       <button id="aceitar" @click="confirmacaoTroca">Produto recebido</button>
     </div>
-
   </section>
 </template>
 
+
 <script>
-import Oferta from '../services/OfertaService';
-import Endereco from '../services/EnderecoService';
 import Troca from '../services/TrocaService';
 import Usuario from '../services/UsuarioService';
 
 export default {
-  props: ["id"],
   data() {
     return {
       oferta: null,
       troca: null,
       usuario: null,
       id_usuario: null,
+      idTroca: null, // Add the idTroca property
     };
   },
   mounted() {
-    const ofertaId = this.$route.params.idOferta;
-    console.log(ofertaId);
-    Oferta.exibirOferta(ofertaId)
-      .then((resposta) => {
-        const ofertas = resposta.data;
-        this.oferta = ofertas;
-        console.log(this.oferta)
-        return this.oferta;
-      })
-      .catch((e) => console.log(e.message));
+    // const ofertaId = this.$route.params.idOferta;
+    const trocaId = this.$route.params.idTroca;
+    console.log(trocaId);
 
-    Endereco.exibirInfo()
-      .then((resposta) => {
-        this.endereco = resposta.data;
-        return this.endereco;
-      })
-      .catch((e) => console.log(e.message));
+    // Fetch the oferta data
+    // Oferta.exibirOferta(ofertaId)
+    //   .then((resposta) => {
+    //     const ofertas = resposta.data;
+    //     this.oferta = ofertas;
+    //     console.log(this.oferta);
+    //     return this.oferta;
+    //   })
+    //   .catch((e) => console.log(e.message));
 
-      Usuario.exibirInfo()
+    // Fetch the troca data
+    Troca.exibirTroca(trocaId).then((resposta) => {
+            this.troca = resposta.data;
+            console.log(resposta.data);
+            return this.troca;
+        });
+
+    // Fetch the user data
+    Usuario.exibirInfo()
       .then((resposta) => {
         this.usuario = resposta.data;
         this.id_usuario = this.usuario.id; // Assign the value to id_usuario
@@ -127,15 +113,27 @@ export default {
   },
   methods: {
     confirmacaoTroca() {
-      const ofertaId = this.$route.params.idOferta;
+      const trocaId = this.$route.params.idTroca;
 
-      Troca.atualizar(ofertaId)
+      Troca.atualizar(trocaId)
         .then(() => {
           console.log(this.id_usuario);
+          console.log(trocaId);
           alert('Confirmação enviada!');
+          
+          this.$router.push({
+            name: "PaginaAvaliacaoView",
+            params: { idTroca: trocaId },
+          });
           this.errors = [];
         })
         .catch((e) => console.log(e.message));
+    },
+    paginaTrocas(id_troca) {
+      this.$router.push({
+        name: "PaginaTrocasView",
+        params: { idTroca: id_troca },
+      });
     },
   },
 };

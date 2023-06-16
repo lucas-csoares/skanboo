@@ -19,7 +19,7 @@
       </div>
 
       <button class="oferta-botao" @click="criarOferta">
-        <router-link :to="{ name: 'PerfilUsuarioView' }">Negociar</router-link>
+        <router-link :to="{ name: 'OfertasFeitasView' }">Negociar</router-link>
       </button>
     </div>
   </section>
@@ -94,7 +94,7 @@ export default {
       const idOfertada = sessionStorage.getItem("idOfertada");
       const idOrigem = sessionStorage.getItem("idOrigem");
 
-      console.log("Origem Id:", idOfertada);
+      console.log("Ofertada Id:", idOfertada);
       console.log("Origem Id:", idOrigem);
 
       Oferta.criar(idOfertada, idOrigem)

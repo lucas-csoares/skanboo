@@ -162,21 +162,22 @@ const routes = [
     props: true,
   },
   {
-    path: "/oferta/:idOferta",
+    path: "/oferta/:idTroca",
     name: "ThePreviewTroca",
     component: ThePreviewTroca,
     props: true,
   },
   {
-    path: "/oferta/:idOferta",
+    path: "/oferta/:idTroca",
     name: "ThePaginaTrocas",
     component: ThePaginaTrocas,
     props: true,
   },
   {
-    path: "/paginaAvaliacaoView",
+    path: "/troca/:idTroca",
     name: "paginaAvaliacaoView",
     component: PaginaAvaliacaoView,
+    props: true,
   },
   {
     path: "/indicadoresView",

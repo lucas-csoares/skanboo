@@ -64,7 +64,7 @@
       <button class="btn">Finalizar cadastro</button>
 
       <button class="cancelar">
-                <router-link :to="{ name: 'UsuarioView' }">Cancelar</router-link>
+                <router-link :to="{ name: 'PerfilUsuarioView' }">Cancelar</router-link>
               </button>
     </form>
   </section>
@@ -97,7 +97,7 @@ export default {
         .then(() => {
           alert("Endereço salvo com sucesso");
           this.errors = [];
-          return this.$router.push({ name: 'UsuarioView' });
+          return this.$router.push({ name: 'PerfilUsuarioView' });
         })
         .catch((e) => {
           console.log(this.errors);
@@ -157,30 +157,44 @@ input {
 
 .btn {
   width: 300px;
-  height: 32px;
+  height: 38px;
   background: #f9dc5c;
-  border: 1px solid #e2e2e2;
-  border-radius: 16px;
+  border: 1px solid #f9dc5c;
+  border-radius: 32px;
   font-weight: 600;
-  color: #515864;
+  color: #23272f;
   transition: 0.3s;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 20px;
+  margin-top: 30px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #fcfcfc;
+  border: 1px solid #9798b0;
+  color: white;
 }
 
 .cancelar {
   width: 300px;
-  height: 32px;
+  height: 38px;
   background: #fcfcfc;
-  border: 1px solid #e2e2e2;
-  border-radius: 16px;
+  border: 1px solid #9798b0;
+  border-radius: 32px;
   font-weight: 600;
-  color: #515864;
+  color: #23272f;
   transition: 0.3s;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 10px;
+  margin-top: 30px;
+  transition: 0.3s;
+}
+
+.cancelar:hover {
+  background: #e2e2e2;
+  border: 1px solid #e2e2e2;
+  color: white;
 }
 
 label {

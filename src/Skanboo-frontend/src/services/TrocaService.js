@@ -18,7 +18,7 @@ export default {
   },
 
   exibirTrocas: () => {
-    return http.get(`troca/lista/me`, {
+    return http.get(`troca/lista`, {
       headers: {
         Authorization: localStorage.getItem('token')
       }

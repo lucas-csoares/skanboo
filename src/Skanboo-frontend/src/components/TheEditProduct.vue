@@ -185,7 +185,7 @@ export default {
             alert("Postagem editada com sucesso!");
             this.errors = [];
 
-            this.$router.push({ name: "PostsDoUsuarioView" });
+            this.$router.push({ name: "PostagemUsuarioView" });
           })
           .catch((e) => {
             alert("Todos os campos da postagem devem ser preenchidos!");

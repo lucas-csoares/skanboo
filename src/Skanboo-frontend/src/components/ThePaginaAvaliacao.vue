@@ -12,66 +12,31 @@
 
     <div class="comentario">
       <form>
-        <textarea
-          placeholder="Adicionar uma avaliação escrita"
-          id="comentario"
-          name="comentario"
-          rows="10"
-          cols="50"
-          maxlength="140"
-          v-model="avaliacao.comentario"
-        ></textarea>
-
         <form action="rating">
           <label>
-            <input
-              type="radio"
-              name="stars"
-              value="1"
-              v-model="avaliacao.nota"
-            />
+            <input type="radio" name="stars" value="1" v-model="avaliacao.nota" />
             <span class="icon">★</span>
           </label>
           <label>
-            <input
-              type="radio"
-              name="stars"
-              value="2"
-              v-model="avaliacao.nota"
-            />
+            <input type="radio" name="stars" value="2" v-model="avaliacao.nota" />
             <span class="icon">★</span>
             <span class="icon">★</span>
           </label>
           <label>
-            <input
-              type="radio"
-              name="stars"
-              value="3"
-              v-model="avaliacao.nota"
-            />
+            <input type="radio" name="stars" value="3" v-model="avaliacao.nota" />
             <span class="icon">★</span>
             <span class="icon">★</span>
             <span class="icon">★</span>
           </label>
           <label>
-            <input
-              type="radio"
-              name="stars"
-              value="4"
-              v-model="avaliacao.nota"
-            />
+            <input type="radio" name="stars" value="4" v-model="avaliacao.nota" />
             <span class="icon">★</span>
             <span class="icon">★</span>
             <span class="icon">★</span>
             <span class="icon">★</span>
           </label>
           <label>
-            <input
-              type="radio"
-              name="stars"
-              value="5"
-              v-model="avaliacao.nota"
-            />
+            <input type="radio" name="stars" value="5" v-model="avaliacao.nota" />
             <span class="icon">★</span>
             <span class="icon">★</span>
             <span class="icon">★</span>
@@ -79,23 +44,49 @@
             <span class="icon">★</span>
           </label>
         </form>
-        <button class="enviar">Enviar</button>
+        <button class="enviar" @click="criarAvaliacao">Enviar</button>
       </form>
     </div>
   </section>
 </template>
 
 <script>
+import Avaliacao from '@/services/AvaliacaoService';
+// import Troca from '@/services/TrocaService';
+
 export default {
   data() {
     return {
       avaliacao: {
-        id: "",
-        titulo: "",
-        comentario: "",
-        nota: "",
+        nota: null,
       },
     };
+  },
+
+  // mounted() {
+  //   const trocaId = this.$route.params.trocaId;
+
+  //   Troca.exibirtroca(trocaId)
+  //     .then((resposta) => {
+  //       this.troca = resposta.data;
+  //       return this.troca;
+  //     })
+  //     .catch((e) => console.log(e.message));
+  // },
+
+  methods: {
+    criarAvaliacao() {
+
+      // const ofertaId = this.$route.params.idOferta;
+      const trocaId = this.$route.params.trocaId;
+
+      Avaliacao.criar(trocaId, this.avaliacao)
+        .then(() => {
+          alert("Avaliação enviada com sucesso!");
+          this.errors = [];
+        })
+        .catch((e) => console.log(e.message));
+    },
   },
 };
 </script>
@@ -161,15 +152,16 @@ export default {
   color: #000;
 }
 
-.rating:not(:hover) label input:checked ~ .icon,
-.rating:hover label:hover input ~ .icon {
+.rating:not(:hover) label input:checked~.icon,
+.rating:hover label:hover input~.icon {
   color: #09f;
 }
 
-.rating label input:focus:not(:checked) ~ .icon:last-child {
+.rating label input:focus:not(:checked)~.icon:last-child {
   color: #000;
   text-shadow: 0 0 5px #09f;
 }
+
 body,
 h1,
 h2,
