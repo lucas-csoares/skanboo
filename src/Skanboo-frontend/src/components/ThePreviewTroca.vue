@@ -60,7 +60,39 @@
     </div>
     <div class="container-botoes">
       <button class="voltar" @click="paginaTrocas()">Voltar</button>
-      <button id="aceitar" @click="confirmacaoTroca">Produto recebido</button>
+      <button id="aceitar" @click="confirmacaoTroca(), toggle()">Produto recebido</button>
+    </div>
+
+    <div class="container">
+      <button @click="toggle()" id="button" class="btn">popup</button>
+    </div>
+
+    <div class="popup-container">
+
+      <div class="popup">
+
+        <h3>Como foi essa troca?</h3>
+
+        <input type="radio" name="buttons" id="btn1" value="1" v-model="avaliacao.nota">
+        <input type="radio" name="buttons" id="btn2" value="2" v-model="avaliacao.nota">
+        <input type="radio" name="buttons" id="btn3" value="3" v-model="avaliacao.nota">
+        <input type="radio" name="buttons" id="btn4" value="4" v-model="avaliacao.nota">
+        <input type="radio" name="buttons" id="btn5" value="5" v-model="avaliacao.nota">
+
+        <div class="icons">
+          <label for="btn1">🙁</label>
+          <label for="btn2">😐</label>
+          <label for="btn3">😊</label>
+          <label for="btn4">😀</label>
+          <label for="btn5">😍</label>
+        </div>
+
+        <input type="submit" value="Enviar" class="enviar" @click="criarAvaliacao">
+
+        <div @click="toggle()" id="close">✖</div>
+
+      </div>
+
     </div>
   </section>
 </template>
@@ -69,6 +101,7 @@
 <script>
 import Troca from '../services/TrocaService';
 import Usuario from '../services/UsuarioService';
+import Avaliacao from '@/services/AvaliacaoService';
 
 export default {
   data() {
@@ -78,6 +111,9 @@ export default {
       usuario: null,
       id_usuario: null,
       idTroca: null, // Add the idTroca property
+      avaliacao: {
+        nota: null,
+      },
     };
   },
   mounted() {
@@ -97,10 +133,10 @@ export default {
 
     // Fetch the troca data
     Troca.exibirTroca(trocaId).then((resposta) => {
-            this.troca = resposta.data;
-            console.log(resposta.data);
-            return this.troca;
-        });
+      this.troca = resposta.data;
+      console.log(resposta.data);
+      return this.troca;
+    });
 
     // Fetch the user data
     Usuario.exibirInfo()
@@ -120,12 +156,12 @@ export default {
           console.log(this.id_usuario);
           console.log(trocaId);
           alert('Confirmação enviada!');
-          
-          this.$router.push({
-            name: "PaginaAvaliacaoView",
-            params: { idTroca: trocaId },
-          });
-          this.errors = [];
+
+          // this.$router.push({
+          //   name: "PaginaAvaliacaoView",
+          //   params: { idTroca: trocaId },
+          // });
+          // this.errors = [];
         })
         .catch((e) => console.log(e.message));
     },
@@ -135,11 +171,36 @@ export default {
         params: { idTroca: id_troca },
       });
     },
+    toggle() {
+      let toggle = document.querySelector('.popup-container')
+      toggle.classList.toggle('toggle');
+    },
+
+    criarAvaliacao() {
+      const trocaId = this.$route.params.idTroca;
+
+      Avaliacao.criar(trocaId, this.avaliacao)
+        .then(() => {
+          alert("Avaliação criada com sucesso");
+          this.$router.push({
+        name: "PaginaTrocasView",
+        params: { idTroca: trocaId },
+      });
+          this.errors = [];
+        })
+        .catch((e) => {
+          console.log(e.message);
+        });
+      },
   },
 };
 </script>
 
 <style scoped>
+* {
+  transition: all .2s linear;
+}
+
 .container {
   display: flex;
   flex-direction: row;
@@ -284,7 +345,7 @@ span {
   box-sizing: border-box;
   padding: 2px 6px 2px 8px;
   gap: 4px;
-  width: 500px;
+  width: 100px;
   height: 32px;
   background: transparent;
   border: 1px solid #000;
@@ -299,7 +360,7 @@ span {
   box-sizing: border-box;
   padding: 2px 6px 2px 8px;
   gap: 4px;
-  width: 500px;
+  width: 110px;
   height: 32px;
   background: #f9dc5c;
   border: 1px solid #f9dc5c;
@@ -351,5 +412,98 @@ h1 {
 
 h2 {
   font-size: 1em;
+}
+
+.popup {
+  height: 320px;
+  width: 400px;
+}
+
+.popup-container {
+  position: fixed;
+  top: -120%;
+  left: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, .3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.popup-container.toggle {
+  top: 0%;
+}
+
+.popup-container .popup {
+  background: #fff;
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
+  border-radius: 5px;
+  position: relative;
+}
+
+.popup-container .popup h3 {
+  color: #444;
+  padding: 20px 40px;
+  font-size: 25px;
+}
+
+.popup-container .popup .btn {
+  margin: 30px;
+  font-size: 20px;
+  height: 40px;
+  width: 150px;
+}
+
+.popup-container .popup input[type="radio"] {
+  display: none;
+}
+
+.popup-container .popup .icons {
+  padding: 10px;
+}
+
+.popup-container .popup .icons label {
+  font-size: 50px;
+  cursor: pointer;
+  opacity: .4;
+}
+
+.popup-container .popup .icons:hover label {
+  opacity: .2;
+}
+
+
+.popup-container .popup #btn1:checked~.icons label:nth-child(1),
+.popup-container .popup #btn2:checked~.icons label:nth-child(2),
+.popup-container .popup #btn3:checked~.icons label:nth-child(3),
+.popup-container .popup #btn4:checked~.icons label:nth-child(4),
+.popup-container .popup #btn5:checked~.icons label:nth-child(5),
+.popup-container .popup .icons label:hover {
+  opacity: 1;
+  font-size: 60px;
+}
+
+.popup-container .popup #close {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  border-radius: 50%;
+  border: 4px solid #f9dc5c;
+  height: 40px;
+  width: 40px;
+  line-height: 35px;
+  cursor: pointer;
+  background: #333;
+  color: #fff;
+  font-size: 20px;
+}
+
+.popup-container .popup #close:hover {
+  transform: rotate(90deg);
 }
 </style>
