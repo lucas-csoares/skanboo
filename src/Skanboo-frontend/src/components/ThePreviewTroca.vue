@@ -63,10 +63,6 @@
       <button id="aceitar" @click="confirmacaoTroca(), toggle()">Produto recebido</button>
     </div>
 
-    <div class="container">
-      <button @click="toggle()" id="button" class="btn">popup</button>
-    </div>
-
     <div class="popup-container">
 
       <div class="popup">
