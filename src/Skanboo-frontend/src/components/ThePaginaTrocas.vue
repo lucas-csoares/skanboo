@@ -33,7 +33,7 @@
     </div>
   </div>
   <div class="div-botao">
-    <button id="detalhes" @click="paginaDetalhes(troca.id)">Detalhes</button>
+    <button id="detalhes" @click="paginaDetalhes(troca.id)"><span>{{ troca.status }}</span></button>
   </div>
   <!-- <div class="div-botao">
     <button id="aceitar">
@@ -130,6 +130,14 @@ img {
 
 #detalhes {
     margin: 0;
+}
+
+#detalhes:hover span {
+    display: none;
+}
+
+#detalhes:hover::before {
+  content: 'Ver detalhes';
 }
 
 .container {

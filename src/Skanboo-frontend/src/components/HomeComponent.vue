@@ -5,7 +5,7 @@
     <div class="carrossel">
       <div class="carrossel-container" :style="{ transform: `translateX(-${currentSlideIndex * 100}%)` }">
         <div class="carrossel-item" v-for="postagem in carrosselPostagens" :key="postagem.id">
-          <router-link :to="{ name: 'TheProductPage', params: { id: postagem.id } }">
+          <router-link :to="{ name: 'TheProductPage', params: { id: postagem.id }, query: { currentPage: $route.name } }">
             <div class="card-img-carrossel">
               <img :src="postagem.foto" alt="" class="card-img" />
             </div>
@@ -25,7 +25,7 @@
 
     <div class="container">
       <div v-for="postagem in postagensPaginadas" :key="postagem.id" class="card">
-        <router-link :to="{ name: 'TheProductPage', params: { id: postagem.id } }">
+        <router-link :to="{ name: 'TheProductPage', params: { id: postagem.id }, query: { currentPage: $route.name } }">
           <h2>{{ postagem.titulo }}</h2>
           <div class="card-img-produto">
             <img :src="postagem.foto" alt="" class="card-img" />

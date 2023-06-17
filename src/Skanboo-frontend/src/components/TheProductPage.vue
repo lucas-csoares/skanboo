@@ -36,11 +36,9 @@
           </div>
         </div>
       </div>
-      <div class="div-botao">
+      <div v-if="isFromHomePage" class="div-botao">
         <button @click="saveIdOfertada">
-          <router-link :to="{ name: 'EscolherProdutoView' }"
-            >Negociar</router-link
-          >
+          <router-link :to="{ name: 'EscolherProdutoView' }">Negociar</router-link>
         </button>
       </div>
     </section>
@@ -51,6 +49,7 @@
 <script>
 import Postagem from "../services/PostagemService";
 import Oferta from "../services/OfertaService";
+import Usuario from '../services/UsuarioService';
 // import EscolherProdutoView from '@/views/EscolherProdutoView.vue';
 
 export default {
@@ -59,12 +58,19 @@ export default {
     return {
       postagem: null,
       Oferta: null,
+      usuario: {
+        id: null
+      },
     };
   },
   mounted() {
     Postagem.exibirInfoPostagem(this.id).then((resposta) => {
       this.postagem = resposta.data;
       return this.postagem;
+    });
+    Usuario.exibirInfo().then((resposta) => {
+      this.usuario = resposta.data;
+      return this.usuario
     });
   },
   methods: {
@@ -80,7 +86,17 @@ export default {
       sessionStorage.setItem("idOfertada", this.postagem.id);
     },
   },
-  // components: { EscolherProdutoView }
+  computed: {
+    isFromHomePage() {  //função pra tirar o botão de negociar quando n tiver na home ou quando for do proprio usuario
+      console.log(this.$route.query.currentPage)
+      console.log(this.usuario.id)   
+      console.log(this.postagem.id_usuario)    // OOOOOOOOOOOOOOOOOOOOOO consertar isso, tá dando undefined
+      if(this.usuario.id === this.postagem.id_usuario){
+        return 0;
+      }
+      return this.$route.query.currentPage;
+    },
+  },
 };
 </script>
 

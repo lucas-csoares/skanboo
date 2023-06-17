@@ -60,7 +60,11 @@
     </div>
     <div class="container-botoes">
       <button class="voltar" @click="paginaTrocas()">Voltar</button>
-      <button id="aceitar" @click="confirmacaoTroca(), toggle()">Produto recebido</button>
+
+      <button v-if="troca && troca.status === 'EM_ANDAMENTO'" 
+      id="aceitar" @click="confirmacaoTroca(), toggle()">Produto recebido</button>
+
+
     </div>
 
     <div class="popup-container">
@@ -179,15 +183,15 @@ export default {
         .then(() => {
           alert("Avaliação criada com sucesso");
           this.$router.push({
-        name: "PaginaTrocasView",
-        params: { idTroca: trocaId },
-      });
+            name: "PaginaTrocasView",
+            params: { idTroca: trocaId },
+          });
           this.errors = [];
         })
         .catch((e) => {
           console.log(e.message);
         });
-      },
+    },
   },
 };
 </script>
