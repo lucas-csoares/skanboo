@@ -19,7 +19,7 @@
       </div>
 
       <button class="oferta-botao" @click="criarOferta">
-        <router-link :to="{ name: 'OfertasFeitasView' }">Negociar</router-link>
+        <router-link :to="{ name: 'ofertasfeitasview' }">Negociar</router-link>
       </button>
     </div>
   </section>

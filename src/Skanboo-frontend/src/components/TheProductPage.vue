@@ -192,7 +192,6 @@ button:hover {
   font-weight: 600;
   color: #515864;
   transition: 0.3s;
-
   margin-top: 10px;
 }
 

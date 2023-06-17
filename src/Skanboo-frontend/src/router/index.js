@@ -119,7 +119,7 @@ const routes = [
   },
   {
     path: "/OfertasFeitasView",
-    name: "OfertasFeitasView",
+    name: "ofertasfeitasview",
     component: OfertasFeitasView,
   },
   {

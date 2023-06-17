@@ -20,48 +20,59 @@
     <!-- Postagem do usuario ativo -->
     <!-- -------------------------------------------------- -->
     <div class="grid">
-      <div v-for="ofertaGroup in ofertas" :key="ofertaGroup[0].id">
-        <div v-for="oferta in ofertaGroup" :key="oferta.id" class="grid-card">
-          <h2 class="status-oferta">Status: {{ oferta.status.toLowerCase() }}</h2>
-          <div class="card postagem-ofertada">
-            <h2 class="titulo-postagem">{{ oferta.postagemOfertada.titulo }}</h2>
+      <div v-for="oferta in ofertas" :key="oferta[0].id" class="grid-card">
+        <h2 class="status-oferta">Status: {{ oferta[0].status.toLowerCase() }}</h2>
+        <div class="card postagem-origem">
+          <h2 class="titulo-postagem">{{ oferta[0].postagemOfertada.titulo }}</h2>
 
-            <div class="card-img">
-              <img :src="oferta.postagemOfertada.foto" class="card-img-produto" />
-            </div>
-
-            <div>
-              <button>
-                <router-link :to="{ name: 'TheProductPage', params: { id: oferta.postagemOfertada.id } }">
-                  Ver produto
-                </router-link>
-              </button>
-            </div>
+          <div class="card-img">
+            <img :src="oferta[0].postagemOfertada.foto" class="card-img-produto" />
           </div>
 
-          <div class="grid-seta">
-            <img src="../assets/setaDireita.png" class="flecha-img" />
+          <div>
+            <button>
+              <router-link
+                :to="{
+                  name: 'TheProductPage',
+                  params: { id: oferta[0].postagemOfertada.id },
+                }"
+                >Ver produto</router-link
+              >
+            </button>
+          </div>
+        </div>
+
+        <div class="grid-seta">
+          <img src="../assets/setaDireita.png" class="flecha-img" />
+        </div>
+
+        <!-- -------------------------------------------------- -->
+        <!-- Postagem do outro usuario -->
+        <!-- -------------------------------------------------- -->
+        <div class="card postagem-ofertada">
+          <h2 class="titulo-postagem">
+            {{ oferta[0].postagemOrigem.titulo }}
+          </h2>
+
+          <div class="card-img">
+            <img :src="oferta[0].postagemOrigem.foto" class="card-img-produto" />
           </div>
 
-          <div class="card postagem-origem">
-            <h2 class="titulo-postagem">{{ oferta.postagemOrigem.titulo }}</h2>
-
-            <div class="card-img">
-              <img :src="oferta.postagemOrigem.foto" class="card-img-produto" />
-            </div>
-
-            <div>
-              <button>
-                <router-link :to="{ name: 'TheProductPage', params: { id: oferta.postagemOrigem.id } }">
-                  Ver produto
-                </router-link>
-              </button>
-            </div>
+          <div>
+            <button>
+              <router-link
+                :to="{
+                  name: 'TheProductPage',
+                  params: { id: oferta[0].postagemOrigem.id },
+                }"
+                >Ver produto</router-link
+              >
+            </button>
           </div>
+        </div>
 
-          <div class="grid-botao">
-            <button @click="cancelarOferta(oferta.id)" class="cancelar">Cancelar oferta</button>
-          </div>
+        <div class="grid-botao">
+          <button @click="cancelarOferta(oferta[0].id)">Cancelar oferta</button>
         </div>
       </div>
     </div>
@@ -89,48 +100,44 @@ export default {
   },
 
   methods: {
-    carregarOfertas() {
-      Oferta.exibirOfertasFeitas()
-        .then((resposta) => {
-          this.ofertas = resposta.data.filter((oferta) => {
-            let cont = oferta.length;
+carregarOfertas() {
+  Oferta.exibirOfertasFeitas()
+    .then((resposta) => {
+      this.ofertas = resposta.data.flatMap((objetoArray) => {
+        return objetoArray.map((objeto) => [objeto]);
+      }).filter((oferta) => {
+        if (this.filtrarRecusada && oferta[0].status === 'RECUSADA') {
+          return false;
+        }
+        if (this.filtrarEmAndamento && oferta[0].status === 'EM_ANDAMENTO') {
+          return false;
+        }
+        return true;
+      });
+    })
+    .catch((e) => console.log(e.message));
+},
 
-            for (let i = 0; i < cont; i++) {
-              cont++;
-              if (this.filtrarRecusada && oferta[0].status === 'RECUSADA') 
-                return false;
-              
-              if (this.filtrarEmAndamento && oferta[0].status === 'EM_ANDAMENTO') 
-                return false;
-              
-              return true;
-            }
-          });
+
+    cancelarOferta(id) {
+      this.oferta.status = 'RECUSADA';
+
+      Oferta.atualizar(id, this.oferta)
+        .then(() => {
+          alert('Oferta recusada com sucesso!');
+          this.carregarOfertas();
         })
-        .catch((e) => console.log(e.message));
+        .catch((e) => console.log(e));
     },
 
     filtrarOfertas(filtro) {
-      console.log(filtro);
       if (filtro === 'RECUSADA') {
         this.filtrarRecusada = !this.filtrarRecusada;
       } else if (filtro === 'EM_ANDAMENTO') {
         this.filtrarEmAndamento = !this.filtrarEmAndamento;
       }
+
       this.carregarOfertas();
-    },
-
-    cancelarOferta(id) {
-      if (confirm('Deseja mesmo cancelar essa oferta?')) {
-        this.oferta.status = 'RECUSADA';
-
-        Oferta.atualizar(id, this.oferta)
-          .then(() => {
-            alert('Oferta recusada com sucesso!');
-            this.carregarOfertas();
-          })
-          .catch((e) => console.log(e));
-      }
     },
   },
 };
@@ -161,12 +168,6 @@ dl {
   padding: 0px;
 }
 
-.card img {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-}
-
 .grid {
   width: 100%;
   display: grid;
@@ -185,14 +186,13 @@ dl {
   margin: 0 auto;
   border: 1px solid #e5e9eb;
   border-radius: 4px;
-  margin-top: 10px;
 }
 
 .card {
   width: 200px;
   height: 250px;
   background: #ffffff;
-  border: 0px solid #e5e9eb;
+  border: 1px solid #e5e9eb;
   border-radius: 4px;
   transition: all 300ms;
 }
@@ -202,9 +202,9 @@ dl {
 }
 
 .card img {
-  width: 150px;
+  width: 130px;
   height: 150px;
-  border-radius: 100%;
+  border-radius: 4px;
 }
 
 .status-oferta {
@@ -220,13 +220,13 @@ dl {
 }
 
 .postagem-ofertada {
-  grid-column: 1/2;
+  grid-column: 3/4;
   grid-row: 2;
   margin-left: 10px;
 }
 
 .postagem-origem {
-  grid-column: 3/4;
+  grid-column: 1/2;
   grid-row: 2;
   margin-right: 10px;
 }
@@ -258,7 +258,7 @@ dl {
   border-radius: 4px;
   font-weight: bold;
   width: 130px;
-  transition: 0.3s;
+  color: #515864;
 }
 
 .grid button:hover,

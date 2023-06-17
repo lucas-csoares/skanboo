@@ -7,8 +7,11 @@
       <button class="btn-filtro" :class="{ 'btn-filtro-ativo': filtrarRecusada }" @click="filtrarOfertas('RECUSADA')">
         Recusada
       </button>
-      <button class="btn-filtro" :class="{ 'btn-filtro-ativo': filtrarEmAndamento }"
-        @click="filtrarOfertas('EM_ANDAMENTO')">
+      <button
+        class="btn-filtro"
+        :class="{ 'btn-filtro-ativo': filtrarEmAndamento }"
+        @click="filtrarOfertas('EM_ANDAMENTO')"
+      >
         Em andamento
       </button>
     </div>
@@ -18,9 +21,7 @@
     <!-- -------------------------------------------------- -->
     <div class="grid">
       <div v-for="oferta in ofertas" :key="oferta[0].id" class="grid-card">
-        <h2 class="status-oferta">
-          Status: {{ oferta[0].status.toLowerCase() }}
-        </h2>
+        <h2 class="status-oferta">Status: {{ oferta[0].status.toLowerCase() }}</h2>
         <div class="card postagem-origem">
           <h2 class="titulo-postagem">{{ oferta[0].postagemOrigem.titulo }}</h2>
 
@@ -30,10 +31,13 @@
 
           <div>
             <button>
-              <router-link :to="{
-                name: 'TheProductPage',
-                params: { id: oferta[0].postagemOrigem.id },
-              }">Ver produto</router-link>
+              <router-link
+                :to="{
+                  name: 'TheProductPage',
+                  params: { id: oferta[0].postagemOrigem.id },
+                }"
+                >Ver produto</router-link
+              >
             </button>
           </div>
         </div>
@@ -56,19 +60,20 @@
 
           <div>
             <button>
-              <router-link :to="{
-                name: 'TheProductPage',
-                params: { id: oferta[0].postagemOfertada.id },
-              }">Ver produto</router-link>
+              <router-link
+                :to="{
+                  name: 'TheProductPage',
+                  params: { id: oferta[0].postagemOfertada.id },
+                }"
+                >Ver produto</router-link
+              >
             </button>
           </div>
         </div>
 
         <div class="grid-botao">
           <button @click="cancelarOferta(oferta[0].id)">Recusar oferta</button>
-          <button @click="criarTroca(oferta[0].id, 'ACEITA')">
-            Aceitar oferta
-          </button>
+          <button @click="criarTroca(oferta[0].id, 'ACEITA')">Aceitar oferta</button>
         </div>
       </div>
     </div>
@@ -76,17 +81,16 @@
 </template>
 
 <script>
-import Oferta from "../services/OfertaService";
-import Troca from "../services/TrocaService";
+import Oferta from '../services/OfertaService';
+import Troca from '../services/TrocaService';
 
 export default {
   data() {
     return {
       ofertas: [],
-      troca: [],
       oferta: {
-        id: "",
-        status: "",
+        id: '',
+        status: '',
       },
       filtrarRecusada: false,
       filtrarEmAndamento: false,
@@ -101,14 +105,12 @@ export default {
     carregarOfertas() {
       Oferta.exibirOfertasRecebidas()
         .then((resposta) => {
+          console.log(resposta.data);
           this.ofertas = resposta.data.filter((oferta) => {
-            if (this.filtrarRecusada && oferta[0].status === "RECUSADA") {
+            if (this.filtrarRecusada && oferta[0].status === 'RECUSADA') {
               return false;
             }
-            if (
-              this.filtrarEmAndamento &&
-              oferta[0].status === "EM_ANDAMENTO"
-            ) {
+            if (this.filtrarEmAndamento && oferta[0].status === 'EM_ANDAMENTO') {
               return false;
             }
             return true;
@@ -118,44 +120,43 @@ export default {
     },
 
     async criarTroca(id_oferta, aceitarOferta) {
-  this.oferta = { status: aceitarOferta };
-  try {
-    await Oferta.atualizar(id_oferta, this.oferta);
-    alert("Oferta aceita!");
-    this.errors = [];
-    
-    // Create the troca and obtain the trocaId
-    const trocaResponse = await Troca.criar(id_oferta);
-    const id_troca = trocaResponse.data.id;
-    
-    alert("Troca criada com sucesso!");
-    
-    this.$router.push({
-      name: "ThePreviewTroca",
-      params: { idOferta: id_oferta, idTroca: id_troca },
-    });
-    this.errors = [];
-  } catch (e) {
-    console.log(e.message);
-  }
-},
+      this.oferta = { status: aceitarOferta };
+      try {
+        await Oferta.atualizar(id_oferta, this.oferta);
+        alert('Oferta aceita!');
+        this.errors = [];
 
+        // Create the troca and obtain the trocaId
+        const trocaResponse = await Troca.criar(id_oferta);
+        const id_troca = trocaResponse.data.id;
+
+        alert('Troca criada com sucesso!');
+
+        this.$router.push({
+          name: 'ThePreviewTroca',
+          params: { idOferta: id_oferta, idTroca: id_troca },
+        });
+        this.errors = [];
+      } catch (e) {
+        console.log(e.message);
+      }
+    },
 
     cancelarOferta(id) {
-      this.oferta.status = "RECUSADA";
+      this.oferta.status = 'RECUSADA';
 
       Oferta.atualizar(id, this.oferta)
         .then(() => {
-          alert("Oferta recusada com sucesso!");
+          alert('Oferta recusada com sucesso!');
           this.carregarOfertas();
         })
         .catch((e) => console.log(e));
     },
 
     filtrarOfertas(filtro) {
-      if (filtro === "RECUSADA") {
+      if (filtro === 'RECUSADA') {
         this.filtrarRecusada = !this.filtrarRecusada;
-      } else if (filtro === "EM_ANDAMENTO") {
+      } else if (filtro === 'EM_ANDAMENTO') {
         this.filtrarEmAndamento = !this.filtrarEmAndamento;
       }
 
