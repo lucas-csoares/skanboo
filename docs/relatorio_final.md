@@ -342,7 +342,96 @@ A seguir são apresentados os indicadores utilizados no projeto.
 
 ## 7.Sistema desenvolvido
 
-Faça aqui uma breve descrição do software e coloque as principais telas com uma explicação de como usar cada uma.
+O software desenvolvido consiste em um site de trocas do tipo escambo no qual o usuário possui a opção de cadastro para poder realizar as trocas. O sistema visa agilizar o processo de troca e funciona da seguinte forma:
+
+#### Tela Inicial
+
+A tela inicial contém anúncios randomicamente selecionados para o usuário. 
+
+![Tela Inicial](imagens/telaAnuncios.png 'Tela Inicial.')
+
+
+#### Tela de Login
+
+A tela de login contém a opção de acesso ao sistema através dos campos 'Email' e 'Senha'. Caso o usuário nãp possua um cadastro, ele consegue se cadastrar na plataforma através do botão 'Criar uma conta'.
+
+![Tela de Login](imagens/telaLogin.png 'Tela de login.')
+
+
+#### Tela de Cadastro
+
+O usuário deve preencher os campos 'Nome', 'Email', 'Senha', 'Data de Nascimento', 'CPF' e 'Telefone' para realizar o cadastro de uma nova conta.
+
+![Tela de Cadastro](imagens/telaCadastro.png 'Tela de cadastro.')
+
+
+#### Tela de Informações da Conta
+
+A tela de informações da conta exibe os campos 'Nome', 'Nascimento', 'Email', 'Telefone', 'Senha', 'CPF' e 'Endereço', referentes a conta do usuário. Contém também os botões 'Editar endereço', que direciona o usuário para a página de edição do endereço, 'Editar', que direciona o usuário para a página de editar a conta e 'Sair', que faz o logout do usuário. 
+
+![Tela de Informações da Conta](imagens/telaInformacoesConta.png 'Tela de Informações da Conta.')
+
+
+#### Tela de Editar Endereço
+
+O usuário pode preencher os campos 'UF', 'CEP', 'Cidade', 'Bairro', 'Rua', 'Número' e 'Complemento' para realizar a edição do endereço ou clicar no botão 'Cancelar' para cancelar a edição.
+
+![Tela de Editar Endereço](imagens/telaEditarEndereco.png 'Tela de editar endereço.')
+
+
+#### Tela de Alterar Informações da Conta
+
+O usuário pode preencher os campos 'Adicionar foto', 'Editar nome', 'Editar telefone' e 'UF' para realizar a edição de informações da conta ou clicar no botão 'Cancelar' para cancelar a edição. 
+
+![Tela de Alterar Informações da Conta](imagens/telaAlterarInformacoesConta.png 'Tela de alterar informações da conta.')
+
+
+#### Tela 'Meus Anúncios'
+
+A tela 'Meus Anúncios' exibe os anúncios do usuário e contém os botões 'Editar', que direciona o usuário para a página de editar o produto e 'Excluir', que exclui o anúncio.
+
+![Tela 'Meus Anúncios'](imagens/telaMeusAnuncios.png 'Tela Meus Anúncios.')
+
+
+#### Tela de Editar Produto
+
+O usuário pode preencher os campos 'Adicionar foto', 'Título', 'Descrição', 'Selecione a categoria do produto' e 'Selecione a categoria de interesse' para realizar a edição de informações do produto.
+
+![Tela de Editar Produto](imagens/telaEditarProduto.png 'Tela de editar produto.')
+
+
+#### Tela do Produto
+
+Exibe as informações do produto ('Categoria', 'Interesse', 'Local', 'Postado por', 'Título' e 'Descrição') e o botão 'Negociar', que direciona o usuário para a página de seleção de um produto para ser oferecido em troca.
+
+![Tela do Produto](imagens/telaProduto.png 'Tela do produto.')
+
+
+#### Tela 'Selecione um produto para oferecer em troca'
+
+Exibe os produtos postados pelo usuário para que ele possa selecionar um e oferecer em troca do produto desejado.
+
+![Tela 'Selecione um produto para oferecer em troca'](imagens/telaProdutoTroca.png 'Tela 'Selecione um produto para oferecer em troca'.')
+
+
+#### Tela de Prévia da Troca
+
+Exibe o produto que o usuário está ofertando e o produto que o usuário deseja.
+
+![Tela de Prévia da Troca](imagens/telaPreviewTroca.png 'Tela de prévia da troca.')
+
+
+#### Tela de Ofertas Feitas
+
+Exibe as ofertas realizadas pelo usuário e contém um filtro que permite que o usuário selecione os status de oferta que deseja ver ('Recusada' e 'Em andamento').
+
+![Tela de Ofertas Feitas](imagens/telaOfertasFeitas.png 'Tela de ofertas feitas.')
+
+#### Tela de Ofertas Recebidas
+
+Exibe as ofertas recebidas pelo usuário e contém um filtro que permite que o usuário selecione os status de oferta que deseja ver ('Recusada' e 'Em andamento').
+
+![Tela de Ofertas Recebidas](imagens/telaOfertasRecebidas.png 'Tela de ofertas recebidas.')
 
 ## 8. Conclusão
 
