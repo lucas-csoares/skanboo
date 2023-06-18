@@ -435,7 +435,9 @@ Exibe as ofertas recebidas pelo usuário e contém um filtro que permite que o u
 
 ## 8. Conclusão
 
-Apresente aqui a conclusão do seu trabalho. Discussão dos resultados obtidos no trabalho, onde se verifica as observações pessoais de cada aluno. Poderá também apresentar sugestões de novas linhas de estudo.
+O projeto Skanboo é um sistema que pretende auxiliar na realização do escambo, a fim de aumentar ainda mais a aplicação da economia circular[1] e dos princípios da sustentabilidade, além de conectar o usuário com um número de pessoas que vai além do seu ciclo social. Para isto foi criada uma interface amigável e intuitiva que permite que o usuário consiga transitar pelo sistema sem muitas dificuldades.
+
+Após a definição do problema que seria abordado, foram discutidas inúmeras formas para a implementação de uma solução, dentre elas uma que fazia uso de moedas digitais, até concluir-se que a proposta mais fiel aos príncipios sustentáveis do sistema seria a que permitia somente a troca de bens e serviços por estes mesmos. É necessário, no futuro, avaliar abordagens para realizar algumas melhorias no sistema, como por exemplo migrar todo o processo de troca para dentro do site, ao invés de apenas informar o contato dos usuários envolvidos. Com isso, finaliza-se a entrega da primeira versão do projeto.
 
 # REFERÊNCIAS
 
@@ -451,11 +453,9 @@ Verifique no link abaixo como devem ser as referências no padrão ABNT:
 
 # APÊNDICES
 
-**Colocar link:**
+[Código](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti2-0924100-skanboo/tree/master/src)
 
-Do código (armazenado no repositório);
-
-Dos artefatos (armazenado do repositório);
+[Artefatos](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti2-0924100-skanboo/tree/master/assets)
 
 Da apresentação final (armazenado no repositório);
 
