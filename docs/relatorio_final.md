@@ -411,7 +411,7 @@ Exibe as informações do produto ('Categoria', 'Interesse', 'Local', 'Postado p
 
 Exibe os produtos postados pelo usuário para que ele possa selecionar um e oferecer em troca do produto desejado.
 
-![Tela 'Selecione um produto para oferecer em troca'](imagens/telaProdutoTroca.png 'Tela 'Selecione um produto para oferecer em troca'.')
+![Tela 'Selecione um produto para oferecer em troca'](imagens/telaProdutoTroca.png 'Tela Selecione um produto para oferecer em troca.')
 
 
 #### Tela de Prévia da Troca
