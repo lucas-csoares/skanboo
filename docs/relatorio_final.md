@@ -433,6 +433,13 @@ Exibe as ofertas recebidas pelo usuário e contém um filtro que permite que o u
 
 ![Tela de Ofertas Recebidas](imagens/telaOfertasRecebidas.png 'Tela de ofertas recebidas.')
 
+
+#### Tela de Avaliação
+
+Consiste em uma tela que aparece após o status da trocar ser dado como finalizado por ambas as partes, permitindo que os dois usuários possam selecionar um 'emoji' para avaliar o que acharam da troca.
+
+![Tela de Avaliação](imagens/telaAvaliacao.jpeg 'Tela de avaliação')
+
 ## 8. Conclusão
 
 O projeto Skanboo é um sistema que pretende auxiliar na realização do escambo, a fim de aumentar ainda mais a aplicação da economia circular[1] e dos princípios da sustentabilidade, além de conectar o usuário com um número de pessoas que vai além do seu ciclo social. Para isto foi criada uma interface amigável e intuitiva que permite que o usuário consiga transitar pelo sistema sem muitas dificuldades.
@@ -457,6 +464,6 @@ Verifique no link abaixo como devem ser as referências no padrão ABNT:
 
 [Artefatos](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti2-0924100-skanboo/tree/master/assets)
 
-Da apresentação final (armazenado no repositório);
+[Apresentação final](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti2-0924100-skanboo/blob/master/docs/sKanboo_Final.pdf)
 
 Do vídeo de apresentação (armazenado no repositório).
