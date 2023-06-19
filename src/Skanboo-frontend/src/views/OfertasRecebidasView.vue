@@ -120,13 +120,17 @@ export default {
     },
 
     async criarTroca(id_oferta, aceitarOferta) {
+
+      if (this.ofertaPodeSerAtualizada)
+        alert("Oferta já foi aceita ou recusada!");
+
       this.oferta = { status: aceitarOferta };
       try {
         await Oferta.atualizar(id_oferta, this.oferta);
         alert('Oferta aceita!');
         this.errors = [];
 
-        // Create the troca and obtain the trocaId
+        // Cria troca and obtem o seu id
         const trocaResponse = await Troca.criar(id_oferta);
         const id_troca = trocaResponse.data.id;
 
@@ -145,6 +149,9 @@ export default {
     cancelarOferta(id) {
       this.oferta.status = 'RECUSADA';
 
+      if (this.ofertaPodeSerAtualizada)
+        alert("Oferta já foi aceita ou recusada!");
+
       Oferta.atualizar(id, this.oferta)
         .then(() => {
           alert('Oferta recusada com sucesso!');
@@ -154,13 +161,14 @@ export default {
     },
 
     filtrarOfertas(filtro) {
-      if (filtro === 'RECUSADA') {
-        this.filtrarRecusada = !this.filtrarRecusada;
-      } else if (filtro === 'EM_ANDAMENTO') {
-        this.filtrarEmAndamento = !this.filtrarEmAndamento;
-      }
+      if (filtro === 'RECUSADA') this.filtrarRecusada = !this.filtrarRecusada;
+      else if (filtro === 'EM_ANDAMENTO') this.filtrarEmAndamento = !this.filtrarEmAndamento;
 
       this.carregarOfertas();
+    },
+
+    ofertaPodeSerAtualizada() {
+      return this.oferta.status == 'RECUSADA' || this.oferta.status == 'ACEITA' ? true : false;
     },
   },
 };
