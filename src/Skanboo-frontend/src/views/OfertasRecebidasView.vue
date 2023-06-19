@@ -121,9 +121,6 @@ export default {
 
     async criarTroca(id_oferta, aceitarOferta) {
 
-      if (this.ofertaPodeSerAtualizada)
-        alert("Oferta já foi aceita ou recusada!");
-
       this.oferta = { status: aceitarOferta };
       try {
         await Oferta.atualizar(id_oferta, this.oferta);
@@ -149,9 +146,6 @@ export default {
     cancelarOferta(id) {
       this.oferta.status = 'RECUSADA';
 
-      if (this.ofertaPodeSerAtualizada)
-        alert("Oferta já foi aceita ou recusada!");
-
       Oferta.atualizar(id, this.oferta)
         .then(() => {
           alert('Oferta recusada com sucesso!');
@@ -165,10 +159,6 @@ export default {
       else if (filtro === 'EM_ANDAMENTO') this.filtrarEmAndamento = !this.filtrarEmAndamento;
 
       this.carregarOfertas();
-    },
-
-    ofertaPodeSerAtualizada() {
-      return this.oferta.status == 'RECUSADA' || this.oferta.status == 'ACEITA' ? true : false;
     },
   },
 };
