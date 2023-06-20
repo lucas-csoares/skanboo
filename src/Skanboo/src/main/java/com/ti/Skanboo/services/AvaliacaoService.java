@@ -67,9 +67,17 @@ public class AvaliacaoService {
         int nota = obj.getNota();
         TrocaEnum statusTroca = troca.getStatus();
 
-        if(obj.getId() == null) {
-           if (statusTroca == TrocaEnum.FINALIZADA) {
-                if (nota >= 0 && nota <= 5) {
+        avaliacaoRepository.existsByUsuarioAndTroca(usuario, troca);
+
+        if(obj.getId() != null) {
+            throw new RatingCreationException("Avaliação já existe");
+        }
+        
+       if (statusTroca == TrocaEnum.FINALIZADA) {
+            if (nota >= 0 && nota <= 5) {
+                // Verificar se o usuário já realizou uma avaliação para essa troca
+                boolean usuarioJaAvaliouTroca = avaliacaoRepository.existsByUsuarioAndTroca(usuario, troca);
+                if (!usuarioJaAvaliouTroca) {
                     obj.setId(null);
                     obj.setNota(nota);
                     obj.setUsuario(usuario);
@@ -77,19 +85,22 @@ public class AvaliacaoService {
                     obj.setData(LocalDate.now());
                     obj.setHora(LocalTime.now());
                 } else {
-                    throw new IllegalArgumentException("A nota deve estar entre 0 e 5.");
+                    throw new RatingCreationException("A troca já foi avaliada");
                 }
             } else {
-                throw new RatingCreationException("Não é possível avaliar: A troca não foi finalizada");
+                throw new IllegalArgumentException("A nota deve estar entre 0 e 5.");
             }
         } else {
-            throw new RatingCreationException("Avaliação já existe");
+            throw new RatingCreationException("Não é possível avaliar: A troca não foi finalizada");
         }
         atualizarNotaFinal(obj);
-
         return this.avaliacaoRepository.save(obj);
     }
 
+ 
+
+          
+   
     public void deletarPorId(Long id) {
 
         encontrarPorId(id);
@@ -113,7 +124,10 @@ public class AvaliacaoService {
             usuario = avaliacao.getTroca().getOferta().getPostagemOrigem().getUsuario();
             calcMedia(usuario);
         }
+        
     }
+      
+    
 
     public void calcMedia(Usuario usuario) {
         
@@ -130,6 +144,10 @@ public class AvaliacaoService {
         usuarioRepository.save(usuario);
     }
 
+
+   
+
+
     private Boolean trocaPertenceAoUsuarioPostagemOrigem(UserSpringSecurity userSpringSecurity, Avaliacao avaliacao) {
         return avaliacao.getTroca().getOferta().getPostagemOrigem().getUsuario().getId()
                 .equals(userSpringSecurity.getId());
@@ -139,4 +157,5 @@ public class AvaliacaoService {
         return avaliacao.getTroca().getOferta().getPostagemOfertada().getUsuario().getId()
                 .equals(userSpringSecurity.getId());
     }
+
 }
