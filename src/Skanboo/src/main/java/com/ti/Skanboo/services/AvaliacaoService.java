@@ -67,19 +67,23 @@ public class AvaliacaoService {
         int nota = obj.getNota();
         TrocaEnum statusTroca = troca.getStatus();
 
-        if (statusTroca == TrocaEnum.FINALIZADA) {
-            if (nota >= 0 && nota <= 5) {
-                obj.setId(null);
-                obj.setNota(nota);
-                obj.setUsuario(usuario);
-                obj.setTroca(troca);
-                obj.setData(LocalDate.now());
-                obj.setHora(LocalTime.now());
+        if(obj.getId() == null) {
+           if (statusTroca == TrocaEnum.FINALIZADA) {
+                if (nota >= 0 && nota <= 5) {
+                    obj.setId(null);
+                    obj.setNota(nota);
+                    obj.setUsuario(usuario);
+                    obj.setTroca(troca);
+                    obj.setData(LocalDate.now());
+                    obj.setHora(LocalTime.now());
+                } else {
+                    throw new IllegalArgumentException("A nota deve estar entre 0 e 5.");
+                }
             } else {
-                throw new IllegalArgumentException("A nota deve estar entre 0 e 5.");
+                throw new RatingCreationException("Não é possível avaliar: A troca não foi finalizada");
             }
         } else {
-            throw new RatingCreationException("Não é possível avaliar: A troca não foi finalizada");
+            throw new RatingCreationException("Avaliação já existe");
         }
         atualizarNotaFinal(obj);
 
