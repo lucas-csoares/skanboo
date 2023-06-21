@@ -34,11 +34,12 @@
 
 <script>
 export default {
-  name: "TheHeader",
+  name: 'TheHeader',
   methods: {
     logout() {
-      localStorage.removeItem("token");
-      this.$router.push({ name: "loginView" });
+      localStorage.removeItem('token');
+      sessionStorage.removeItem('perfil');
+      this.$router.push({ name: 'loginView' });
     },
   },
 };
@@ -87,7 +88,7 @@ body {
   background: #fff;
   color: #222;
   -webkit-font-smoothing: antialiased;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #000;
 }
 
