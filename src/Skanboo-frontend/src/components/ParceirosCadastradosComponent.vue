@@ -61,13 +61,15 @@ export default {
 
   methods: {
     excluir(id) {
-      Parceiro.excluir(id)
-        .then(() => {
-          this.carregarParceiros();
-        })
-        .catch((error) => {
-          console.error('Erro ao excluir parceiro', error);
-        });
+      if (confirm('Deseja excluir o parceiro cadastrado?')) {
+        Parceiro.excluir(id)
+          .then(() => {
+            this.carregarParceiros();
+          })
+          .catch((error) => {
+            console.error('Erro ao excluir parceiro', error);
+          });
+      }
     },
 
     carregarParceiros() {
