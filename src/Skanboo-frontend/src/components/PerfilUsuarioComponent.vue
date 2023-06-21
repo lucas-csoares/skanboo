@@ -79,7 +79,6 @@ export default {
       window.location = window.location + "#loaded";
       window.location.reload();
     }
-
     this.carregarInformacoesUsuario();
   },
 
@@ -104,6 +103,7 @@ export default {
 
     logout() {
       localStorage.removeItem("token");
+      sessionStorage.removeItem("perfil")
       this.$router.push({ name: "loginView" });
     },
   },

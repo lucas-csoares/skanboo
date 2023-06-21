@@ -37,15 +37,11 @@ export default {
 
   computed: {
     usuarioLogado() {
-      if (
-        this.usuario &&
-        this.usuario.perfil &&
-        this.usuario.perfil.length > 0
-      ) {
-        const perfil = this.usuario.perfil[0];
-        return perfil;
+      const perfilArmazenado = sessionStorage.getItem("perfil");
+      if (perfilArmazenado) {
+        return perfilArmazenado;
       } else {
-        return false;
+        return 'HEADER'; // Valor padrão quando o perfil não está definido
       }
     },
   },
@@ -55,6 +51,10 @@ export default {
       .then((resposta) => {
         const usuario = resposta.data;
         this.usuario = usuario;
+        if (usuario && usuario.perfil && usuario.perfil.length > 0) {
+          const perfil = usuario.perfil[0];
+          sessionStorage.setItem("perfil", perfil);
+        }
       })
       .catch((e) => console.log(e.message));
   },
