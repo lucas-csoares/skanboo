@@ -6,16 +6,8 @@
       <div class="dropdown-filtros">
         <span>Filtrar</span>
         <div class="dropdown-conteudo">
-          <p class="btn-filtro" :class="{ 'btn-filtro-ativo': filtrarRecusada }" @click="filtrarOfertas('RECUSADA')">
-            Recusada
-          </p>
-          <p
-            class="btn-filtro"
-            :class="{ 'btn-filtro-ativo': filtrarEmAndamento }"
-            @click="filtrarOfertas('EM_ANDAMENTO')"
-          >
-            Em andamento
-          </p>
+          <p class="btn-filtro" :class="{ 'btn-filtro-ativo': filtrarRecusada }" @click="filtrarOfertas('RECUSADA')">Recusada</p>
+          <p class="btn-filtro" :class="{ 'btn-filtro-ativo': filtrarEmAndamento }" @click="filtrarOfertas('EM_ANDAMENTO')" >Em andamento</p>
         </div>
       </div>
     </div>

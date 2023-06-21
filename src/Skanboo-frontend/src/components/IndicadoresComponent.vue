@@ -222,7 +222,7 @@ export default {
     },
 
     gerarGraficoRADAR(indicador01, indicador02, titulo01, titulo02, canvas) {
-      const categorias = ['Eletrônicos', 'Moda e beleza', 'Música', 'Casa', 'Serviços'];
+      const categorias = ['Eletrônico', 'Moda e Beleza', 'Música', 'Casa', 'Serviços'];
 
       (async () => {
         const resposta = await this.formatarDadosCategorias(indicador01, indicador02, categorias);

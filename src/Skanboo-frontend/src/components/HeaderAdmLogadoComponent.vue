@@ -8,22 +8,17 @@
           </div>
 
           <nav class="menu-nav">
-            <div class="dropdown">
-              <button class="dropbtn"><b>Menu</b></button>
-              <div class="dropdown-content">
-                <a href="/postagemusuarioview">Meus produtos</a>
-                <a href="/ofertasrecebidasview">Ofertas recebidas</a>
-                <a href="/ofertasfeitasview">Ofertas feitas</a>
-                <a href="/paginatrocasview">Trocas</a>
-                <a href="/parceiroscadastradosview">Parceiros</a>
-                <a href="/IndicadoresView">Indicadores</a>
-              </div>
-            </div>
-            <div class="icone-usuario">
-              <a href="/perfilusuarioview"
-                ><img src="../assets/user-icon.svg" alt="Usuário" class="user"
-              /></a>
-            </div>
+            <ul>
+              <li><a href="/postagemusuarioview">Meus produtos</a></li>
+              <li><a href="/ofertasrecebidasview">Ofertas recebidas</a></li>
+              <li><a href="/ofertasfeitasView">Ofertas feitas</a></li>
+              <li><a href="/paginatrocasview">Trocas</a></li>
+              <li class="pag-adm"><a href="/parceiroscadastradosview">Parceiros</a></li>
+              <li class="pag-adm"><a href="/IndicadoresView">Indicadores</a></li>
+              <li class="icone-usuario">
+                <a href="/perfilusuarioview"><img src="../assets/user-icon.svg" alt="Usuário" class="user" /></a>
+              </li>
+            </ul>
           </nav>
         </div>
       </header>
@@ -33,7 +28,7 @@
 
 <script>
 export default {
-  name: "TheHeader",
+  name: 'TheHeader',
 };
 </script>
 
@@ -80,7 +75,7 @@ body {
   background: #fff;
   color: #222;
   -webkit-font-smoothing: antialiased;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #000;
 }
 
@@ -140,60 +135,17 @@ a:hover {
 .icone-usuario img {
   position: absolute;
   width: 30px;
-  margin-top: -60px;
-  margin-left: 200px;
+  bottom: 28px;
   transition: all 200ms;
 }
-
-.dropbtn {
-  background-color: #f9dc5c;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  width: 150px;
-  height: 50px;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-  margin-top: -50px;
-  margin-right: 60px;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd;
-  border-bottom: 0px;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.dropdown:hover .dropbtn {
-  background-color: #ffe677;
+.pag-adm {
+  background: #e2e2e2;
+  padding: 2px;
+  border-radius: 2px;
 }
 
 .icone-usuario img:hover {
-  filter: invert(98%) sepia(91%) saturate(1210%) hue-rotate(321deg)
-    brightness(106%) contrast(95%);
+  filter: invert(98%) sepia(91%) saturate(1210%) hue-rotate(321deg) brightness(106%) contrast(95%);
 }
 
 @media (max-width: 600px) {
