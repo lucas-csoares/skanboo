@@ -14,44 +14,39 @@
     </div>
     <div class="container">
       <div v-for="postagem in postagens" :key="postagem.id" class="card">
-        <router-link
-          :to="{ name: 'TheProductPage', params: { id: postagem.id } }"
-        >
-          <h2>{{ postagem.titulo }}</h2>
-          <div class="card-img-produto">
-            <img :src="postagem.foto" alt="" class="card-img" />
-          </div>
-        </router-link>
-
-        <div class="editar-div">
-          <router-link
-            :to="{ name: 'TheEditProduct', params: { id: postagem.id } }"
-          >
-            <button class="editar">Editar</button>
+        <span class="icon-excluir" @click="excluirPostagem(postagem.id)"><img src="../assets/delete-icon.svg" /></span>
+        <div class="card-conteudo">
+          <router-link :to="{ name: 'TheProductPage', params: { id: postagem.id } }">
+            <h2>{{ postagem.titulo }}</h2>
+            <div class="card-img-produto">
+              <img :src="postagem.foto" alt="" class="card-img" />
+            </div>
           </router-link>
         </div>
 
-        <button class="excluir" @click="excluirPostagem(postagem.id)">
-          Excluir
-        </button>
+        <div class="editar-div">
+          <router-link :to="{ name: 'TheEditProduct', params: { id: postagem.id } }">
+            <button class="editar">Editar</button>
+          </router-link>
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import Postagem from "../services/PostagemService";
+import Postagem from '../services/PostagemService';
 
 export default {
   data() {
     return {
       postagem: {
-        id: "",
-        titulo: "",
-        descricao: "",
-        categoriaProduto: "",
-        categoriaProdutoDesejado: "",
-        status: "",
+        id: '',
+        titulo: '',
+        descricao: '',
+        categoriaProduto: '',
+        categoriaProdutoDesejado: '',
+        status: '',
       },
       postagens: [],
     };
@@ -68,14 +63,16 @@ export default {
 
   methods: {
     excluirPostagem(id) {
-      Postagem.excluirPostagem(id)
-        .then(() => {
-          // Atualizar a lista de postagens
-          this.carregarPostagens();
-        })
-        .catch((error) => {
-          console.error("Erro ao excluir a postagem", error);
-        });
+      if (confirm('Deseja realmente excluir esta postagem?')) {
+        Postagem.excluirPostagem(id)
+          .then(() => {
+            // Atualizar a lista de postagens
+            this.carregarPostagens();
+          })
+          .catch((error) => {
+            console.error('Erro ao excluir a postagem', error);
+          });
+      }
     },
 
     carregarPostagens() {
@@ -124,6 +121,24 @@ img {
   max-width: 100%;
 }
 
+.icon-excluir {
+  position: relative;
+  left: 260px;
+  top: -10px;
+}
+.icon-excluir img {
+  filter: invert(99%) sepia(1%) saturate(6369%) hue-rotate(174deg) brightness(90%) contrast(77%);
+}
+
+.icon-excluir img:hover {
+  cursor: pointer;
+  filter: invert(35%) sepia(15%) saturate(5084%) hue-rotate(328deg) brightness(106%) contrast(91%);
+}
+
+.card-conteudo {
+  margin-top: -25px;
+}
+
 .container {
   width: 1156px;
   display: flex;
@@ -145,7 +160,7 @@ img {
 .card {
   display: block;
   width: 274px;
-  height: 400px;
+  height: 370px;
   background: #ffffff;
   border: 1px solid #e5e9eb;
   border-radius: 4px;
@@ -153,15 +168,15 @@ img {
   flex: none;
 }
 
-.card:hover {
-  transform: scale(1.02);
+.card:hover .card-img-produto img {
+  opacity: 1;
 }
 
 button {
   cursor: pointer;
 }
 
-.card img,
+.card-img-produto img,
 .carrossel-item img {
   margin-top: 10px;
   border-radius: 4px;
@@ -169,12 +184,8 @@ button {
 }
 
 .adicionar_postagem {
-  transition: 0.6s;
+  transition: 0.1s;
   transition-timing-function: ease;
-}
-.adicionar_postagem:hover {
-  width: 26px !important;
-  height: 26px !important;
 }
 
 .card h2 {
@@ -197,6 +208,8 @@ button {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  opacity: 0.8;
+  transition: 300ms;
 }
 
 .editar-div {
@@ -212,22 +225,22 @@ button {
   align-items: center;
   padding: 2px 6px 2px 8px;
   gap: 4px;
-  width: 240px;
+  width: 250px;
   height: 32px;
-  background: #fcfcfc;
-  border: 1px solid #464646;
-  border-radius: 20px;
+  background: #f9dc5c;
+  border: 1px solid #f9dc5c;
+  border-radius: 16px;
   font-weight: 600;
   color: #515864;
   margin-left: 15px;
   margin-top: 12px;
   margin-bottom: 0;
-  transition: 0.3s;
 }
 
 .editar:hover {
-  background: #f9dc5c;
+  background: #ffe677;
   border: 1px solid #f9dc5c;
+  color: white;
 }
 
 .excluir {
@@ -238,21 +251,20 @@ button {
   align-items: center;
   padding: 2px 6px 2px 8px;
   gap: 4px;
-  width: 240px;
+  width: 250px;
   height: 32px;
-  background: #fcfcfc;
-  border: 1px solid #ff3939;
-  border-radius: 20px;
+  background: #f26a63;
+  border: 1px solid #f26a63;
+  border-radius: 16px;
   font-weight: 600;
   color: #515864;
-  margin-left: 15px;
-  margin-top: 8px;
+  margin-left: 10px;
+  margin-top: 12px;
   margin-bottom: 0;
-  transition: 0.3s;
 }
 
 .excluir:hover {
-  background: #f12121;
+  background: #ee433a;
 }
 
 .adicionar_postagem {
@@ -270,7 +282,7 @@ h2 {
 
 h1 {
   display: inline-block;
-  font-size: 1.3em;
+  font-size: 1.5em;
   margin-bottom: 20px;
 }
 
@@ -295,13 +307,11 @@ abbr:hover::after {
 }
 
 .postar-produto img {
-  filter: invert(89%) sepia(4%) saturate(95%) hue-rotate(155deg) brightness(86%)
-    contrast(89%);
+  filter: invert(89%) sepia(4%) saturate(95%) hue-rotate(155deg) brightness(86%) contrast(89%);
   transition: all 400ms;
 }
 
 .postar-produto img:hover {
-  filter: invert(50%) sepia(27%) saturate(1426%) hue-rotate(48deg)
-    brightness(99%) contrast(84%);
+  filter: invert(50%) sepia(27%) saturate(1426%) hue-rotate(48deg) brightness(99%) contrast(84%);
 }
 </style>

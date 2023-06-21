@@ -30,7 +30,7 @@
           <div class="card-img-produto">
             <img :src="postagem.foto" alt="" class="card-img" />
           </div>
-          <button class="ver-produto">Ver produto</button>
+          <button class="btn-ver-produto">Ver produto</button>
         </router-link>
       </div>
     </div>
@@ -236,10 +236,6 @@ img {
   max-width: 100%;
 }
 
-.products {
-
-}
-
 .container {
   width: 1156px;
   display: flex;
@@ -262,8 +258,8 @@ img {
   flex: none;
 }
 
-.card:hover {
-  transform: scale(1.02);
+.card:hover .card-img-produto img {
+  opacity: 1;
 }
 
 .card img,
@@ -293,33 +289,33 @@ img {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  opacity: 0.8;
+  transition: 300ms;
 }
 
-.ver-produto {
+.btn-ver-produto {
   cursor: pointer;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 2px 6px 2px 8px;
   gap: 4px;
   position: absolute;
-  width: 240px;
+  width: 250px;
   height: 32px;
   background: #f9dc5c;
   border: 1px solid #f9dc5c;
   border-radius: 16px;
-  font-weight: 400;
+  font-weight: bold;
   color: #252c32;
-  margin-left: 15px;
-  transition: 0.3s;
+  margin-left: 11px;
   text-transform: none;
 }
 
-.ver-produto:hover {
-  background: #fafafa;
-  border: 1px solid #4d4d4d;
+.btn-ver-produto:hover {
+  background: #FFE677;
+  border: 1px solid #f9dc5c;
   color: white;
 }
 

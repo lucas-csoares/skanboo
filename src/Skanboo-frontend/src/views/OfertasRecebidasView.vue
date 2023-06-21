@@ -3,17 +3,21 @@
     <h1>Ofertas recebidas</h1>
 
     <div class="div-filtros">
-      <h2>Filtros aplicados:</h2>
-      <button class="btn-filtro" :class="{ 'btn-filtro-ativo': filtrarRecusada }" @click="filtrarOfertas('RECUSADA')">
-        Recusada
-      </button>
-      <button
-        class="btn-filtro"
-        :class="{ 'btn-filtro-ativo': filtrarEmAndamento }"
-        @click="filtrarOfertas('EM_ANDAMENTO')"
-      >
-        Em andamento
-      </button>
+      <div class="dropdown-filtros">
+        <span>Filtrar</span>
+        <div class="dropdown-conteudo">
+          <p class="btn-filtro" :class="{ 'btn-filtro-ativo': filtrarRecusada }" @click="filtrarOfertas('RECUSADA')">
+            Recusada
+          </p>
+          <p
+            class="btn-filtro"
+            :class="{ 'btn-filtro-ativo': filtrarEmAndamento }"
+            @click="filtrarOfertas('EM_ANDAMENTO')"
+          >
+            Em andamento
+          </p>
+        </div>
+      </div>
     </div>
 
     <!-- -------------------------------------------------- -->
@@ -21,7 +25,7 @@
     <!-- -------------------------------------------------- -->
     <div class="grid">
       <div v-for="oferta in ofertas" :key="oferta[0].id" class="grid-card">
-        <h2 class="status-oferta">Status: {{ oferta[0].status.toLowerCase() }}</h2>
+        <h3 class="status-oferta">Status: {{ oferta[0].status.toLowerCase().replace('_', ' ') }}</h3>
         <div class="card postagem-origem">
           <h2 class="titulo-postagem">{{ oferta[0].postagemOrigem.titulo }}</h2>
 
@@ -72,8 +76,8 @@
         </div>
 
         <div class="grid-botao">
-          <button @click="cancelarOferta(oferta[0].id)">Recusar oferta</button>
-          <button @click="criarTroca(oferta[0].id, 'ACEITA')">Aceitar oferta</button>
+          <button class="btn-recusar" @click="cancelarOferta(oferta[0].id)">Recusar</button>
+          <button class="btn-aceitar" @click="criarTroca(oferta[0].id, 'ACEITA')">Aceitar</button>
         </div>
       </div>
     </div>
@@ -105,7 +109,6 @@ export default {
     carregarOfertas() {
       Oferta.exibirOfertasRecebidas()
         .then((resposta) => {
-          console.log(resposta.data);
           this.ofertas = resposta.data.filter((oferta) => {
             if (this.filtrarRecusada && oferta[0].status === 'RECUSADA') {
               return false;
@@ -116,11 +119,14 @@ export default {
             return true;
           });
         })
-        .catch((e) => console.log(e.message));
+        .catch((e) => {
+          let grid = document.querySelector('.grid');
+          grid.innerHTML = 'O usuário não recebeu nenhuma oferta ainda!';
+          console.log(e.message);
+        });
     },
 
     async criarTroca(id_oferta, aceitarOferta) {
-
       this.oferta = { status: aceitarOferta };
       try {
         await Oferta.atualizar(id_oferta, this.oferta);
@@ -189,6 +195,20 @@ dl {
   padding: 0px;
 }
 
+h1 {
+  display: inline-block;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 14px;
+  color: #252c32;
+  kerning: -0.6%;
+  font-weight: 400;
+  text-align: left;
+}
+
 .grid {
   width: 100%;
   display: grid;
@@ -215,22 +235,41 @@ dl {
   background: #ffffff;
   border: 1px solid #e5e9eb;
   border-radius: 4px;
-  transition: all 300ms;
+  transition: opacity 300ms;
 }
 
-.card:hover {
-  transform: scale(1.02);
+.card button {
+  background: #f9dc5c;
+  border: 1px solid #f9dc5c;
+}
+
+.card button:hover {
+  background: #ffe677;
+  border: 1px solid #f9dc5c;
+  color: white;
+}
+
+.card h2 {
+  padding: 8px;
+  font-size: 15px;
+  color: #252c32;
+}
+
+.card:hover .card-img img {
+  opacity: 1;
 }
 
 .card img {
-  width: 130px;
+  width: 180px;
   height: 150px;
   border-radius: 4px;
+  opacity: 0.8;
+  transition: 300ms;
 }
 
 .status-oferta {
-  grid-column: 1 / span 3;
-  grid-row: 1;
+  grid-column: 1 / span 1;
+  grid-row: 3;
 }
 
 .titulo-postagem {
@@ -263,7 +302,8 @@ dl {
 }
 
 .grid-botao {
-  grid-column: 1 / span 3;
+  grid-column: 2 / span 3;
+  grid-row: 3;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -271,18 +311,35 @@ dl {
   margin: 0 10px;
 }
 
+.grid-botao .btn-recusar {
+  background: #e28c89;
+  border: 1px solid #e5e9eb;
+  transition: all 300ms;
+}
+
+.grid-botao .btn-recusar:hover {
+  background: #da5752;
+}
+
+.grid-botao .btn-aceitar {
+  background: #a9ddb8;
+  border: 1px solid #e5e9eb;
+  transition: all 300ms;
+}
+
+.grid-botao .btn-aceitar:hover {
+  background: #7ed697;
+}
+
 .grid button,
 .btn-filtro {
   cursor: pointer;
-  background: #fcfcfc;
-  border: 1px solid #e2e2e2;
   border-radius: 4px;
   font-weight: bold;
   width: 130px;
   color: #515864;
 }
 
-.grid button:hover,
 .btn-filtro-ativo {
   background: #f9dc5c;
   border: 1px solid #f9dc5c;
@@ -291,14 +348,46 @@ dl {
 .div-filtros {
   display: flex;
   justify-content: center;
-  height: 80px;
+  position: relative;
+  left: 245px;
 }
 
 .div-filtros h2 {
   line-height: 80px;
 }
 
+.dropdown-filtros {
+  position: relative;
+  display: inline-block;
+  padding: 5px;
+  width: 80px;
+  border: 1px solid #e5e9eb;
+  border-radius: 4px;
+}
+
+.dropdown-filtros:hover {
+  background: #e5e9eb;
+}
+
+.dropdown-conteudo {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown-conteudo p {
+  margin-top: 10px;
+}
+
+.dropdown-filtros:hover .dropdown-conteudo {
+  display: block;
+}
+
 button {
-  border-radius: 60px !important;
+  border-radius: 16px !important;
 }
 </style>
