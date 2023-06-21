@@ -4,7 +4,7 @@
 
     <div class="div-filtros">
       <div class="dropdown-filtros">
-        <span>Filtrar</span>
+        <span>Filtrar ({{quantidadeOfertas}})</span>
         <div class="dropdown-conteudo">
           <p class="btn-filtro" :class="{ 'btn-filtro-ativo': filtrarRecusada }" @click="filtrarOfertas('RECUSADA')">
             Recusada
@@ -96,6 +96,7 @@ export default {
       },
       filtrarRecusada: false,
       filtrarEmAndamento: false,
+      quantidadeOfertas: 0,
     };
   },
 
@@ -123,6 +124,7 @@ export default {
               }
               return true;
             });
+          this.quantidadeOfertas = this.ofertas.length;
         })
         .catch((e) => {
           let grid = document.querySelector('.grid');
@@ -322,19 +324,24 @@ h2 {
   border-radius: 4px;
   font-weight: bold;
   width: 130px;
-  color: #515864;
+  color: #252c32;
+  background: #f9dc5c;
 }
 
 .btn-filtro-ativo {
-  background: #f9dc5c;
-  border: 1px solid #f9dc5c;
+  background: #f9f9f9;
+  border: 1px solid #f9f9f9;
 }
 
 .div-filtros {
   display: flex;
   justify-content: center;
   position: relative;
-  left: 245px;
+  left: 240px;
+}
+
+.div-filtros span {
+  font-weight: bold;
 }
 
 .div-filtros h2 {
@@ -345,7 +352,7 @@ h2 {
   position: relative;
   display: inline-block;
   padding: 5px;
-  width: 80px;
+  width: 90px;
   border: 1px solid #e5e9eb;
   border-radius: 4px;
 }

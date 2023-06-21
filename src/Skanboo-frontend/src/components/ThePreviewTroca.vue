@@ -374,6 +374,15 @@ span {
   margin-top: 10px;
 }
 
+#aceitar {
+  border: 1px solid #282c33;
+}
+
+#aceitar:hover {
+  border: 1px solid #f9dc5c;
+  background: #f9dc5c;
+}
+
 /* .invisivel {
     box-sizing: border-box;
     padding: 2px 6px 2px 8px;

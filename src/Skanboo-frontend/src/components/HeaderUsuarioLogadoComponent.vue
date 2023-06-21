@@ -184,6 +184,7 @@ a:hover {
 
 .sair:hover {
   background-color: #ff514b;
+  transition: 0.3s;
 }
 
 .editar:hover {

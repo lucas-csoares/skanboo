@@ -155,11 +155,9 @@ a:hover {
   transition: all 200ms;
 }
 
-.pag-adm {
-  padding: 6px;
-  margin-top: -6px;
-  border-radius: 4px;
-  border: 1px solid #7c7c7c;
+.pag-adm a:hover {
+  padding-bottom: 40px;
+  border-bottom: 4px solid #f26a63;
 }
 
 .icone-usuario img:hover {
