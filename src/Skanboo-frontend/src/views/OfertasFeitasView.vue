@@ -6,8 +6,16 @@
       <div class="dropdown-filtros">
         <span>Filtrar</span>
         <div class="dropdown-conteudo">
-          <p class="btn-filtro" :class="{ 'btn-filtro-ativo': filtrarRecusada }" @click="filtrarOfertas('RECUSADA')">Recusada</p>
-          <p class="btn-filtro" :class="{ 'btn-filtro-ativo': filtrarEmAndamento }" @click="filtrarOfertas('EM_ANDAMENTO')">Em andamento</p>
+          <p class="btn-filtro" :class="{ 'btn-filtro-ativo': filtrarRecusada }" @click="filtrarOfertas('RECUSADA')">
+            Recusada
+          </p>
+          <p
+            class="btn-filtro"
+            :class="{ 'btn-filtro-ativo': filtrarEmAndamento }"
+            @click="filtrarOfertas('EM_ANDAMENTO')"
+          >
+            Em andamento
+          </p>
         </div>
       </div>
     </div>
@@ -96,29 +104,32 @@ export default {
   },
 
   methods: {
-carregarOfertas() {
-  Oferta.exibirOfertasFeitas()
-    .then((resposta) => {
-
-      this.ofertas = resposta.data.flatMap((objetoArray) => {
-        return objetoArray.map((objeto) => [objeto]);
-      }).filter((oferta) => {
-        if (this.filtrarRecusada && oferta[0].status === 'RECUSADA') {
-          return false;
-        }
-        if (this.filtrarEmAndamento && oferta[0].status === 'EM_ANDAMENTO') {
-          return false;
-        }
-        return true;
-      });
-    })
-    .catch((e) => {
-      let grid = document.querySelector(".grid");
-      grid.innerHTML = "O usuário não fez nenhuma oferta ainda!";
-      console.log(e.message);
-    });
-},
-
+    carregarOfertas() {
+      Oferta.exibirOfertasFeitas()
+        .then((resposta) => {
+          this.ofertas = resposta.data
+            .flatMap((objetoArray) => {
+              return objetoArray.map((objeto) => [objeto]);
+            })
+            .filter((oferta) => {
+              if (this.filtrarRecusada && oferta[0].status === 'RECUSADA') {
+                return false;
+              }
+              if (this.filtrarEmAndamento && oferta[0].status === 'EM_ANDAMENTO') {
+                return false;
+              }
+              if (oferta[0].status === 'ACEITA') {
+                return false;
+              }
+              return true;
+            });
+        })
+        .catch((e) => {
+          let grid = document.querySelector('.grid');
+          grid.innerHTML = 'O usuário não fez nenhuma oferta ainda!';
+          console.log(e.message);
+        });
+    },
 
     cancelarOferta(id) {
       this.oferta.status = 'RECUSADA';

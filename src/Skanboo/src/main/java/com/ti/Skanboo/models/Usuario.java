@@ -69,7 +69,7 @@ public class Usuario {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "endereco_id", referencedColumnName = "id", nullable = true)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    // @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private EnderecoUsuario endereco;
 
     @Column(name = "data_nascimento", length = 8, nullable = false)

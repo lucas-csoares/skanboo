@@ -63,14 +63,6 @@
         </div>
       </div>
 
-      <div class="carrosel-navigation-parceiro">
-        <button class="arrow" @click="slideAnteriorParceiro">
-          <img src="../assets/left-arrow.png" alt="" />
-        </button>
-        <button class="arrow" @click="proximoSlideParceiro">
-          <img src="../assets/right-arrow.png" alt="" />
-        </button>
-      </div>
     </div>
   </section>
 </template>

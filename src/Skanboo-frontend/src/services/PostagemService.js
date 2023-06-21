@@ -43,5 +43,13 @@ export default {
 
   exibirTodasPostagens() {
     return http.get('postagem/lista');
+  },
+
+  exibirUsuarioPostagem(id) {
+    return http.get(`postagem/usuario/${id}`, {
+      headers: {
+        Authorization: localStorage.getItem('token')
+      }
+    });
   }
 };

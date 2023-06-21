@@ -41,12 +41,25 @@ public class PostagemService {
             throw new AuthorizationException("Acesso negado!");
 
         List<Postagem> postagem = this.postagemRepository.findByUsuario_Id(userSpringSecurity.getId());
-        
+
         return postagem;
     }
 
     public List<Postagem> listarPostagensCadastradas() {
         return postagemRepository.findAll();
+    }
+
+    public Usuario listarUsuarioDonoPostagem(Long id) {
+
+        UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
+
+        if (Objects.isNull(userSpringSecurity))
+            throw new AuthorizationException("Acesso negado!");
+
+        Postagem postagem = encontrarPorId(id);    
+        Usuario usuario = usuarioService.encontrarPorId(postagem.getUsuario().getId());
+
+        return usuario;
     }
 
     @Transactional
@@ -57,7 +70,8 @@ public class PostagemService {
         if (Objects.isNull(userSpringSecurity))
             throw new AuthorizationException("Acesso negado!");
 
-        if (obj.getDescricao() == null || obj.getTitulo() == null || obj.getCategoriaProduto() == null || obj.getCategoriaProdutoDesejado() == null)
+        if (obj.getDescricao() == null || obj.getTitulo() == null || obj.getCategoriaProduto() == null
+                || obj.getCategoriaProdutoDesejado() == null)
             throw new PostCreationException("Todos os campos da postagem devem ser preenchidos");
 
         Usuario usuario = this.usuarioService.encontrarPorId(userSpringSecurity.getId());

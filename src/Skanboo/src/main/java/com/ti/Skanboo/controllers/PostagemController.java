@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.ti.Skanboo.models.Postagem;
+import com.ti.Skanboo.models.Usuario;
 import com.ti.Skanboo.services.PostagemService;
 import jakarta.validation.Valid;
 
@@ -42,6 +43,12 @@ public class PostagemController {
     public ResponseEntity<List<Postagem>> listarPostagensCadastradas() {
         List<Postagem> obj = postagemService.listarPostagensCadastradas();
         return ResponseEntity.ok().body(obj);
+    }
+
+    @GetMapping("/usuario/{id}")
+    public ResponseEntity<Usuario> listarUsuarioDonoPostagem(@PathVariable Long id) {
+        Usuario usuario = postagemService.listarUsuarioDonoPostagem(id);
+        return ResponseEntity.ok().body(usuario);
     }
 
     @PostMapping

@@ -20,13 +20,13 @@
             <br />
 
             <span><b>Local: </b></span>
-            <span class="oferta">estado e cidade</span>
+            <span class="oferta">{{usuarioPostagem.endereco.cidade}} ({{usuarioPostagem.endereco.uf}}) </span>
 
             <br />
 
             <span><b>Postador por: </b></span>
             <span class="usuario-postagem">{{ postagem.usuario }}</span>
-            <span>nota do usuario ****a ser editada****</span>
+            <span>{{usuarioPostagem.nome}} ({{usuarioPostagem.notaFinal}}) </span>
           </div>
           <div class="informacoes-produto">
             <div class="titulo">
@@ -42,35 +42,36 @@
         </button>
       </div>
     </section>
-    <!-- <EscolherProdutoView idOfertada="kljfdlkjf" /> -->
   </div>
 </template>
 
 <script>
-import Postagem from "../services/PostagemService";
-import Oferta from "../services/OfertaService";
+import Postagem from '../services/PostagemService';
+import Oferta from '../services/OfertaService';
 import Usuario from '../services/UsuarioService';
-// import EscolherProdutoView from '@/views/EscolherProdutoView.vue';
 
 export default {
-  props: ["id"],
+  props: ['id'],
   data() {
     return {
       postagem: null,
       Oferta: null,
       usuario: {
-        id: null
+        id: null,
       },
+      usuarioPostagem: '',
     };
   },
   mounted() {
     Postagem.exibirInfoPostagem(this.id).then((resposta) => {
       this.postagem = resposta.data;
+      this.exibirUsuarioPostagem(this.postagem.id);
       return this.postagem;
     });
+
     Usuario.exibirInfo().then((resposta) => {
       this.usuario = resposta.data;
-      return this.usuario
+      return this.usuario;
     });
   },
   methods: {
@@ -83,15 +84,20 @@ export default {
         .catch((e) => console.log(e.message));
     },
     saveIdOfertada() {
-      sessionStorage.setItem("idOfertada", this.postagem.id);
+      sessionStorage.setItem('idOfertada', this.postagem.id);
+    },
+
+    exibirUsuarioPostagem(id) {
+      Postagem.exibirUsuarioPostagem(id).then((resposta) => {
+        this.usuarioPostagem = resposta.data;
+        return this.usuarioPostagem;
+      });
     },
   },
+
   computed: {
-    isFromHomePage() {  //função pra tirar o botão de negociar quando n tiver na home ou quando for do proprio usuario
-      console.log(this.$route.query.currentPage)
-      console.log(this.usuario.id)   
-      console.log(this.postagem.id_usuario)    // OOOOOOOOOOOOOOOOOOOOOO consertar isso, tá dando undefined
-      if(this.usuario.id === this.postagem.id_usuario){
+    isFromHomePage() {
+      if (this.usuario.id === this.postagem.id_usuario) {
         return 0;
       }
       return this.$route.query.currentPage;

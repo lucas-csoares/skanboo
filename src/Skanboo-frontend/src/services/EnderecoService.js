@@ -17,6 +17,14 @@ export default {
     });
   },
 
+  encontrarPorId: (id) => {
+    return http.get(`endereco/${id}`, {
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+    });
+  },
+
   atualizar: (endereco) => {
     return http.put("endereco/me", endereco, {
       headers: {
