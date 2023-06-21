@@ -13,14 +13,17 @@
               <li><a href="/ofertasrecebidasview">Ofertas recebidas</a></li>
               <li><a href="/ofertasfeitasView">Ofertas feitas</a></li>
               <li><a href="/paginatrocasview">Trocas</a></li>
-              <li class="icone-usuario">
-                <a href="/perfilusuarioview"
-                  ><img
-                    src="../assets/user-icon.svg"
-                    alt="Usuário"
-                    class="user"
-                /></a>
-              </li>
+              <div class="div-filtros">
+                <div class="dropdown">
+                  <span class="icone-usuario">
+                    <a href="/perfilusuarioview"><img src="../assets/user-icon.svg" alt="Usuário" class="user" /></a>
+                  </span>
+                  <div class="dropdown-conteudo">
+                    <button class="editar"><a href="/perfilUsuarioView">Minha conta</a></button>
+                    <button class="sair" @click="logout">Sair</button>
+                  </div>
+                </div>
+              </div>
             </ul>
           </nav>
         </div>
@@ -32,6 +35,12 @@
 <script>
 export default {
   name: "TheHeader",
+  methods: {
+    logout() {
+      localStorage.removeItem("token");
+      this.$router.push({ name: "loginView" });
+    },
+  },
 };
 </script>
 
@@ -143,8 +152,42 @@ a:hover {
 }
 
 .icone-usuario img:hover {
-  filter: invert(98%) sepia(91%) saturate(1210%) hue-rotate(321deg)
-    brightness(106%) contrast(95%);
+  filter: invert(98%) sepia(91%) saturate(1210%) hue-rotate(321deg) brightness(106%) contrast(95%);
+}
+
+.dropdown {
+  padding: 5px;
+  width: 80px;
+  height: 25px;
+}
+
+.dropdown-conteudo {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  margin-top: 20px;
+  right: 5px;
+}
+
+.dropdown-conteudo p {
+  margin-top: 10px;
+}
+
+.dropdown:hover .dropdown-conteudo {
+  display: block;
+}
+
+.sair:hover {
+  background-color: #ff514b;
+}
+
+.editar:hover {
+  background-color: #f9dc5c;
+  transition: 0.3s;
 }
 
 @media (max-width: 600px) {

@@ -61,8 +61,11 @@
     <div class="container-botoes">
       <button class="voltar" @click="paginaTrocas()">Voltar</button>
 
-      <button v-if="troca && troca.status === 'EM_ANDAMENTO'" 
-      id="aceitar" @click="confirmacaoTroca(), toggle()">Produto recebido</button>
+      <button v-if="troca && troca.status === 'EM_ANDAMENTO'" id="aceitar" @click="confirmacaoTroca()">Produto
+        recebido</button>
+
+      <button v-if="troca && troca.status === 'FINALIZADA'" id="aceitar" @click="toggle()">Avaliar
+        troca</button>
 
 
     </div>
