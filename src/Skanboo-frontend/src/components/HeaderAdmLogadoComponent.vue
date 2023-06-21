@@ -21,12 +21,11 @@
                     <a href="/perfilusuarioview"><img src="../assets/user-icon.svg" alt="Usuário" class="user" /></a>
                   </span>
                   <div class="dropdown-conteudo">
-                    <button class="editar"><a href="/perfilUsuarioView">Minha conta</a></button>
-                    <button class="sair" @click="logout">Sair</button>
+                    <p class="editar"><a href="/perfilUsuarioView">Minha conta</a></p>
+                    <p class="sair" @click="logout"><a href="">Sair</a></p>
                   </div>
                 </div>
               </div>
-
             </ul>
           </nav>
         </div>
@@ -41,9 +40,9 @@ export default {
 
   methods: {
     logout() {
-      localStorage.removeItem("token");
-      sessionStorage.removeItem("perfil");
-      this.$router.push({ name: "loginView" });
+      localStorage.removeItem('token');
+      sessionStorage.removeItem('perfil');
+      this.$router.push({ name: 'loginView' });
     },
   },
 };
@@ -163,10 +162,6 @@ a:hover {
   border: 1px solid #7c7c7c;
 }
 
-.pag-adm:hover {
-
-}
-
 .icone-usuario img:hover {
   filter: invert(98%) sepia(91%) saturate(1210%) hue-rotate(321deg) brightness(106%) contrast(95%);
 }
@@ -175,8 +170,6 @@ a:hover {
   padding: 5px;
   width: 80px;
 }
-
-
 
 .dropdown-conteudo {
   display: none;
@@ -192,19 +185,16 @@ a:hover {
 
 .dropdown-conteudo p {
   margin-top: 10px;
+  font-weight: bold;
+}
+
+.dropdown-conteudo p a:hover {
+  padding-bottom: 0;
+  border-bottom: 0px solid #f9dc5c;
 }
 
 .dropdown:hover .dropdown-conteudo {
   display: block;
-}
-
-.sair:hover {
-  background-color: #ff514b;
-}
-
-.editar:hover {
-  background-color: #f9dc5c;
-  transition: 0.3s;
 }
 
 @media (max-width: 600px) {
