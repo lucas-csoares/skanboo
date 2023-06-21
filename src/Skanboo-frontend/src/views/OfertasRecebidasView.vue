@@ -6,8 +6,16 @@
       <div class="dropdown-filtros">
         <span>Filtrar</span>
         <div class="dropdown-conteudo">
-          <p class="btn-filtro" :class="{ 'btn-filtro-ativo': filtrarRecusada }" @click="filtrarOfertas('RECUSADA')">Recusada</p>
-          <p class="btn-filtro" :class="{ 'btn-filtro-ativo': filtrarEmAndamento }" @click="filtrarOfertas('EM_ANDAMENTO')" >Em andamento</p>
+          <p class="btn-filtro" :class="{ 'btn-filtro-ativo': filtrarRecusada }" @click="filtrarOfertas('RECUSADA')">
+            Recusada
+          </p>
+          <p
+            class="btn-filtro"
+            :class="{ 'btn-filtro-ativo': filtrarEmAndamento }"
+            @click="filtrarOfertas('EM_ANDAMENTO')"
+          >
+            Em andamento
+          </p>
         </div>
       </div>
     </div>
@@ -108,6 +116,9 @@ export default {
             if (this.filtrarEmAndamento && oferta[0].status === 'EM_ANDAMENTO') {
               return false;
             }
+            if (oferta[0].status === 'ACEITA') {
+              return false;
+            }
             return true;
           });
         })
@@ -142,14 +153,15 @@ export default {
     },
 
     cancelarOferta(id) {
-      this.oferta.status = 'RECUSADA';
-
       Oferta.atualizar(id, this.oferta)
         .then(() => {
           alert('Oferta recusada com sucesso!');
           this.carregarOfertas();
         })
-        .catch((e) => console.log(e));
+        .catch((e) => {
+          console.log(e);
+          alert('A oferta já foi recusada!');
+        });
     },
 
     filtrarOfertas(filtro) {

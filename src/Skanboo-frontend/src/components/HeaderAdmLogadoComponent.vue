@@ -138,8 +138,15 @@ a:hover {
   bottom: 28px;
   transition: all 200ms;
 }
+
 .pag-adm {
   background: #e2e2e2;
+  padding: 2px;
+  border-radius: 2px;
+}
+
+.pag-adm:hover {
+  background: #cccccc;
   padding: 2px;
   border-radius: 2px;
 }
