@@ -170,7 +170,7 @@ a:hover {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   padding: 12px 16px;
   z-index: 1;
-  margin-top: 20px;
+  margin-top: 16px;
   right: 5px;
 }
 
