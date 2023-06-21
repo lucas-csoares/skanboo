@@ -42,6 +42,7 @@ export default {
   methods: {
     logout() {
       localStorage.removeItem("token");
+      sessionStorage.removeItem("perfil");
       this.$router.push({ name: "loginView" });
     },
   },
