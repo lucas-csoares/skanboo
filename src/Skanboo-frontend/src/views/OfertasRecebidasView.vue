@@ -116,9 +116,6 @@ export default {
             if (this.filtrarEmAndamento && oferta[0].status === 'EM_ANDAMENTO') {
               return false;
             }
-            if (oferta[0].status === 'ACEITA') {
-              return false;
-            }
             return true;
           });
         })

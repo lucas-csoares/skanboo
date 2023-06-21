@@ -2,7 +2,7 @@
   <section class="products">
     <h1>Anúncios para você</h1>
 
-    <div class="carrossel">
+    <!-- <div class="carrossel">
       <div class="carrossel-container" :style="{ transform: `translateX(-${currentSlideIndex * 100}%)` }">
         <div class="carrossel-item" v-for="postagem in carrosselPostagens" :key="postagem.id">
           <router-link :to="{ name: 'TheProductPage', params: { id: postagem.id }, query: { currentPage: $route.name } }">
@@ -21,7 +21,7 @@
           <img src="../assets/right-arrow.png" alt="" />
         </button>
       </div>
-    </div>
+    </div> -->
 
     <div class="container">
       <div v-for="postagem in postagensPaginadas" :key="postagem.id" class="card">

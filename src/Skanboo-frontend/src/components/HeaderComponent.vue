@@ -9,10 +9,8 @@
 
           <nav class="menu-nav">
             <ul>
-              <li>
-                <a href="/cadastroview" class="criar-conta">Criar conta</a>
-              </li>
               <li><a href="/loginView">Login</a></li>
+              <li><a href="/cadastroview" class="criar-conta">Quero trocar</a></li>
             </ul>
           </nav>
         </div>
@@ -23,7 +21,7 @@
 
 <script>
 export default {
-  name: "TheHeader",
+  name: 'TheHeader',
 };
 </script>
 
@@ -70,7 +68,7 @@ body {
   background: #fff;
   color: #222;
   -webkit-font-smoothing: antialiased;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #000;
 }
 
@@ -125,6 +123,17 @@ a:hover {
 
 .menu-nav ul li {
   margin-right: 30px;
+}
+
+.menu-nav ul li:nth-of-type(2) {
+  background: #fa7c75;
+  padding: 10px;
+  margin-top: -10px;
+  border-radius: 16px;
+}
+
+.menu-nav ul li:nth-of-type(2) a {
+  color: white;
 }
 
 @media (max-width: 600px) {
