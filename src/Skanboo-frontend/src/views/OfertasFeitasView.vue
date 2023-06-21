@@ -76,7 +76,7 @@
         </div>
 
         <div class="grid-botao">
-          <button @click="cancelarOferta(oferta[0].id)">Cancelar oferta</button>
+          <button class="cancelar" @click="cancelarOferta(oferta[0].id)">Cancelar oferta</button>
         </div>
       </div>
     </div>
@@ -322,12 +322,13 @@ h2 {
   border-radius: 4px;
   font-weight: bold;
   width: 130px;
-  color: #515864;
+  color: #645151;
+  background: #f9dc5c;
 }
 
 .btn-filtro-ativo {
-  background: #f9dc5c;
-  border: 1px solid #f9dc5c;
+  background: #f9f9f9;
+  border: 1px solid #f9f9f9;
 }
 
 .div-filtros {
@@ -375,4 +376,14 @@ h2 {
 button {
   border-radius: 16px !important;
 }
+
+.cancelar{
+  background: #ffffff !important;
+}
+
+.cancelar:hover{
+  background: #da5752 !important;
+  transition: 0.3s;
+}
+
 </style>

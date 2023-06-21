@@ -125,6 +125,11 @@ img {
   margin-bottom: 20px;
 }
 
+button:hover {
+  background: #f9dc5c;
+  transition: 0.3s;
+}
+
 #detalhes {
   margin: 0;
 }

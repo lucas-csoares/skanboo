@@ -316,7 +316,7 @@ h2 {
 }
 
 .grid-botao .btn-recusar {
-  background: #e28c89;
+  background: #ffffff;
   border: 1px solid #e5e9eb;
   transition: all 300ms;
 }
@@ -326,7 +326,7 @@ h2 {
 }
 
 .grid-botao .btn-aceitar {
-  background: #a9ddb8;
+  background: #ffffff;
   border: 1px solid #e5e9eb;
   transition: all 300ms;
 }
@@ -341,12 +341,13 @@ h2 {
   border-radius: 4px;
   font-weight: bold;
   width: 130px;
-  color: #515864;
+  color: #645151;
+  background: #f9dc5c;
 }
 
 .btn-filtro-ativo {
-  background: #f9dc5c;
-  border: 1px solid #f9dc5c;
+  background: #f9f9f9;
+  border: 1px solid #f9f9f9;
 }
 
 .div-filtros {
