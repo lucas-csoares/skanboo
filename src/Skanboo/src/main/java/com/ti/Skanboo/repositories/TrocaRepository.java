@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import com.ti.Skanboo.models.Troca;
+import com.ti.Skanboo.models.Usuario;
 
 @Repository
 public interface TrocaRepository extends JpaRepository<Troca, Long> {
@@ -38,4 +39,8 @@ public interface TrocaRepository extends JpaRepository<Troca, Long> {
                         "AND t.status = 'FINALIZADA' " +
                         "GROUP BY EXTRACT(MONTH FROM t.data)")
         List<Object[]> quantidadeTrocasFinalizadasPorMes(@Param("ano") int ano);
+
+
+        @Query("SELECT t FROM Troca t WHERE t.oferta.postagemOrigem.usuario = :usuario OR t.oferta.postagemOfertada.usuario = :usuario")
+        List<Troca> findByOferta_PostagemOrigem_UsuarioOrOferta_PostagemOfertada_Usuario(Usuario usuario);
 }
