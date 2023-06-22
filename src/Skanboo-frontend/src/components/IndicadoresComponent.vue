@@ -19,6 +19,10 @@
 
       <div class="grid-indicadores-mensais">
         <div class="linha-01 card-indicador item">
+          <h2>Indicadores mensais</h2>
+        </div>
+
+        <div class="linha-01 card-indicador item">
           <p>Novos usuários</p>
           <p class="indicador indicador-qtde-usuario"></p>
         </div>
@@ -250,6 +254,7 @@ export default {
     async formatarDadosCategorias(indicador01, indicador02, categorias) {
       const resposta01 = await Indicadores.categoriasMaisDesejadas().then((resposta) => {
         this.carregarDados(resposta.data, indicador01, 'categoria', 'quantidade');
+
         return categorias.map((categoria) => {
           const item = indicador01.find((obj) => obj.categoria === categoria);
           return item ? item.quantidade : 0;
@@ -258,6 +263,7 @@ export default {
 
       const resposta02 = await Indicadores.categoriasMaisOfertadas().then((resposta) => {
         this.carregarDados(resposta.data, indicador02, 'categoria', 'quantidade');
+
         return categorias.map((categoria) => {
           const item = indicador02.find((obj) => obj.categoria === categoria);
           return item ? item.quantidade : 0;
@@ -280,9 +286,8 @@ export default {
     setGridColumnRow(itemLinha, quantidadeColunasGrid) {
       const qtdeItens = itemLinha.length;
 
-      for (let i = 0; i < itemLinha.length; i++) 
-         itemLinha[i].style.setProperty('grid-column', `span ${quantidadeColunasGrid / qtdeItens}`);
-      
+      for (let i = 0; i < itemLinha.length; i++)
+        itemLinha[i].style.setProperty('grid-column', `span ${quantidadeColunasGrid / qtdeItens}`);
     },
   },
 };
@@ -328,6 +333,10 @@ export default {
 .card-indicador {
   width: 100%;
   margin: 5px 0 0 0;
+}
+
+.card-indicador:nth-of-type(1) {
+  margin: 0px 0 0 0;
 }
 
 .card-indicador p:nth-of-type(1) {

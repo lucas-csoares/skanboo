@@ -224,7 +224,7 @@ h2 {
 }
 
 .grid-card {
-  width: calc(100vw / 2.3);
+  width: 600px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
