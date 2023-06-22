@@ -132,11 +132,11 @@ public class AvaliacaoService {
     public void calcMedia(Usuario usuario) {
         List<Troca> trocasRealizadas = trocaRepository.findByOferta_PostagemOrigem_UsuarioOrOferta_PostagemOfertada_Usuario(usuario);
         List<Long> usuariosQueRealizaramTroca = trocasRealizadas.stream()
-                .flatMap(troca -> Stream.of(
-                    troca.getOferta().getPostagemOrigem().getUsuario().getId(),
-                    troca.getOferta().getPostagemOfertada().getUsuario().getId()))
-                .distinct()
-                .collect(Collectors.toList());
+            .flatMap(troca -> Stream.of(
+                troca.getOferta().getPostagemOrigem().getUsuario().getId(),
+                troca.getOferta().getPostagemOfertada().getUsuario().getId()))
+            .distinct()
+            .collect(Collectors.toList());
 
         List<Avaliacao> avaliacoes = avaliacaoRepository.findByUsuarioIds(usuariosQueRealizaramTroca);
 
