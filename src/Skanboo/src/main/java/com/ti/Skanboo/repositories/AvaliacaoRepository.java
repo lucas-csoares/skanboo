@@ -13,6 +13,10 @@ public interface AvaliacaoRepository extends JpaRepository<Avaliacao, Long> {
     
     @Query("SELECT a FROM Avaliacao a WHERE a.usuario = :usuario AND MONTH(a.data) = :mes")
     List<Avaliacao> findByUsuarioAndMes(Usuario usuario, int mes);
+    
+    List<Avaliacao> findByUsuarioAvaliado(Usuario usuarioAvaliado);
+    
+
 
     boolean existsByUsuarioAndTroca(Usuario usuario, Troca troca);
 }
