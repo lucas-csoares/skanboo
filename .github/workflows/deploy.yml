@@ -55,8 +55,6 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd ~/skanboo
-            cd ~/src
-            cd ~/Skanboo
+            cd ~/skanboo/src/Skanboo
             docker-compose build --no-cache app
             docker-compose up -d app
