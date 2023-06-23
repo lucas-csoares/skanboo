@@ -117,6 +117,7 @@ export default {
 }
 
 .usuario {
+  position: relative;
   border: 1px solid #eae9e9;
   border-radius: 4px;
   padding: 20px;
@@ -149,8 +150,9 @@ li {
 
 .nota-usuario {
   position: absolute;
-  top: calc(100vh / 2.9);
-  left: calc(100vw / 1.95);
+  top: 19%; /* Center vertically */
+  left: 58%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust the position to be centered */
   border: 2px solid #f9dc5c;
   background: white;
   color: black;
