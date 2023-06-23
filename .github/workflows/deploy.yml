@@ -24,9 +24,9 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_KEY }}
           # Github path
-          source: "**"
+          source: '**'
           # VPS path
-          target: "~/skanboo"
+          target: '~/skanboo'
 
       - name: Criar skanboo arquivo .env
         uses: appleboy/ssh-action@master
@@ -56,5 +56,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd ~/skanboo
+            cd ~/src
+            cd ~/Skanboo
             docker-compose build --no-cache app
             docker-compose up -d app
