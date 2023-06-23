@@ -2,6 +2,7 @@
   <section class="container">
     <h1>Informações da conta</h1>
     <div class="usuario">
+      <span class="nota-usuario">{{usuario.notaFinal}}</span>
       <div class="foto-usuario">
         <img :src="usuario.foto" alt="" />
       </div>
@@ -23,16 +24,14 @@
             {{
               usuario.dataNascimento
                 ? `${usuario.dataNascimento[2]}/${usuario.dataNascimento[1]}/${usuario.dataNascimento[0]}`
-                : ""
+                : ''
             }}
           </p>
           <p class="email">{{ usuario.email }}</p>
           <p class="telefone">{{ usuario.telefone }}</p>
           <p class="senha">************</p>
           <p class="CPF">{{ usuario.cpf }}</p>
-          <p class="cepRuaNumero">
-            {{ endereco.cidade }}, Rua {{ endereco.rua }}, {{ endereco.numero }}
-          </p>
+          <p class="cepRuaNumero">{{ endereco.cidade }}, Rua {{ endereco.rua }}, {{ endereco.numero }}</p>
         </div>
       </div>
       <button class="editar-endereco">
@@ -46,29 +45,29 @@
 </template>
 
 <script>
-import Usuario from "../services/UsuarioService";
-import Endereco from "../services/EnderecoService";
+import Usuario from '../services/UsuarioService';
+import Endereco from '../services/EnderecoService';
 
 export default {
   data() {
     return {
       usuario: {
-        nome: "",
-        nascimento: "",
-        email: "",
-        telefone: "",
-        senha: "",
-        cpf: "",
+        nome: '',
+        nascimento: '',
+        email: '',
+        telefone: '',
+        senha: '',
+        cpf: '',
         foto: null,
       },
       endereco: {
-        uf: "",
-        cep: "",
-        cidade: "",
-        bairro: "",
-        rua: "",
+        uf: '',
+        cep: '',
+        cidade: '',
+        bairro: '',
+        rua: '',
         numero: null,
-        complemento: "",
+        complemento: '',
       },
       loaded: false,
     };
@@ -76,7 +75,7 @@ export default {
 
   mounted() {
     if (!window.location.hash) {
-      window.location = window.location + "#loaded";
+      window.location = window.location + '#loaded';
       window.location.reload();
     }
     this.carregarInformacoesUsuario();
@@ -102,9 +101,9 @@ export default {
     },
 
     logout() {
-      localStorage.removeItem("token");
-      sessionStorage.removeItem("perfil")
-      this.$router.push({ name: "loginView" });
+      localStorage.removeItem('token');
+      sessionStorage.removeItem('perfil');
+      this.$router.push({ name: 'loginView' });
     },
   },
 };
@@ -146,6 +145,22 @@ li {
   background-color: lightgray;
   align-items: center;
   margin-left: 180px;
+}
+
+.nota-usuario {
+  position: absolute;
+  top: calc(100vh / 2.9);
+  left: calc(100vw / 1.95);
+  border: 2px solid #f9dc5c;
+  background: white;
+  color: black;
+  font-weight: bold;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 img {
