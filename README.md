@@ -1,3 +1,7 @@
+<h3 align="center">
+<img width="400px" src="./docs/imagens/logo.png">
+</h3>
+
 # sKanboo
 
 O modelo de troca de mercadorias (escambo), apesar de antigo, tem ganhado cada vez mais força devido à crescente preocupação com a sustentabilidade, o que reforça as premissas da economia circular, que prevê o uso e reuso de uma dado item. Além disso, devido à instabilidade financeira causada pela pandemia da COVID-19, muitas pessoas vêm buscado formas mais baratas de suprir suas necessidades. Ou seja, ao fazer escambo a pessoa evita gastar dinheiro por trocar bens que já possui por outros de que necessita, ganha mais flexibilidade por poder negociar diretamente com a outra pessoa, uma vez que não se tem preço fixo como em lojas, e também é uma forma mais sustentável de consumir.
@@ -15,8 +19,18 @@ O modelo de troca de mercadorias (escambo), apesar de antigo, tem ganhado cada v
 ## Professor
 
 * Hugo Bastos de Paula
-
 * Eveline Alonso Veloso
+
+## Tecnologias
+- Frontend:
+  - [Chart.js](https://www.chartjs.org/)
+  - [JavaScript](https://www.javascript.com/)
+  - [VueJs](https://vuejs.org/)
+
+- Backend
+  - [Spring Boot](https://spring.io/projects/spring-boot)
+
+- Database
 
 ## Instruções de utilização
 
