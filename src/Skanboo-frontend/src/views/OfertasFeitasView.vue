@@ -76,7 +76,7 @@
         </div>
 
         <div class="grid-botao">
-          <button @click="cancelarOferta(oferta[0].id)">Cancelar oferta</button>
+          <button class="btn-recusar" @click="cancelarOferta(oferta[0].id)">Cancelar oferta</button>
         </div>
       </div>
     </div>
@@ -299,7 +299,7 @@ h2 {
 }
 
 .grid-botao .btn-recusar {
-  background: #e28c89;
+  background: #ffffff;
   border: 1px solid #e5e9eb;
   transition: all 300ms;
 }

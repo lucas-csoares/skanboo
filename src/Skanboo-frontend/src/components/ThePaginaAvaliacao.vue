@@ -14,11 +14,11 @@
       <form>
         <form action="rating">
           <label>
-            <input type="radio" name="stars" value="1,0" v-model="avaliacao.nota" />
+            <input type="radio" name="stars" value="1" v-model="avaliacao.nota" />
             <span class="icon">★</span>
           </label>
           <label>
-            <input type="radio" name="stars" value="2,0" v-model="avaliacao.nota" />
+            <input type="radio" name="stars" value="2" v-model="avaliacao.nota" />
             <span class="icon">★</span>
             <span class="icon">★</span>
           </label>

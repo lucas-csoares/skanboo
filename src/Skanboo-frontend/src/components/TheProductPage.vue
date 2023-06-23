@@ -26,7 +26,7 @@
 
             <span><b>Postador por: </b></span>
             <span class="usuario-postagem">{{ postagem.usuario }}</span>
-            <span>{{usuarioPostagem.nome}} ({{usuarioPostagem.notaFinal}}) </span>
+            <span>{{usuarioPostagem.nome}} <span class="nota-usuario">{{usuarioPostagem.notaFinal}}</span> </span>
           </div>
           <div class="informacoes-produto">
             <div class="titulo">
@@ -171,6 +171,11 @@ img {
   flex: 1;
   border: 1px solid #e9eced;
   border-radius: 4px;
+}
+
+.nota-usuario {
+  font-weight: bold;
+  color: #f26a63;
 }
 
 span {
