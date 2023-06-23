@@ -36,7 +36,7 @@ public class SecurityConfig {
     @Autowired
     private JWTUtil jwtUtil;
 
-    private static final String[] PUBLIC_MATCHERS = { "/", "/postagem/lista", "parceiro/lista", "postagem/usuario" };
+    private static final String[] PUBLIC_MATCHERS = { "/", "/postagem/lista", "parceiro/lista", "postagem/usuario/" };
 
     private static final String[] PUBLIC_MATCHERS_POST = { "/usuario", "/login" };
     private static final String[] SWAGGER_MATCHERS = {
