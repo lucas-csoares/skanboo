@@ -1,5 +1,5 @@
 <h3 align="center">
-<img width="300px" src="./docs/imagens/logo.png">
+<img width="400px" src="./docs/imagens/logo.png">
 </h3>
 
 # sKanboo
