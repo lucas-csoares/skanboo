@@ -19,8 +19,14 @@ O modelo de troca de mercadorias (escambo), apesar de antigo, tem ganhado cada v
 ## Professor
 
 * Hugo Bastos de Paula
-
 * Eveline Alonso Veloso
+
+## Tecnologias
+- Frontend
+
+- Backend
+
+- Database
 
 ## Instruções de utilização
 
