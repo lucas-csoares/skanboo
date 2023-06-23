@@ -2,7 +2,7 @@
   <section class="container">
     <h1>Informações da conta</h1>
     <div class="usuario">
-      <span class="nota-usuario">{{usuario.notaFinal}}</span>
+      <span class="nota-usuario">{{ usuario.notaFinal }}</span>
       <div class="foto-usuario">
         <img :src="usuario.foto" alt="" />
       </div>
@@ -59,6 +59,7 @@ export default {
         senha: '',
         cpf: '',
         foto: null,
+        notaFinal: null,
       },
       endereco: {
         uf: '',
@@ -86,6 +87,7 @@ export default {
       Usuario.exibirInfo()
         .then((resposta) => {
           this.usuario = resposta.data;
+          this.verificarNotaUsuario(this.usuario.notaFinal);
         })
         .catch((error) => {
           console.error(error);
@@ -104,6 +106,12 @@ export default {
       localStorage.removeItem('token');
       sessionStorage.removeItem('perfil');
       this.$router.push({ name: 'loginView' });
+    },
+
+    verificarNotaUsuario(nota) {
+      if (nota >= 4) document.querySelector('.nota-usuario').classList.add('nota-alta');
+      else if (nota >= 2 && nota < 4) document.querySelector('.nota-usuario').classList.add('nota-media');
+      else document.querySelector('.nota-usuario').classList.add('nota-baixa');
     },
   },
 };
@@ -150,12 +158,10 @@ li {
 
 .nota-usuario {
   position: absolute;
-  top: 19%; /* Center vertically */
-  left: 58%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Adjust the position to be centered */
-  border: 2px solid #f9dc5c;
+  top: 18%;
+  left: 58%;
+  transform: translate(-50%, -50%);
   background: white;
-  color: black;
   font-weight: bold;
   width: 30px;
   height: 30px;
@@ -163,6 +169,21 @@ li {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.nota-alta {
+  border: 2px solid rgb(91, 160, 77);
+  color: rgb(91, 160, 77);
+}
+
+.nota-media {
+  border: 2px solid #f9dc5c;
+  color: #bea638;
+}
+
+.nota-baixa {
+  border: 2px solid #f26a63;
+  color: #f26a63;
 }
 
 img {
