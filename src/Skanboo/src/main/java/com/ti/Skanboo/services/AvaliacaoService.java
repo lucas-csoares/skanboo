@@ -158,7 +158,7 @@ public class AvaliacaoService {
         double mediaNotas = quantidadeAvaliacoes > 0 ? (double) somaNotas / quantidadeAvaliacoes : 0;
 
         DecimalFormat decimalFormat = new DecimalFormat("#.00");
-        String mediaFormatada = decimalFormat.format(mediaNotas);
+        String mediaFormatada = decimalFormat.format(mediaNotas).replace(",", ".");
         mediaNotas = Double.parseDouble(mediaFormatada);
 
         usuario.setNotaFinal(mediaNotas);
