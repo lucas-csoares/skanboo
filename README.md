@@ -22,9 +22,13 @@ O modelo de troca de mercadorias (escambo), apesar de antigo, tem ganhado cada v
 * Eveline Alonso Veloso
 
 ## Tecnologias
-- Frontend
+- Frontend:
+  - [Chart.js](https://www.chartjs.org/)
+  - [JavaScript](https://www.javascript.com/)
+  - [VueJs](https://vuejs.org/)
 
 - Backend
+  - [Spring Boot](https://spring.io/projects/spring-boot)
 
 - Database
 
