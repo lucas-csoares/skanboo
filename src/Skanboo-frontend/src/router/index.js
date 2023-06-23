@@ -174,7 +174,7 @@ const routes = [
     props: true,
   },
   {
-    path: "/troca/:idTroca",
+    path: "/ThePaginaTrocas",
     name: "ThePaginaTrocas",
     component: ThePaginaTrocas,
     props: true,

@@ -126,14 +126,14 @@ a:hover {
 }
 
 .menu-nav ul li:nth-of-type(2) {
-  background: #fa7c75;
+  background: #f9dc5c;
   padding: 10px;
   margin-top: -10px;
   border-radius: 16px;
 }
 
 .menu-nav ul li:nth-of-type(2) a {
-  color: white;
+  color: rgb(75, 75, 75);
 }
 
 @media (max-width: 600px) {

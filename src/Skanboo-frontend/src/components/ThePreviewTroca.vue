@@ -219,24 +219,24 @@ export default {
 .imagem {
   display: flex;
   justify-content: center;
-  width: 150px;
-  height: 150px;
-  background-color: grey;
-  border: 0px solid #515864;
+  width: 180px;
+  height: 180px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #cacaca;
   border-radius: 4px;
 
 }
 
 .card-img {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
+  width: 180px;
+  height: 180px;
+  object-fit:cover;
 
 }
 
 img {
-  max-width: 150px;
-  max-height: 150px;
+  max-width: 180px;
+  max-height: 180px;
   object-fit: cover;
   border-radius: 4px;
 }
@@ -279,7 +279,7 @@ img {
   padding: 10px;
   padding-top: 0;
   flex: 1;
-  border: 1px solid #eae9e9;
+  border: 1px solid #cacaca;
   border-radius: 4px;
 }
 
@@ -293,7 +293,7 @@ img {
   padding-top: 0;
   padding-bottom: 0;
   flex: 1;
-  border: 1px solid #eae9e9;
+  border: 1px solid #cacaca;
   border-radius: 4px;
 }
 

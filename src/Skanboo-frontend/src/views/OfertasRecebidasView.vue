@@ -139,14 +139,12 @@ export default {
         this.errors = [];
 
         // Cria troca and obtem o seu id
-        const trocaResponse = await Troca.criar(id_oferta);
-        const id_troca = trocaResponse.data.id;
+        Troca.criar(id_oferta);
 
         alert('Troca criada com sucesso!');
 
         this.$router.push({
-          name: 'ThePreviewTroca',
-          params: { idOferta: id_oferta, idTroca: id_troca },
+          name: 'ThePaginaTrocas',
         });
         this.errors = [];
       } catch (e) {

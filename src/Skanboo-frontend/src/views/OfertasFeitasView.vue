@@ -289,8 +289,8 @@ h2 {
 }
 
 .grid-botao {
-  grid-column: 2 / span 3;
-  grid-row: 3;
+  grid-column: 1 / span 3;
+  grid-row: 4;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -382,4 +382,5 @@ h2 {
 button {
   border-radius: 16px !important;
 }
+
 </style>
