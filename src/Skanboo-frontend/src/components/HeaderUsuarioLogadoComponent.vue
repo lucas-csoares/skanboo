@@ -19,8 +19,8 @@
                     <a href="/perfilusuarioview"><img src="../assets/user-icon.svg" alt="Usuário" class="user" /></a>
                   </span>
                   <div class="dropdown-conteudo">
-                    <button class="editar"><a href="/perfilUsuarioView">Minha conta</a></button>
-                    <button class="sair" @click="logout">Sair</button>
+                    <p class="editar"><a href="/perfilUsuarioView">Minha conta</a></p>
+                    <p class="sair" @click="logout"><a href="">Sair</a></p>
                   </div>
                 </div>
               </div>
@@ -35,6 +35,7 @@
 <script>
 export default {
   name: 'TheHeader',
+
   methods: {
     logout() {
       localStorage.removeItem('token');
@@ -152,6 +153,11 @@ a:hover {
   transition: all 200ms;
 }
 
+.pag-adm a:hover {
+  padding-bottom: 40px;
+  border-bottom: 4px solid #f26a63;
+}
+
 .icone-usuario img:hover {
   filter: invert(98%) sepia(91%) saturate(1210%) hue-rotate(321deg) brightness(106%) contrast(95%);
 }
@@ -159,7 +165,6 @@ a:hover {
 .dropdown {
   padding: 5px;
   width: 80px;
-  height: 25px;
 }
 
 .dropdown-conteudo {
@@ -176,20 +181,16 @@ a:hover {
 
 .dropdown-conteudo p {
   margin-top: 10px;
+  font-weight: bold;
+}
+
+.dropdown-conteudo p a:hover {
+  padding-bottom: 0;
+  border-bottom: 0px solid #f9dc5c;
 }
 
 .dropdown:hover .dropdown-conteudo {
   display: block;
-}
-
-.sair:hover {
-  background-color: #ff514b;
-  transition: 0.3s;
-}
-
-.editar:hover {
-  background-color: #f9dc5c;
-  transition: 0.3s;
 }
 
 @media (max-width: 600px) {

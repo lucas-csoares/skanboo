@@ -35,7 +35,7 @@ public class UsuarioService {
         UserSpringSecurity userSpringSecurity = authenticated();
 
         if (!Objects.nonNull(userSpringSecurity)
-                || !userSpringSecurity.hasRole(UsuarioEnum.ADMIN) && !id.equals(userSpringSecurity.getId()))
+                || !userSpringSecurity.hasRole(UsuarioEnum.USER) && !id.equals(userSpringSecurity.getId()))
             throw new AuthorizationException("Acesso negado");
 
         Optional<Usuario> usuario = this.usuarioRepository.findById(id);
