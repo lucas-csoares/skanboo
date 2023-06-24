@@ -47,7 +47,7 @@ O modelo de troca de mercadorias (escambo), apesar de antigo, tem ganhado cada v
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas: <listar ferramentas>
 
-# Clone o repositório 
+## Clone o repositório 
 $ git clone <https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti2-0924100-skanboo.git>
 
 ## Rodando o Back End
