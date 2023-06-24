@@ -10,7 +10,7 @@
  <a href="#-instruções-de-utilização">Instruções de Utilização</a>  
 </p>
 
-# sKanboo
+# 📝 sKanboo
 
 O modelo de troca de mercadorias (escambo), apesar de antigo, tem ganhado cada vez mais força devido à crescente preocupação com a sustentabilidade, o que reforça as premissas da economia circular, que prevê o uso e reuso de uma dado item. Além disso, devido à instabilidade financeira causada pela pandemia da COVID-19, muitas pessoas vêm buscado formas mais baratas de suprir suas necessidades. Ou seja, ao fazer escambo a pessoa evita gastar dinheiro por trocar bens que já possui por outros de que necessita, ganha mais flexibilidade por poder negociar diretamente com a outra pessoa, uma vez que não se tem preço fixo como em lojas, e também é uma forma mais sustentável de consumir.
 
@@ -24,12 +24,12 @@ O modelo de troca de mercadorias (escambo), apesar de antigo, tem ganhado cada v
 * [Lucas Cabral Soares](https://github.com/lcsoares2022)
 * [Vítor Lagares Stahlberg](https://github.com/VitorLS0)
 
-## Professor
+## 👨‍💻 Professores
 
 * Hugo Bastos de Paula
 * Eveline Alonso Veloso
 
-## Tecnologias
+## 🚀 Tecnologias
 - Frontend:
   - [Chart.js](https://www.chartjs.org/)
   - [FontAwesome](https://fontawesome.com/)
@@ -51,7 +51,7 @@ O modelo de troca de mercadorias (escambo), apesar de antigo, tem ganhado cada v
   - [Azure](https://azure.microsoft.com/) 
 
 
-## Instruções de utilização
+## 💻 Instruções de utilização
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas: <listar ferramentas>
 
