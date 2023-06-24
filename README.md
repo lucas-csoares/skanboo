@@ -7,7 +7,7 @@
  <a href="#-integrantes">Integrantes</a> • 
  <a href="#-professor">Professores</a> • 
  <a href="#-tecnologias">Tecnologias</a> • 
- <a href="#-instruções-de-utilização">Instruções de Utilização</a> • 
+ <a href="#-instruções-de-utilização">Instruções de Utilização</a>  
 </p>
 
 # sKanboo
