@@ -16,7 +16,7 @@ O modelo de troca de mercadorias (escambo), apesar de antigo, tem ganhado cada v
 
 É com isso em mente que surgiu o **sKanboo**, que tem como objetivo facilitar a troca de produtos entre as pessoas. A ideia é proporcionar uma forma mais sustentável e econômica de consumo, permitindo que as pessoas adquiram novos objetos apenas se desfazendo daqueles que já possuem e não usam. É uma alternativa para se obter produtos, que não envolve dinheiro, ideal para aqueles que estão interessados em um produto mas não possuem o valor monetário no momento.
 
-## <img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" /> Integrantes
+## 🤜 Integrantes
 
 * [Ana Corina Damas Batista](https://github.com/corinnnab)
 * [Giovanna Ferreira dos Santos de Almeida](https://github.com/giuvanna)
