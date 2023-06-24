@@ -1,7 +1,9 @@
+<hr>
+<br>
 <h3 align="center">
 <img width="400px" src="./docs/imagens/logo.png">
 </h3>
-
+<br>
 <p align="center">
  <a href="#-sKanboo">Sobre</a> •
  <a href="#-integrantes">Integrantes</a> • 
