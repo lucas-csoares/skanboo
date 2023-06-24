@@ -7,6 +7,8 @@
         <div class="card-img">
           <img :src="postagemOrigem.foto" class="card-img-produto" />
         </div>
+        <p><span class="titulo-categoria">Categoria:</span> {{ postagemOrigem.categoriaProduto }}</p>
+        <p><span class="titulo-categoria">Interesse:</span> {{ postagemOrigem.categoriaProdutoDesejado }}</p>
       </div>
 
       <img src="../assets/flecha.png" class="flecha-img" />
@@ -16,6 +18,8 @@
         <div class="card-img">
           <img :src="postagemOfertada.foto" class="card-img-produto" />
         </div>
+        <p><span class="titulo-categoria">Categoria:</span> {{ postagemOfertada.categoriaProduto }}</p>
+        <p><span class="titulo-categoria">Interesse:</span> {{ postagemOfertada.categoriaProdutoDesejado }}</p>
       </div>
 
       <button class="oferta-botao" @click="criarOferta">
@@ -26,33 +30,33 @@
 </template>
 
 <script>
-import Postagem from "../services/PostagemService";
-import Oferta from "../services/OfertaService";
+import Postagem from '../services/PostagemService';
+import Oferta from '../services/OfertaService';
 
 export default {
   data() {
     return {
       oferta: {
-        id: "",
-        id_postagem_ofertada: "",
-        id_postagem_origem: "",
-        status: "",
+        id: '',
+        id_postagem_ofertada: '',
+        id_postagem_origem: '',
+        status: '',
       },
       postagemOfertada: {
-        id: "",
-        titulo: "",
-        descricao: "",
-        categoriaProduto: "",
-        categoriaProdutoDesejado: "",
-        status: "",
+        id: '',
+        titulo: '',
+        descricao: '',
+        categoriaProduto: '',
+        categoriaProdutoDesejado: '',
+        status: '',
       },
       postagemOrigem: {
-        id: "",
-        titulo: "",
-        descricao: "",
-        categoriaProduto: "",
-        categoriaProdutoDesejado: "",
-        status: "",
+        id: '',
+        titulo: '',
+        descricao: '',
+        categoriaProduto: '',
+        categoriaProdutoDesejado: '',
+        status: '',
       },
       postagens: [],
       ofertas: null,
@@ -61,7 +65,7 @@ export default {
 
   mounted() {
     if (!window.location.hash) {
-      window.location = window.location + "#loaded";
+      window.location = window.location + '#loaded';
       window.location.reload();
     }
 
@@ -72,7 +76,7 @@ export default {
       })
       .catch((e) => console.log(e.message));
 
-    const idOfertada = sessionStorage.getItem("idOfertada");
+    const idOfertada = sessionStorage.getItem('idOfertada');
     Postagem.exibirInfoPostagem(idOfertada)
       .then((resposta) => {
         const postagem = resposta.data;
@@ -80,7 +84,7 @@ export default {
       })
       .catch((e) => console.log(e.message));
 
-    const idOrigem = sessionStorage.getItem("idOrigem");
+    const idOrigem = sessionStorage.getItem('idOrigem');
     Postagem.exibirInfoPostagem(idOrigem)
       .then((resposta) => {
         const postagem = resposta.data;
@@ -91,15 +95,15 @@ export default {
 
   methods: {
     criarOferta() {
-      const idOfertada = sessionStorage.getItem("idOfertada");
-      const idOrigem = sessionStorage.getItem("idOrigem");
+      const idOfertada = sessionStorage.getItem('idOfertada');
+      const idOrigem = sessionStorage.getItem('idOrigem');
 
-      console.log("Ofertada Id:", idOfertada);
-      console.log("Origem Id:", idOrigem);
+      console.log('Ofertada Id:', idOfertada);
+      console.log('Origem Id:', idOrigem);
 
       Oferta.criar(idOfertada, idOrigem)
         .then(() => {
-          alert("Oferta realizada com sucesso!");
+          alert('Oferta realizada com sucesso!');
           this.errors = [];
         })
         .catch((e) => console.log(e.message));
@@ -167,9 +171,13 @@ img {
 .card {
   display: block;
   width: 260px;
-  height: 370px;
+  height: 300px;
   background: #ffffff;
   flex: none;
+}
+
+.card p {
+  margin-top: 10px;
 }
 
 .card img {
@@ -182,6 +190,14 @@ img {
   box-sizing: border-box;
   margin-left: 0px;
   margin-top: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.titulo-categoria {
+    text-decoration: none;
+  color: #515864;
+  font-weight: bold;
 }
 
 .card-img-produto {
@@ -208,26 +224,13 @@ h1 {
 .oferta-botao {
   width: 300px;
   height: 32px;
-  background: white;
-  border: 1px solid black;
-  border-radius: 16px;
-  font-weight: 400;
-  color: black;
-  transition: 0.3s;
-  margin-right: 0px;
-  margin-left: 0px;
+  text-transform: capitalize;
+  border: 1px solid #e9eced;
+  transition: all 300ms;
 }
 
 .oferta-botao:hover {
-  width: 300px;
-  height: 32px;
   background: #f9dc5c;
-  border: 1px solid black;
-  border-radius: 16px;
-  font-weight: 400;
-  color: black;
   transition: 0.3s;
-  margin-right: 0px;
-  margin-left: 0px;
 }
 </style>

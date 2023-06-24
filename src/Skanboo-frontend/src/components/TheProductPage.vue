@@ -20,13 +20,15 @@
             <br />
 
             <span><b>Telefone: </b></span>
-            <span class="oferta">{{usuarioPostagem.telefone}}</span>
+            <span class="oferta">{{ usuarioPostagem.telefone }}</span>
 
             <br />
 
             <span><b>Postador por: </b></span>
             <span class="usuario-postagem">{{ postagem.usuario }}</span>
-            <span>{{usuarioPostagem.nome}} <span class="nota-usuario">{{usuarioPostagem.notaFinal}}</span> </span>
+            <span
+              >{{ usuarioPostagem.nome }} <span class="nota-usuario">{{ usuarioPostagem.notaFinal }}</span>
+            </span>
           </div>
           <div class="informacoes-produto">
             <div class="titulo">
@@ -193,33 +195,21 @@ span {
 }
 
 button {
-  box-sizing: border-box;
-  padding: 2px 6px 2px 8px;
-  gap: 4px;
   width: 300px;
-  height: 32px;
-  background: #f9dc5c;
-  border: 1px solid #f9dc5c;
-  border-radius: 16px;
-  font-weight: 600;
-  color: #515864;
-  transition: 0.3s;
-  margin-top: 10px;
+  text-transform: capitalize;
+  border: 1px solid #e9eced;
+  transition: all 300ms;
 }
 
 button:hover {
-  box-sizing: border-box;
-  padding: 2px 6px 2px 8px;
-  gap: 4px;
-  width: 300px;
-  height: 32px;
-  background: #ffe574;
-  border: 1px solid #ffe574;
-  border-radius: 16px;
-  font-weight: 600;
-  color: #515864;
+  background: #f9dc5c;
   transition: 0.3s;
-  margin-top: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: #515864;
+  font-weight: bold;
 }
 
 p {
