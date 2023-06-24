@@ -24,13 +24,24 @@ O modelo de troca de mercadorias (escambo), apesar de antigo, tem ganhado cada v
 ## Tecnologias
 - Frontend:
   - [Chart.js](https://www.chartjs.org/)
+  - [FontAwesome](https://fontawesome.com/)
   - [JavaScript](https://www.javascript.com/)
   - [VueJs](https://vuejs.org/)
 
 - Backend
+  - [NodeJs](https://nodejs.org/)
   - [Spring Boot](https://spring.io/projects/spring-boot)
 
-- Database
+- Database:
+  - [MySQL Workbench](https://www.mysql.com/products/workbench/)
+  - 
+- Devops:
+  - [Docker](https://www.docker.com/)
+  - [Docker Compose](https://docs.docker.com/compose/)
+  - 
+- Cloud:
+  - [Azure](https://azure.microsoft.com/) 
+
 
 ## Instruções de utilização
 
