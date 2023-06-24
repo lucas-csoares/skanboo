@@ -34,18 +34,25 @@ O modelo de troca de mercadorias (escambo), apesar de antigo, tem ganhado cada v
 
 - Database:
   - [MySQL Workbench](https://www.mysql.com/products/workbench/)
-  - 
+  
 - Devops:
   - [Docker](https://www.docker.com/)
   - [Docker Compose](https://docs.docker.com/compose/)
-  - 
+    
 - Cloud:
   - [Azure](https://azure.microsoft.com/) 
 
 
 ## Instruções de utilização
 
-Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas: <listar ferramentas>
+
+# Clone o repositório 
+$ git clone <https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti2-0924100-skanboo.git>
+
+## Rodando o Back End
+
+## Rodando o Front End
 
 ## Histórico de versões
 
