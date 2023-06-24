@@ -120,7 +120,7 @@ export default {
     logar() {
       Usuario.logar(this.usuarioLogin)
         .then((resposta) => {
-          alert("Usuário logado com sucesso");
+          // alert("Usuário logado com sucesso");
           console.log(resposta);
           const token = resposta.headers.getAuthorization();
           if (!token)

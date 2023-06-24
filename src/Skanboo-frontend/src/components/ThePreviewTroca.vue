@@ -16,8 +16,8 @@
           <span><b>Interesse: </b></span>
           <span class="oferta">{{ troca.oferta.postagemOrigem.categoriaProdutoDesejado }}</span>
           <br />
-          <span><b>Contato: </b></span>
-          <span class="oferta">telefone</span>
+          <span><b>Telefone: </b></span>
+          <span class="oferta telefone">{{ usuarioPostagemOrigem.telefone }}</span>
         </div>
         <div class="informacoes-produto">
           <div class="titulo">
@@ -45,8 +45,8 @@
           <span><b>Interesse: </b></span>
           <span class="oferta">{{ troca.oferta.postagemOfertada.categoriaProdutoDesejado }}</span>
           <br />
-          <span><b>Contato: </b></span>
-          <span class="oferta">telefone</span>
+          <span><b>Telefone: </b></span>
+          <span class="oferta telefone">{{ usuarioPostagemOfertada.telefone }}</span>
         </div>
         <div class="informacoes-produto">
           <div class="titulo">
@@ -105,6 +105,7 @@
 import Troca from '../services/TrocaService';
 import Usuario from '../services/UsuarioService';
 import Avaliacao from '@/services/AvaliacaoService';
+import Postagem from '../services/PostagemService';
 
 export default {
   data() {
@@ -117,6 +118,8 @@ export default {
       avaliacao: {
         nota: null,
       },
+      usuarioPostagemOrigem: '',
+      usuarioPostagemOfertada: '',
     };
   },
   mounted() {
@@ -138,6 +141,8 @@ export default {
     Troca.exibirTroca(trocaId).then((resposta) => {
       this.troca = resposta.data;
       console.log(resposta.data);
+      this.exibirUsuarioPostagemOrigem(this.troca.oferta.postagemOrigem.id);
+      this.exibirUsuarioPostagemOfertada(this.troca.oferta.postagemOfertada.id);
       return this.troca;
     });
 
@@ -159,12 +164,6 @@ export default {
           console.log(this.id_usuario);
           console.log(trocaId);
           alert('Confirmação enviada!');
-
-          // this.$router.push({
-          //   name: "PaginaAvaliacaoView",
-          //   params: { idTroca: trocaId },
-          // });
-          // this.errors = [];
         })
         .catch((e) => console.log(e.message));
     },
@@ -194,6 +193,20 @@ export default {
         .catch((e) => {
           console.log(e.message);
         });
+    },
+
+    exibirUsuarioPostagemOrigem(id) {
+      Postagem.exibirUsuarioPostagem(id).then((resposta) => {
+        this.usuarioPostagemOrigem = resposta.data;
+        return this.usuarioPostagemOrigem;
+      });
+    },
+
+    exibirUsuarioPostagemOfertada(id) {
+      Postagem.exibirUsuarioPostagem(id).then((resposta) => {
+        this.usuarioPostagemOfertada = resposta.data;
+        return this.usuarioPostagemOfertada;
+      });
     },
   },
 };
@@ -300,6 +313,10 @@ img {
 span {
   font-size: small;
   margin-top: 5px;
+}
+
+.telefone {
+  font-size: 10px;
 }
 
 .descricao {

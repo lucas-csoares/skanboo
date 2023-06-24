@@ -19,8 +19,8 @@
 
             <br />
 
-            <span><b>Local: </b></span>
-            <span class="oferta">{{usuarioPostagem.endereco.cidade}} ({{usuarioPostagem.endereco.uf}}) </span>
+            <span><b>Telefone: </b></span>
+            <span class="oferta">{{usuarioPostagem.telefone}}</span>
 
             <br />
 
