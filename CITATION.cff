@@ -1,41 +1,30 @@
-# YAML 1.2
----
-authors: 
-  - family-names: sobrenome do aluno 1
-    given-names: Nome do aluno 1 
-  - family-names: sobrenome do aluno 1
-    given-names: Nome do aluno 1 
-  - family-names: sobrenome do aluno 1
-    given-names: Nome do aluno 1 
-  - family-names: sobrenome do aluno 1
-    given-names: Nome do aluno 1 
-  - family-names: sobrenome do aluno 1
-    given-names: Nome do aluno 1 
-    
+cff-version: 1.0.1
+message: Please cite this software using these metadata.
+title: Skanboo
+authors:
+  - family-names: Damas Batista
+    given-names: Ana Corina 
+  - family-names: Ferreira dos Santos de Almeida
+    given-names: Giovanna 
+  - family-names: Lage da Costa
+    given-names: Guilherme
+  - family-names: Cabral Soares
+    given-names: Lucas
+  - family-names: Lagares Stahlberg
+    given-names: Vitor
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: De Paula
-    given-names: Hugo Bastos
+    family-names: Bastos de Paula
+    given-names: Hugo
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: Veloso
-    given-names: Eveline Alonso
-  - name-suffix: Professor
-    affiliation: PUC Minas
-    family-names: Silva
-    given-names: Thiago Augusto Nicolini 
-cff-version: "1.1.0"
-keywords: 
-  - "Modelagem de Processos de Negócios"
-  - "Palavra chave 2"
-  - "Palavra chave 3"
-message: |
-    "If you use this software, please cite it using these metadata.
-    Se você utilizar este software, por favor cite-o utilizando estes metadados."
-repository-code: "https://github.com/url do projeto"
-title: "Título do projeto"
-abstract: |
-    "
-    Breve descrição do projeto
-    "
-...
+    family-names: Alonso Veloso
+    given-names: Eveline
+
+keywords:
+  - Escambo 
+  - Troca
+repository-code: https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti2-0924100-skanboo
+license: CC-BY-4.0
+version: 1.0.0
+date-released: 2023-06-25
