@@ -39,13 +39,14 @@ O modelo de troca de mercadorias (escambo), apesar de antigo, tem ganhado cada v
   - [VueJs](https://vuejs.org/)
 
 - Backend
-  - [NodeJs](https://nodejs.org/)
   - [Spring Boot](https://spring.io/projects/spring-boot)
+  - [Spring Security](https://spring.io/projects/spring-security)
 
 - Database:
   - [MySQL Workbench](https://www.mysql.com/products/workbench/)
   
 - Devops:
+  - [GitHub Actions (CI/CD)](https://github.com/features/actions)
   - [Docker](https://www.docker.com/)
   - [Docker Compose](https://docs.docker.com/compose/)
     
