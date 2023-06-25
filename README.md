@@ -39,6 +39,7 @@ O modelo de troca de mercadorias (escambo), apesar de antigo, tem ganhado cada v
   - [VueJs](https://vuejs.org/)
 
 - Backend
+  - [NodeJs](https://nodejs.org/)
   - [Spring Boot](https://spring.io/projects/spring-boot)
   - [Spring Security](https://spring.io/projects/spring-security)
 
@@ -53,24 +54,45 @@ O modelo de troca de mercadorias (escambo), apesar de antigo, tem ganhado cada v
 - Cloud:
   - [Azure](https://azure.microsoft.com/) 
 
-
+---
 ## 💻 Instruções de utilização
 
-Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas: <listar ferramentas>
+Antes de começar, você deve se certificar que tenha instalado na sua máquina o [Docker](https://docs.docker.com/engine/install/ubuntu/), em versão igual ou superior 20.10.
 
-## Clone o repositório 
-$ git clone <https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti2-0924100-skanboo.git>
+**Passo 01: clone o repositório**
 
-## Rodando o Back End
+`$ git clone https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti2-0924100-skanboo.git`
 
-## Rodando o Front End
+**Passo 02: instalar dependências para o Vue JS**
+
+A instalação do Vue CLI pode ser acessada [aqui](https://cli.vuejs.org/guide/).
+
+- Vue JS: `npm install vue@^3.2.13`
+- Reactivity: `npm install @vue/reactivity@^3.3.4`
+- Axios: `npm install @vue/reactivity@^3.3.4` 
+- Chart JS: `npm install chart.js@^4.3.0`
+- Core JS: `npm install core-js@^3.8.3`
+- Router: `npm install vue-router@^4.0.3`
+- Vue the mask: `npm install vue-the-mask@^0.11.1`
+
+**Passo 03: iniciar backend via docker-compose**
+
+- Passo 3.1: acesse a pasta clonada no **Passo 01** pelo CMD: `cd plf-es-2023-1-ti2-0924100-skanboo`;
+- Passo 3.2: acesse a pasta src pelo CMD: `cd src`;
+- Passo 3.3: acesse a pasta Skanboo pelo CMD: `cd Skanboo`;
+- Passo 3.4: iniciar Docker-compose da API: `docker-compose up`
+
+**Passo 04: iniciar frontend**
+
+- Passo 4.1: acesse a pasta clonada no **Passo 01** pelo CMD: `cd plf-es-2023-1-ti2-0924100-skanboo`;
+- Passo 4.2: acesse a pasta src pelo CMD: `cd src`;
+- Passo 4.3: acesse a pasta Skanboo pelo CMD: `cd Skanboo-frontend`;
+- Passo 3.4: iniciar aplicação frontend: `npm run serve`
+
+A aplicação vai estar rodando em <http://localhost:8080>.
 
 ## Histórico de versões
 
-* 0.1.1
-  * CHANGE: Atualização das documentacoes. Código permaneceu inalterado.
-* 0.1.0
-  * Implementação da funcionalidade X pertencente ao processo P.
-* 0.0.1
-  * Trabalhando na modelagem do processo de negócios.
+* 1.0.0
+  * Consolidação da versão final do código.
   
