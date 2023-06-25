@@ -10,22 +10,34 @@
           <img :src="troca.oferta.postagemOrigem.foto" alt="Foto do Produto" />
         </div>
         <div class="categorias-produto">
+          <br />
+
           <span><b>Categoria: </b></span>
           <span class="categoria">{{ troca.oferta.postagemOrigem.categoriaProduto }}</span>
+
           <br />
+
           <span><b>Interesse: </b></span>
           <span class="oferta">{{ troca.oferta.postagemOrigem.categoriaProdutoDesejado }}</span>
+
           <br />
+
           <span><b>Telefone: </b></span>
-          <span class="oferta telefone">{{ usuarioPostagemOrigem.telefone }}</span>
+          <span class="oferta">{{ usuarioPostagemOrigem.telefone }}</span>
+
+          <br />
+
+          <span><b>Postador por: </b></span>
+          <span
+            >{{ usuarioPostagemOrigem.nome }}
+            <span class="nota-usuario">{{ usuarioPostagemOrigem.notaFinal }}</span>
+          </span>
         </div>
         <div class="informacoes-produto">
           <div class="titulo">
-            <h2>{{ troca.oferta.postagemOrigem.titulo }}</h2>
+            <h1>{{ troca.oferta.postagemOrigem.titulo }}</h1>
           </div>
-          <p>
-            {{ troca.oferta.postagemOrigem.descricao }}
-          </p>
+          <p>{{ troca.oferta.postagemOrigem.descricao }}</p>
         </div>
       </div>
 
@@ -39,48 +51,55 @@
           <img :src="troca.oferta.postagemOfertada.foto" alt="Foto do Produto" />
         </div>
         <div class="categorias-produto">
+          <br />
+
           <span><b>Categoria: </b></span>
           <span class="categoria">{{ troca.oferta.postagemOfertada.categoriaProduto }}</span>
+
           <br />
+
           <span><b>Interesse: </b></span>
           <span class="oferta">{{ troca.oferta.postagemOfertada.categoriaProdutoDesejado }}</span>
+
           <br />
+
           <span><b>Telefone: </b></span>
-          <span class="oferta telefone">{{ usuarioPostagemOfertada.telefone }}</span>
+          <span class="oferta">{{ usuarioPostagemOfertada.telefone }}</span>
+
+          <br />
+
+          <span><b>Postador por: </b></span>
+          <span
+            >{{ usuarioPostagemOfertada.nome }} <span class="nota-usuario">{{ usuarioPostagemOfertada.notaFinal }}</span>
+          </span>
         </div>
         <div class="informacoes-produto">
           <div class="titulo">
-            <h2>{{ troca.oferta.postagemOfertada.titulo }}</h2>
+            <h1>{{ troca.oferta.postagemOfertada.titulo }}</h1>
           </div>
-          <p>
-            {{ troca.oferta.postagemOfertada.descricao }}
-          </p>
+          <p>{{ troca.oferta.postagemOfertada.descricao }}</p>
         </div>
       </div>
     </div>
     <div class="container-botoes">
-      <button class="voltar" @click="paginaTrocas()">Voltar</button>
+      <button class="voltar" @click="paginaTrocas()"><a href="">Voltar</a></button>
 
-      <button v-if="troca && troca.status === 'EM_ANDAMENTO'" id="aceitar" @click="confirmacaoTroca()">Produto
-        recebido</button>
+      <button v-if="troca && troca.status === 'EM_ANDAMENTO'" id="aceitar" @click="confirmacaoTroca()">
+        <a>Produto recebido</a>
+      </button>
 
-      <button v-if="troca && troca.status === 'FINALIZADA'" id="aceitar" @click="toggle()">Avaliar
-        troca</button>
-
-
+      <button v-if="troca && troca.status === 'FINALIZADA'" id="aceitar" @click="toggle()"><a>Avaliar troca</a></button>
     </div>
 
     <div class="popup-container">
-
       <div class="popup">
-
         <h3>Como foi essa troca?</h3>
 
-        <input type="radio" name="buttons" id="btn1" value="1" v-model="avaliacao.nota">
-        <input type="radio" name="buttons" id="btn2" value="2" v-model="avaliacao.nota">
-        <input type="radio" name="buttons" id="btn3" value="3" v-model="avaliacao.nota">
-        <input type="radio" name="buttons" id="btn4" value="4" v-model="avaliacao.nota">
-        <input type="radio" name="buttons" id="btn5" value="5" v-model="avaliacao.nota">
+        <input type="radio" name="buttons" id="btn1" value="1" v-model="avaliacao.nota" />
+        <input type="radio" name="buttons" id="btn2" value="2" v-model="avaliacao.nota" />
+        <input type="radio" name="buttons" id="btn3" value="3" v-model="avaliacao.nota" />
+        <input type="radio" name="buttons" id="btn4" value="4" v-model="avaliacao.nota" />
+        <input type="radio" name="buttons" id="btn5" value="5" v-model="avaliacao.nota" />
 
         <div class="icons">
           <label for="btn1">🙁</label>
@@ -90,16 +109,13 @@
           <label for="btn5">😍</label>
         </div>
 
-        <input type="submit" value="Enviar" class="enviar" @click="criarAvaliacao">
+        <input type="submit" value="Enviar" class="enviar" @click="criarAvaliacao" />
 
         <div @click="toggle()" id="close">✖</div>
-
       </div>
-
     </div>
   </section>
 </template>
-
 
 <script>
 import Troca from '../services/TrocaService';
@@ -125,22 +141,10 @@ export default {
   mounted() {
     // const ofertaId = this.$route.params.idOferta;
     const trocaId = this.$route.params.idTroca;
-    console.log(trocaId);
-
-    // Fetch the oferta data
-    // Oferta.exibirOferta(ofertaId)
-    //   .then((resposta) => {
-    //     const ofertas = resposta.data;
-    //     this.oferta = ofertas;
-    //     console.log(this.oferta);
-    //     return this.oferta;
-    //   })
-    //   .catch((e) => console.log(e.message));
 
     // Fetch the troca data
     Troca.exibirTroca(trocaId).then((resposta) => {
       this.troca = resposta.data;
-      console.log(resposta.data);
       this.exibirUsuarioPostagemOrigem(this.troca.oferta.postagemOrigem.id);
       this.exibirUsuarioPostagemOfertada(this.troca.oferta.postagemOfertada.id);
       return this.troca;
@@ -169,12 +173,12 @@ export default {
     },
     paginaTrocas(id_troca) {
       this.$router.push({
-        name: "PaginaTrocasView",
+        name: 'PaginaTrocasView',
         params: { idTroca: id_troca },
       });
     },
     toggle() {
-      let toggle = document.querySelector('.popup-container')
+      let toggle = document.querySelector('.popup-container');
       toggle.classList.toggle('toggle');
     },
 
@@ -183,9 +187,9 @@ export default {
 
       Avaliacao.criar(trocaId, this.avaliacao)
         .then(() => {
-          alert("Avaliação criada com sucesso");
+          alert('Avaliação criada com sucesso');
           this.$router.push({
-            name: "PaginaTrocasView",
+            name: 'PaginaTrocasView',
             params: { idTroca: trocaId },
           });
           this.errors = [];
@@ -214,42 +218,31 @@ export default {
 
 <style scoped>
 * {
-  transition: all .2s linear;
+  transition: all 0.2s linear;
 }
 
 .container {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  max-width: 500px;
+  max-width: 1000px;
   padding: 10px;
   text-align: left;
-  align-items: center;
   margin: 0 auto;
-  gap: 80px;
 }
 
 .imagem {
   display: flex;
+  width: 300px;
+  height: 300px;
+  background-color: rgba(128, 128, 128, 0);
+  border: 0px solid #515864;
   justify-content: center;
-  width: 180px;
-  height: 180px;
-  background-color: rgb(255, 255, 255);
-  border: 1px solid #cacaca;
-  border-radius: 4px;
-
-}
-
-.card-img {
-  width: 180px;
-  height: 180px;
-  object-fit:cover;
-
 }
 
 img {
-  max-width: 180px;
-  max-height: 180px;
+  width: 300px;
+  height: 300px;
   object-fit: cover;
   border-radius: 4px;
 }
@@ -263,56 +256,59 @@ img {
 }
 
 .seta {
-  width: 50px;
+  width: 100px;
   height: 50px;
-  margin-top: 0px;
+  padding-top: 100px;
+  margin: 0 20px;
 }
 
 .titulo {
   display: flex;
   flex-direction: column;
   height: 100%;
-  margin-left: 2px;
-  margin-top: 20px;
-  margin-bottom: -20px;
-  padding: 0px;
+  min-width: 100px;
+  margin-left: 10px;
+  margin-top: 10px;
+  padding: 10px;
   padding-top: 0;
   flex: 0;
-  font-size: 18px;
 }
 
 .informacoes-produto {
   display: flex;
   flex-direction: column;
-  height: 300px;
-  width: 300px;
-  min-width: 300px;
+  height: 20;
+  width: 500px;
   margin-left: 0px;
   margin-top: 10px;
   padding: 10px;
   padding-top: 0;
   flex: 1;
-  border: 1px solid #cacaca;
+  border: 1px solid #e9eced;
   border-radius: 4px;
 }
 
 .categorias-produto {
   display: flex;
   flex-direction: column;
-  height: 180px;
+  height: 300px;
   margin-left: 10px;
   margin-top: 0px;
-  padding: 20px;
+  padding: 10px;
   padding-top: 0;
   padding-bottom: 0;
   flex: 1;
-  border: 1px solid #cacaca;
+  border: 1px solid #e9eced;
   border-radius: 4px;
 }
 
+.nota-usuario {
+  font-weight: bold;
+  color: #f26a63;
+}
+
 span {
-  font-size: small;
-  margin-top: 5px;
+  line-height: 1.5em;
 }
 
 .telefone {
@@ -323,120 +319,43 @@ span {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 400px;
+  max-width: 500px;
   padding: 0px;
   text-align: left;
   margin: 0 auto;
 }
 
-.voltar {
-  box-sizing: border-box;
-  padding: 2px 6px 2px 8px;
-  gap: 4px;
-  width: 90px;
-  height: 32px;
-  background: transparent;
-  border: 1px solid #000;
-  border-radius: 16px;
-  font-weight: 600;
-  color: #515864;
-  transition: 0.3s;
-  margin-top: 10px;
-  left: 60px;
+button {
+  width: 300px;
+  text-transform: capitalize;
+  border: 1px solid #e9eced;
+  transition: all 300ms;
 }
 
-.voltar:hover {
-  box-sizing: border-box;
-  padding: 2px 6px 2px 8px;
-  gap: 4px;
-  width: 90px;
-  height: 32px;
+button:hover {
   background: #f9dc5c;
-  border: 1px solid #f9dc5c;
-  border-radius: 16px;
-  font-weight: 600;
-  color: #515864;
   transition: 0.3s;
-  margin-top: 10px;
-  left: 60px;
 }
 
-.enviar {
-  box-sizing: border-box;
-  padding: 2px 6px 2px 8px;
-  gap: 4px;
-  width: 100px;
-  height: 32px;
-  background: transparent;
-  border: 1px solid #000;
-  border-radius: 16px;
-  font-weight: 600;
+a {
+  text-decoration: none;
   color: #515864;
-  transition: 0.3s;
-  margin-top: 10px;
+  font-weight: bold;
 }
-
-.enviar:hover {
-  box-sizing: border-box;
-  padding: 2px 6px 2px 8px;
-  gap: 4px;
-  width: 110px;
-  height: 32px;
-  background: #f9dc5c;
-  border: 1px solid #f9dc5c;
-  border-radius: 16px;
-  font-weight: 600;
-  color: #515864;
-  transition: 0.3s;
-  margin-top: 10px;
-}
-
-#aceitar {
-  border: 1px solid #282c33;
-}
-
-#aceitar:hover {
-  border: 1px solid #f9dc5c;
-  background: #f9dc5c;
-}
-
-/* .invisivel {
-    box-sizing: border-box;
-    padding: 2px 6px 2px 8px;
-    gap: 4px;
-    width: 460px;
-    height: 32px;
-    font-weight: 600;
-    margin-top: 10px;
-    position: fixed;
-    border: 0px;
-}
-
-.invisivel:hover+.enviar {
-    box-sizing: border-box;
-    padding: 2px 6px 2px 8px;
-    gap: 4px;
-    width: 150px;
-    height: 32px;
-    background: #f9dc5c;
-    border: 1px solid #f9dc5c;
-    border-radius: 16px;
-    font-weight: 600;
-    color: #515864;
-    transition: 0.3s;
-    margin-top: 10px;
-} */
 
 p {
-  line-height: 1.7em;
-  padding: 5px;
-  font-size: 14px;
+  line-height: 1.5em;
+  padding: 0 20px;
+  margin-top: -25px;
+  font-size: 16px;
   text-align: justify;
   word-break: break-all;
+  letter-spacing: 0.5px;
 }
 
 h1 {
   font-size: 2em;
+  letter-spacing: 0.5px;
 }
 
 h2 {
@@ -453,7 +372,7 @@ h2 {
   top: -120%;
   left: 0;
   z-index: 1000;
-  background: rgba(0, 0, 0, .3);
+  background: rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -470,7 +389,7 @@ h2 {
   text-align: center;
   margin: 10px;
   padding: 10px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   position: relative;
 }
@@ -488,7 +407,7 @@ h2 {
   width: 150px;
 }
 
-.popup-container .popup input[type="radio"] {
+.popup-container .popup input[type='radio'] {
   display: none;
 }
 
@@ -499,19 +418,18 @@ h2 {
 .popup-container .popup .icons label {
   font-size: 50px;
   cursor: pointer;
-  opacity: .4;
+  opacity: 0.4;
 }
 
 .popup-container .popup .icons:hover label {
-  opacity: .2;
+  opacity: 0.2;
 }
 
-
-.popup-container .popup #btn1:checked~.icons label:nth-child(1),
-.popup-container .popup #btn2:checked~.icons label:nth-child(2),
-.popup-container .popup #btn3:checked~.icons label:nth-child(3),
-.popup-container .popup #btn4:checked~.icons label:nth-child(4),
-.popup-container .popup #btn5:checked~.icons label:nth-child(5),
+.popup-container .popup #btn1:checked ~ .icons label:nth-child(1),
+.popup-container .popup #btn2:checked ~ .icons label:nth-child(2),
+.popup-container .popup #btn3:checked ~ .icons label:nth-child(3),
+.popup-container .popup #btn4:checked ~ .icons label:nth-child(4),
+.popup-container .popup #btn5:checked ~ .icons label:nth-child(5),
 .popup-container .popup .icons label:hover {
   opacity: 1;
   font-size: 60px;

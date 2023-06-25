@@ -25,7 +25,6 @@
             <br />
 
             <span><b>Postador por: </b></span>
-            <span class="usuario-postagem">{{ postagem.usuario }}</span>
             <span
               >{{ usuarioPostagem.nome }} <span class="nota-usuario">{{ usuarioPostagem.notaFinal }}</span>
             </span>
