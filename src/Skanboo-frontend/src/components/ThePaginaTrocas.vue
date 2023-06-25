@@ -27,7 +27,7 @@
       <div v-for="troca in trocas" :key="troca.id" class="grid-card">
         <h3 class="status-oferta">Status: {{ troca.status.toLowerCase().replace('_', ' ') }}</h3>
         <div class="card postagem-origem">
-          <h2 class="titulo-postagem">{{ troca.oferta.postagemOrigem.titulo }}</h2>
+          <h2 class="titulo-postagem">{{ formatarTitulo(troca.oferta.postagemOrigem.titulo) }}</h2>
 
           <div class="card-img">
             <img :src="troca.oferta.postagemOrigem.foto" class="card-img-produto" />
@@ -56,7 +56,7 @@
         <!-- -------------------------------------------------- -->
         <div class="card postagem-ofertada">
           <h2 class="titulo-postagem">
-            {{ troca.oferta.postagemOfertada.titulo }}
+            {{ formatarTitulo(troca.oferta.postagemOfertada.titulo) }}
           </h2>
 
           <div class="card-img">
@@ -105,29 +105,28 @@ export default {
   },
 
   methods: {
-
     carregarTrocas() {
       Troca.exibirTrocas()
-      .then((resposta) => {
-        this.trocas = resposta.data.filter((troca) => {
-          if (this.filtrarRecusada && troca.status === 'RECUSADA') {
-            return false;
-          }
-          if (this.filtrarEmAndamento && troca.status === 'EM_ANDAMENTO') {
-            return false;
-          }
-          if (troca.status === 'ACEITA') {
-            return false;
-          }
-          return true;
+        .then((resposta) => {
+          this.trocas = resposta.data.filter((troca) => {
+            if (this.filtrarRecusada && troca.status === 'RECUSADA') {
+              return false;
+            }
+            if (this.filtrarEmAndamento && troca.status === 'EM_ANDAMENTO') {
+              return false;
+            }
+            if (troca.status === 'ACEITA') {
+              return false;
+            }
+            return true;
+          });
+          this.quantidadeTrocas = this.trocas.length;
+        })
+        .catch((e) => {
+          let grid = document.querySelector('.grid');
+          grid.innerHTML = 'O usuário não fez nenhuma oferta ainda!';
+          console.log(e.message);
         });
-        this.quantidadeTrocas = this.trocas.length;
-      })
-      .catch((e) => {
-        let grid = document.querySelector('.grid');
-        grid.innerHTML = 'O usuário não fez nenhuma oferta ainda!';
-        console.log(e.message);
-      });
     },
 
     paginaDetalhes(id_troca) {
@@ -145,6 +144,14 @@ export default {
       }
 
       this.carregarTrocas();
+    },
+
+    formatarTitulo(titulo) {
+      const maxLength = 22;
+      if (titulo.length > maxLength) {
+        return titulo.substring(0, maxLength - 3) + '(...)';
+      }
+      return titulo;
     },
   },
 };

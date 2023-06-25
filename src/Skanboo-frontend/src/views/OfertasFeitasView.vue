@@ -4,7 +4,7 @@
 
     <div class="div-filtros">
       <div class="dropdown-filtros">
-        <span>Filtrar ({{quantidadeOfertas}})</span>
+        <span>Filtrar ({{ quantidadeOfertas }})</span>
         <div class="dropdown-conteudo">
           <p class="btn-filtro" :class="{ 'btn-filtro-ativo': filtrarRecusada }" @click="filtrarOfertas('RECUSADA')">
             Recusada
@@ -27,7 +27,7 @@
       <div v-for="oferta in ofertas" :key="oferta[0].id" class="grid-card">
         <h3 class="status-oferta">Status: {{ oferta[0].status.toLowerCase().replace('_', ' ') }}</h3>
         <div class="card postagem-origem">
-          <h2 class="titulo-postagem">{{ oferta[0].postagemOfertada.titulo }}</h2>
+          <h2 class="titulo-postagem">{{ formatarTitulo(oferta[0].postagemOfertada.titulo) }}</h2>
 
           <div class="card-img">
             <img :src="oferta[0].postagemOfertada.foto" class="card-img-produto" />
@@ -55,7 +55,7 @@
         <!-- -------------------------------------------------- -->
         <div class="card postagem-ofertada">
           <h2 class="titulo-postagem">
-            {{ oferta[0].postagemOrigem.titulo }}
+            {{ formatarTitulo(oferta[0].postagemOrigem.titulo) }}
           </h2>
 
           <div class="card-img">
@@ -152,6 +152,14 @@ export default {
       }
 
       this.carregarOfertas();
+    },
+
+    formatarTitulo(titulo) {
+      const maxLength = 22;
+      if (titulo.length > maxLength) {
+        return titulo.substring(0, maxLength - 3) + '(...)';
+      }
+      return titulo;
     },
   },
 };
@@ -382,5 +390,4 @@ h2 {
 button {
   border-radius: 16px !important;
 }
-
 </style>

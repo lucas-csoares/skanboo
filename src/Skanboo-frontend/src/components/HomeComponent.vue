@@ -413,7 +413,7 @@ img {
 /* CARROUSEL PARCEIROS */
 
 .carrossel-parceiros {
-  width: 100%;
+  max-width: 100%;
   height: 500px;
   overflow: hidden;
   transition: transform 0.5s ease-in-out;
@@ -431,7 +431,8 @@ img {
 .carrosel-item-parceiro img {
   margin-top: 10px;
   border-radius: 4px;
-  max-height: 250px;
+  max-height: 130px;
+  max-width: 130px;
 }
 
 .carrosel-container-parceiros {
