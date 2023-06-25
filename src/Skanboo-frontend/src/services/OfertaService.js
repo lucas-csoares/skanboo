@@ -33,6 +33,14 @@ export default {
     });
   },
 
+  listarOfertasPostagem: (id) => {
+    return http.get(`oferta/listar-ofertas-postagem/${id}`, {
+      headers: {
+        Authorization: localStorage.getItem('token')
+      }
+    });
+  },
+
   atualizar: (id, oferta) => {
     return http.put(`oferta/${id}`, oferta, {
       headers: {

@@ -127,7 +127,6 @@ public class AvaliacaoService {
         calcMedia(usuario);
         
     }
-       
 
     public void calcMedia(Usuario usuario) {
         List<Troca> trocasRealizadas = trocaRepository.findByOferta_PostagemOrigem_UsuarioOrOferta_PostagemOfertada_Usuario(usuario);
@@ -164,9 +163,6 @@ public class AvaliacaoService {
         usuario.setNotaFinal(mediaNotas);
         usuarioRepository.save(usuario);
     }
-
-    
-
 
     private Boolean trocaPertenceAoUsuarioPostagemOrigem(UserSpringSecurity userSpringSecurity, Avaliacao avaliacao) {
         return avaliacao.getTroca().getOferta().getPostagemOrigem().getUsuario().getId()

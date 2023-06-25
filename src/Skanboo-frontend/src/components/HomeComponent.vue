@@ -2,31 +2,10 @@
   <section class="products">
     <h1>Anúncios para você</h1>
 
-    <!-- <div class="carrossel">
-      <div class="carrossel-container" :style="{ transform: `translateX(-${currentSlideIndex * 100}%)` }">
-        <div class="carrossel-item" v-for="postagem in carrosselPostagens" :key="postagem.id">
-          <router-link :to="{ name: 'TheProductPage', params: { id: postagem.id }, query: { currentPage: $route.name } }">
-            <div class="card-img-carrossel">
-              <img :src="postagem.foto" alt="" class="card-img" />
-            </div>
-          </router-link>
-        </div>
-      </div>
-
-      <div class="carrossel-navigation">
-        <button class="arrow" @click="slideAnterior">
-          <img src="../assets/left-arrow.png" alt="" />
-        </button>
-        <button class="arrow" @click="proximoSlide">
-          <img src="../assets/right-arrow.png" alt="" />
-        </button>
-      </div>
-    </div> -->
-
     <div class="container">
       <div v-for="postagem in postagensPaginadas" :key="postagem.id" class="card">
         <router-link :to="{ name: 'TheProductPage', params: { id: postagem.id }, query: { currentPage: $route.name } }">
-          <h2>{{ postagem.titulo }}</h2>
+          <h2>{{ formatarTitulo(postagem.titulo) }}</h2>
           <div class="card-img-produto">
             <img :src="postagem.foto" alt="" class="card-img" />
           </div>
@@ -41,8 +20,13 @@
           <a href="#" @click="paginaAnterior"><img src="../assets/left-arrow.png" alt="" /></a>
         </div>
         <div class="pagination">
-          <a v-for="pagina in numeroPaginas" :key="pagina" :class="{ active: pagina === paginaAtual }"
-            @click="irParaPagina(pagina)">{{ pagina }}</a>
+          <a
+            v-for="pagina in numeroPaginas"
+            :key="pagina"
+            :class="{ active: pagina === paginaAtual }"
+            @click="irParaPagina(pagina)"
+            >{{ pagina }}</a
+          >
         </div>
         <div class="arrow">
           <a href="#" @click="proximaPagina"><img src="../assets/right-arrow.png" alt="" /></a>
@@ -52,8 +36,10 @@
 
     <div class="carrossel-parceiros">
       <h1>Apoios e Parcerias:</h1>
-      <div class="carrosel-container-parceiros"
-        :style="{ transform: `translateX(-${currentSlideIndexParceiro * 100}%)` }">
+      <div
+        class="carrosel-container-parceiros"
+        :style="{ transform: `translateX(-${currentSlideIndexParceiro * 100}%)` }"
+      >
         <div class="carrosel-item-parceiro" v-for="parceiro in carrosselParceiros" :key="parceiro.id">
           <router-link :to="{ name: 'TheEditPartner', params: { id: parceiro.id } }">
             <div class="card-img-carrosel-parceiro">
@@ -62,21 +48,23 @@
           </router-link>
         </div>
       </div>
-
     </div>
   </section>
 </template>
 
 <script>
-import Postagem from "../services/PostagemService";
+import Postagem from '../services/PostagemService';
 import Parceiro from '@/services/ParceiroService';
+import Oferta from '../services/OfertaService';
+
 export default {
   data() {
     return {
       postagem: {
-        id: "",
-        titulo: "",
-        imagem: "",
+        id: '',
+        titulo: '',
+        imagem: '',
+        ofertas: [],
       },
       postagens: [],
       paginaAtual: 1,
@@ -84,8 +72,8 @@ export default {
       currentSlideIndex: 0,
       carrosselPostagens: 0,
       parceiro: {
-        id: "",
-        imagem: "",
+        id: '',
+        imagem: '',
       },
       parceiros: [],
       paginaAtualParceiro: 1,
@@ -94,7 +82,11 @@ export default {
       carrosselParceiros: [],
       timer: null,
     };
+  },
 
+  mounted() {
+    this.exibirTodasPostagens(), this.exibirTodosParceiros();
+    this.iniciarTemporizador();
   },
 
   computed: {
@@ -113,29 +105,46 @@ export default {
     exibirTodasPostagens() {
       Postagem.exibirTodasPostagens().then((resposta) => {
         this.postagens = resposta.data;
-        this.carrosselPostagens = this.obterPostagensAleatorias();
+        const promises = this.postagens.map((postagem) => {
+          return this.listarOfertasPostagem(postagem.id);
+        });
+        Promise.all(promises).then(() => {
+          this.postagens = this.postagens.filter((postagem) => {
+            if (postagem.ofertas && postagem.ofertas.length > 0) {
+              return !postagem.ofertas.some((oferta) => {
+                return oferta.status === 'ACEITA';
+              });
+            }
+            return true;
+          });
+        });
+      });
+    },
+
+    listarOfertasPostagem(id) {
+      return Oferta.listarOfertasPostagem(id).then((resposta) => {
+        const postagem = this.postagens.find((postagem) => postagem.id === id);
+        if (postagem) {
+          postagem.ofertas = resposta.data;
+        }
       });
     },
 
     obterPostagensAleatorias() {
-      const postagensAleatorias = this.postagens.sort(
-        () => 0.5 - Math.random()
-      );
+      const postagensAleatorias = this.postagens.sort(() => 0.5 - Math.random());
       return postagensAleatorias.slice(0, 4);
     },
 
     proximoSlide() {
       if (this.currentSlideIndex < this.carrosselPostagens.length - 1) {
         this.currentSlideIndex++;
-      } else if (this.currentSlideIndex == this.carrosselPostagens.length - 1)
-        this.currentSlideIndex = 0;
+      } else if (this.currentSlideIndex == this.carrosselPostagens.length - 1) this.currentSlideIndex = 0;
     },
 
     slideAnterior() {
       if (this.currentSlideIndex > 0) {
         this.currentSlideIndex--;
-      } else if (this.currentSlideIndex == 0)
-        this.currentSlideIndex = this.carrosselPostagens.length - 1;
+      } else if (this.currentSlideIndex == 0) this.currentSlideIndex = this.carrosselPostagens.length - 1;
     },
 
     irParaPagina(pagina) {
@@ -162,9 +171,7 @@ export default {
     },
 
     obterParceirosAleatorios() {
-      const parceirosAleatorios = this.parceiros.sort(
-        () => 0.5 - Math.random()
-      );
+      const parceirosAleatorios = this.parceiros.sort(() => 0.5 - Math.random());
       return parceirosAleatorios.slice(0, 20);
     },
 
@@ -194,15 +201,17 @@ export default {
       this.iniciarTemporizador(); // Reinicia o temporizador
     },
 
-  },
-
-  mounted() {
-    this.exibirTodasPostagens(),
-    this.exibirTodosParceiros();
-    this.iniciarTemporizador();
+    formatarTitulo(titulo) {
+      const maxLength = 22;
+      if (titulo.length > maxLength) {
+        return titulo.substring(0, maxLength - 3) + '(...)';
+      }
+      return titulo;
+    },
   },
 };
 </script>
+
 <style scoped>
 * {
   box-sizing: border-box;
@@ -306,7 +315,7 @@ img {
 }
 
 .btn-ver-produto:hover {
-  background: #FFE677;
+  background: #ffe677;
   border: 1px solid #f9dc5c;
   color: white;
 }
