@@ -115,9 +115,6 @@ export default {
             if (this.filtrarEmAndamento && troca.status === 'EM_ANDAMENTO') {
               return false;
             }
-            if (troca.status === 'FINALIZADA') {
-              return false;
-            }
             return true;
           });
           this.quantidadeTrocas = this.trocas.length;
