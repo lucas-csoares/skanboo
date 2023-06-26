@@ -121,31 +121,31 @@ A avaliação entre usuários é importante, pois fornece maior segurança à ou
 
 O usuário se cadastra preenchendo os campos de "nome", "cpf", "e-mail", "senha", "data de nascimento", "telefone", "UF". Caso todas restrições de criação de usuário sejam contempladas, como, "cpf", "email" e "telefone" únicos, o usuário será criado. Além disso, o usuário cadastrado pode atualizar suas informações de cadastro.
 
-![Processo 1 – Cadastro de usuário](imagens/cadastroUsuario.png 'Modelo BPMN do Processo 1.')
+![Processo 1 – Cadastro de usuário](/assets/processos/cadastroUsuario.png 'Modelo BPMN do Processo 1.')
 
 ### 3.3.2 Processo 2 – Gerenciar produtos
 
 O usuário é capaz de adicionar um produto ou atualizar as informações de produto previamente cadastrado.
 
-![Processo 2 – Gerenciar produtos](imagens/gerenciarProduto-rev04.png 'Modelo BPMN do Processo 2.')
+![Processo 2 – Gerenciar produtos](/assets/processos/gerenciarProduto-rev04.png 'Modelo BPMN do Processo 2.')
 
 ### 3.3.3 Processo 3 – Cooptar parceiros
 
 O setor de Marketing irá enviar uma proposta de parceria para o parceiro selecionado. Este parceiro deve decidir se vai aceitar ou nao proposta, caso não seja aceita o processo será encerrado. Caso contrário, o setor de Marketing deve realizar o cadastro do novo parceiro e, a partir disto, o sistema passará automaticamente a divulgar este parceiro na plataforma do **sKanboo**.
 
-![Processo 3 - Cooptar parceiros](imagens/cooptarParceiros.png 'Modelo BPMN do Processo 3.')
+![Processo 3 - Cooptar parceiros](/assets/processos/cooptarParceiros.png 'Modelo BPMN do Processo 3.')
 
 ### 3.3.4 Processo 4 – Troca de objetos entre usuários
 
 Quando uma postagem de seu interesse for encontrada, o usuário pode oferecer, em troca, um outro produto seu, que também deve estar postado na plataforma. Caso o usuário aceite a troca, os dados de contato de ambos os usuários envolvidos serão encaminhados para que eles possam definir melhor como a troca será feita.
 
-![Processo 4 – Troca de objetos entre usuários](imagens/processoTroca.png 'Modelo BPMN do Processo 4.')
+![Processo 4 – Troca de objetos entre usuários](/assets/processos/processoTroca.png 'Modelo BPMN do Processo 4.')
 
 ### 3.3.5 Processo 5 – Avaliação do usuário
 
 O usuário deve acessar o status de negociações e selecionar a negociação que quer avaliar. Em seguida, pode deixar avaliação positiva, neutra ou negativa e escrever um comentário.
 
-![Processo 5 – Avaliação do usuário](imagens/avaliacaoUsuario.png 'Modelo BPMN do Processo 5.')
+![Processo 5 – Avaliação do usuário](/assets/processos/avaliacaoUsuario.png 'Modelo BPMN do Processo 5.')
 
 ## 4. Projeto da Solução
 
@@ -330,7 +330,7 @@ A seguir é apresentada a arquitetura de data flow da aplicação web.
 
 A seguir é apresentado o Diagrama de Entidade-Relacionamento (DER) do projeto desenvolvido.
 
-![Diagrama de Entidade Relacionamento](imagens/diagrama-entidade-relacionamento-rev02.png 'Diagrama de Entidade Relacionamento')
+![Diagrama de Entidade Relacionamento](/assets/processos/diagrama-entidade-relacionamento-rev02.png 'Diagrama de Entidade Relacionamento')
 
 ## 6. Indicadores de desempenho
 
