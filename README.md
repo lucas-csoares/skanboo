@@ -91,6 +91,11 @@ A instalação do Vue CLI pode ser acessada [aqui](https://cli.vuejs.org/guide/)
 
 A aplicação vai estar rodando em <http://localhost:8080>.
 
+**Usuário de teste**
+
+- Login: admin@email.com
+- Senha: 123456
+
 ## Histórico de versões
 
 * 1.0.0
