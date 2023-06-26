@@ -2,7 +2,7 @@
   <section class="products">
     <h1>Anúncios para você</h1>
 
-    <div class="container">
+    <div class="container carregando">
       <div v-for="postagem in postagensPaginadas" :key="postagem.id" class="card">
         <router-link :to="{ name: 'TheProductPage', params: { id: postagem.id }, query: { currentPage: $route.name } }">
           <h2>{{ formatarTitulo(postagem.titulo) }}</h2>
@@ -105,9 +105,11 @@ export default {
     exibirTodasPostagens() {
       Postagem.exibirTodasPostagens().then((resposta) => {
         this.postagens = resposta.data;
-        const promises = this.postagens.map((postagem) => {
+
+        const promises = resposta.data.map((postagem) => {
           return this.listarOfertasPostagem(postagem.id);
         });
+
         Promise.all(promises).then(() => {
           this.postagens = this.postagens.filter((postagem) => {
             if (postagem.ofertas && postagem.ofertas.length > 0) {
@@ -115,6 +117,7 @@ export default {
                 return oferta.status === 'ACEITA';
               });
             }
+            document.querySelector('.container').classList.remove('carregando');
             return true;
           });
         });
@@ -246,6 +249,10 @@ img {
   flex-wrap: wrap;
   margin-left: auto;
   margin-right: auto;
+}
+
+.carregando {
+  display: none;
 }
 
 .card {
