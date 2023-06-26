@@ -12,7 +12,8 @@
             style="width: 24px; height: 24px" /></abbr
       ></a>
     </div>
-    <div class="container">
+
+    <div class="container carregando">
       <div v-for="postagem in postagens" :key="postagem.id" class="card">
         <span class="icon-excluir" @click="excluirPostagem(postagem.id)"><img src="../assets/delete-icon.svg" /></span>
         <div class="card-conteudo">
@@ -36,6 +37,7 @@
 
 <script>
 import Postagem from '../services/PostagemService';
+import Oferta from '../services/OfertaService';
 
 export default {
   data() {
@@ -52,16 +54,42 @@ export default {
     };
   },
 
-  mounted() {
-    Postagem.exibirPostagensUsuarioLogado()
-      .then((resposta) => {
-        const postagens = resposta.data;
-        this.postagens = postagens;
-      })
-      .catch((e) => console.log(e.message));
+  async mounted() {
+    try {
+      await this.exibirPostagensUsuarioLogado();
+
+      // Função concluída, pode remover a classe "carregando"
+      document.querySelector('.container').classList.remove('carregando');
+    } catch (error) {
+      console.log(error.message);
+    }
   },
 
   methods: {
+    async exibirPostagensUsuarioLogado() {
+      try {
+        const resposta = await Postagem.exibirPostagensUsuarioLogado();
+        this.postagens = resposta.data;
+
+        const promises = resposta.data.map((postagem) => {
+          return this.listarOfertasPostagem(postagem.id);
+        });
+
+        await Promise.all(promises);
+
+        this.postagens = this.postagens.filter((postagem) => {
+          if (postagem.ofertas && postagem.ofertas.length > 0) {
+            return !postagem.ofertas.some((oferta) => {
+              return oferta.status === 'ACEITA';
+            });
+          }
+          return true;
+        });
+      } catch (error) {
+        console.log(error.message);
+      }
+    },
+
     excluirPostagem(id) {
       if (confirm('Deseja realmente excluir esta postagem?')) {
         Postagem.excluirPostagem(id)
@@ -82,6 +110,15 @@ export default {
           this.postagens = postagens;
         })
         .catch((e) => console.log(e.message));
+    },
+
+    listarOfertasPostagem(id) {
+      return Oferta.listarOfertasPostagem(id).then((resposta) => {
+        const postagem = this.postagens.find((postagem) => postagem.id === id);
+        if (postagem) {
+          postagem.ofertas = resposta.data;
+        }
+      });
     },
   },
 };
@@ -149,6 +186,10 @@ img {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 30px;
+}
+
+.carregando {
+  display: none;
 }
 
 .adicionar {

@@ -85,7 +85,8 @@ export default {
   },
 
   mounted() {
-    this.exibirTodasPostagens(), this.exibirTodosParceiros();
+    this.exibirTodasPostagens();
+    this.exibirTodosParceiros();
     this.iniciarTemporizador();
   },
 

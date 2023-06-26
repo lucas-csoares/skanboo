@@ -201,6 +201,11 @@ h2 {
   padding: 15px;
 }
 
+a {
+  text-decoration: none !important;
+  color: #515864;
+}
+
 .grid-card {
   width: 600px;
   display: grid;
