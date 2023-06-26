@@ -213,6 +213,11 @@ h1 {
   margin-bottom: 20px;
 }
 
+a {
+  color: #252c32;
+  text-decoration: none;
+}
+
 h2 {
   font-size: 14px;
   color: #252c32;
