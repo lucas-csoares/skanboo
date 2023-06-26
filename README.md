@@ -20,41 +20,43 @@ O modelo de troca de mercadorias (escambo), apesar de antigo, tem ganhado cada v
 
 ## 🤜 Integrantes
 
-* [Ana Corina Damas Batista](https://github.com/corinnnab)
-* [Giovanna Ferreira dos Santos de Almeida](https://github.com/giuvanna)
-* [Guilherme Lage da Costa](https://github.com/guilhermelcosta)
-* [Lucas Cabral Soares](https://github.com/lcsoares2022)
-* [Vítor Lagares Stahlberg](https://github.com/VitorLS0)
+- [Ana Corina Damas Batista](https://github.com/corinnnab)
+- [Giovanna Ferreira dos Santos de Almeida](https://github.com/giuvanna)
+- [Guilherme Lage da Costa](https://github.com/guilhermelcosta)
+- [Lucas Cabral Soares](https://github.com/lcsoares2022)
+- [Vítor Lagares Stahlberg](https://github.com/VitorLS0)
 
 ## 👨‍💻 Professores
 
-* Hugo Bastos de Paula
-* Eveline Alonso Veloso
+- Hugo Bastos de Paula
+- Eveline Alonso Veloso
 
 ## 🚀 Tecnologias
+
 - Frontend:
+
   - [Chart.js](https://www.chartjs.org/)
   - [FontAwesome](https://fontawesome.com/)
   - [JavaScript](https://www.javascript.com/)
   - [VueJs](https://vuejs.org/)
+  - [NodeJs](https://nodejs.org/)
 
 - Backend
-  - [NodeJs](https://nodejs.org/)
+
   - [Spring Boot](https://spring.io/projects/spring-boot)
   - [Spring Security](https://spring.io/projects/spring-security)
 
 - Database:
   - [MySQL Workbench](https://www.mysql.com/products/workbench/)
-  
 - Devops:
   - [GitHub Actions (CI/CD)](https://github.com/features/actions)
   - [Docker](https://www.docker.com/)
   - [Docker Compose](https://docs.docker.com/compose/)
-    
 - Cloud:
-  - [Azure](https://azure.microsoft.com/) 
+  - [Azure](https://azure.microsoft.com/)
 
 ---
+
 ## 💻 Instruções de utilização
 
 Antes de começar, você deve se certificar que tenha instalado na sua máquina o [Docker](https://docs.docker.com/engine/install/ubuntu/), em versão igual ou superior 20.10.
@@ -69,7 +71,7 @@ A instalação do Vue CLI pode ser acessada [aqui](https://cli.vuejs.org/guide/)
 
 - Vue JS: `npm install vue@^3.2.13`
 - Reactivity: `npm install @vue/reactivity@^3.3.4`
-- Axios: `npm install @vue/reactivity@^3.3.4` 
+- Axios: `npm install @vue/reactivity@^3.3.4`
 - Chart JS: `npm install chart.js@^4.3.0`
 - Core JS: `npm install core-js@^3.8.3`
 - Router: `npm install vue-router@^4.0.3`
@@ -98,6 +100,5 @@ A aplicação vai estar rodando em <http://localhost:8080>.
 
 ## Histórico de versões
 
-* 1.0.0
-  * Consolidação da versão final do código.
-  
+- 1.0.0
+  - Consolidação da versão final do código.
