@@ -470,4 +470,4 @@ Verifique no link abaixo como devem ser as referências no padrão ABNT:
 
 [Apresentação final](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti2-0924100-skanboo/blob/master/docs/sKanboo_Final.pdf)
 
-Do vídeo de apresentação (armazenado no repositório).
+[Video de apresentação](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti2-0924100-skanboo/blob/master/docs/video%20skanboo.mp4)
