@@ -3,7 +3,7 @@
     <div>
       <h1>Selecione um produto para oferecer em troca</h1>
     </div>
-    <div class="container">
+    <div class="container carregando">
       <div v-for="postagem in postagens" :key="postagem.id" class="card">
         <h2>{{ postagem.titulo }}</h2>
         <div class="card-img-produto">
@@ -19,46 +19,69 @@
 </template>
 
 <script>
-import Postagem from "../services/PostagemService";
+import Postagem from '../services/PostagemService';
+import Oferta from '../services/OfertaService';
 
 export default {
   data() {
     return {
       postagem: {
-        id: "",
-        titulo: "",
-        descricao: "",
-        categoriaProduto: "",
-        categoriaProdutoDesejado: "",
-        status: "",
+        id: '',
+        titulo: '',
+        descricao: '',
+        categoriaProduto: '',
+        categoriaProdutoDesejado: '',
+        status: '',
       },
       postagens: [],
     };
   },
 
-  mounted() {
-    const idOrigem = sessionStorage.getItem("idOrigem");
-    console.log("Origem Id:", idOrigem);
+  async mounted() {
+    try {
+      await this.exibirPostagensUsuarioLogado();
 
-    Postagem.exibirPostagensUsuarioLogado()
-      .then((resposta) => {
-        const postagens = resposta.data;
-        this.postagens = postagens;
-      })
-      .catch((e) => console.log(e.message));
+      // Função concluída, pode remover a classe "carregando"
+      document.querySelector('.container').classList.remove('carregando');
+    } catch (error) {
+      console.log(error.message);
+    }
   },
 
   methods: {
-    carregarPostagens() {
-      Postagem.exibirPostagensUsuarioLogado()
-        .then((resposta) => {
-          const postagens = resposta.data;
-          this.postagens = postagens;
-        })
-        .catch((e) => console.log(e.message));
+    async exibirPostagensUsuarioLogado() {
+      try {
+        const resposta = await Postagem.exibirPostagensUsuarioLogado();
+        this.postagens = resposta.data;
+
+        const promises = resposta.data.map((postagem) => {
+          return this.listarOfertasPostagem(postagem.id);
+        });
+
+        await Promise.all(promises);
+
+        this.postagens = this.postagens.filter((postagem) => {
+          if (postagem.ofertas && postagem.ofertas.length > 0) {
+            return !postagem.ofertas.some((oferta) => {
+              return oferta.status === 'ACEITA';
+            });
+          }
+          return true;
+        });
+      } catch (error) {
+        console.log(error.message);
+      }
+    },
+    listarOfertasPostagem(id) {
+      return Oferta.listarOfertasPostagem(id).then((resposta) => {
+        const postagem = this.postagens.find((postagem) => postagem.id === id);
+        if (postagem) {
+          postagem.ofertas = resposta.data;
+        }
+      });
     },
     saveIdOrigem(thisId) {
-      sessionStorage.setItem("idOrigem", thisId);
+      sessionStorage.setItem('idOrigem', thisId);
     },
   },
 };
@@ -113,6 +136,10 @@ img {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 30px;
+}
+
+.carregando {
+  display: none;
 }
 
 .products {

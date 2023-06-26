@@ -204,6 +204,11 @@ h2 {
   text-align: left;
 }
 
+a {
+  text-decoration: none !important;
+  color: #252c32;
+}
+
 .grid {
   width: 100%;
   display: grid;
