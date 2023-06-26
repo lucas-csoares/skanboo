@@ -317,6 +317,10 @@ As tecnologias que serão utilizadas para resolução do problema são:
 | MySQL Workbench          | Ferramenta de design de banco de dados                                                      |
 | Postman                  | Plataforma de teste dos endpoints da API                                                    |
 | HeideSQL                 | Software utilizado para visualizar o banco de dados criado                                  |
+| Docker                   | Software usado para implantar aplicativos dentro de containers virtuais                     |
+| Docker Compose           | Software usado para definir e compartilhar aplicações multi-containers                      |
+| FontAwesome              | Ferramente utilizada para a estilização de fontes e ícones                                  |
+| Azure                    | Serviço que permite a computação remota                                                     |
 
 A seguir é apresentada a arquitetura de data flow da aplicação web.
 
