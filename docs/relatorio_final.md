@@ -26,13 +26,15 @@ _Instituto de Informática e Ciências Exatas – Pontifícia Universidade de Mi
 
 ---
 
-_**Resumo**. Escrever aqui o resumo. O resumo deve contextualizar rapidamente o trabalho, descrever seu objetivo e, ao final, mostrar algum resultado relevante do trabalho (até 10 linhas)._
+**Resumo**
+
+O modelo de troca de mercadorias (escambo), apesar de antigo, tem ganhado cada vez mais força devido à crescente preocupação com a sustentabilidade, o que reforça as premissas da economia circular, que prevê o uso e reuso de uma dado item. Além disso, devido à instabilidade financeira causada pela pandemia da COVID-19, muitas pessoas vêm buscado formas mais baratas de suprir suas necessidades. É com isso em mente que surgiu o sKanboo, que tem como objetivo facilitar a troca de produtos entre as pessoas. A ideia é proporcionar uma forma mais sustentável e econômica de consumo, permitindo que as pessoas adquiram novos objetos apenas se desfazendo daqueles que já possuem e não usam. É uma alternativa para se obter produtos, que não envolve dinheiro, ideal para aqueles que estão interessados em um produto mas não possuem o valor monetário no momento.
 
 ---
 
 ## 1. Introdução
 
-### 1.1 Contextualização
+### 1.1. Contextualização
 
 O escambo é um modelo de comércio caracterizado pela troca direta de bens entre as pessoas, sem o uso de dinheiro. Nesse tipo de negociação, cada uma das partes envolvidas oferece algo que possui em troca de algo que necessita.
 
@@ -42,17 +44,17 @@ O crescimento dos hábitos de consumo da população se mostrou mais expressivo 
 
 Portanto, ao fazer escambo, as pessoas podem ser desfazer de bens que já possui (e que por ventura não utiliza), por outros que precisa, ganha mais flexibilidade por poder negociar diretamente com a outra parte, e também é uma forma mais sustentável de consumir.
 
-### 1.2 Problema
+### 1.2. Problema
 
 Uma situação na qual grande parte da população já se deparou é de necessitar ou querer adquirir um determinado produto, mas não ter o dinheiro para isso no momento. Dado esse cenário, o mais comum que aconteça, caso a pessoa esteja em real necessidade do produto, é que ela o adquira, seja parcelando seu valor (incorrendo em juros) ou pegando empréstimos, por exemplo. Um outro cenário possível é que essa pessoa opte por um modelo de escambo, tentando trocar um objeto que já tem por esse outro que precisa. No entanto, pode ser difícil encontrar alguém interessado em adquirir seu produto, ou não conhecer ninguém que possua o que deseja.
 
 Partindo desse pressuposto, seria possível criar uma plataforma que colocasse as pessoas dispostas a trocar objetos em contato? de forma que elas conseguissem se desfazer daqueles objetos que possuem e não usam, podendo obter o que querem sem ter que gastar com isso? Esse é o problema que será analisado e desenvolvido no projeto apresentado a seguir.
 
-### 1.3 Objetivo geral
+### 1.3. Objetivo geral
 
 O objetivo geral do projeto em questão é desenvolver uma aplicação web que permita a troca de objetos entre os seus usuários.
 
-#### 1.3.1 Objetivos específicos
+### 1.4. Objetivos específicos
 
 Para desenvolver a aplicação descrita acima, mapeamos os seguintes objetivos específicos:
 
@@ -60,7 +62,7 @@ Para desenvolver a aplicação descrita acima, mapeamos os seguintes objetivos e
 - Desenvolver um banco de dados com as informações dos usuários cadastrados e objetos publicados;
 - Desenvolver um sistema de autenticação e segurança dos dados dos usuários.
 
-### 1.4 Justificativas
+### 1.4. Justificativas
 
 Com o **sKanboo**, as pessoas poderão trocar objetos que possuem, e não usam, sem estarem limitadas ao seu ciclo social para que isso aconteça. Dessa forma, será uma alternativa para se obter novos produtos, que não envolve dinheiro, ideal para as pessoas que estão interessadas em algo, mas não possuem o dinheiro no momento.
 
@@ -117,31 +119,31 @@ A avaliação entre usuários é importante, pois fornece maior segurança à ou
 
 ### 3.3. Modelagem dos Processos
 
-### 3.3.1 Processo 1 – Gerenciar usuário
+#### 3.3.1. Processo 1 – Gerenciar usuário
 
 O usuário se cadastra preenchendo os campos de "nome", "cpf", "e-mail", "senha", "data de nascimento", "telefone", "UF". Caso todas restrições de criação de usuário sejam contempladas, como, "cpf", "email" e "telefone" únicos, o usuário será criado. Além disso, o usuário cadastrado pode atualizar suas informações de cadastro.
 
 ![Processo 1 – Cadastro de usuário](/assets/processos/processo01.png 'Modelo BPMN do Processo 1.')
 
-### 3.3.2 Processo 2 – Gerenciar produtos
+#### 3.3.2. Processo 2 – Gerenciar produtos
 
 O usuário é capaz de adicionar um produto ou atualizar as informações de produto previamente cadastrado.
 
 ![Processo 2 – Gerenciar produtos](/assets/processos/processo02.png 'Modelo BPMN do Processo 2.')
 
-### 3.3.3 Processo 3 – Cooptar parceiros
+#### 3.3.3. Processo 3 – Cooptar parceiros
 
 O setor de Marketing irá enviar uma proposta de parceria para o parceiro selecionado. Este parceiro deve decidir se vai aceitar ou nao proposta, caso não seja aceita o processo será encerrado. Caso contrário, o setor de Marketing deve realizar o cadastro do novo parceiro e, a partir disto, o sistema passará automaticamente a divulgar este parceiro na plataforma do **sKanboo**.
 
 ![Processo 3 - Cooptar parceiros](/assets/processos/processo03.png 'Modelo BPMN do Processo 3.')
 
-### 3.3.4 Processo 4 – Troca de objetos entre usuários
+#### 3.3.4. Processo 4 – Troca de objetos entre usuários
 
 Quando uma postagem de seu interesse for encontrada, o usuário pode oferecer, em troca, um outro produto seu, que também deve estar postado na plataforma. Caso o usuário aceite a troca, os dados de contato de ambos os usuários envolvidos serão encaminhados para que eles possam definir melhor como a troca será feita.
 
 ![Processo 4 – Troca de objetos entre usuários](/assets/processos/processo04.png 'Modelo BPMN do Processo 4.')
 
-### 3.3.5 Processo 5 – Avaliação do usuário
+#### 3.3.5. Processo 5 – Avaliação do usuário
 
 O usuário deve acessar o status de negociações e selecionar a negociação que quer avaliar. Em seguida, pode deixar avaliação positiva, neutra ou negativa e escrever um comentário.
 
@@ -151,15 +153,15 @@ O usuário deve acessar o status de negociações e selecionar a negociação qu
 
 ### 4.1. Detalhamento das atividades
 
-#### Processo 1 – Gerenciar usuário
+#### 4.1.1. Processo 1 – Gerenciar usuário
 
 **Login de usuário**
 
-| **Campo**          | **Tipo**       | **Restrições**                                                                  | **Valor default** |
-| ------------------ | -------------- | ------------------------------------------------------------------------------- | ----------------- |
-| E-mail             | Caixa de texto | Formato de e-mail                                                               | -                 |
-| Senha              | Caixa de texto | Mínimo 12 caracteres com no mínimo uma letra, um número e um caractere especial | -                 |
-| Criar conta        | Link           | Link único                                                                      | -                 |
+| **Campo**   | **Tipo**       | **Restrições**                                                                  | **Valor default** |
+| ----------- | -------------- | ------------------------------------------------------------------------------- | ----------------- |
+| E-mail      | Caixa de texto | Formato de e-mail                                                               | -                 |
+| Senha       | Caixa de texto | Mínimo 12 caracteres com no mínimo uma letra, um número e um caractere especial | -                 |
+| Criar conta | Link           | Link único                                                                      | -                 |
 
 **Cadastro de usuário**
 
@@ -205,7 +207,7 @@ O usuário deve acessar o status de negociações e selecionar a negociação qu
 | Rua         | Caixa de texto | Texto com no máximo 45 caracteres | Rua atual         |
 | UF          | Seleção única  | Lista de UFs do Brasil            | UF atual          |
 
-#### Processo 2 – Gerenciar produtos
+#### 4.1.2. Processo 2 – Gerenciar produtos
 
 **Consultar produtos**
 
@@ -237,12 +239,11 @@ O usuário deve acessar o status de negociações e selecionar a negociação qu
 
 **Página do produto**
 
-| **Campo**         | **Tipo** | **Restrições** | **Valor default** |
-| ----------------- | -------- | -------------- | ----------------- |
-| Negociar          | Link     | Link único     | -                 |
+| **Campo** | **Tipo** | **Restrições** | **Valor default** |
+| --------- | -------- | -------------- | ----------------- |
+| Negociar  | Link     | Link único     | -                 |
 
-
-#### Processo 3 – Cooptar parceiros
+#### 4.1.3. Processo 3 – Cooptar parceiros
 
 **Cadastro de parceiro**
 
@@ -261,31 +262,30 @@ O usuário deve acessar o status de negociações e selecionar a negociação qu
 | Nome fantasia   | Caixa de texto | Máximo de 100 caracteres | Nome atual        |
 | Logo da empresa | Arquivo        | Máximo 1 foto            | Logo atual        |
 
-
-#### Processo 4 – Troca de objetos entre usuários
+#### 4.1.4. Processo 4 – Troca de objetos entre usuários
 
 **Escolher produto**
 
-| **Campo**                                         | **Tipo** | **Restrições** | **Valor default** |
-| ------------------------------------------------- | -------- | -------------- | ----------------- |
-| Selecionar produto que desejada oferecer em troca | Seleção única  | Obrigatório     | -                 |
-| Negociar                                          | Link     | Link único     | -                 |
+| **Campo**                                         | **Tipo**      | **Restrições** | **Valor default** |
+| ------------------------------------------------- | ------------- | -------------- | ----------------- |
+| Selecionar produto que desejada oferecer em troca | Seleção única | Obrigatório    | -                 |
+| Negociar                                          | Link          | Link único     | -                 |
 
 **Minhas trocas**
 
-| **Campo**                                         | **Tipo** | **Restrições** | **Valor default** |
-| ------------------------------------------------- | -------- | -------------- | ----------------- |
-| Ver produto ofertado                              | Link     | Link único     | -                 |
-| Ver produto que deseja                            | Link     | Link único     | -                 |
-| Cancelar oferta                                   | Link     | Link único     | -                 |
+| **Campo**              | **Tipo** | **Restrições** | **Valor default** |
+| ---------------------- | -------- | -------------- | ----------------- |
+| Ver produto ofertado   | Link     | Link único     | -                 |
+| Ver produto que deseja | Link     | Link único     | -                 |
+| Cancelar oferta        | Link     | Link único     | -                 |
 
 **Preview da oferta**
 
-| **Campo**                                         | **Tipo** | **Restrições** | **Valor default** |
-| ------------------------------------------------- | -------- | -------------- | ----------------- |
-| Negociar                                          | Link     | Link único     | -                 |
+| **Campo** | **Tipo** | **Restrições** | **Valor default** |
+| --------- | -------- | -------------- | ----------------- |
+| Negociar  | Link     | Link único     | -                 |
 
-#### Processo 5 – Avaliação do usuário
+#### 4.1.5. Processo 5 – Avaliação do usuário
 
 **Avaliar negociação**
 
@@ -313,7 +313,8 @@ As tecnologias que serão utilizadas para resolução do problema são:
 | Java                     | Linguagem de programação utilizada para codificar o back-end                                |
 | Vue JS                   | Framework front-end para fazer requisições da API e apresenta-las no navegador              |
 | Chart JS                 | Biblioteca para geração de gráficos dinâmicos                                               |
-| SpringBoot               | Framework back-end utilizado para criar e gerenciar as entidades em um banco de dados       |
+| Spring Boot              | Framework back-end utilizado para criar e gerenciar as entidades em um banco de dados       |
+| Spring Security          | Framework back-end utilizado tratamento de autorizações para níveis de usuários             |
 | MySQL Workbench          | Ferramenta de design de banco de dados                                                      |
 | Postman                  | Plataforma de teste dos endpoints da API                                                    |
 | HeideSQL                 | Software utilizado para visualizar o banco de dados criado                                  |
@@ -336,109 +337,97 @@ A seguir é apresentado o Diagrama de Entidade-Relacionamento (DER) do projeto d
 
 A seguir são apresentados os indicadores utilizados no projeto.
 
-| **Indicador**                           | **Objetivos**                                                               | **Descrição**                                                | **Cálculo**                                                           | **Fonte dados**            | **Perspectiva** |
-| --------------------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------ | --------------------------------------------------------------------- | -------------------------- | --------------- |
-| Número de contas criadas mensalmente    | Avaliar quantidade de novas contas criadas                                  | Acompanha o número de usuários criados mensalmente           | ![Somatorio de contas no mês](imagens/Sum_usuario.png)                                              | Tabela de usuários         | Crescimento     |
-| Número de postagens criadas mensalmente | Avaliar quantidade de novas postagens criadas                               | Acompanha o número de postagens criadas mensalmente          | ![Somatorio de postagens no mês](imagens/Sum_postagem.png)                                           | Tabela de postagem         | Crescimento     |
-| Categorias mais ofertadas e buscadas    | Medir a relação entre as categorias mais ofertadas e as mais desejadas      | Compara quais categorias são mais requisitadas               | ![Somatorio de postagens no mês](imagens/Sum_categoriaOfertada.png) e ![Somatorio de postagens no mês](imagens/Sum_categoriaDesejada.png)                 | Tabela de postagem         | Desempenho      |
-| Taxa de criação de trocas               | Avaliar o número de trocas criadas em relação ao número de postagens no mês | Verifica quantas postagens foram envolvidas em trocas no mês | ![Somatorio de postagens no mês](imagens/Perc_criacaoTroca.png)          | Tabela de troca e postagem | Desempenho      |
-| Taxa de conclusão de trocas             | Avaliar quantas trocas são efetivamente finalizadas no mês                  | Acompanhar quantas trocas foram finalizadas no mês           | ![Somatorio de postagens no mês](imagens/Perc_conclusaoTroca.png) | Tabela de troca            | Desempenho      |
+| **Indicador**                           | **Objetivos**                                                               | **Descrição**                                                | **Cálculo**                                                                                                                               | **Fonte dados**            | **Perspectiva** |
+| --------------------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | --------------- |
+| Número de contas criadas mensalmente    | Avaliar quantidade de novas contas criadas                                  | Acompanha o número de usuários criados mensalmente           | ![Somatorio de contas no mês](imagens/Sum_usuario.png)                                                                                    | Tabela de usuários         | Crescimento     |
+| Número de postagens criadas mensalmente | Avaliar quantidade de novas postagens criadas                               | Acompanha o número de postagens criadas mensalmente          | ![Somatorio de postagens no mês](imagens/Sum_postagem.png)                                                                                | Tabela de postagem         | Crescimento     |
+| Categorias mais ofertadas e buscadas    | Medir a relação entre as categorias mais ofertadas e as mais desejadas      | Compara quais categorias são mais requisitadas               | ![Somatorio de postagens no mês](imagens/Sum_categoriaOfertada.png) e ![Somatorio de postagens no mês](imagens/Sum_categoriaDesejada.png) | Tabela de postagem         | Desempenho      |
+| Taxa de criação de trocas               | Avaliar o número de trocas criadas em relação ao número de postagens no mês | Verifica quantas postagens foram envolvidas em trocas no mês | ![Somatorio de postagens no mês](imagens/Perc_criacaoTroca.png)                                                                           | Tabela de troca e postagem | Desempenho      |
+| Taxa de conclusão de trocas             | Avaliar quantas trocas são efetivamente finalizadas no mês                  | Acompanhar quantas trocas foram finalizadas no mês           | ![Somatorio de postagens no mês](imagens/Perc_conclusaoTroca.png)                                                                         | Tabela de troca            | Desempenho      |
 
-## 7.Sistema desenvolvido
+## 7. Sistema desenvolvido
 
 O software desenvolvido consiste em um site de trocas do tipo escambo no qual o usuário possui a opção de cadastro para poder realizar as trocas. O sistema visa agilizar o processo de troca e funciona da seguinte forma:
 
-#### Tela Inicial
+#### 7.1. Tela Inicial
 
-A tela inicial contém anúncios randomicamente selecionados para o usuário. 
+A tela inicial contém anúncios randomicamente selecionados para o usuário.
 
 ![Tela Inicial](imagens/prints%20da%20aplicacao/telaAnuncios.png 'Tela Inicial.')
 
-
-#### Tela de Login
+#### 7.2. Tela de Login
 
 A tela de login contém a opção de acesso ao sistema através dos campos 'Email' e 'Senha'. Caso o usuário nãp possua um cadastro, ele consegue se cadastrar na plataforma através do botão 'Criar uma conta'.
 
 ![Tela de Login](imagens/prints%20da%20aplicacao/telaLogin.png 'Tela de login.')
 
-
-#### Tela de Cadastro
+#### 7.3. Tela de Cadastro
 
 O usuário deve preencher os campos 'Nome', 'Email', 'Senha', 'Data de Nascimento', 'CPF' e 'Telefone' para realizar o cadastro de uma nova conta.
 
 ![Tela de Cadastro](imagens/prints%20da%20aplicacao/telaCadastro.png 'Tela de cadastro.')
 
+#### 7.4. Tela de Informações da Conta
 
-#### Tela de Informações da Conta
-
-A tela de informações da conta exibe os campos 'Nome', 'Nascimento', 'Email', 'Telefone', 'Senha', 'CPF' e 'Endereço', referentes a conta do usuário. Contém também os botões 'Editar endereço', que direciona o usuário para a página de edição do endereço, 'Editar', que direciona o usuário para a página de editar a conta e 'Sair', que faz o logout do usuário. 
+A tela de informações da conta exibe os campos 'Nome', 'Nascimento', 'Email', 'Telefone', 'Senha', 'CPF' e 'Endereço', referentes a conta do usuário. Contém também os botões 'Editar endereço', que direciona o usuário para a página de edição do endereço, 'Editar', que direciona o usuário para a página de editar a conta e 'Sair', que faz o logout do usuário.
 
 ![Tela de Informações da Conta](imagens/prints%20da%20aplicacao/telaInformacoesConta.png 'Tela de Informações da Conta.')
 
-
-#### Tela de Editar Endereço
+#### 7.5. Tela de Editar Endereço
 
 O usuário pode preencher os campos 'UF', 'CEP', 'Cidade', 'Bairro', 'Rua', 'Número' e 'Complemento' para realizar a edição do endereço ou clicar no botão 'Cancelar' para cancelar a edição.
 
 ![Tela de Editar Endereço](imagens/prints%20da%20aplicacao/telaEditarEndereco.png 'Tela de editar endereço.')
 
+#### 7.6. Tela de Alterar Informações da Conta
 
-#### Tela de Alterar Informações da Conta
-
-O usuário pode preencher os campos 'Adicionar foto', 'Editar nome', 'Editar telefone' e 'UF' para realizar a edição de informações da conta ou clicar no botão 'Cancelar' para cancelar a edição. 
+O usuário pode preencher os campos 'Adicionar foto', 'Editar nome', 'Editar telefone' e 'UF' para realizar a edição de informações da conta ou clicar no botão 'Cancelar' para cancelar a edição.
 
 ![Tela de Alterar Informações da Conta](imagens/prints%20da%20aplicacao/telaAlterarInformacoesConta.png 'Tela de alterar informações da conta.')
 
-
-#### Tela 'Meus Anúncios'
+#### 7.7. Tela 'Meus Anúncios'
 
 A tela 'Meus Anúncios' exibe os anúncios do usuário e contém os botões 'Editar', que direciona o usuário para a página de editar o produto e 'Excluir', que exclui o anúncio.
 
 ![Tela 'Meus Anúncios'](imagens/prints%20da%20aplicacao/telaMeusAnuncios.png 'Tela Meus Anúncios.')
 
-
-#### Tela de Editar Produto
+#### 7.8. Tela de Editar Produto
 
 O usuário pode preencher os campos 'Adicionar foto', 'Título', 'Descrição', 'Selecione a categoria do produto' e 'Selecione a categoria de interesse' para realizar a edição de informações do produto.
 
 ![Tela de Editar Produto](imagens/prints%20da%20aplicacao/telaEditarProduto.png 'Tela de editar produto.')
 
-
-#### Tela do Produto
+#### 7.9. Tela do Produto
 
 Exibe as informações do produto ('Categoria', 'Interesse', 'Local', 'Postado por', 'Título' e 'Descrição') e o botão 'Negociar', que direciona o usuário para a página de seleção de um produto para ser oferecido em troca.
 
 ![Tela do Produto](imagens/prints%20da%20aplicacao/telaProduto.png 'Tela do produto.')
 
-
-#### Tela 'Selecione um produto para oferecer em troca'
+#### 7.10. Tela 'Selecione um produto para oferecer em troca'
 
 Exibe os produtos postados pelo usuário para que ele possa selecionar um e oferecer em troca do produto desejado.
 
 ![Tela 'Selecione um produto para oferecer em troca'](imagens/prints%20da%20aplicacao/telaProdutoTroca.png 'Tela Selecione um produto para oferecer em troca.')
 
-
-#### Tela de Prévia da Troca
+#### 7.11. Tela de Prévia da Troca
 
 Exibe o produto que o usuário está ofertando e o produto que o usuário deseja.
 
 ![Tela de Prévia da Troca](imagens/prints%20da%20aplicacao/telaPreviewTroca.png 'Tela de prévia da troca.')
 
-
-#### Tela de Ofertas Feitas
+#### 7.12. Tela de Ofertas Feitas
 
 Exibe as ofertas realizadas pelo usuário e contém um filtro que permite que o usuário selecione os status de oferta que deseja ver ('Recusada' e 'Em andamento').
 
 ![Tela de Ofertas Feitas](imagens/prints%20da%20aplicacao/telaOfertasFeitas.png 'Tela de ofertas feitas.')
 
-#### Tela de Ofertas Recebidas
+#### 7.13. Tela de Ofertas Recebidas
 
 Exibe as ofertas recebidas pelo usuário e contém um filtro que permite que o usuário selecione os status de oferta que deseja ver ('Recusada' e 'Em andamento').
 
 ![Tela de Ofertas Recebidas](imagens/prints%20da%20aplicacao/telaOfertasRecebidas.png 'Tela de ofertas recebidas.')
 
-
-#### Tela de Avaliação
+#### 7.14. Tela de Avaliação
 
 Consiste em uma tela que aparece após o status da trocar ser dado como finalizado por ambas as partes, permitindo que os dois usuários possam selecionar um 'emoji' para avaliar o que acharam da troca.
 
@@ -448,13 +437,9 @@ Consiste em uma tela que aparece após o status da trocar ser dado como finaliza
 
 O projeto Skanboo é um sistema que pretende auxiliar na realização do escambo, a fim de aumentar ainda mais a aplicação da economia circular[1] e dos princípios da sustentabilidade, além de conectar o usuário com um número de pessoas que vai além do seu ciclo social. Para isto foi criada uma interface amigável e intuitiva que permite que o usuário consiga transitar pelo sistema sem muitas dificuldades.
 
-Após a definição do problema que seria abordado, foram discutidas inúmeras formas para a implementação de uma solução, dentre elas uma que fazia uso de moedas digitais, até concluir-se que a proposta mais fiel aos príncipios sustentáveis do sistema seria a que permitia somente a troca de bens e serviços por estes mesmos. É necessário, no futuro, avaliar abordagens para realizar algumas melhorias no sistema, como por exemplo migrar todo o processo de troca para dentro do site, ao invés de apenas informar o contato dos usuários envolvidos. Com isso, finaliza-se a entrega da primeira versão do projeto.
+Após a definição do problema que seria abordado, foram discutidas inúmeras formas para a implementação de uma solução, dentre elas uma que fazia uso de moedas digitais, até concluir-se que a proposta mais fiel aos príncipios sustentáveis do sistema seria a que permitia somente a troca de bens e serviços por estes mesmos. É necessário, no futuro, avaliar abordagens para realizar algumas melhorias no sistema, como por exemplo migrar todo o processo de troca para dentro do site, ao invés de apenas informar o contato dos usuários envolvidos.
 
 # REFERÊNCIAS
-
-Verifique no link abaixo como devem ser as referências no padrão ABNT:
-
-<http://www.pucminas.br/imagedb/documento/DOC\_DSC\_NOME\_ARQUI20160217102425.pdf>
 
 **[1]** - _Economia Circular - O que é a Economia Circular? ([s.d.]). Nomia.pt. Recuperado 2 de março de 2023, de <https://eco.nomia.pt/pt/economia-circular/estrategias>_
 
