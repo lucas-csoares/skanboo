@@ -54,9 +54,9 @@ public class UsuarioService {
 
     public List<Usuario> listarUsuariosCadastrados() {
 
-        UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
+        UserSpringSecurity userSpringSecurity = UsuarioService.authenticated(); // SEGURANÇA
 
-        if (Objects.isNull(userSpringSecurity) || !userSpringSecurity.hasRole(UsuarioEnum.ADMIN))
+        if (Objects.isNull(userSpringSecurity) || !userSpringSecurity.hasRole(UsuarioEnum.ADMIN)) // SEGURANÇA
             throw new AuthorizationException("Acesso negado!");
 
         List<Usuario> usuario = this.usuarioRepository.findAll();

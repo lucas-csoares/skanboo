@@ -52,6 +52,7 @@ public class AvaliacaoService {
 
         UserSpringSecurity userSpringSecurity = UsuarioService.authenticated();
         Long usuarioId = userSpringSecurity.getId();
+
         List<Avaliacao> todasAvaliacoes = avaliacaoRepository.findAll();
 
         List<Avaliacao> avaliacoesDoUsuarioLogado = todasAvaliacoes.stream()

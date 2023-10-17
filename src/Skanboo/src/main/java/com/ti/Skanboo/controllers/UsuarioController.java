@@ -28,6 +28,7 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
+    // Encontrar por id (faz porte do CRUD)
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> encontrarPorId(@PathVariable Long id) {
  
@@ -36,6 +37,7 @@ public class UsuarioController {
         return ResponseEntity.ok().body(obj);
     }
 
+    // Listar informações do usuário ativo
     @GetMapping("/me")
     public ResponseEntity<Usuario> listarInformacoesUsuarioAtivo() {
 
@@ -44,6 +46,7 @@ public class UsuarioController {
         return ResponseEntity.ok().body(obj);
     }
 
+    // Listar Usuários cadastrados
     @GetMapping("/lista")
     public ResponseEntity<List<Usuario>> listarUsuariosCadastrados() {
 
@@ -51,16 +54,19 @@ public class UsuarioController {
         return ResponseEntity.ok().body(obj);
     }
 
+    // Cadastrar novo usuário
     @PostMapping
     public ResponseEntity<Void> criar(@Valid @RequestBody Usuario obj) {
 
         this.usuarioService.criar(obj);
 
+        // Rota para encontrar o usuário
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 
         return ResponseEntity.created(uri).build();
     }
 
+    // Atualizar por id
     @PutMapping("/{id}")
     public ResponseEntity<Void> atualizarPorId(@Valid @RequestBody Usuario obj, @PathVariable Long id) {
 
@@ -70,6 +76,7 @@ public class UsuarioController {
         return ResponseEntity.noContent().build();
     }
 
+    // Atualizar Usuario ativo
     @PutMapping("/me")
     public ResponseEntity<Void> atualizarUsuarioAtivo(@Valid @RequestBody Usuario obj) {
 
@@ -78,6 +85,7 @@ public class UsuarioController {
         return ResponseEntity.noContent().build();
     }
 
+    // Deletar por id
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarPorId(@PathVariable Long id) {
 
@@ -86,6 +94,7 @@ public class UsuarioController {
         return ResponseEntity.noContent().build();
     }
 
+    // Deletar o usuário que está ativo
     @DeleteMapping("/me")
     public ResponseEntity<Void> deletarUsuarioAtivo() {
 

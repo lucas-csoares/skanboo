@@ -25,7 +25,9 @@ public class JWTUtil {
     }
 
     private SecretKey getKeyBySecret() {
+
         return Keys.hmacShaKeyFor(this.secret.getBytes());
+        
     }
 
     public boolean isValidToken(String token) {
